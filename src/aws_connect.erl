@@ -2285,6 +2285,24 @@ delete_queue(Client, InstanceId, QueueId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a quick connect.
+%%
+%% After calling DeleteUser:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteUser.html,
+%% it's important to
+%% call `DeleteQuickConnect' to delete any records related to the deleted
+%% users. This
+%% will help you:
+%%
+%% Avoid dangling resources that impact your service quotas.
+%%
+%% Remove deleted users so they don't appear to agents as transfer
+%% options.
+%%
+%% Avoid the disruption of other Amazon Connect processes, such as instance
+%% replication
+%% and syncing if you're using Amazon Connect
+%% Global Resiliency:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/setup-connect-global-resiliency.html.
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input) ->
     delete_quick_connect(Client, InstanceId, QuickConnectId, Input, []).
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options0) ->
@@ -2478,6 +2496,22 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-users.html in
 %% the Amazon Connect Administrator
 %% Guide.
+%%
+%% After calling DeleteUser, call DeleteQuickConnect:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteQuickConnect.html
+%% to
+%% delete any records related to the deleted users. This will help you:
+%%
+%% Avoid dangling resources that impact your service quotas.
+%%
+%% Remove deleted users so they don't appear to agents as transfer
+%% options.
+%%
+%% Avoid the disruption of other Amazon Connect processes, such as instance
+%% replication
+%% and syncing if you're using Amazon Connect
+%% Global Resiliency:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/setup-connect-global-resiliency.html.
 delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
 delete_user(Client, InstanceId, UserId, Input0, Options0) ->
@@ -4314,7 +4348,8 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %%
 %% For the specified `referenceTypes', returns a list of references
 %% associated with
-%% the contact.
+%% the contact. References are links to documents that are related to a
+%% contact, such as emails, attachments, or URLs.
 list_contact_references(Client, ContactId, InstanceId, ReferenceTypes)
   when is_map(Client) ->
     list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, #{}, #{}).
@@ -6526,8 +6561,8 @@ start_web_r_t_c_contact(Client, Input0, Options0) ->
 
 %% @doc Ends the specified contact.
 %%
-%% This call does not work for voice contacts that use the
-%% following initiation methods:
+%% Use this API to stop queued callbacks. It does not work for
+%% voice contacts that use the following initiation methods:
 %%
 %% DISCONNECT
 %%
@@ -6535,8 +6570,8 @@ start_web_r_t_c_contact(Client, Input0, Options0) ->
 %%
 %% QUEUE_TRANSFER
 %%
-%% Chat and task contacts, however, can be terminated in any state,
-%% regardless of initiation
+%% Chat and task contacts can be terminated in any state, regardless of
+%% initiation
 %% method.
 stop_contact(Client, Input) ->
     stop_contact(Client, Input, []).

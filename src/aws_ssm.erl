@@ -373,7 +373,7 @@
 %% to and are interpreted strictly as a string of characters.
 %%
 %% For more information about using tags with Amazon Elastic Compute Cloud
-%% (Amazon EC2) instances, see Tagging your Amazon EC2
+%% (Amazon EC2) instances, see Tag your Amazon EC2
 %% resources:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
 %% Amazon EC2 User Guide.
@@ -433,9 +433,11 @@ cancel_maintenance_window_execution(Client, Input, Options)
 %% more information about
 %% requirements for managing on-premises machines using Systems Manager, see
 %% Setting up
-%% Amazon Web Services Systems Manager for hybrid environments:
+%% Amazon Web Services Systems Manager for hybrid and multicloud
+%% environments:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html
-%% in the Amazon Web Services Systems Manager User Guide.
+%% in the
+%% Amazon Web Services Systems Manager User Guide.
 %%
 %% Amazon Elastic Compute Cloud (Amazon EC2) instances, edge devices, and
 %% on-premises servers and VMs that are
@@ -804,8 +806,8 @@ delete_resource_data_sync(Client, Input, Options)
 %% accounts using Resource Access Manager (RAM). For more information about
 %% cross-account sharing of parameters, see Working with
 %% shared parameters:
-%% systems-manager/latest/userguide/parameter-store-shared-parameters.html in
-%% the Amazon Web Services Systems Manager User Guide.
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html
+%% in the Amazon Web Services Systems Manager User Guide.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -949,7 +951,7 @@ describe_document_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDocumentPermission">>, Input, Options).
 
-%% @doc All associations for the managed node(s).
+%% @doc All associations for the managed nodes.
 describe_effective_instance_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_instance_associations(Client, Input, []).
@@ -969,7 +971,7 @@ describe_effective_patches_for_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEffectivePatchesForPatchBaseline">>, Input, Options).
 
-%% @doc The status of the associations for the managed node(s).
+%% @doc The status of the associations for the managed nodes.
 describe_instance_associations_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_associations_status(Client, Input, []).
@@ -1133,7 +1135,7 @@ describe_maintenance_windows_for_target(Client, Input, Options)
 %% Manager OpsCenter to view, investigate, and
 %% remediate operational issues impacting the performance and health of their
 %% Amazon Web Services resources. For
-%% more information, see OpsCenter:
+%% more information, see Amazon Web Services Systems Manager OpsCenter:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
 %% in the
 %% Amazon Web Services Systems Manager User Guide.
@@ -1492,7 +1494,7 @@ get_maintenance_window_task(Client, Input, Options)
 %% Manager OpsCenter to view, investigate, and
 %% remediate operational issues impacting the performance and health of their
 %% Amazon Web Services resources. For
-%% more information, see OpsCenter:
+%% more information, see Amazon Web Services Systems Manager OpsCenter:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
 %% in the
 %% Amazon Web Services Systems Manager User Guide.
@@ -1960,7 +1962,7 @@ modify_document_permission(Client, Input, Options)
 %% InstalledTime: The time the association, patch, or custom compliance item
 %% was applied to
 %% the resource. Specify the time by using the following format:
-%% yyyy-MM-dd'T'HH:mm:ss'Z'
+%% `yyyy-MM-dd'T'HH:mm:ss'Z''
 put_compliance_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_compliance_items(Client, Input, []).
@@ -2006,14 +2008,13 @@ put_parameter(Client, Input, Options)
 %%
 %% To share a parameter, it must be in the advanced parameter tier. For
 %% information about
-%% parameter tiers, see Managing parameter tiers:
-%% https://docs.aws.amazon.com/parameter-store- advanced-parameters.html. For
-%% information about
-%% changing an existing standard parameter to an advanced parameter, see
-%% Changing a standard parameter to an advanced
+%% parameter tiers, see Managing
+%% parameter tiers:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html.
+%% For information about changing an existing standard parameter to an
+%% advanced parameter, see Changing a standard parameter to an advanced
 %% parameter:
-%% https://docs.aws.amazon.com/parameter-store-advanced-parameters.html#parameter-
-%% store-advanced-parameters-enabling.
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html#parameter-store-advanced-parameters-enabling.
 %%
 %% To share a `SecureString' parameter, it must be encrypted with a
 %% customer managed key, and you must share the key separately through Key
@@ -2021,9 +2022,8 @@ put_parameter(Client, Input, Options)
 %% Parameters encrypted with the default Amazon Web Services managed key can
 %% be updated to use a customer managed key instead. For KMS key definitions,
 %% see KMS concepts:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-mgmt
-%% in
-%% the Key Management Service Developer Guide.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html in the
+%% Key Management Service Developer Guide.
 %%
 %% While you can share a parameter using the Systems Manager
 %% `PutResourcePolicy' operation,
@@ -2471,7 +2471,7 @@ update_managed_instance_role(Client, Input, Options)
 %% Manager OpsCenter to view, investigate, and
 %% remediate operational issues impacting the performance and health of their
 %% Amazon Web Services resources. For
-%% more information, see OpsCenter:
+%% more information, see Amazon Web Services Systems Manager OpsCenter:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
 %% in the
 %% Amazon Web Services Systems Manager User Guide.

@@ -3,34 +3,12 @@
 
 %% @doc Amazon Elastic Compute Cloud
 %%
-%% Amazon Elastic Compute Cloud (Amazon EC2) provides secure and resizable
-%% computing capacity in the Amazon Web Services Cloud.
+%% You can access the features of Amazon Elastic Compute Cloud (Amazon EC2)
+%% programmatically.
 %%
-%% Using Amazon EC2 eliminates the need to invest in hardware up front, so
-%% you can develop and deploy applications
-%% faster. Amazon Virtual Private Cloud (Amazon VPC) enables you to provision
-%% a logically isolated section of the
-%% Amazon Web Services Cloud where you can launch Amazon Web Services
-%% resources in a virtual network that you've defined. Amazon Elastic
-%% Block Store
-%% (Amazon EBS) provides block level storage volumes for use with EC2
-%% instances. EBS volumes are highly available
-%% and reliable storage volumes that can be attached to any running instance
-%% and used like a hard drive.
-%%
-%% To learn more, see the following resources:
-%%
-%% Amazon EC2: Amazon EC2 product page: http://aws.amazon.com/ec2, Amazon EC2
-%% documentation: https://docs.aws.amazon.com/ec2/index.html
-%%
-%% Amazon EBS: Amazon EBS product page: http://aws.amazon.com/ebs, Amazon EBS
-%% documentation: https://docs.aws.amazon.com/ebs/index.html
-%%
-%% Amazon VPC: Amazon VPC product page: http://aws.amazon.com/vpc, Amazon VPC
-%% documentation: https://docs.aws.amazon.com/vpc/index.html
-%%
-%% VPN: VPN product page: http://aws.amazon.com/vpn, VPN documentation:
-%% https://docs.aws.amazon.com/vpn/index.html
+%% For more information,
+%% see the Amazon EC2 Developer Guide:
+%% https://docs.aws.amazon.com/ec2/latest/devguide.
 -module(aws_ec2).
 
 -export([accept_address_transfer/2,
@@ -1925,13 +1903,13 @@ attach_verified_access_trust_provider(Client, Input, Options)
 %% Encrypted EBS volumes must be attached to instances that support Amazon
 %% EBS encryption. For
 %% more information, see Amazon EBS encryption:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html in
+%% the Amazon EBS User Guide.
 %%
 %% After you attach an EBS volume, you must make it available. For more
 %% information, see
 %% Make an EBS volume available for use:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-using-volumes.html.
 %%
 %% If a volume has an Amazon Web Services Marketplace product code:
 %%
@@ -1949,9 +1927,9 @@ attach_verified_access_trust_provider(Client, Input, Options)
 %% instance.
 %%
 %% For more information, see Attach an Amazon EBS volume to an instance:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-attaching-volume.html
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS User Guide.
 attach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_volume(Client, Input, []).
@@ -1989,36 +1967,37 @@ authorize_client_vpn_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeClientVpnIngress">>, Input, Options).
 
-%% @doc Adds the specified outbound (egress) rules to a security group for
-%% use with a VPC.
+%% @doc Adds the specified outbound (egress) rules to a security group.
 %%
 %% An outbound rule permits instances to send traffic to the specified IPv4
-%% or IPv6 CIDR
-%% address ranges, or to the instances that are associated with the specified
-%% source
-%% security groups. When specifying an outbound rule for your security group
-%% in a VPC, the
-%% `IpPermissions' must include a destination for the traffic.
+%% or IPv6
+%% address ranges, the IP address ranges specified by a prefix list, or the
+%% instances
+%% that are associated with a source security group. For more information,
+%% see Security group rules:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html.
 %%
-%% You specify a protocol for each rule (for example, TCP).
-%% For the TCP and UDP protocols, you must also specify the destination port
-%% or port range.
-%% For the ICMP protocol, you must also specify the ICMP type and code.
-%% You can use -1 for the type or code to mean all types or all codes.
+%% You must specify exactly one of the following destinations: an IPv4 or
+%% IPv6 address range,
+%% a prefix list, or a security group. You must specify a protocol for each
+%% rule (for example, TCP).
+%% If the protocol is TCP or UDP, you must also specify a port or port range.
+%% If the protocol is
+%% ICMP or ICMPv6, you must also specify the ICMP type and code.
 %%
-%% Rule changes are propagated to affected instances as quickly as possible.
-%% However, a small delay might occur.
+%% Rule changes are propagated to instances associated with the security
+%% group as quickly
+%% as possible. However, a small delay might occur.
 %%
-%% For information about VPC security group quotas, see Amazon VPC quotas:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html.
+%% For examples of rules that you can add to security groups for specific
+%% access scenarios,
+%% see Security group rules for different use cases:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html
+%% in the Amazon EC2 User Guide.
 %%
-%% If you want to reference a security group across VPCs attached to a
-%% transit gateway using the
-%% security group
-%% referencing feature:
-%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw,
-%% note that you can only reference security groups
-%% for ingress rules. You cannot reference a security group for egress rules.
+%% For information about security group quotas, see Amazon VPC quotas:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html in
+%% the Amazon VPC User Guide.
 authorize_security_group_egress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_security_group_egress(Client, Input, []).
@@ -2029,25 +2008,34 @@ authorize_security_group_egress(Client, Input, Options)
 %% @doc Adds the specified inbound (ingress) rules to a security group.
 %%
 %% An inbound rule permits instances to receive traffic from the specified
-%% IPv4 or IPv6 CIDR
-%% address range, or from the instances that are associated with the
-%% specified destination security
-%% groups. When specifying an inbound rule for your security group in a VPC,
-%% the
-%% `IpPermissions' must include a source for the traffic.
+%% IPv4 or IPv6
+%% address range, the IP address ranges that are specified by a prefix list,
+%% or the instances
+%% that are associated with a destination security group. For more
+%% information, see Security group rules:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html.
 %%
-%% You specify a protocol for each rule (for example, TCP).
-%% For TCP and UDP, you must also specify the destination port or port range.
-%% For ICMP/ICMPv6, you must also specify the ICMP/ICMPv6 type and code.
-%% You can use -1 to mean all types or all codes.
+%% You must specify exactly one of the following sources: an IPv4 or IPv6
+%% address range,
+%% a prefix list, or a security group. You must specify a protocol for each
+%% rule (for example, TCP).
+%% If the protocol is TCP or UDP, you must also specify a port or port range.
+%% If the protocol is
+%% ICMP or ICMPv6, you must also specify the ICMP/ICMPv6 type and code.
 %%
-%% Rule changes are propagated to instances within the security group as
-%% quickly as possible.
-%% However, a small delay might occur.
+%% Rule changes are propagated to instances associated with the security
+%% group as quickly
+%% as possible. However, a small delay might occur.
 %%
-%% For more information about VPC security group quotas, see Amazon VPC
-%% quotas:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html.
+%% For examples of rules that you can add to security groups for specific
+%% access scenarios,
+%% see Security group rules for different use cases:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html
+%% in the Amazon EC2 User Guide.
+%%
+%% For more information about security group quotas, see Amazon VPC quotas:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html in
+%% the Amazon VPC User Guide.
 authorize_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_security_group_ingress(Client, Input, []).
@@ -2058,12 +2046,10 @@ authorize_security_group_ingress(Client, Input, Options)
 %% @doc Bundles an Amazon instance store-backed Windows instance.
 %%
 %% During bundling, only the root device volume (C:\) is bundled. Data on
-%% other instance
-%% store volumes is not preserved.
+%% other instance store volumes is not preserved.
 %%
 %% This action is not applicable for Linux/Unix instances or Windows
-%% instances that are
-%% backed by Amazon EBS.
+%% instances that are backed by Amazon EBS.
 bundle_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     bundle_instance(Client, Input, []).
@@ -2155,10 +2141,12 @@ cancel_export_task(Client, Input, Options)
 %% @doc Removes your Amazon Web Services account from the launch permissions
 %% for the specified AMI.
 %%
-%% For more information, see Cancel having an AMI shared with
-%% your Amazon Web Services account:
+%% For more
+%% information, see
+%% Cancel having an AMI shared with your Amazon Web Services account:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cancel-sharing-an-AMI.html
-%% in the Amazon EC2 User Guide.
+%% in the
+%% Amazon EC2 User Guide.
 cancel_image_launch_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_image_launch_permission(Client, Input, []).
@@ -2245,32 +2233,34 @@ copy_fpga_image(Client, Input, Options)
 %%
 %% You can copy an AMI from one Region to another, or from a
 %% Region to an Outpost. You can't copy an AMI from an Outpost to a
-%% Region, from one Outpost to
-%% another, or within the same Outpost. To copy an AMI to another partition,
-%% see CreateStoreImageTask:
+%% Region, from one Outpost
+%% to another, or within the same Outpost. To copy an AMI to another
+%% partition, see CreateStoreImageTask:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html.
 %%
 %% To copy an AMI from one Region to another, specify the source Region using
-%% the SourceRegion parameter, and specify the destination Region using its
-%% endpoint. Copies of encrypted backing snapshots for the AMI are encrypted.
-%% Copies of
-%% unencrypted backing snapshots remain unencrypted, unless you set
-%% `Encrypted' during
-%% the copy operation. You cannot create an unencrypted copy of an encrypted
-%% backing
-%% snapshot.
+%% the
+%% SourceRegion parameter, and specify the
+%% destination Region using its endpoint. Copies of encrypted backing
+%% snapshots for
+%% the AMI are encrypted. Copies of unencrypted backing snapshots remain
+%% unencrypted,
+%% unless you set `Encrypted' during the copy operation. You cannot
+%% create an unencrypted copy of an encrypted backing snapshot.
 %%
 %% To copy an AMI from a Region to an Outpost, specify the source Region
-%% using the SourceRegion parameter, and specify the ARN of the destination
-%% Outpost using DestinationOutpostArn. Backing snapshots copied
-%% to an Outpost are encrypted by default using the default encryption key
-%% for the Region, or a
-%% different key that you specify in the request using KmsKeyId.
-%% Outposts do not support unencrypted snapshots. For more information,
-%% Amazon EBS local
-%% snapshots on Outposts:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami
-%% in the Amazon EC2 User Guide.
+%% using the
+%% SourceRegion parameter, and specify the
+%% ARN of the destination Outpost using DestinationOutpostArn.
+%% Backing snapshots copied to an Outpost are encrypted by default using the
+%% default
+%% encryption key for the Region, or a different key that you specify in the
+%% request using
+%% KmsKeyId. Outposts do not support unencrypted
+%% snapshots. For more information,
+%% Amazon EBS local snapshots on Outposts:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami
+%% in the Amazon EBS User Guide.
 %%
 %% For more information about the prerequisites and limits when copying an
 %% AMI, see Copy an AMI:
@@ -2315,17 +2305,17 @@ copy_image(Client, Input, Options)
 %% KmsKeyId. Outposts do not support unencrypted
 %% snapshots. For more information,
 %% Amazon EBS local snapshots on Outposts:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami
+%% in the Amazon EBS User Guide.
 %%
 %% Snapshots created by copying another snapshot have an arbitrary volume ID
 %% that should not
 %% be used for any purpose.
 %%
 %% For more information, see Copy an Amazon EBS snapshot:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html
-%% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-copy-snapshot.html in
+%% the
+%% Amazon EBS User Guide.
 copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
@@ -2511,65 +2501,66 @@ create_default_vpc(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDefaultVpc">>, Input, Options).
 
-%% @doc Creates a set of DHCP options for your VPC.
+%% @doc Creates a custom set of DHCP options.
 %%
-%% After creating the set, you must
-%% associate it with the VPC, causing all existing and new instances that you
-%% launch in
-%% the VPC to use this set of DHCP options. The following are the individual
-%% DHCP
-%% options you can specify. For more information about the options, see RFC
-%% 2132: http://www.ietf.org/rfc/rfc2132.txt.
+%% After you create a DHCP option set, you associate
+%% it with a VPC. After you associate a DHCP option set with a VPC, all
+%% existing and newly
+%% launched instances in the VPC use this set of DHCP options.
 %%
-%% `domain-name-servers' - The IP addresses of up to four domain name
-%% servers, or AmazonProvidedDNS. The default DHCP option set specifies
-%% AmazonProvidedDNS. If specifying more than one domain name server, specify
-%% the
-%% IP addresses in a single parameter, separated by commas. To have your
-%% instance
-%% receive a custom DNS hostname as specified in `domain-name', you must
-%% set `domain-name-servers' to a custom DNS server.
+%% The following are the individual DHCP options you can specify. For more
+%% information, see
+%% DHCP options sets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html
+%% in the Amazon VPC User Guide.
 %%
 %% `domain-name' - If you're using AmazonProvidedDNS in
-%% `us-east-1', specify `ec2.internal'. If you're using
-%% AmazonProvidedDNS in another Region, specify
-%% `region.compute.internal' (for example,
-%% `ap-northeast-1.compute.internal'). Otherwise, specify a domain
-%% name (for example, `ExampleCompany.com'). This value is used to
-%% complete
-%% unqualified DNS hostnames. Important: Some
-%% Linux operating systems accept multiple domain names separated by spaces.
+%% `us-east-1',
+%% specify `ec2.internal'. If you're using AmazonProvidedDNS in any
+%% other Region,
+%% specify `region.compute.internal'. Otherwise, specify a custom domain
+%% name.
+%% This value is used to complete unqualified DNS hostnames.
+%%
+%% Some Linux operating systems accept multiple domain names separated by
+%% spaces.
 %% However, Windows and other Linux operating systems treat the value as a
 %% single
-%% domain, which results in unexpected behavior. If your DHCP options set is
-%% associated with a VPC that has instances with multiple operating systems,
-%% specify only one domain name.
+%% domain, which results in unexpected behavior. If your DHCP option set is
+%% associated with a VPC that has instances running operating systems that
+%% treat
+%% the value as a single domain, specify only one domain name.
 %%
-%% `ntp-servers' - The IP addresses of up to four Network Time Protocol
+%% `domain-name-servers' - The IP addresses of up to four DNS servers,
+%% or AmazonProvidedDNS. To specify multiple domain name servers in a single
+%% parameter,
+%% separate the IP addresses using commas. To have your instances receive
+%% custom DNS
+%% hostnames as specified in `domain-name', you must specify a custom DNS
+%% server.
+%%
+%% `ntp-servers' - The IP addresses of up to eight Network Time Protocol
 %% (NTP)
-%% servers.
+%% servers (four IPv4 addresses and four IPv6 addresses).
 %%
 %% `netbios-name-servers' - The IP addresses of up to four NetBIOS name
 %% servers.
 %%
 %% `netbios-node-type' - The NetBIOS node type (1, 2, 4, or 8). We
 %% recommend that
-%% you specify 2 (broadcast and multicast are not currently supported). For
-%% more information
-%% about these node types, see RFC 2132: http://www.ietf.org/rfc/rfc2132.txt.
+%% you specify 2. Broadcast and multicast are not supported. For more
+%% information about
+%% NetBIOS node types, see RFC 2132: http://www.ietf.org/rfc/rfc2132.txt.
 %%
-%% Your VPC automatically starts out with a set of DHCP options that includes
-%% only a DNS
-%% server that we provide (AmazonProvidedDNS). If you create a set of
-%% options, and if your
-%% VPC has an internet gateway, make sure to set the
-%% `domain-name-servers'
-%% option either to `AmazonProvidedDNS' or to a domain name server of
-%% your
-%% choice. For more information, see DHCP options sets:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
-%% the
-%% Amazon VPC User Guide.
+%% `ipv6-preferred-lease-time' - A value (in seconds, minutes, hours, or
+%% years) for how frequently a running instance with an IPv6 assigned to it
+%% goes through DHCPv6 lease renewal.
+%% Acceptable values are between 140 and 2147483647 seconds (approximately 68
+%% years). If no value is entered, the default lease time is 140 seconds. If
+%% you use long-term addressing for EC2 instances, you can increase the lease
+%% time and avoid frequent
+%% lease renewal requests. Lease renewal typically occurs when half of the
+%% lease time has elapsed.
 create_dhcp_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dhcp_options(Client, Input, []).
@@ -2660,16 +2651,13 @@ create_fpga_image(Client, Input, Options)
     request(Client, <<"CreateFpgaImage">>, Input, Options).
 
 %% @doc Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance
-%% that is either running or
-%% stopped.
+%% that is either running or stopped.
 %%
 %% If you customized your instance with instance store volumes or Amazon EBS
-%% volumes in addition
-%% to the root device volume, the new AMI contains block device mapping
-%% information for those
-%% volumes. When you launch an instance from this new AMI, the instance
-%% automatically launches
-%% with those additional volumes.
+%% volumes in addition to the root device volume, the
+%% new AMI contains block device mapping information for those volumes. When
+%% you launch an instance from this new AMI,
+%% the instance automatically launches with those additional volumes.
 %%
 %% For more information, see Create an Amazon EBS-backed Linux
 %% AMI:
@@ -3228,8 +3216,8 @@ create_reserved_instances_listing(Client, Input, Options)
     request(Client, <<"CreateReservedInstancesListing">>, Input, Options).
 
 %% @doc Starts a task that restores an AMI from an Amazon S3 object that was
-%% previously created by
-%% using CreateStoreImageTask:
+%% previously created by using
+%% CreateStoreImageTask:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html.
 %%
 %% To use this API, you must have the required permissions. For more
@@ -3395,10 +3383,10 @@ create_security_group(Client, Input, Options)
 %% Amazon Elastic Compute Cloud User Guide.
 %%
 %% For more information, see Amazon Elastic Block Store:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html and
+%% https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html and
 %% Amazon EBS encryption:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html in
+%% the Amazon EBS User Guide.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -3846,8 +3834,8 @@ create_verified_access_trust_provider(Client, Input, Options)
 %% support Amazon EBS encryption. Volumes that are created from encrypted
 %% snapshots are also automatically
 %% encrypted. For more information, see Amazon EBS encryption:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html
+%% in the Amazon EBS User Guide.
 %%
 %% You can tag your volumes during creation. For more information, see Tag
 %% your Amazon EC2
@@ -3856,9 +3844,9 @@ create_verified_access_trust_provider(Client, Input, Options)
 %% Amazon Elastic Compute Cloud User Guide.
 %%
 %% For more information, see Create an Amazon EBS volume:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-creating-volume.html
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS User Guide.
 create_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_volume(Client, Input, []).
@@ -4577,9 +4565,9 @@ delete_security_group(Client, Input, Options)
 %% You must first de-register the AMI before you can delete the snapshot.
 %%
 %% For more information, see Delete an Amazon EBS snapshot:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-deleting-snapshot.html
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS User Guide.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
@@ -4806,9 +4794,9 @@ delete_verified_access_trust_provider(Client, Input, Options)
 %% The volume can remain in the `deleting' state for several minutes.
 %%
 %% For more information, see Delete an Amazon EBS volume:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-deleting-volume.html
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS User Guide.
 delete_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_volume(Client, Input, []).
@@ -5003,29 +4991,29 @@ deprovision_public_ipv4_pool_cidr(Client, Input, Options)
 
 %% @doc Deregisters the specified AMI.
 %%
-%% After you deregister an AMI, it can't be used to launch new
-%% instances.
+%% After you deregister an AMI, it can't be used to
+%% launch new instances.
 %%
 %% If you deregister an AMI that matches a Recycle Bin retention rule, the
-%% AMI is retained in
-%% the Recycle Bin for the specified retention period. For more information,
-%% see Recycle Bin:
+%% AMI is retained
+%% in the Recycle Bin for the specified retention period. For more
+%% information, see Recycle Bin:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
 %% the Amazon EC2 User Guide.
 %%
 %% When you deregister an AMI, it doesn't affect any instances that
-%% you've already launched
-%% from the AMI. You'll continue to incur usage costs for those instances
-%% until you terminate
-%% them.
+%% you've already
+%% launched from the AMI. You'll continue to incur usage costs for those
+%% instances until
+%% you terminate them.
 %%
 %% When you deregister an Amazon EBS-backed AMI, it doesn't affect the
-%% snapshot that was created
-%% for the root volume of the instance during the AMI creation process. When
-%% you deregister an
-%% instance store-backed AMI, it doesn't affect the files that you
-%% uploaded to Amazon S3 when you
-%% created the AMI.
+%% snapshot that was
+%% created for the root volume of the instance during the AMI creation
+%% process. When you
+%% deregister an instance store-backed AMI, it doesn't affect the files
+%% that you uploaded
+%% to Amazon S3 when you created the AMI.
 deregister_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_image(Client, Input, []).
@@ -5087,6 +5075,11 @@ deregister_transit_gateway_multicast_group_sources(Client, Input, Options)
 %% `vpc-max-security-groups-per-interface': The maximum number of
 %% security groups
 %% that you can assign to a network interface.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a
+%% particular order.
 describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
@@ -5181,6 +5174,11 @@ describe_aggregate_id_format(Client, Input, Options)
 %% Regions and zones:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 %% in the Amazon Elastic Compute Cloud User Guide.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a
+%% particular order.
 describe_availability_zones(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_zones(Client, Input, []).
@@ -5200,15 +5198,13 @@ describe_aws_network_performance_metric_subscriptions(Client, Input, Options)
 %% @doc Describes the specified bundle tasks or all of your bundle tasks.
 %%
 %% Completed bundle tasks are listed for only a limited time. If your bundle
-%% task is no
-%% longer in the list, you can still register an AMI from it. Just use
-%% `RegisterImage' with the Amazon S3 bucket name and image manifest name
-%% you provided
-%% to the bundle task.
+%% task is no longer in the list, you can still register an AMI from it. Just
+%% use `RegisterImage' with the Amazon S3 bucket name and image manifest
+%% name you provided to the bundle task.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures,
-%% might vary. Applications should not assume the elements appear in a
+%% structures, might vary. Applications should not assume the elements appear
+%% in a
 %% particular order.
 describe_bundle_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -5661,12 +5657,11 @@ describe_identity_id_format(Client, Input, Options)
 
 %% @doc Describes the specified attribute of the specified AMI.
 %%
-%% You can specify only one attribute
-%% at a time.
+%% You can specify only one attribute at a time.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures,
-%% might vary. Applications should not assume the elements appear in a
+%% structures, might vary. Applications should not assume the elements appear
+%% in a
 %% particular order.
 describe_image_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -5676,13 +5671,11 @@ describe_image_attribute(Client, Input, Options)
     request(Client, <<"DescribeImageAttribute">>, Input, Options).
 
 %% @doc Describes the specified images (AMIs, AKIs, and ARIs) available to
-%% you or all of the
-%% images available to you.
+%% you or all of the images available to you.
 %%
 %% The images available to you include public images, private images that you
-%% own, and
-%% private images owned by other Amazon Web Services accounts for which you
-%% have explicit launch
+%% own, and private images owned by other
+%% Amazon Web Services accounts for which you have explicit launch
 %% permissions.
 %%
 %% Recently deregistered images appear in the returned results for a short
@@ -5694,8 +5687,8 @@ describe_image_attribute(Client, Input, Options)
 %% cannot be found.
 %%
 %% The order of the elements in the response, including those within nested
-%% structures,
-%% might vary. Applications should not assume the elements appear in a
+%% structures, might vary. Applications should not assume the elements appear
+%% in a
 %% particular order.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -6350,6 +6343,11 @@ describe_public_ipv4_pools(Client, Input, Options)
 %% Managing Amazon Web Services Regions:
 %% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html in the
 %% Amazon Web Services General Reference.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures,
+%% might vary. Applications should not assume the elements appear in a
+%% particular order.
 describe_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_regions(Client, Input, []).
@@ -6516,9 +6514,8 @@ describe_scheduled_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledInstances">>, Input, Options).
 
-%% @doc Describes the VPCs on the other side of a VPC peering connection or
-%% the VPCs attached to a transit gateway that are referencing the security
-%% groups you've specified in this request.
+%% @doc Describes the VPCs on the other side of a VPC peering connection that
+%% are referencing the security groups you've specified in this request.
 describe_security_group_references(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_security_group_references(Client, Input, []).
@@ -6549,8 +6546,8 @@ describe_security_groups(Client, Input, Options)
 %% attribute at a time.
 %%
 %% For more information about EBS snapshots, see Amazon EBS snapshots:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html in the
+%% Amazon EBS User Guide.
 describe_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_attribute(Client, Input, []).
@@ -6631,8 +6628,8 @@ describe_snapshot_tier_status(Client, Input, Options)
 %% `DescribeFastSnapshotRestores'.
 %%
 %% For more information about EBS snapshots, see Amazon EBS snapshots:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html in the
+%% Amazon EBS User Guide.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
@@ -6751,13 +6748,9 @@ describe_spot_price_history(Client, Input, Options)
 %% specified VPC.
 %%
 %% Rules are stale when they reference a deleted security group in the same
-%% VPC, peered VPC, or in separate VPCs attached to a transit gateway (with
-%% security group referencing support:
-%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw
-%% enabled). Rules can also be stale if they reference a security group in a
-%% peer VPC for which the VPC peering connection has
-%% been deleted or if they reference a security group in a VPC that has been
-%% detached from a transit gateway.
+%% VPC or peered VPC. Rules can also be stale if they reference a security
+%% group in a peer VPC for which the VPC peering connection has
+%% been deleted.
 describe_stale_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stale_security_groups(Client, Input, []).
@@ -6816,6 +6809,11 @@ describe_subnets(Client, Input, Options)
 %% For more information about tags, see Tag your Amazon EC2 resources:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
 %% Amazon Elastic Compute Cloud User Guide.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a
+%% particular order.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -7002,8 +7000,8 @@ describe_verified_access_trust_providers(Client, Input, Options)
 %% attribute at a time.
 %%
 %% For more information about EBS volumes, see Amazon EBS volumes:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html in the
+%% Amazon EBS User Guide.
 describe_volume_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volume_attribute(Client, Input, []).
@@ -7040,9 +7038,8 @@ describe_volume_attribute(Client, Input, Options)
 %% volume at the time. We recommend that you retry the request. For more
 %% information about volume
 %% status, see Monitor the status of your volumes:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html
-%% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-status.html
+%% in the Amazon EBS User Guide.
 %%
 %% Events: Reflect the cause of a volume status and might require you to
 %% take action. For example, if your volume returns an `impaired' status,
@@ -7068,6 +7065,11 @@ describe_volume_attribute(Client, Input, Options)
 %% Therefore, volume status does not indicate volumes in the `error'
 %% state (for
 %% example, when a volume is incapable of accepting I/O.)
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a
+%% particular order.
 describe_volume_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volume_status(Client, Input, []).
@@ -7083,8 +7085,13 @@ describe_volume_status(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination.
 %%
 %% For more information about EBS volumes, see Amazon EBS volumes:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html in the
+%% Amazon EBS User Guide.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a
+%% particular order.
 describe_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes(Client, Input, []).
@@ -7108,8 +7115,8 @@ describe_volumes(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/. For more
 %% information, see
 %% Monitor the progress of volume modifications:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-modifications.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-modifications.html
+%% in the Amazon EBS User Guide.
 describe_volumes_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes_modifications(Client, Input, []).
@@ -7338,9 +7345,9 @@ detach_verified_access_trust_provider(Client, Input, Options)
 %% error message.
 %%
 %% For more information, see Detach an Amazon EBS volume:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS User Guide.
 detach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_volume(Client, Input, []).
@@ -7400,9 +7407,9 @@ disable_aws_network_performance_metric_subscription(Client, Input, Options)
 %% existing volumes.
 %%
 %% For more information, see Amazon EBS encryption:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html in
 %% the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS User Guide.
 disable_ebs_encryption_by_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_ebs_encryption_by_default(Client, Input, []).
@@ -7411,18 +7418,15 @@ disable_ebs_encryption_by_default(Client, Input, Options)
     request(Client, <<"DisableEbsEncryptionByDefault">>, Input, Options).
 
 %% @doc Discontinue Windows fast launch for a Windows AMI, and clean up
-%% existing pre-provisioned
-%% snapshots.
+%% existing pre-provisioned snapshots.
 %%
 %% After you disable Windows fast launch, the AMI uses the standard launch
-%% process for
-%% each new instance. Amazon EC2 must remove all pre-provisioned snapshots
-%% before you can enable
-%% Windows fast launch again.
+%% process for each
+%% new instance. Amazon EC2 must remove all pre-provisioned snapshots before
+%% you can enable Windows fast launch again.
 %%
 %% You can only change these settings for Windows AMIs that you own or that
-%% have been
-%% shared with you.
+%% have been shared with you.
 disable_fast_launch(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_fast_launch(Client, Input, []).
@@ -7489,10 +7493,10 @@ disable_image(Client, Input, Options)
 %% response
 %% will be `unblocked'.
 %%
-%% For more information, see Block
-%% public access to your AMIs:
+%% For more information, see Block public access to your AMIs:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
-%% in the Amazon EC2 User Guide.
+%% in
+%% the Amazon EC2 User Guide.
 disable_image_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_image_block_public_access(Client, Input, []).
@@ -7557,8 +7561,8 @@ disable_serial_console_access(Client, Input, Options)
 %%
 %% For more information, see
 %% Block public access for snapshots:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-snapshots.html
-%% in the Amazon Elastic Compute Cloud User Guide .
+%% https://docs.aws.amazon.com/ebs/latest/userguide/block-public-access-snapshots.html
+%% in the Amazon EBS User Guide .
 disable_snapshot_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_snapshot_block_public_access(Client, Input, []).
@@ -7855,9 +7859,9 @@ enable_aws_network_performance_metric_subscription(Client, Input, Options)
 %% specified
 %% when you created each volume. For more information, see Amazon EBS
 %% encryption:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html in
 %% the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS User Guide.
 %%
 %% You can specify the default KMS key for encryption by default using
 %% `ModifyEbsDefaultKmsKeyId'
@@ -7871,7 +7875,7 @@ enable_aws_network_performance_metric_subscription(Client, Input, Options)
 %% using instance types that do not support encryption. For more information,
 %% see Supported
 %% instance types:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption-requirements.html#ebs-encryption_supported_instances.
 enable_ebs_encryption_by_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_ebs_encryption_by_default(Client, Input, []).
@@ -7880,21 +7884,20 @@ enable_ebs_encryption_by_default(Client, Input, Options)
     request(Client, <<"EnableEbsEncryptionByDefault">>, Input, Options).
 
 %% @doc When you enable Windows fast launch for a Windows AMI, images are
-%% pre-provisioned, using
-%% snapshots to launch instances up to 65% faster.
+%% pre-provisioned,
+%% using snapshots to launch instances up to 65% faster.
 %%
-%% To create the optimized Windows image, Amazon EC2
-%% launches an instance and runs through Sysprep steps, rebooting as
-%% required. Then it creates a
-%% set of reserved snapshots that are used for subsequent launches. The
-%% reserved snapshots are
-%% automatically replenished as they are used, depending on your settings for
-%% launch
-%% frequency.
+%% To create the optimized Windows
+%% image, Amazon EC2 launches an instance and runs through Sysprep steps,
+%% rebooting as required.
+%% Then it creates a set of reserved snapshots that are used for subsequent
+%% launches. The
+%% reserved snapshots are automatically replenished as they are used,
+%% depending on your
+%% settings for launch frequency.
 %%
 %% You can only change these settings for Windows AMIs that you own or that
-%% have been
-%% shared with you.
+%% have been shared with you.
 enable_fast_launch(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_fast_launch(Client, Input, []).
@@ -7913,8 +7916,8 @@ enable_fast_launch(Client, Input, Options)
 %%
 %% For more information, see Amazon EBS fast snapshot
 %% restore:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-fast-snapshot-restore.html
+%% in the Amazon EBS User Guide.
 enable_fast_snapshot_restores(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_fast_snapshot_restores(Client, Input, []).
@@ -7976,8 +7979,7 @@ enable_image_block_public_access(Client, Input, Options)
 %%
 %% For more information, see Deprecate an AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html in
-%% the
-%% Amazon EC2 User Guide.
+%% the Amazon EC2 User Guide.
 enable_image_deprecation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_image_deprecation(Client, Input, []).
@@ -8050,8 +8052,8 @@ enable_serial_console_access(Client, Input, Options)
 %%
 %% For more information, see
 %% Block public access for snapshots:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-snapshots.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/block-public-access-snapshots.html
+%% in the Amazon EBS User Guide.
 enable_snapshot_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_snapshot_block_public_access(Client, Input, []).
@@ -8308,8 +8310,8 @@ get_default_credit_specification(Client, Input, Options)
 %% `ResetEbsDefaultKmsKeyId'.
 %%
 %% For more information, see Amazon EBS encryption:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html
+%% in the Amazon EBS User Guide.
 get_ebs_default_kms_key_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ebs_default_kms_key_id(Client, Input, []).
@@ -8322,8 +8324,8 @@ get_ebs_default_kms_key_id(Client, Input, Options)
 %% Region.
 %%
 %% For more information, see Amazon EBS encryption:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html
+%% in the Amazon EBS User Guide.
 get_ebs_encryption_by_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ebs_encryption_by_default(Client, Input, []).
@@ -8690,8 +8692,8 @@ get_serial_console_access_status(Client, Input, Options)
 %%
 %% For more information, see
 %% Block public access for snapshots:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-snapshots.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/block-public-access-snapshots.html
+%% in the Amazon EBS User Guide.
 get_snapshot_block_public_access_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snapshot_block_public_access_state(Client, Input, []).
@@ -8986,8 +8988,8 @@ import_volume(Client, Input, Options)
 
 %% @doc Lists one or more AMIs that are currently in the Recycle Bin.
 %%
-%% For more information, see
-%% Recycle
+%% For more information,
+%% see Recycle
 %% Bin: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html
 %% in the Amazon EC2 User Guide.
 list_images_in_recycle_bin(Client, Input)
@@ -9153,8 +9155,8 @@ modify_default_credit_specification(Client, Input, Options)
 %% encryption by default, your instances will fail to launch.
 %%
 %% For more information, see Amazon EBS encryption:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html
+%% in the Amazon EBS User Guide.
 modify_ebs_default_kms_key_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ebs_default_kms_key_id(Client, Input, []).
@@ -9344,20 +9346,18 @@ modify_identity_id_format(Client, Input, Options)
 
 %% @doc Modifies the specified attribute of the specified AMI.
 %%
-%% You can specify only one attribute
-%% at a time.
+%% You can specify only one attribute at a time.
 %%
 %% To specify the attribute, you can use the `Attribute' parameter, or
-%% one of the
-%% following parameters: `Description', `ImdsSupport', or
-%% `LaunchPermission'.
+%% one of the following parameters:
+%% `Description', `ImdsSupport', or `LaunchPermission'.
 %%
 %% Images with an Amazon Web Services Marketplace product code cannot be made
 %% public.
 %%
 %% To enable the SriovNetSupport enhanced networking attribute of an image,
-%% enable
-%% SriovNetSupport on an instance and create an AMI from the instance.
+%% enable SriovNetSupport on an instance
+%% and create an AMI from the instance.
 modify_image_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_image_attribute(Client, Input, []).
@@ -9694,9 +9694,9 @@ modify_security_group_rules(Client, Input, Options)
 %%
 %% For more information about modifying snapshot permissions, see Share a
 %% snapshot:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modifying-snapshot-permissions.html
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS User Guide.
 modify_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_attribute(Client, Input, []).
@@ -9712,8 +9712,8 @@ modify_snapshot_attribute(Client, Input, Options)
 %% time the snapshot was created, and moved from the standard tier to the
 %% archive
 %% tier. For more information, see Archive Amazon EBS snapshots:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-archive.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/snapshot-archive.html
+%% in the Amazon EBS User Guide.
 modify_snapshot_tier(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_tier(Client, Input, []).
@@ -9943,20 +9943,14 @@ modify_verified_access_trust_provider(Client, Input, Options)
 %% instance or detaching the
 %% volume from it. For more information about modifying EBS volumes, see
 %% Amazon EBS Elastic Volumes:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html
-%% (Linux instances)
-%% or Amazon EBS Elastic Volumes:
-%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html
-%% (Windows instances).
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modify-volume.html
+%% in the Amazon EBS User Guide.
 %%
 %% When you complete a resize operation on your volume, you need to extend
 %% the volume's
 %% file-system size to take advantage of the new storage capacity. For more
-%% information, see Extend a Linux file system:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux
-%% or
-%% Extend a Windows file system:
-%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows.
+%% information, see Extend the file system:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/recognize-expanded-volume-linux.html.
 %%
 %% You can use CloudWatch Events to check the status of a modification to an
 %% EBS volume. For
@@ -9966,7 +9960,7 @@ modify_verified_access_trust_provider(Client, Input, Options)
 %% modification using `DescribeVolumesModifications'. For information
 %% about tracking status changes using either method, see Monitor the
 %% progress of volume modifications:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-modifications.html.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-modifications.html.
 %%
 %% With previous-generation instance types, resizing an EBS volume might
 %% require detaching and
@@ -10492,34 +10486,34 @@ reboot_instances(Client, Input, Options)
 %% RegisterImage.
 %%
 %% If needed, you can deregister an AMI at any time. Any modifications you
-%% make to an AMI
-%% backed by an instance store volume invalidates its registration. If you
-%% make changes to an
-%% image, deregister the previous image and register the new image.
+%% make to an AMI backed by an instance store volume invalidates its
+%% registration.
+%% If you make changes to an image, deregister the previous image and
+%% register the new image.
 %%
 %% Register a snapshot of a root device volume
 %%
 %% You can use `RegisterImage' to create an Amazon EBS-backed Linux AMI
-%% from a snapshot
-%% of a root device volume. You specify the snapshot using a block device
-%% mapping. You can't set
-%% the encryption state of the volume using the block device mapping. If the
-%% snapshot is
-%% encrypted, or encryption by default is enabled, the root volume of an
-%% instance launched from
-%% the AMI is encrypted.
+%% from
+%% a snapshot of a root device volume. You specify the snapshot using a block
+%% device mapping.
+%% You can't set the encryption state of the volume using the block
+%% device mapping. If the
+%% snapshot is encrypted, or encryption by default is enabled, the root
+%% volume of an instance
+%% launched from the AMI is encrypted.
 %%
 %% For more information, see Create a Linux AMI from a snapshot:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot
-%% and Use encryption with Amazon EBS-backed
-%% AMIs:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% and Use encryption with Amazon EBS-backed AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% Amazon Web Services Marketplace product codes
 %%
 %% If any snapshots have Amazon Web Services Marketplace product codes, they
-%% are copied to the new AMI.
+%% are copied to the new
+%% AMI.
 %%
 %% Windows and some Linux distributions, such as Red Hat Enterprise Linux
 %% (RHEL) and SUSE
@@ -10964,8 +10958,8 @@ reset_address_attribute(Client, Input, Options)
 %% customer managed KMS key by specifying it when you create the volume. For
 %% more information, see
 %% Amazon EBS encryption:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html
+%% in the Amazon EBS User Guide.
 reset_ebs_default_kms_key_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_ebs_default_kms_key_id(Client, Input, []).
@@ -11030,9 +11024,9 @@ reset_network_interface_attribute(Client, Input, Options)
 %%
 %% For more information about modifying snapshot permissions, see Share a
 %% snapshot:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modifying-snapshot-permissions.html
 %% in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS User Guide.
 reset_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_snapshot_attribute(Client, Input, []).
@@ -11079,8 +11073,8 @@ restore_managed_prefix_list_version(Client, Input, Options)
 %%
 %% For more information, see Restore
 %% snapshots from the Recycle Bin:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-snaps.html#recycle-bin-restore-snaps
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-snaps.html#recycle-bin-restore-snaps
+%% in the Amazon EBS User Guide.
 restore_snapshot_from_recycle_bin(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_snapshot_from_recycle_bin(Client, Input, []).
@@ -11095,12 +11089,12 @@ restore_snapshot_from_recycle_bin(Client, Input, Options)
 %%
 %% For more information see
 %% Restore an archived snapshot:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-snapshot-archiving.html#restore-archived-snapshot
+%% https://docs.aws.amazon.com/ebs/latest/userguide/working-with-snapshot-archiving.html#restore-archived-snapshot
 %% and
 %% modify the restore period or restore type for a temporarily restored
 %% snapshot:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-snapshot-archiving.html#modify-temp-restore-period
-%% in the Amazon Elastic Compute Cloud User Guide.
+%% https://docs.aws.amazon.com/ebs/latest/userguide/working-with-snapshot-archiving.html#modify-temp-restore-period
+%% in the Amazon EBS User Guide.
 restore_snapshot_tier(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_snapshot_tier(Client, Input, []).
