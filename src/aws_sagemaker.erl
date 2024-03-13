@@ -11164,6 +11164,769 @@
 %% }
 -type async_inference_output_config() :: #{binary() => any()}.
 
+-type add_association_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type associate_trial_component_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type create_action_errors() ::
+    resource_limit_exceeded().
+
+-type create_app_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_app_image_config_errors() ::
+    resource_in_use().
+
+-type create_artifact_errors() ::
+    resource_limit_exceeded().
+
+-type create_auto_ml_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_auto_ml_job_v2_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_cluster_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_compilation_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_context_errors() ::
+    resource_limit_exceeded().
+
+-type create_data_quality_job_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_device_fleet_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_domain_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_edge_deployment_plan_errors() ::
+    resource_limit_exceeded().
+
+-type create_edge_deployment_stage_errors() ::
+    resource_limit_exceeded().
+
+-type create_edge_packaging_job_errors() ::
+    resource_limit_exceeded().
+
+-type create_endpoint_errors() ::
+    resource_limit_exceeded().
+
+-type create_endpoint_config_errors() ::
+    resource_limit_exceeded().
+
+-type create_experiment_errors() ::
+    resource_limit_exceeded().
+
+-type create_feature_group_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_flow_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_hub_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_human_task_ui_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_hyper_parameter_tuning_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_image_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_image_version_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_inference_component_errors() ::
+    resource_limit_exceeded().
+
+-type create_inference_experiment_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_inference_recommendations_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_labeling_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_model_errors() ::
+    resource_limit_exceeded().
+
+-type create_model_bias_job_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_model_card_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception().
+
+-type create_model_card_export_job_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type create_model_explainability_job_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_model_package_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception().
+
+-type create_model_package_group_errors() ::
+    resource_limit_exceeded().
+
+-type create_model_quality_job_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_monitoring_schedule_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_notebook_instance_errors() ::
+    resource_limit_exceeded().
+
+-type create_notebook_instance_lifecycle_config_errors() ::
+    resource_limit_exceeded().
+
+-type create_pipeline_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type create_presigned_domain_url_errors() ::
+    resource_not_found().
+
+-type create_processing_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_project_errors() ::
+    resource_limit_exceeded().
+
+-type create_space_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_studio_lifecycle_config_errors() ::
+    resource_in_use().
+
+-type create_training_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_transform_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type create_trial_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type create_trial_component_errors() ::
+    resource_limit_exceeded().
+
+-type create_user_profile_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_workteam_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type delete_action_errors() ::
+    resource_not_found().
+
+-type delete_algorithm_errors() ::
+    conflict_exception().
+
+-type delete_app_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_app_image_config_errors() ::
+    resource_not_found().
+
+-type delete_artifact_errors() ::
+    resource_not_found().
+
+-type delete_association_errors() ::
+    resource_not_found().
+
+-type delete_cluster_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_compilation_job_errors() ::
+    resource_not_found().
+
+-type delete_context_errors() ::
+    resource_not_found().
+
+-type delete_data_quality_job_definition_errors() ::
+    resource_not_found().
+
+-type delete_device_fleet_errors() ::
+    resource_in_use().
+
+-type delete_domain_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_edge_deployment_plan_errors() ::
+    resource_in_use().
+
+-type delete_edge_deployment_stage_errors() ::
+    resource_in_use().
+
+-type delete_experiment_errors() ::
+    resource_not_found().
+
+-type delete_feature_group_errors() ::
+    resource_not_found().
+
+-type delete_flow_definition_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_hub_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_hub_content_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_human_task_ui_errors() ::
+    resource_not_found().
+
+-type delete_image_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_image_version_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_inference_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_model_bias_job_definition_errors() ::
+    resource_not_found().
+
+-type delete_model_card_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_model_explainability_job_definition_errors() ::
+    resource_not_found().
+
+-type delete_model_package_errors() ::
+    conflict_exception().
+
+-type delete_model_package_group_errors() ::
+    conflict_exception().
+
+-type delete_model_quality_job_definition_errors() ::
+    resource_not_found().
+
+-type delete_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type delete_pipeline_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type delete_project_errors() ::
+    conflict_exception().
+
+-type delete_space_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_studio_lifecycle_config_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_trial_errors() ::
+    resource_not_found().
+
+-type delete_trial_component_errors() ::
+    resource_not_found().
+
+-type delete_user_profile_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_workteam_errors() ::
+    resource_limit_exceeded().
+
+-type describe_action_errors() ::
+    resource_not_found().
+
+-type describe_app_errors() ::
+    resource_not_found().
+
+-type describe_app_image_config_errors() ::
+    resource_not_found().
+
+-type describe_artifact_errors() ::
+    resource_not_found().
+
+-type describe_auto_ml_job_errors() ::
+    resource_not_found().
+
+-type describe_auto_ml_job_v2_errors() ::
+    resource_not_found().
+
+-type describe_cluster_errors() ::
+    resource_not_found().
+
+-type describe_cluster_node_errors() ::
+    resource_not_found().
+
+-type describe_compilation_job_errors() ::
+    resource_not_found().
+
+-type describe_context_errors() ::
+    resource_not_found().
+
+-type describe_data_quality_job_definition_errors() ::
+    resource_not_found().
+
+-type describe_device_errors() ::
+    resource_not_found().
+
+-type describe_device_fleet_errors() ::
+    resource_not_found().
+
+-type describe_domain_errors() ::
+    resource_not_found().
+
+-type describe_edge_deployment_plan_errors() ::
+    resource_not_found().
+
+-type describe_edge_packaging_job_errors() ::
+    resource_not_found().
+
+-type describe_experiment_errors() ::
+    resource_not_found().
+
+-type describe_feature_group_errors() ::
+    resource_not_found().
+
+-type describe_feature_metadata_errors() ::
+    resource_not_found().
+
+-type describe_flow_definition_errors() ::
+    resource_not_found().
+
+-type describe_hub_errors() ::
+    resource_not_found().
+
+-type describe_hub_content_errors() ::
+    resource_not_found().
+
+-type describe_human_task_ui_errors() ::
+    resource_not_found().
+
+-type describe_hyper_parameter_tuning_job_errors() ::
+    resource_not_found().
+
+-type describe_image_errors() ::
+    resource_not_found().
+
+-type describe_image_version_errors() ::
+    resource_not_found().
+
+-type describe_inference_experiment_errors() ::
+    resource_not_found().
+
+-type describe_inference_recommendations_job_errors() ::
+    resource_not_found().
+
+-type describe_labeling_job_errors() ::
+    resource_not_found().
+
+-type describe_lineage_group_errors() ::
+    resource_not_found().
+
+-type describe_model_bias_job_definition_errors() ::
+    resource_not_found().
+
+-type describe_model_card_errors() ::
+    resource_not_found().
+
+-type describe_model_card_export_job_errors() ::
+    resource_not_found().
+
+-type describe_model_explainability_job_definition_errors() ::
+    resource_not_found().
+
+-type describe_model_quality_job_definition_errors() ::
+    resource_not_found().
+
+-type describe_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type describe_pipeline_errors() ::
+    resource_not_found().
+
+-type describe_pipeline_definition_for_execution_errors() ::
+    resource_not_found().
+
+-type describe_pipeline_execution_errors() ::
+    resource_not_found().
+
+-type describe_processing_job_errors() ::
+    resource_not_found().
+
+-type describe_space_errors() ::
+    resource_not_found().
+
+-type describe_studio_lifecycle_config_errors() ::
+    resource_not_found().
+
+-type describe_training_job_errors() ::
+    resource_not_found().
+
+-type describe_transform_job_errors() ::
+    resource_not_found().
+
+-type describe_trial_errors() ::
+    resource_not_found().
+
+-type describe_trial_component_errors() ::
+    resource_not_found().
+
+-type describe_user_profile_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type disassociate_trial_component_errors() ::
+    resource_not_found().
+
+-type get_lineage_group_policy_errors() ::
+    resource_not_found().
+
+-type get_scaling_configuration_recommendation_errors() ::
+    resource_not_found().
+
+-type import_hub_content_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type list_actions_errors() ::
+    resource_not_found().
+
+-type list_aliases_errors() ::
+    resource_not_found().
+
+-type list_artifacts_errors() ::
+    resource_not_found().
+
+-type list_associations_errors() ::
+    resource_not_found().
+
+-type list_candidates_for_auto_ml_job_errors() ::
+    resource_not_found().
+
+-type list_cluster_nodes_errors() ::
+    resource_not_found().
+
+-type list_contexts_errors() ::
+    resource_not_found().
+
+-type list_hub_content_versions_errors() ::
+    resource_not_found().
+
+-type list_hub_contents_errors() ::
+    resource_not_found().
+
+-type list_image_versions_errors() ::
+    resource_not_found().
+
+-type list_inference_recommendations_job_steps_errors() ::
+    resource_not_found().
+
+-type list_labeling_jobs_for_workteam_errors() ::
+    resource_not_found().
+
+-type list_model_card_versions_errors() ::
+    resource_not_found().
+
+-type list_monitoring_alert_history_errors() ::
+    resource_not_found().
+
+-type list_monitoring_alerts_errors() ::
+    resource_not_found().
+
+-type list_pipeline_execution_steps_errors() ::
+    resource_not_found().
+
+-type list_pipeline_executions_errors() ::
+    resource_not_found().
+
+-type list_pipeline_parameters_for_execution_errors() ::
+    resource_not_found().
+
+-type list_studio_lifecycle_configs_errors() ::
+    resource_in_use().
+
+-type list_training_jobs_for_hyper_parameter_tuning_job_errors() ::
+    resource_not_found().
+
+-type list_trial_components_errors() ::
+    resource_not_found().
+
+-type list_trials_errors() ::
+    resource_not_found().
+
+-type put_model_package_group_policy_errors() ::
+    conflict_exception().
+
+-type query_lineage_errors() ::
+    resource_not_found().
+
+-type register_devices_errors() ::
+    resource_limit_exceeded().
+
+-type render_ui_template_errors() ::
+    resource_not_found().
+
+-type retry_pipeline_execution_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type send_pipeline_execution_step_failure_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type send_pipeline_execution_step_success_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type start_inference_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type start_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type start_notebook_instance_errors() ::
+    resource_limit_exceeded().
+
+-type start_pipeline_execution_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type stop_auto_ml_job_errors() ::
+    resource_not_found().
+
+-type stop_compilation_job_errors() ::
+    resource_not_found().
+
+-type stop_hyper_parameter_tuning_job_errors() ::
+    resource_not_found().
+
+-type stop_inference_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type stop_inference_recommendations_job_errors() ::
+    resource_not_found().
+
+-type stop_labeling_job_errors() ::
+    resource_not_found().
+
+-type stop_monitoring_schedule_errors() ::
+    resource_not_found().
+
+-type stop_pipeline_execution_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type stop_processing_job_errors() ::
+    resource_not_found().
+
+-type stop_training_job_errors() ::
+    resource_not_found().
+
+-type stop_transform_job_errors() ::
+    resource_not_found().
+
+-type update_action_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_app_image_config_errors() ::
+    resource_not_found().
+
+-type update_artifact_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_cluster_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_cluster_software_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_code_repository_errors() ::
+    conflict_exception().
+
+-type update_context_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_device_fleet_errors() ::
+    resource_in_use().
+
+-type update_domain_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_endpoint_errors() ::
+    resource_limit_exceeded().
+
+-type update_endpoint_weights_and_capacities_errors() ::
+    resource_limit_exceeded().
+
+-type update_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_feature_group_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type update_feature_metadata_errors() ::
+    resource_not_found().
+
+-type update_hub_errors() ::
+    resource_not_found().
+
+-type update_image_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_image_version_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_inference_component_errors() ::
+    resource_limit_exceeded().
+
+-type update_inference_component_runtime_config_errors() ::
+    resource_limit_exceeded().
+
+-type update_inference_experiment_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_model_card_errors() ::
+    resource_limit_exceeded() | 
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_model_package_errors() ::
+    conflict_exception().
+
+-type update_monitoring_alert_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type update_monitoring_schedule_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type update_notebook_instance_errors() ::
+    resource_limit_exceeded().
+
+-type update_notebook_instance_lifecycle_config_errors() ::
+    resource_limit_exceeded().
+
+-type update_pipeline_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_pipeline_execution_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_project_errors() ::
+    conflict_exception().
+
+-type update_space_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_training_job_errors() ::
+    resource_limit_exceeded() | 
+    resource_not_found().
+
+-type update_trial_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_trial_component_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_user_profile_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    resource_not_found().
+
+-type update_workforce_errors() ::
+    conflict_exception().
+
+-type update_workteam_errors() ::
+    resource_limit_exceeded().
 
 %%====================================================================
 %% API
@@ -11182,8 +11945,7 @@
 -spec add_association(map(), add_association_request()) ->
     {ok, add_association_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, add_association_errors(), tuple()}.
 add_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_association(Client, Input, []).
@@ -11191,8 +11953,7 @@ add_association(Client, Input)
 -spec add_association(map(), add_association_request(), proplists:proplist()) ->
     {ok, add_association_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, add_association_errors(), tuple()}.
 add_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddAssociation">>, Input, Options).
@@ -11266,8 +12027,7 @@ add_tags(Client, Input, Options)
 -spec associate_trial_component(map(), associate_trial_component_request()) ->
     {ok, associate_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, associate_trial_component_errors(), tuple()}.
 associate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_trial_component(Client, Input, []).
@@ -11275,8 +12035,7 @@ associate_trial_component(Client, Input)
 -spec associate_trial_component(map(), associate_trial_component_request(), proplists:proplist()) ->
     {ok, associate_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, associate_trial_component_errors(), tuple()}.
 associate_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTrialComponent">>, Input, Options).
@@ -11309,7 +12068,7 @@ batch_describe_model_package(Client, Input, Options)
 -spec create_action(map(), create_action_request()) ->
     {ok, create_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_action_errors(), tuple()}.
 create_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_action(Client, Input, []).
@@ -11317,7 +12076,7 @@ create_action(Client, Input)
 -spec create_action(map(), create_action_request(), proplists:proplist()) ->
     {ok, create_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_action_errors(), tuple()}.
 create_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAction">>, Input, Options).
@@ -11348,8 +12107,7 @@ create_algorithm(Client, Input, Options)
 -spec create_app(map(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
@@ -11357,8 +12115,7 @@ create_app(Client, Input)
 -spec create_app(map(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_app_errors(), tuple()}.
 create_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApp">>, Input, Options).
@@ -11373,7 +12130,7 @@ create_app(Client, Input, Options)
 -spec create_app_image_config(map(), create_app_image_config_request()) ->
     {ok, create_app_image_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, create_app_image_config_errors(), tuple()}.
 create_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_image_config(Client, Input, []).
@@ -11381,7 +12138,7 @@ create_app_image_config(Client, Input)
 -spec create_app_image_config(map(), create_app_image_config_request(), proplists:proplist()) ->
     {ok, create_app_image_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, create_app_image_config_errors(), tuple()}.
 create_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAppImageConfig">>, Input, Options).
@@ -11398,7 +12155,7 @@ create_app_image_config(Client, Input, Options)
 -spec create_artifact(map(), create_artifact_request()) ->
     {ok, create_artifact_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_artifact_errors(), tuple()}.
 create_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_artifact(Client, Input, []).
@@ -11406,7 +12163,7 @@ create_artifact(Client, Input)
 -spec create_artifact(map(), create_artifact_request(), proplists:proplist()) ->
     {ok, create_artifact_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_artifact_errors(), tuple()}.
 create_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateArtifact">>, Input, Options).
@@ -11440,8 +12197,7 @@ create_artifact(Client, Input, Options)
 -spec create_auto_ml_job(map(), create_auto_ml_job_request()) ->
     {ok, create_auto_ml_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_auto_ml_job_errors(), tuple()}.
 create_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job(Client, Input, []).
@@ -11449,8 +12205,7 @@ create_auto_ml_job(Client, Input)
 -spec create_auto_ml_job(map(), create_auto_ml_job_request(), proplists:proplist()) ->
     {ok, create_auto_ml_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_auto_ml_job_errors(), tuple()}.
 create_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJob">>, Input, Options).
@@ -11491,8 +12246,7 @@ create_auto_ml_job(Client, Input, Options)
 -spec create_auto_ml_job_v2(map(), create_auto_ml_job_v2_request()) ->
     {ok, create_auto_ml_job_v2_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_auto_ml_job_v2_errors(), tuple()}.
 create_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job_v2(Client, Input, []).
@@ -11500,8 +12254,7 @@ create_auto_ml_job_v2(Client, Input)
 -spec create_auto_ml_job_v2(map(), create_auto_ml_job_v2_request(), proplists:proplist()) ->
     {ok, create_auto_ml_job_v2_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_auto_ml_job_v2_errors(), tuple()}.
 create_auto_ml_job_v2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJobV2">>, Input, Options).
@@ -11518,8 +12271,7 @@ create_auto_ml_job_v2(Client, Input, Options)
 -spec create_cluster(map(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -11527,8 +12279,7 @@ create_cluster(Client, Input)
 -spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -11605,8 +12356,7 @@ create_code_repository(Client, Input, Options)
 -spec create_compilation_job(map(), create_compilation_job_request()) ->
     {ok, create_compilation_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_compilation_job_errors(), tuple()}.
 create_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_compilation_job(Client, Input, []).
@@ -11614,8 +12364,7 @@ create_compilation_job(Client, Input)
 -spec create_compilation_job(map(), create_compilation_job_request(), proplists:proplist()) ->
     {ok, create_compilation_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_compilation_job_errors(), tuple()}.
 create_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCompilationJob">>, Input, Options).
@@ -11632,7 +12381,7 @@ create_compilation_job(Client, Input, Options)
 -spec create_context(map(), create_context_request()) ->
     {ok, create_context_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_context_errors(), tuple()}.
 create_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_context(Client, Input, []).
@@ -11640,7 +12389,7 @@ create_context(Client, Input)
 -spec create_context(map(), create_context_request(), proplists:proplist()) ->
     {ok, create_context_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_context_errors(), tuple()}.
 create_context(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContext">>, Input, Options).
@@ -11654,8 +12403,7 @@ create_context(Client, Input, Options)
 -spec create_data_quality_job_definition(map(), create_data_quality_job_definition_request()) ->
     {ok, create_data_quality_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_data_quality_job_definition_errors(), tuple()}.
 create_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_quality_job_definition(Client, Input, []).
@@ -11663,8 +12411,7 @@ create_data_quality_job_definition(Client, Input)
 -spec create_data_quality_job_definition(map(), create_data_quality_job_definition_request(), proplists:proplist()) ->
     {ok, create_data_quality_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_data_quality_job_definition_errors(), tuple()}.
 create_data_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataQualityJobDefinition">>, Input, Options).
@@ -11673,8 +12420,7 @@ create_data_quality_job_definition(Client, Input, Options)
 -spec create_device_fleet(map(), create_device_fleet_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_device_fleet_errors(), tuple()}.
 create_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_device_fleet(Client, Input, []).
@@ -11682,8 +12428,7 @@ create_device_fleet(Client, Input)
 -spec create_device_fleet(map(), create_device_fleet_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_device_fleet_errors(), tuple()}.
 create_device_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeviceFleet">>, Input, Options).
@@ -11752,8 +12497,7 @@ create_device_fleet(Client, Input, Options)
 -spec create_domain(map(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
@@ -11761,8 +12505,7 @@ create_domain(Client, Input)
 -spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
@@ -11774,7 +12517,7 @@ create_domain(Client, Input, Options)
 -spec create_edge_deployment_plan(map(), create_edge_deployment_plan_request()) ->
     {ok, create_edge_deployment_plan_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_edge_deployment_plan_errors(), tuple()}.
 create_edge_deployment_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_edge_deployment_plan(Client, Input, []).
@@ -11782,7 +12525,7 @@ create_edge_deployment_plan(Client, Input)
 -spec create_edge_deployment_plan(map(), create_edge_deployment_plan_request(), proplists:proplist()) ->
     {ok, create_edge_deployment_plan_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_edge_deployment_plan_errors(), tuple()}.
 create_edge_deployment_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEdgeDeploymentPlan">>, Input, Options).
@@ -11791,7 +12534,7 @@ create_edge_deployment_plan(Client, Input, Options)
 -spec create_edge_deployment_stage(map(), create_edge_deployment_stage_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_edge_deployment_stage_errors(), tuple()}.
 create_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_edge_deployment_stage(Client, Input, []).
@@ -11799,7 +12542,7 @@ create_edge_deployment_stage(Client, Input)
 -spec create_edge_deployment_stage(map(), create_edge_deployment_stage_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_edge_deployment_stage_errors(), tuple()}.
 create_edge_deployment_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEdgeDeploymentStage">>, Input, Options).
@@ -11812,7 +12555,7 @@ create_edge_deployment_stage(Client, Input, Options)
 -spec create_edge_packaging_job(map(), create_edge_packaging_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_edge_packaging_job_errors(), tuple()}.
 create_edge_packaging_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_edge_packaging_job(Client, Input, []).
@@ -11820,7 +12563,7 @@ create_edge_packaging_job(Client, Input)
 -spec create_edge_packaging_job(map(), create_edge_packaging_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_edge_packaging_job_errors(), tuple()}.
 create_edge_packaging_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEdgePackagingJob">>, Input, Options).
@@ -11938,7 +12681,7 @@ create_edge_packaging_job(Client, Input, Options)
 -spec create_endpoint(map(), create_endpoint_input()) ->
     {ok, create_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -11946,7 +12689,7 @@ create_endpoint(Client, Input)
 -spec create_endpoint(map(), create_endpoint_input(), proplists:proplist()) ->
     {ok, create_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpoint">>, Input, Options).
@@ -12011,7 +12754,7 @@ create_endpoint(Client, Input, Options)
 -spec create_endpoint_config(map(), create_endpoint_config_input()) ->
     {ok, create_endpoint_config_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_endpoint_config_errors(), tuple()}.
 create_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_config(Client, Input, []).
@@ -12019,7 +12762,7 @@ create_endpoint_config(Client, Input)
 -spec create_endpoint_config(map(), create_endpoint_config_input(), proplists:proplist()) ->
     {ok, create_endpoint_config_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_endpoint_config_errors(), tuple()}.
 create_endpoint_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpointConfig">>, Input, Options).
@@ -12072,7 +12815,7 @@ create_endpoint_config(Client, Input, Options)
 -spec create_experiment(map(), create_experiment_request()) ->
     {ok, create_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_experiment_errors(), tuple()}.
 create_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experiment(Client, Input, []).
@@ -12080,7 +12823,7 @@ create_experiment(Client, Input)
 -spec create_experiment(map(), create_experiment_request(), proplists:proplist()) ->
     {ok, create_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_experiment_errors(), tuple()}.
 create_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExperiment">>, Input, Options).
@@ -12111,8 +12854,7 @@ create_experiment(Client, Input, Options)
 -spec create_feature_group(map(), create_feature_group_request()) ->
     {ok, create_feature_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_feature_group_errors(), tuple()}.
 create_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_feature_group(Client, Input, []).
@@ -12120,8 +12862,7 @@ create_feature_group(Client, Input)
 -spec create_feature_group(map(), create_feature_group_request(), proplists:proplist()) ->
     {ok, create_feature_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_feature_group_errors(), tuple()}.
 create_feature_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFeatureGroup">>, Input, Options).
@@ -12130,8 +12871,7 @@ create_feature_group(Client, Input, Options)
 -spec create_flow_definition(map(), create_flow_definition_request()) ->
     {ok, create_flow_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_flow_definition_errors(), tuple()}.
 create_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flow_definition(Client, Input, []).
@@ -12139,8 +12879,7 @@ create_flow_definition(Client, Input)
 -spec create_flow_definition(map(), create_flow_definition_request(), proplists:proplist()) ->
     {ok, create_flow_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_flow_definition_errors(), tuple()}.
 create_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFlowDefinition">>, Input, Options).
@@ -12151,8 +12890,7 @@ create_flow_definition(Client, Input, Options)
 -spec create_hub(map(), create_hub_request()) ->
     {ok, create_hub_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_hub_errors(), tuple()}.
 create_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hub(Client, Input, []).
@@ -12160,8 +12898,7 @@ create_hub(Client, Input)
 -spec create_hub(map(), create_hub_request(), proplists:proplist()) ->
     {ok, create_hub_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_hub_errors(), tuple()}.
 create_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHub">>, Input, Options).
@@ -12174,8 +12911,7 @@ create_hub(Client, Input, Options)
 -spec create_human_task_ui(map(), create_human_task_ui_request()) ->
     {ok, create_human_task_ui_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_human_task_ui_errors(), tuple()}.
 create_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_human_task_ui(Client, Input, []).
@@ -12183,8 +12919,7 @@ create_human_task_ui(Client, Input)
 -spec create_human_task_ui(map(), create_human_task_ui_request(), proplists:proplist()) ->
     {ok, create_human_task_ui_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_human_task_ui_errors(), tuple()}.
 create_human_task_ui(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHumanTaskUi">>, Input, Options).
@@ -12218,8 +12953,7 @@ create_human_task_ui(Client, Input, Options)
 -spec create_hyper_parameter_tuning_job(map(), create_hyper_parameter_tuning_job_request()) ->
     {ok, create_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_hyper_parameter_tuning_job_errors(), tuple()}.
 create_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hyper_parameter_tuning_job(Client, Input, []).
@@ -12227,8 +12961,7 @@ create_hyper_parameter_tuning_job(Client, Input)
 -spec create_hyper_parameter_tuning_job(map(), create_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
     {ok, create_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_hyper_parameter_tuning_job_errors(), tuple()}.
 create_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHyperParameterTuningJob">>, Input, Options).
@@ -12243,8 +12976,7 @@ create_hyper_parameter_tuning_job(Client, Input, Options)
 -spec create_image(map(), create_image_request()) ->
     {ok, create_image_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_image_errors(), tuple()}.
 create_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image(Client, Input, []).
@@ -12252,8 +12984,7 @@ create_image(Client, Input)
 -spec create_image(map(), create_image_request(), proplists:proplist()) ->
     {ok, create_image_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_image_errors(), tuple()}.
 create_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImage">>, Input, Options).
@@ -12266,9 +12997,7 @@ create_image(Client, Input, Options)
 -spec create_image_version(map(), create_image_version_request()) ->
     {ok, create_image_version_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_image_version_errors(), tuple()}.
 create_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image_version(Client, Input, []).
@@ -12276,9 +13005,7 @@ create_image_version(Client, Input)
 -spec create_image_version(map(), create_image_version_request(), proplists:proplist()) ->
     {ok, create_image_version_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_image_version_errors(), tuple()}.
 create_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImageVersion">>, Input, Options).
@@ -12302,7 +13029,7 @@ create_image_version(Client, Input, Options)
 -spec create_inference_component(map(), create_inference_component_input()) ->
     {ok, create_inference_component_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_inference_component_errors(), tuple()}.
 create_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_component(Client, Input, []).
@@ -12310,7 +13037,7 @@ create_inference_component(Client, Input)
 -spec create_inference_component(map(), create_inference_component_input(), proplists:proplist()) ->
     {ok, create_inference_component_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_inference_component_errors(), tuple()}.
 create_inference_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceComponent">>, Input, Options).
@@ -12335,8 +13062,7 @@ create_inference_component(Client, Input, Options)
 -spec create_inference_experiment(map(), create_inference_experiment_request()) ->
     {ok, create_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_inference_experiment_errors(), tuple()}.
 create_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_experiment(Client, Input, []).
@@ -12344,8 +13070,7 @@ create_inference_experiment(Client, Input)
 -spec create_inference_experiment(map(), create_inference_experiment_request(), proplists:proplist()) ->
     {ok, create_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_inference_experiment_errors(), tuple()}.
 create_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceExperiment">>, Input, Options).
@@ -12357,8 +13082,7 @@ create_inference_experiment(Client, Input, Options)
 -spec create_inference_recommendations_job(map(), create_inference_recommendations_job_request()) ->
     {ok, create_inference_recommendations_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_inference_recommendations_job_errors(), tuple()}.
 create_inference_recommendations_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_recommendations_job(Client, Input, []).
@@ -12366,8 +13090,7 @@ create_inference_recommendations_job(Client, Input)
 -spec create_inference_recommendations_job(map(), create_inference_recommendations_job_request(), proplists:proplist()) ->
     {ok, create_inference_recommendations_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_inference_recommendations_job_errors(), tuple()}.
 create_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceRecommendationsJob">>, Input, Options).
@@ -12436,8 +13159,7 @@ create_inference_recommendations_job(Client, Input, Options)
 -spec create_labeling_job(map(), create_labeling_job_request()) ->
     {ok, create_labeling_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_labeling_job_errors(), tuple()}.
 create_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_labeling_job(Client, Input, []).
@@ -12445,8 +13167,7 @@ create_labeling_job(Client, Input)
 -spec create_labeling_job(map(), create_labeling_job_request(), proplists:proplist()) ->
     {ok, create_labeling_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_labeling_job_errors(), tuple()}.
 create_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLabelingJob">>, Input, Options).
@@ -12486,7 +13207,7 @@ create_labeling_job(Client, Input, Options)
 -spec create_model(map(), create_model_input()) ->
     {ok, create_model_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
@@ -12494,7 +13215,7 @@ create_model(Client, Input)
 -spec create_model(map(), create_model_input(), proplists:proplist()) ->
     {ok, create_model_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModel">>, Input, Options).
@@ -12503,8 +13224,7 @@ create_model(Client, Input, Options)
 -spec create_model_bias_job_definition(map(), create_model_bias_job_definition_request()) ->
     {ok, create_model_bias_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_bias_job_definition_errors(), tuple()}.
 create_model_bias_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_bias_job_definition(Client, Input, []).
@@ -12512,8 +13232,7 @@ create_model_bias_job_definition(Client, Input)
 -spec create_model_bias_job_definition(map(), create_model_bias_job_definition_request(), proplists:proplist()) ->
     {ok, create_model_bias_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_bias_job_definition_errors(), tuple()}.
 create_model_bias_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelBiasJobDefinition">>, Input, Options).
@@ -12525,8 +13244,7 @@ create_model_bias_job_definition(Client, Input, Options)
 -spec create_model_card(map(), create_model_card_request()) ->
     {ok, create_model_card_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_card_errors(), tuple()}.
 create_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_card(Client, Input, []).
@@ -12534,8 +13252,7 @@ create_model_card(Client, Input)
 -spec create_model_card(map(), create_model_card_request(), proplists:proplist()) ->
     {ok, create_model_card_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_card_errors(), tuple()}.
 create_model_card(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelCard">>, Input, Options).
@@ -12544,9 +13261,7 @@ create_model_card(Client, Input, Options)
 -spec create_model_card_export_job(map(), create_model_card_export_job_request()) ->
     {ok, create_model_card_export_job_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_model_card_export_job_errors(), tuple()}.
 create_model_card_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_card_export_job(Client, Input, []).
@@ -12554,9 +13269,7 @@ create_model_card_export_job(Client, Input)
 -spec create_model_card_export_job(map(), create_model_card_export_job_request(), proplists:proplist()) ->
     {ok, create_model_card_export_job_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_model_card_export_job_errors(), tuple()}.
 create_model_card_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelCardExportJob">>, Input, Options).
@@ -12565,8 +13278,7 @@ create_model_card_export_job(Client, Input, Options)
 -spec create_model_explainability_job_definition(map(), create_model_explainability_job_definition_request()) ->
     {ok, create_model_explainability_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_explainability_job_definition_errors(), tuple()}.
 create_model_explainability_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_explainability_job_definition(Client, Input, []).
@@ -12574,8 +13286,7 @@ create_model_explainability_job_definition(Client, Input)
 -spec create_model_explainability_job_definition(map(), create_model_explainability_job_definition_request(), proplists:proplist()) ->
     {ok, create_model_explainability_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_explainability_job_definition_errors(), tuple()}.
 create_model_explainability_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelExplainabilityJobDefinition">>, Input, Options).
@@ -12606,8 +13317,7 @@ create_model_explainability_job_definition(Client, Input, Options)
 -spec create_model_package(map(), create_model_package_input()) ->
     {ok, create_model_package_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_package_errors(), tuple()}.
 create_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_package(Client, Input, []).
@@ -12615,8 +13325,7 @@ create_model_package(Client, Input)
 -spec create_model_package(map(), create_model_package_input(), proplists:proplist()) ->
     {ok, create_model_package_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_package_errors(), tuple()}.
 create_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelPackage">>, Input, Options).
@@ -12627,7 +13336,7 @@ create_model_package(Client, Input, Options)
 -spec create_model_package_group(map(), create_model_package_group_input()) ->
     {ok, create_model_package_group_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_package_group_errors(), tuple()}.
 create_model_package_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_package_group(Client, Input, []).
@@ -12635,7 +13344,7 @@ create_model_package_group(Client, Input)
 -spec create_model_package_group(map(), create_model_package_group_input(), proplists:proplist()) ->
     {ok, create_model_package_group_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_package_group_errors(), tuple()}.
 create_model_package_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelPackageGroup">>, Input, Options).
@@ -12649,8 +13358,7 @@ create_model_package_group(Client, Input, Options)
 -spec create_model_quality_job_definition(map(), create_model_quality_job_definition_request()) ->
     {ok, create_model_quality_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_quality_job_definition_errors(), tuple()}.
 create_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_quality_job_definition(Client, Input, []).
@@ -12658,8 +13366,7 @@ create_model_quality_job_definition(Client, Input)
 -spec create_model_quality_job_definition(map(), create_model_quality_job_definition_request(), proplists:proplist()) ->
     {ok, create_model_quality_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_model_quality_job_definition_errors(), tuple()}.
 create_model_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelQualityJobDefinition">>, Input, Options).
@@ -12670,8 +13377,7 @@ create_model_quality_job_definition(Client, Input, Options)
 -spec create_monitoring_schedule(map(), create_monitoring_schedule_request()) ->
     {ok, create_monitoring_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_monitoring_schedule_errors(), tuple()}.
 create_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_monitoring_schedule(Client, Input, []).
@@ -12679,8 +13385,7 @@ create_monitoring_schedule(Client, Input)
 -spec create_monitoring_schedule(map(), create_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, create_monitoring_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_monitoring_schedule_errors(), tuple()}.
 create_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMonitoringSchedule">>, Input, Options).
@@ -12741,7 +13446,7 @@ create_monitoring_schedule(Client, Input, Options)
 -spec create_notebook_instance(map(), create_notebook_instance_input()) ->
     {ok, create_notebook_instance_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_notebook_instance_errors(), tuple()}.
 create_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notebook_instance(Client, Input, []).
@@ -12749,7 +13454,7 @@ create_notebook_instance(Client, Input)
 -spec create_notebook_instance(map(), create_notebook_instance_input(), proplists:proplist()) ->
     {ok, create_notebook_instance_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_notebook_instance_errors(), tuple()}.
 create_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNotebookInstance">>, Input, Options).
@@ -12784,7 +13489,7 @@ create_notebook_instance(Client, Input, Options)
 -spec create_notebook_instance_lifecycle_config(map(), create_notebook_instance_lifecycle_config_input()) ->
     {ok, create_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_notebook_instance_lifecycle_config_errors(), tuple()}.
 create_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notebook_instance_lifecycle_config(Client, Input, []).
@@ -12792,7 +13497,7 @@ create_notebook_instance_lifecycle_config(Client, Input)
 -spec create_notebook_instance_lifecycle_config(map(), create_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
     {ok, create_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_notebook_instance_lifecycle_config_errors(), tuple()}.
 create_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNotebookInstanceLifecycleConfig">>, Input, Options).
@@ -12801,9 +13506,7 @@ create_notebook_instance_lifecycle_config(Client, Input, Options)
 -spec create_pipeline(map(), create_pipeline_request()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
@@ -12811,9 +13514,7 @@ create_pipeline(Client, Input)
 -spec create_pipeline(map(), create_pipeline_request(), proplists:proplist()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePipeline">>, Input, Options).
@@ -12851,7 +13552,7 @@ create_pipeline(Client, Input, Options)
 -spec create_presigned_domain_url(map(), create_presigned_domain_url_request()) ->
     {ok, create_presigned_domain_url_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_presigned_domain_url_errors(), tuple()}.
 create_presigned_domain_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_domain_url(Client, Input, []).
@@ -12859,7 +13560,7 @@ create_presigned_domain_url(Client, Input)
 -spec create_presigned_domain_url(map(), create_presigned_domain_url_request(), proplists:proplist()) ->
     {ok, create_presigned_domain_url_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_presigned_domain_url_errors(), tuple()}.
 create_presigned_domain_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePresignedDomainUrl">>, Input, Options).
@@ -12916,9 +13617,7 @@ create_presigned_notebook_instance_url(Client, Input, Options)
 -spec create_processing_job(map(), create_processing_job_request()) ->
     {ok, create_processing_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_processing_job_errors(), tuple()}.
 create_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_processing_job(Client, Input, []).
@@ -12926,9 +13625,7 @@ create_processing_job(Client, Input)
 -spec create_processing_job(map(), create_processing_job_request(), proplists:proplist()) ->
     {ok, create_processing_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_processing_job_errors(), tuple()}.
 create_processing_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProcessingJob">>, Input, Options).
@@ -12939,7 +13636,7 @@ create_processing_job(Client, Input, Options)
 -spec create_project(map(), create_project_input()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
@@ -12947,7 +13644,7 @@ create_project(Client, Input)
 -spec create_project(map(), create_project_input(), proplists:proplist()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
@@ -12956,8 +13653,7 @@ create_project(Client, Input, Options)
 -spec create_space(map(), create_space_request()) ->
     {ok, create_space_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_space_errors(), tuple()}.
 create_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_space(Client, Input, []).
@@ -12965,8 +13661,7 @@ create_space(Client, Input)
 -spec create_space(map(), create_space_request(), proplists:proplist()) ->
     {ok, create_space_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_space_errors(), tuple()}.
 create_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSpace">>, Input, Options).
@@ -12975,7 +13670,7 @@ create_space(Client, Input, Options)
 -spec create_studio_lifecycle_config(map(), create_studio_lifecycle_config_request()) ->
     {ok, create_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, create_studio_lifecycle_config_errors(), tuple()}.
 create_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio_lifecycle_config(Client, Input, []).
@@ -12983,7 +13678,7 @@ create_studio_lifecycle_config(Client, Input)
 -spec create_studio_lifecycle_config(map(), create_studio_lifecycle_config_request(), proplists:proplist()) ->
     {ok, create_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, create_studio_lifecycle_config_errors(), tuple()}.
 create_studio_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStudioLifecycleConfig">>, Input, Options).
@@ -13061,9 +13756,7 @@ create_studio_lifecycle_config(Client, Input, Options)
 -spec create_training_job(map(), create_training_job_request()) ->
     {ok, create_training_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_training_job_errors(), tuple()}.
 create_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_training_job(Client, Input, []).
@@ -13071,9 +13764,7 @@ create_training_job(Client, Input)
 -spec create_training_job(map(), create_training_job_request(), proplists:proplist()) ->
     {ok, create_training_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_training_job_errors(), tuple()}.
 create_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrainingJob">>, Input, Options).
@@ -13114,9 +13805,7 @@ create_training_job(Client, Input, Options)
 -spec create_transform_job(map(), create_transform_job_request()) ->
     {ok, create_transform_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_transform_job_errors(), tuple()}.
 create_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transform_job(Client, Input, []).
@@ -13124,9 +13813,7 @@ create_transform_job(Client, Input)
 -spec create_transform_job(map(), create_transform_job_request(), proplists:proplist()) ->
     {ok, create_transform_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_transform_job_errors(), tuple()}.
 create_transform_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTransformJob">>, Input, Options).
@@ -13160,8 +13847,7 @@ create_transform_job(Client, Input, Options)
 -spec create_trial(map(), create_trial_request()) ->
     {ok, create_trial_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_trial_errors(), tuple()}.
 create_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial(Client, Input, []).
@@ -13169,8 +13855,7 @@ create_trial(Client, Input)
 -spec create_trial(map(), create_trial_request(), proplists:proplist()) ->
     {ok, create_trial_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, create_trial_errors(), tuple()}.
 create_trial(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrial">>, Input, Options).
@@ -13198,7 +13883,7 @@ create_trial(Client, Input, Options)
 -spec create_trial_component(map(), create_trial_component_request()) ->
     {ok, create_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_trial_component_errors(), tuple()}.
 create_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial_component(Client, Input, []).
@@ -13206,7 +13891,7 @@ create_trial_component(Client, Input)
 -spec create_trial_component(map(), create_trial_component_request(), proplists:proplist()) ->
     {ok, create_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_trial_component_errors(), tuple()}.
 create_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrialComponent">>, Input, Options).
@@ -13227,8 +13912,7 @@ create_trial_component(Client, Input, Options)
 -spec create_user_profile(map(), create_user_profile_request()) ->
     {ok, create_user_profile_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
@@ -13236,8 +13920,7 @@ create_user_profile(Client, Input)
 -spec create_user_profile(map(), create_user_profile_request(), proplists:proplist()) ->
     {ok, create_user_profile_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserProfile">>, Input, Options).
@@ -13302,8 +13985,7 @@ create_workforce(Client, Input, Options)
 -spec create_workteam(map(), create_workteam_request()) ->
     {ok, create_workteam_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_workteam_errors(), tuple()}.
 create_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workteam(Client, Input, []).
@@ -13311,8 +13993,7 @@ create_workteam(Client, Input)
 -spec create_workteam(map(), create_workteam_request(), proplists:proplist()) ->
     {ok, create_workteam_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, create_workteam_errors(), tuple()}.
 create_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkteam">>, Input, Options).
@@ -13321,7 +14002,7 @@ create_workteam(Client, Input, Options)
 -spec delete_action(map(), delete_action_request()) ->
     {ok, delete_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_action_errors(), tuple()}.
 delete_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_action(Client, Input, []).
@@ -13329,7 +14010,7 @@ delete_action(Client, Input)
 -spec delete_action(map(), delete_action_request(), proplists:proplist()) ->
     {ok, delete_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_action_errors(), tuple()}.
 delete_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAction">>, Input, Options).
@@ -13338,7 +14019,7 @@ delete_action(Client, Input, Options)
 -spec delete_algorithm(map(), delete_algorithm_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, delete_algorithm_errors(), tuple()}.
 delete_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_algorithm(Client, Input, []).
@@ -13346,7 +14027,7 @@ delete_algorithm(Client, Input)
 -spec delete_algorithm(map(), delete_algorithm_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, delete_algorithm_errors(), tuple()}.
 delete_algorithm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlgorithm">>, Input, Options).
@@ -13355,8 +14036,7 @@ delete_algorithm(Client, Input, Options)
 -spec delete_app(map(), delete_app_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
@@ -13364,8 +14044,7 @@ delete_app(Client, Input)
 -spec delete_app(map(), delete_app_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApp">>, Input, Options).
@@ -13374,7 +14053,7 @@ delete_app(Client, Input, Options)
 -spec delete_app_image_config(map(), delete_app_image_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_app_image_config_errors(), tuple()}.
 delete_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_image_config(Client, Input, []).
@@ -13382,7 +14061,7 @@ delete_app_image_config(Client, Input)
 -spec delete_app_image_config(map(), delete_app_image_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_app_image_config_errors(), tuple()}.
 delete_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppImageConfig">>, Input, Options).
@@ -13394,7 +14073,7 @@ delete_app_image_config(Client, Input, Options)
 -spec delete_artifact(map(), delete_artifact_request()) ->
     {ok, delete_artifact_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_artifact_errors(), tuple()}.
 delete_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_artifact(Client, Input, []).
@@ -13402,7 +14081,7 @@ delete_artifact(Client, Input)
 -spec delete_artifact(map(), delete_artifact_request(), proplists:proplist()) ->
     {ok, delete_artifact_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_artifact_errors(), tuple()}.
 delete_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteArtifact">>, Input, Options).
@@ -13411,7 +14090,7 @@ delete_artifact(Client, Input, Options)
 -spec delete_association(map(), delete_association_request()) ->
     {ok, delete_association_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_association_errors(), tuple()}.
 delete_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_association(Client, Input, []).
@@ -13419,7 +14098,7 @@ delete_association(Client, Input)
 -spec delete_association(map(), delete_association_request(), proplists:proplist()) ->
     {ok, delete_association_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_association_errors(), tuple()}.
 delete_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAssociation">>, Input, Options).
@@ -13428,8 +14107,7 @@ delete_association(Client, Input, Options)
 -spec delete_cluster(map(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
@@ -13437,8 +14115,7 @@ delete_cluster(Client, Input)
 -spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
@@ -13475,7 +14152,7 @@ delete_code_repository(Client, Input, Options)
 -spec delete_compilation_job(map(), delete_compilation_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_compilation_job_errors(), tuple()}.
 delete_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_compilation_job(Client, Input, []).
@@ -13483,7 +14160,7 @@ delete_compilation_job(Client, Input)
 -spec delete_compilation_job(map(), delete_compilation_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_compilation_job_errors(), tuple()}.
 delete_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCompilationJob">>, Input, Options).
@@ -13492,7 +14169,7 @@ delete_compilation_job(Client, Input, Options)
 -spec delete_context(map(), delete_context_request()) ->
     {ok, delete_context_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_context_errors(), tuple()}.
 delete_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_context(Client, Input, []).
@@ -13500,7 +14177,7 @@ delete_context(Client, Input)
 -spec delete_context(map(), delete_context_request(), proplists:proplist()) ->
     {ok, delete_context_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_context_errors(), tuple()}.
 delete_context(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContext">>, Input, Options).
@@ -13509,7 +14186,7 @@ delete_context(Client, Input, Options)
 -spec delete_data_quality_job_definition(map(), delete_data_quality_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_data_quality_job_definition_errors(), tuple()}.
 delete_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_quality_job_definition(Client, Input, []).
@@ -13517,7 +14194,7 @@ delete_data_quality_job_definition(Client, Input)
 -spec delete_data_quality_job_definition(map(), delete_data_quality_job_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_data_quality_job_definition_errors(), tuple()}.
 delete_data_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataQualityJobDefinition">>, Input, Options).
@@ -13526,7 +14203,7 @@ delete_data_quality_job_definition(Client, Input, Options)
 -spec delete_device_fleet(map(), delete_device_fleet_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_device_fleet_errors(), tuple()}.
 delete_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device_fleet(Client, Input, []).
@@ -13534,7 +14211,7 @@ delete_device_fleet(Client, Input)
 -spec delete_device_fleet(map(), delete_device_fleet_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_device_fleet_errors(), tuple()}.
 delete_device_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeviceFleet">>, Input, Options).
@@ -13549,8 +14226,7 @@ delete_device_fleet(Client, Input, Options)
 -spec delete_domain(map(), delete_domain_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
@@ -13558,8 +14234,7 @@ delete_domain(Client, Input)
 -spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomain">>, Input, Options).
@@ -13570,7 +14245,7 @@ delete_domain(Client, Input, Options)
 -spec delete_edge_deployment_plan(map(), delete_edge_deployment_plan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_edge_deployment_plan_errors(), tuple()}.
 delete_edge_deployment_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_edge_deployment_plan(Client, Input, []).
@@ -13578,7 +14253,7 @@ delete_edge_deployment_plan(Client, Input)
 -spec delete_edge_deployment_plan(map(), delete_edge_deployment_plan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_edge_deployment_plan_errors(), tuple()}.
 delete_edge_deployment_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEdgeDeploymentPlan">>, Input, Options).
@@ -13589,7 +14264,7 @@ delete_edge_deployment_plan(Client, Input, Options)
 -spec delete_edge_deployment_stage(map(), delete_edge_deployment_stage_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_edge_deployment_stage_errors(), tuple()}.
 delete_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_edge_deployment_stage(Client, Input, []).
@@ -13597,7 +14272,7 @@ delete_edge_deployment_stage(Client, Input)
 -spec delete_edge_deployment_stage(map(), delete_edge_deployment_stage_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_edge_deployment_stage_errors(), tuple()}.
 delete_edge_deployment_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEdgeDeploymentStage">>, Input, Options).
@@ -13679,7 +14354,7 @@ delete_endpoint_config(Client, Input, Options)
 -spec delete_experiment(map(), delete_experiment_request()) ->
     {ok, delete_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_experiment_errors(), tuple()}.
 delete_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_experiment(Client, Input, []).
@@ -13687,7 +14362,7 @@ delete_experiment(Client, Input)
 -spec delete_experiment(map(), delete_experiment_request(), proplists:proplist()) ->
     {ok, delete_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_experiment_errors(), tuple()}.
 delete_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExperiment">>, Input, Options).
@@ -13711,7 +14386,7 @@ delete_experiment(Client, Input, Options)
 -spec delete_feature_group(map(), delete_feature_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_feature_group_errors(), tuple()}.
 delete_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_feature_group(Client, Input, []).
@@ -13719,7 +14394,7 @@ delete_feature_group(Client, Input)
 -spec delete_feature_group(map(), delete_feature_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_feature_group_errors(), tuple()}.
 delete_feature_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFeatureGroup">>, Input, Options).
@@ -13728,8 +14403,7 @@ delete_feature_group(Client, Input, Options)
 -spec delete_flow_definition(map(), delete_flow_definition_request()) ->
     {ok, delete_flow_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_flow_definition_errors(), tuple()}.
 delete_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flow_definition(Client, Input, []).
@@ -13737,8 +14411,7 @@ delete_flow_definition(Client, Input)
 -spec delete_flow_definition(map(), delete_flow_definition_request(), proplists:proplist()) ->
     {ok, delete_flow_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_flow_definition_errors(), tuple()}.
 delete_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFlowDefinition">>, Input, Options).
@@ -13749,8 +14422,7 @@ delete_flow_definition(Client, Input, Options)
 -spec delete_hub(map(), delete_hub_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_hub_errors(), tuple()}.
 delete_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hub(Client, Input, []).
@@ -13758,8 +14430,7 @@ delete_hub(Client, Input)
 -spec delete_hub(map(), delete_hub_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_hub_errors(), tuple()}.
 delete_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHub">>, Input, Options).
@@ -13770,8 +14441,7 @@ delete_hub(Client, Input, Options)
 -spec delete_hub_content(map(), delete_hub_content_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_hub_content_errors(), tuple()}.
 delete_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hub_content(Client, Input, []).
@@ -13779,8 +14449,7 @@ delete_hub_content(Client, Input)
 -spec delete_hub_content(map(), delete_hub_content_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_hub_content_errors(), tuple()}.
 delete_hub_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHubContent">>, Input, Options).
@@ -13796,7 +14465,7 @@ delete_hub_content(Client, Input, Options)
 -spec delete_human_task_ui(map(), delete_human_task_ui_request()) ->
     {ok, delete_human_task_ui_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_human_task_ui_errors(), tuple()}.
 delete_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_human_task_ui(Client, Input, []).
@@ -13804,7 +14473,7 @@ delete_human_task_ui(Client, Input)
 -spec delete_human_task_ui(map(), delete_human_task_ui_request(), proplists:proplist()) ->
     {ok, delete_human_task_ui_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_human_task_ui_errors(), tuple()}.
 delete_human_task_ui(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHumanTaskUi">>, Input, Options).
@@ -13837,8 +14506,7 @@ delete_hyper_parameter_tuning_job(Client, Input, Options)
 -spec delete_image(map(), delete_image_request()) ->
     {ok, delete_image_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_image_errors(), tuple()}.
 delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image(Client, Input, []).
@@ -13846,8 +14514,7 @@ delete_image(Client, Input)
 -spec delete_image(map(), delete_image_request(), proplists:proplist()) ->
     {ok, delete_image_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_image_errors(), tuple()}.
 delete_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImage">>, Input, Options).
@@ -13859,8 +14526,7 @@ delete_image(Client, Input, Options)
 -spec delete_image_version(map(), delete_image_version_request()) ->
     {ok, delete_image_version_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_image_version_errors(), tuple()}.
 delete_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image_version(Client, Input, []).
@@ -13868,8 +14534,7 @@ delete_image_version(Client, Input)
 -spec delete_image_version(map(), delete_image_version_request(), proplists:proplist()) ->
     {ok, delete_image_version_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_image_version_errors(), tuple()}.
 delete_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImageVersion">>, Input, Options).
@@ -13897,8 +14562,7 @@ delete_inference_component(Client, Input, Options)
 -spec delete_inference_experiment(map(), delete_inference_experiment_request()) ->
     {ok, delete_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_inference_experiment_errors(), tuple()}.
 delete_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inference_experiment(Client, Input, []).
@@ -13906,8 +14570,7 @@ delete_inference_experiment(Client, Input)
 -spec delete_inference_experiment(map(), delete_inference_experiment_request(), proplists:proplist()) ->
     {ok, delete_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_inference_experiment_errors(), tuple()}.
 delete_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInferenceExperiment">>, Input, Options).
@@ -13938,7 +14601,7 @@ delete_model(Client, Input, Options)
 -spec delete_model_bias_job_definition(map(), delete_model_bias_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_model_bias_job_definition_errors(), tuple()}.
 delete_model_bias_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_bias_job_definition(Client, Input, []).
@@ -13946,7 +14609,7 @@ delete_model_bias_job_definition(Client, Input)
 -spec delete_model_bias_job_definition(map(), delete_model_bias_job_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_model_bias_job_definition_errors(), tuple()}.
 delete_model_bias_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelBiasJobDefinition">>, Input, Options).
@@ -13955,8 +14618,7 @@ delete_model_bias_job_definition(Client, Input, Options)
 -spec delete_model_card(map(), delete_model_card_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_model_card_errors(), tuple()}.
 delete_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_card(Client, Input, []).
@@ -13964,8 +14626,7 @@ delete_model_card(Client, Input)
 -spec delete_model_card(map(), delete_model_card_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_model_card_errors(), tuple()}.
 delete_model_card(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelCard">>, Input, Options).
@@ -13974,7 +14635,7 @@ delete_model_card(Client, Input, Options)
 -spec delete_model_explainability_job_definition(map(), delete_model_explainability_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_model_explainability_job_definition_errors(), tuple()}.
 delete_model_explainability_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_explainability_job_definition(Client, Input, []).
@@ -13982,7 +14643,7 @@ delete_model_explainability_job_definition(Client, Input)
 -spec delete_model_explainability_job_definition(map(), delete_model_explainability_job_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_model_explainability_job_definition_errors(), tuple()}.
 delete_model_explainability_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelExplainabilityJobDefinition">>, Input, Options).
@@ -13996,7 +14657,7 @@ delete_model_explainability_job_definition(Client, Input, Options)
 -spec delete_model_package(map(), delete_model_package_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, delete_model_package_errors(), tuple()}.
 delete_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package(Client, Input, []).
@@ -14004,7 +14665,7 @@ delete_model_package(Client, Input)
 -spec delete_model_package(map(), delete_model_package_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, delete_model_package_errors(), tuple()}.
 delete_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelPackage">>, Input, Options).
@@ -14013,7 +14674,7 @@ delete_model_package(Client, Input, Options)
 -spec delete_model_package_group(map(), delete_model_package_group_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, delete_model_package_group_errors(), tuple()}.
 delete_model_package_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package_group(Client, Input, []).
@@ -14021,7 +14682,7 @@ delete_model_package_group(Client, Input)
 -spec delete_model_package_group(map(), delete_model_package_group_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, delete_model_package_group_errors(), tuple()}.
 delete_model_package_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelPackageGroup">>, Input, Options).
@@ -14045,7 +14706,7 @@ delete_model_package_group_policy(Client, Input, Options)
 -spec delete_model_quality_job_definition(map(), delete_model_quality_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_model_quality_job_definition_errors(), tuple()}.
 delete_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_quality_job_definition(Client, Input, []).
@@ -14053,7 +14714,7 @@ delete_model_quality_job_definition(Client, Input)
 -spec delete_model_quality_job_definition(map(), delete_model_quality_job_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_model_quality_job_definition_errors(), tuple()}.
 delete_model_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelQualityJobDefinition">>, Input, Options).
@@ -14065,7 +14726,7 @@ delete_model_quality_job_definition(Client, Input, Options)
 -spec delete_monitoring_schedule(map(), delete_monitoring_schedule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_monitoring_schedule_errors(), tuple()}.
 delete_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_monitoring_schedule(Client, Input, []).
@@ -14073,7 +14734,7 @@ delete_monitoring_schedule(Client, Input)
 -spec delete_monitoring_schedule(map(), delete_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_monitoring_schedule_errors(), tuple()}.
 delete_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMonitoringSchedule">>, Input, Options).
@@ -14127,8 +14788,7 @@ delete_notebook_instance_lifecycle_config(Client, Input, Options)
 -spec delete_pipeline(map(), delete_pipeline_request()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
@@ -14136,8 +14796,7 @@ delete_pipeline(Client, Input)
 -spec delete_pipeline(map(), delete_pipeline_request(), proplists:proplist()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePipeline">>, Input, Options).
@@ -14146,7 +14805,7 @@ delete_pipeline(Client, Input, Options)
 -spec delete_project(map(), delete_project_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
@@ -14154,7 +14813,7 @@ delete_project(Client, Input)
 -spec delete_project(map(), delete_project_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
@@ -14163,8 +14822,7 @@ delete_project(Client, Input, Options)
 -spec delete_space(map(), delete_space_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_space_errors(), tuple()}.
 delete_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_space(Client, Input, []).
@@ -14172,8 +14830,7 @@ delete_space(Client, Input)
 -spec delete_space(map(), delete_space_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_space_errors(), tuple()}.
 delete_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSpace">>, Input, Options).
@@ -14186,8 +14843,7 @@ delete_space(Client, Input, Options)
 -spec delete_studio_lifecycle_config(map(), delete_studio_lifecycle_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_studio_lifecycle_config_errors(), tuple()}.
 delete_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_studio_lifecycle_config(Client, Input, []).
@@ -14195,8 +14851,7 @@ delete_studio_lifecycle_config(Client, Input)
 -spec delete_studio_lifecycle_config(map(), delete_studio_lifecycle_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_studio_lifecycle_config_errors(), tuple()}.
 delete_studio_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStudioLifecycleConfig">>, Input, Options).
@@ -14240,7 +14895,7 @@ delete_tags(Client, Input, Options)
 -spec delete_trial(map(), delete_trial_request()) ->
     {ok, delete_trial_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_trial_errors(), tuple()}.
 delete_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial(Client, Input, []).
@@ -14248,7 +14903,7 @@ delete_trial(Client, Input)
 -spec delete_trial(map(), delete_trial_request(), proplists:proplist()) ->
     {ok, delete_trial_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_trial_errors(), tuple()}.
 delete_trial(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrial">>, Input, Options).
@@ -14264,7 +14919,7 @@ delete_trial(Client, Input, Options)
 -spec delete_trial_component(map(), delete_trial_component_request()) ->
     {ok, delete_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_trial_component_errors(), tuple()}.
 delete_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial_component(Client, Input, []).
@@ -14272,7 +14927,7 @@ delete_trial_component(Client, Input)
 -spec delete_trial_component(map(), delete_trial_component_request(), proplists:proplist()) ->
     {ok, delete_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_trial_component_errors(), tuple()}.
 delete_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrialComponent">>, Input, Options).
@@ -14284,8 +14939,7 @@ delete_trial_component(Client, Input, Options)
 -spec delete_user_profile(map(), delete_user_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_user_profile_errors(), tuple()}.
 delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
@@ -14293,8 +14947,7 @@ delete_user_profile(Client, Input)
 -spec delete_user_profile(map(), delete_user_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, delete_user_profile_errors(), tuple()}.
 delete_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserProfile">>, Input, Options).
@@ -14334,7 +14987,7 @@ delete_workforce(Client, Input, Options)
 -spec delete_workteam(map(), delete_workteam_request()) ->
     {ok, delete_workteam_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, delete_workteam_errors(), tuple()}.
 delete_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workteam(Client, Input, []).
@@ -14342,7 +14995,7 @@ delete_workteam(Client, Input)
 -spec delete_workteam(map(), delete_workteam_request(), proplists:proplist()) ->
     {ok, delete_workteam_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, delete_workteam_errors(), tuple()}.
 delete_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkteam">>, Input, Options).
@@ -14368,7 +15021,7 @@ deregister_devices(Client, Input, Options)
 -spec describe_action(map(), describe_action_request()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_action(Client, Input, []).
@@ -14376,7 +15029,7 @@ describe_action(Client, Input)
 -spec describe_action(map(), describe_action_request(), proplists:proplist()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_action_errors(), tuple()}.
 describe_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAction">>, Input, Options).
@@ -14401,7 +15054,7 @@ describe_algorithm(Client, Input, Options)
 -spec describe_app(map(), describe_app_request()) ->
     {ok, describe_app_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_app(Client, Input, []).
@@ -14409,7 +15062,7 @@ describe_app(Client, Input)
 -spec describe_app(map(), describe_app_request(), proplists:proplist()) ->
     {ok, describe_app_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApp">>, Input, Options).
@@ -14418,7 +15071,7 @@ describe_app(Client, Input, Options)
 -spec describe_app_image_config(map(), describe_app_image_config_request()) ->
     {ok, describe_app_image_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_app_image_config_errors(), tuple()}.
 describe_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_app_image_config(Client, Input, []).
@@ -14426,7 +15079,7 @@ describe_app_image_config(Client, Input)
 -spec describe_app_image_config(map(), describe_app_image_config_request(), proplists:proplist()) ->
     {ok, describe_app_image_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_app_image_config_errors(), tuple()}.
 describe_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAppImageConfig">>, Input, Options).
@@ -14435,7 +15088,7 @@ describe_app_image_config(Client, Input, Options)
 -spec describe_artifact(map(), describe_artifact_request()) ->
     {ok, describe_artifact_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_artifact_errors(), tuple()}.
 describe_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_artifact(Client, Input, []).
@@ -14443,7 +15096,7 @@ describe_artifact(Client, Input)
 -spec describe_artifact(map(), describe_artifact_request(), proplists:proplist()) ->
     {ok, describe_artifact_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_artifact_errors(), tuple()}.
 describe_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeArtifact">>, Input, Options).
@@ -14459,7 +15112,7 @@ describe_artifact(Client, Input, Options)
 -spec describe_auto_ml_job(map(), describe_auto_ml_job_request()) ->
     {ok, describe_auto_ml_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_auto_ml_job_errors(), tuple()}.
 describe_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job(Client, Input, []).
@@ -14467,7 +15120,7 @@ describe_auto_ml_job(Client, Input)
 -spec describe_auto_ml_job(map(), describe_auto_ml_job_request(), proplists:proplist()) ->
     {ok, describe_auto_ml_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_auto_ml_job_errors(), tuple()}.
 describe_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJob">>, Input, Options).
@@ -14480,7 +15133,7 @@ describe_auto_ml_job(Client, Input, Options)
 -spec describe_auto_ml_job_v2(map(), describe_auto_ml_job_v2_request()) ->
     {ok, describe_auto_ml_job_v2_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_auto_ml_job_v2_errors(), tuple()}.
 describe_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job_v2(Client, Input, []).
@@ -14488,7 +15141,7 @@ describe_auto_ml_job_v2(Client, Input)
 -spec describe_auto_ml_job_v2(map(), describe_auto_ml_job_v2_request(), proplists:proplist()) ->
     {ok, describe_auto_ml_job_v2_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_auto_ml_job_v2_errors(), tuple()}.
 describe_auto_ml_job_v2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJobV2">>, Input, Options).
@@ -14497,7 +15150,7 @@ describe_auto_ml_job_v2(Client, Input, Options)
 -spec describe_cluster(map(), describe_cluster_request()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster(Client, Input, []).
@@ -14505,7 +15158,7 @@ describe_cluster(Client, Input)
 -spec describe_cluster(map(), describe_cluster_request(), proplists:proplist()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_cluster_errors(), tuple()}.
 describe_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCluster">>, Input, Options).
@@ -14515,7 +15168,7 @@ describe_cluster(Client, Input, Options)
 -spec describe_cluster_node(map(), describe_cluster_node_request()) ->
     {ok, describe_cluster_node_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_cluster_node_errors(), tuple()}.
 describe_cluster_node(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_node(Client, Input, []).
@@ -14523,7 +15176,7 @@ describe_cluster_node(Client, Input)
 -spec describe_cluster_node(map(), describe_cluster_node_request(), proplists:proplist()) ->
     {ok, describe_cluster_node_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_cluster_node_errors(), tuple()}.
 describe_cluster_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterNode">>, Input, Options).
@@ -14553,7 +15206,7 @@ describe_code_repository(Client, Input, Options)
 -spec describe_compilation_job(map(), describe_compilation_job_request()) ->
     {ok, describe_compilation_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_compilation_job_errors(), tuple()}.
 describe_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compilation_job(Client, Input, []).
@@ -14561,7 +15214,7 @@ describe_compilation_job(Client, Input)
 -spec describe_compilation_job(map(), describe_compilation_job_request(), proplists:proplist()) ->
     {ok, describe_compilation_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_compilation_job_errors(), tuple()}.
 describe_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCompilationJob">>, Input, Options).
@@ -14570,7 +15223,7 @@ describe_compilation_job(Client, Input, Options)
 -spec describe_context(map(), describe_context_request()) ->
     {ok, describe_context_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_context_errors(), tuple()}.
 describe_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_context(Client, Input, []).
@@ -14578,7 +15231,7 @@ describe_context(Client, Input)
 -spec describe_context(map(), describe_context_request(), proplists:proplist()) ->
     {ok, describe_context_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_context_errors(), tuple()}.
 describe_context(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContext">>, Input, Options).
@@ -14587,7 +15240,7 @@ describe_context(Client, Input, Options)
 -spec describe_data_quality_job_definition(map(), describe_data_quality_job_definition_request()) ->
     {ok, describe_data_quality_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_data_quality_job_definition_errors(), tuple()}.
 describe_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_quality_job_definition(Client, Input, []).
@@ -14595,7 +15248,7 @@ describe_data_quality_job_definition(Client, Input)
 -spec describe_data_quality_job_definition(map(), describe_data_quality_job_definition_request(), proplists:proplist()) ->
     {ok, describe_data_quality_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_data_quality_job_definition_errors(), tuple()}.
 describe_data_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataQualityJobDefinition">>, Input, Options).
@@ -14604,7 +15257,7 @@ describe_data_quality_job_definition(Client, Input, Options)
 -spec describe_device(map(), describe_device_request()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_device(Client, Input, []).
@@ -14612,7 +15265,7 @@ describe_device(Client, Input)
 -spec describe_device(map(), describe_device_request(), proplists:proplist()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_device_errors(), tuple()}.
 describe_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDevice">>, Input, Options).
@@ -14621,7 +15274,7 @@ describe_device(Client, Input, Options)
 -spec describe_device_fleet(map(), describe_device_fleet_request()) ->
     {ok, describe_device_fleet_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_device_fleet_errors(), tuple()}.
 describe_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_device_fleet(Client, Input, []).
@@ -14629,7 +15282,7 @@ describe_device_fleet(Client, Input)
 -spec describe_device_fleet(map(), describe_device_fleet_request(), proplists:proplist()) ->
     {ok, describe_device_fleet_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_device_fleet_errors(), tuple()}.
 describe_device_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeviceFleet">>, Input, Options).
@@ -14638,7 +15291,7 @@ describe_device_fleet(Client, Input, Options)
 -spec describe_domain(map(), describe_domain_request()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain(Client, Input, []).
@@ -14646,7 +15299,7 @@ describe_domain(Client, Input)
 -spec describe_domain(map(), describe_domain_request(), proplists:proplist()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomain">>, Input, Options).
@@ -14655,7 +15308,7 @@ describe_domain(Client, Input, Options)
 -spec describe_edge_deployment_plan(map(), describe_edge_deployment_plan_request()) ->
     {ok, describe_edge_deployment_plan_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_edge_deployment_plan_errors(), tuple()}.
 describe_edge_deployment_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_edge_deployment_plan(Client, Input, []).
@@ -14663,7 +15316,7 @@ describe_edge_deployment_plan(Client, Input)
 -spec describe_edge_deployment_plan(map(), describe_edge_deployment_plan_request(), proplists:proplist()) ->
     {ok, describe_edge_deployment_plan_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_edge_deployment_plan_errors(), tuple()}.
 describe_edge_deployment_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEdgeDeploymentPlan">>, Input, Options).
@@ -14672,7 +15325,7 @@ describe_edge_deployment_plan(Client, Input, Options)
 -spec describe_edge_packaging_job(map(), describe_edge_packaging_job_request()) ->
     {ok, describe_edge_packaging_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_edge_packaging_job_errors(), tuple()}.
 describe_edge_packaging_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_edge_packaging_job(Client, Input, []).
@@ -14680,7 +15333,7 @@ describe_edge_packaging_job(Client, Input)
 -spec describe_edge_packaging_job(map(), describe_edge_packaging_job_request(), proplists:proplist()) ->
     {ok, describe_edge_packaging_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_edge_packaging_job_errors(), tuple()}.
 describe_edge_packaging_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEdgePackagingJob">>, Input, Options).
@@ -14721,7 +15374,7 @@ describe_endpoint_config(Client, Input, Options)
 -spec describe_experiment(map(), describe_experiment_request()) ->
     {ok, describe_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_experiment_errors(), tuple()}.
 describe_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_experiment(Client, Input, []).
@@ -14729,7 +15382,7 @@ describe_experiment(Client, Input)
 -spec describe_experiment(map(), describe_experiment_request(), proplists:proplist()) ->
     {ok, describe_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_experiment_errors(), tuple()}.
 describe_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExperiment">>, Input, Options).
@@ -14743,7 +15396,7 @@ describe_experiment(Client, Input, Options)
 -spec describe_feature_group(map(), describe_feature_group_request()) ->
     {ok, describe_feature_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_feature_group_errors(), tuple()}.
 describe_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_feature_group(Client, Input, []).
@@ -14751,7 +15404,7 @@ describe_feature_group(Client, Input)
 -spec describe_feature_group(map(), describe_feature_group_request(), proplists:proplist()) ->
     {ok, describe_feature_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_feature_group_errors(), tuple()}.
 describe_feature_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFeatureGroup">>, Input, Options).
@@ -14760,7 +15413,7 @@ describe_feature_group(Client, Input, Options)
 -spec describe_feature_metadata(map(), describe_feature_metadata_request()) ->
     {ok, describe_feature_metadata_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_feature_metadata_errors(), tuple()}.
 describe_feature_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_feature_metadata(Client, Input, []).
@@ -14768,7 +15421,7 @@ describe_feature_metadata(Client, Input)
 -spec describe_feature_metadata(map(), describe_feature_metadata_request(), proplists:proplist()) ->
     {ok, describe_feature_metadata_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_feature_metadata_errors(), tuple()}.
 describe_feature_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFeatureMetadata">>, Input, Options).
@@ -14777,7 +15430,7 @@ describe_feature_metadata(Client, Input, Options)
 -spec describe_flow_definition(map(), describe_flow_definition_request()) ->
     {ok, describe_flow_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_flow_definition_errors(), tuple()}.
 describe_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flow_definition(Client, Input, []).
@@ -14785,7 +15438,7 @@ describe_flow_definition(Client, Input)
 -spec describe_flow_definition(map(), describe_flow_definition_request(), proplists:proplist()) ->
     {ok, describe_flow_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_flow_definition_errors(), tuple()}.
 describe_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFlowDefinition">>, Input, Options).
@@ -14796,7 +15449,7 @@ describe_flow_definition(Client, Input, Options)
 -spec describe_hub(map(), describe_hub_request()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_hub_errors(), tuple()}.
 describe_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hub(Client, Input, []).
@@ -14804,7 +15457,7 @@ describe_hub(Client, Input)
 -spec describe_hub(map(), describe_hub_request(), proplists:proplist()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_hub_errors(), tuple()}.
 describe_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHub">>, Input, Options).
@@ -14815,7 +15468,7 @@ describe_hub(Client, Input, Options)
 -spec describe_hub_content(map(), describe_hub_content_request()) ->
     {ok, describe_hub_content_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_hub_content_errors(), tuple()}.
 describe_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hub_content(Client, Input, []).
@@ -14823,7 +15476,7 @@ describe_hub_content(Client, Input)
 -spec describe_hub_content(map(), describe_hub_content_request(), proplists:proplist()) ->
     {ok, describe_hub_content_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_hub_content_errors(), tuple()}.
 describe_hub_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHubContent">>, Input, Options).
@@ -14833,7 +15486,7 @@ describe_hub_content(Client, Input, Options)
 -spec describe_human_task_ui(map(), describe_human_task_ui_request()) ->
     {ok, describe_human_task_ui_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_human_task_ui_errors(), tuple()}.
 describe_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_human_task_ui(Client, Input, []).
@@ -14841,7 +15494,7 @@ describe_human_task_ui(Client, Input)
 -spec describe_human_task_ui(map(), describe_human_task_ui_request(), proplists:proplist()) ->
     {ok, describe_human_task_ui_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_human_task_ui_errors(), tuple()}.
 describe_human_task_ui(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHumanTaskUi">>, Input, Options).
@@ -14856,7 +15509,7 @@ describe_human_task_ui(Client, Input, Options)
 -spec describe_hyper_parameter_tuning_job(map(), describe_hyper_parameter_tuning_job_request()) ->
     {ok, describe_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_hyper_parameter_tuning_job_errors(), tuple()}.
 describe_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hyper_parameter_tuning_job(Client, Input, []).
@@ -14864,7 +15517,7 @@ describe_hyper_parameter_tuning_job(Client, Input)
 -spec describe_hyper_parameter_tuning_job(map(), describe_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
     {ok, describe_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_hyper_parameter_tuning_job_errors(), tuple()}.
 describe_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHyperParameterTuningJob">>, Input, Options).
@@ -14873,7 +15526,7 @@ describe_hyper_parameter_tuning_job(Client, Input, Options)
 -spec describe_image(map(), describe_image_request()) ->
     {ok, describe_image_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_image_errors(), tuple()}.
 describe_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image(Client, Input, []).
@@ -14881,7 +15534,7 @@ describe_image(Client, Input)
 -spec describe_image(map(), describe_image_request(), proplists:proplist()) ->
     {ok, describe_image_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_image_errors(), tuple()}.
 describe_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImage">>, Input, Options).
@@ -14890,7 +15543,7 @@ describe_image(Client, Input, Options)
 -spec describe_image_version(map(), describe_image_version_request()) ->
     {ok, describe_image_version_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_image_version_errors(), tuple()}.
 describe_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_version(Client, Input, []).
@@ -14898,7 +15551,7 @@ describe_image_version(Client, Input)
 -spec describe_image_version(map(), describe_image_version_request(), proplists:proplist()) ->
     {ok, describe_image_version_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_image_version_errors(), tuple()}.
 describe_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageVersion">>, Input, Options).
@@ -14922,7 +15575,7 @@ describe_inference_component(Client, Input, Options)
 -spec describe_inference_experiment(map(), describe_inference_experiment_request()) ->
     {ok, describe_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_inference_experiment_errors(), tuple()}.
 describe_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_experiment(Client, Input, []).
@@ -14930,7 +15583,7 @@ describe_inference_experiment(Client, Input)
 -spec describe_inference_experiment(map(), describe_inference_experiment_request(), proplists:proplist()) ->
     {ok, describe_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_inference_experiment_errors(), tuple()}.
 describe_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInferenceExperiment">>, Input, Options).
@@ -14941,7 +15594,7 @@ describe_inference_experiment(Client, Input, Options)
 -spec describe_inference_recommendations_job(map(), describe_inference_recommendations_job_request()) ->
     {ok, describe_inference_recommendations_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_inference_recommendations_job_errors(), tuple()}.
 describe_inference_recommendations_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_recommendations_job(Client, Input, []).
@@ -14949,7 +15602,7 @@ describe_inference_recommendations_job(Client, Input)
 -spec describe_inference_recommendations_job(map(), describe_inference_recommendations_job_request(), proplists:proplist()) ->
     {ok, describe_inference_recommendations_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_inference_recommendations_job_errors(), tuple()}.
 describe_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInferenceRecommendationsJob">>, Input, Options).
@@ -14958,7 +15611,7 @@ describe_inference_recommendations_job(Client, Input, Options)
 -spec describe_labeling_job(map(), describe_labeling_job_request()) ->
     {ok, describe_labeling_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_labeling_job_errors(), tuple()}.
 describe_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_labeling_job(Client, Input, []).
@@ -14966,7 +15619,7 @@ describe_labeling_job(Client, Input)
 -spec describe_labeling_job(map(), describe_labeling_job_request(), proplists:proplist()) ->
     {ok, describe_labeling_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_labeling_job_errors(), tuple()}.
 describe_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLabelingJob">>, Input, Options).
@@ -14980,7 +15633,7 @@ describe_labeling_job(Client, Input, Options)
 -spec describe_lineage_group(map(), describe_lineage_group_request()) ->
     {ok, describe_lineage_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_lineage_group_errors(), tuple()}.
 describe_lineage_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lineage_group(Client, Input, []).
@@ -14988,7 +15641,7 @@ describe_lineage_group(Client, Input)
 -spec describe_lineage_group(map(), describe_lineage_group_request(), proplists:proplist()) ->
     {ok, describe_lineage_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_lineage_group_errors(), tuple()}.
 describe_lineage_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLineageGroup">>, Input, Options).
@@ -15013,7 +15666,7 @@ describe_model(Client, Input, Options)
 -spec describe_model_bias_job_definition(map(), describe_model_bias_job_definition_request()) ->
     {ok, describe_model_bias_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_bias_job_definition_errors(), tuple()}.
 describe_model_bias_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_bias_job_definition(Client, Input, []).
@@ -15021,7 +15674,7 @@ describe_model_bias_job_definition(Client, Input)
 -spec describe_model_bias_job_definition(map(), describe_model_bias_job_definition_request(), proplists:proplist()) ->
     {ok, describe_model_bias_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_bias_job_definition_errors(), tuple()}.
 describe_model_bias_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelBiasJobDefinition">>, Input, Options).
@@ -15031,7 +15684,7 @@ describe_model_bias_job_definition(Client, Input, Options)
 -spec describe_model_card(map(), describe_model_card_request()) ->
     {ok, describe_model_card_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_card_errors(), tuple()}.
 describe_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_card(Client, Input, []).
@@ -15039,7 +15692,7 @@ describe_model_card(Client, Input)
 -spec describe_model_card(map(), describe_model_card_request(), proplists:proplist()) ->
     {ok, describe_model_card_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_card_errors(), tuple()}.
 describe_model_card(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelCard">>, Input, Options).
@@ -15048,7 +15701,7 @@ describe_model_card(Client, Input, Options)
 -spec describe_model_card_export_job(map(), describe_model_card_export_job_request()) ->
     {ok, describe_model_card_export_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_card_export_job_errors(), tuple()}.
 describe_model_card_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_card_export_job(Client, Input, []).
@@ -15056,7 +15709,7 @@ describe_model_card_export_job(Client, Input)
 -spec describe_model_card_export_job(map(), describe_model_card_export_job_request(), proplists:proplist()) ->
     {ok, describe_model_card_export_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_card_export_job_errors(), tuple()}.
 describe_model_card_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelCardExportJob">>, Input, Options).
@@ -15065,7 +15718,7 @@ describe_model_card_export_job(Client, Input, Options)
 -spec describe_model_explainability_job_definition(map(), describe_model_explainability_job_definition_request()) ->
     {ok, describe_model_explainability_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_explainability_job_definition_errors(), tuple()}.
 describe_model_explainability_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_explainability_job_definition(Client, Input, []).
@@ -15073,7 +15726,7 @@ describe_model_explainability_job_definition(Client, Input)
 -spec describe_model_explainability_job_definition(map(), describe_model_explainability_job_definition_request(), proplists:proplist()) ->
     {ok, describe_model_explainability_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_explainability_job_definition_errors(), tuple()}.
 describe_model_explainability_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelExplainabilityJobDefinition">>, Input, Options).
@@ -15118,7 +15771,7 @@ describe_model_package_group(Client, Input, Options)
 -spec describe_model_quality_job_definition(map(), describe_model_quality_job_definition_request()) ->
     {ok, describe_model_quality_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_quality_job_definition_errors(), tuple()}.
 describe_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_quality_job_definition(Client, Input, []).
@@ -15126,7 +15779,7 @@ describe_model_quality_job_definition(Client, Input)
 -spec describe_model_quality_job_definition(map(), describe_model_quality_job_definition_request(), proplists:proplist()) ->
     {ok, describe_model_quality_job_definition_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_model_quality_job_definition_errors(), tuple()}.
 describe_model_quality_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelQualityJobDefinition">>, Input, Options).
@@ -15135,7 +15788,7 @@ describe_model_quality_job_definition(Client, Input, Options)
 -spec describe_monitoring_schedule(map(), describe_monitoring_schedule_request()) ->
     {ok, describe_monitoring_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_monitoring_schedule_errors(), tuple()}.
 describe_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_monitoring_schedule(Client, Input, []).
@@ -15143,7 +15796,7 @@ describe_monitoring_schedule(Client, Input)
 -spec describe_monitoring_schedule(map(), describe_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, describe_monitoring_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_monitoring_schedule_errors(), tuple()}.
 describe_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMonitoringSchedule">>, Input, Options).
@@ -15186,7 +15839,7 @@ describe_notebook_instance_lifecycle_config(Client, Input, Options)
 -spec describe_pipeline(map(), describe_pipeline_request()) ->
     {ok, describe_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_pipeline_errors(), tuple()}.
 describe_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipeline(Client, Input, []).
@@ -15194,7 +15847,7 @@ describe_pipeline(Client, Input)
 -spec describe_pipeline(map(), describe_pipeline_request(), proplists:proplist()) ->
     {ok, describe_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_pipeline_errors(), tuple()}.
 describe_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePipeline">>, Input, Options).
@@ -15203,7 +15856,7 @@ describe_pipeline(Client, Input, Options)
 -spec describe_pipeline_definition_for_execution(map(), describe_pipeline_definition_for_execution_request()) ->
     {ok, describe_pipeline_definition_for_execution_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_pipeline_definition_for_execution_errors(), tuple()}.
 describe_pipeline_definition_for_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipeline_definition_for_execution(Client, Input, []).
@@ -15211,7 +15864,7 @@ describe_pipeline_definition_for_execution(Client, Input)
 -spec describe_pipeline_definition_for_execution(map(), describe_pipeline_definition_for_execution_request(), proplists:proplist()) ->
     {ok, describe_pipeline_definition_for_execution_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_pipeline_definition_for_execution_errors(), tuple()}.
 describe_pipeline_definition_for_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePipelineDefinitionForExecution">>, Input, Options).
@@ -15220,7 +15873,7 @@ describe_pipeline_definition_for_execution(Client, Input, Options)
 -spec describe_pipeline_execution(map(), describe_pipeline_execution_request()) ->
     {ok, describe_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_pipeline_execution_errors(), tuple()}.
 describe_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipeline_execution(Client, Input, []).
@@ -15228,7 +15881,7 @@ describe_pipeline_execution(Client, Input)
 -spec describe_pipeline_execution(map(), describe_pipeline_execution_request(), proplists:proplist()) ->
     {ok, describe_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_pipeline_execution_errors(), tuple()}.
 describe_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePipelineExecution">>, Input, Options).
@@ -15237,7 +15890,7 @@ describe_pipeline_execution(Client, Input, Options)
 -spec describe_processing_job(map(), describe_processing_job_request()) ->
     {ok, describe_processing_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_processing_job_errors(), tuple()}.
 describe_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_processing_job(Client, Input, []).
@@ -15245,7 +15898,7 @@ describe_processing_job(Client, Input)
 -spec describe_processing_job(map(), describe_processing_job_request(), proplists:proplist()) ->
     {ok, describe_processing_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_processing_job_errors(), tuple()}.
 describe_processing_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProcessingJob">>, Input, Options).
@@ -15269,7 +15922,7 @@ describe_project(Client, Input, Options)
 -spec describe_space(map(), describe_space_request()) ->
     {ok, describe_space_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_space_errors(), tuple()}.
 describe_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_space(Client, Input, []).
@@ -15277,7 +15930,7 @@ describe_space(Client, Input)
 -spec describe_space(map(), describe_space_request(), proplists:proplist()) ->
     {ok, describe_space_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_space_errors(), tuple()}.
 describe_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSpace">>, Input, Options).
@@ -15286,7 +15939,7 @@ describe_space(Client, Input, Options)
 -spec describe_studio_lifecycle_config(map(), describe_studio_lifecycle_config_request()) ->
     {ok, describe_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_studio_lifecycle_config_errors(), tuple()}.
 describe_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_studio_lifecycle_config(Client, Input, []).
@@ -15294,7 +15947,7 @@ describe_studio_lifecycle_config(Client, Input)
 -spec describe_studio_lifecycle_config(map(), describe_studio_lifecycle_config_request(), proplists:proplist()) ->
     {ok, describe_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_studio_lifecycle_config_errors(), tuple()}.
 describe_studio_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStudioLifecycleConfig">>, Input, Options).
@@ -15329,7 +15982,7 @@ describe_subscribed_workteam(Client, Input, Options)
 -spec describe_training_job(map(), describe_training_job_request()) ->
     {ok, describe_training_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_training_job_errors(), tuple()}.
 describe_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_training_job(Client, Input, []).
@@ -15337,7 +15990,7 @@ describe_training_job(Client, Input)
 -spec describe_training_job(map(), describe_training_job_request(), proplists:proplist()) ->
     {ok, describe_training_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_training_job_errors(), tuple()}.
 describe_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrainingJob">>, Input, Options).
@@ -15346,7 +15999,7 @@ describe_training_job(Client, Input, Options)
 -spec describe_transform_job(map(), describe_transform_job_request()) ->
     {ok, describe_transform_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_transform_job_errors(), tuple()}.
 describe_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transform_job(Client, Input, []).
@@ -15354,7 +16007,7 @@ describe_transform_job(Client, Input)
 -spec describe_transform_job(map(), describe_transform_job_request(), proplists:proplist()) ->
     {ok, describe_transform_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_transform_job_errors(), tuple()}.
 describe_transform_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTransformJob">>, Input, Options).
@@ -15363,7 +16016,7 @@ describe_transform_job(Client, Input, Options)
 -spec describe_trial(map(), describe_trial_request()) ->
     {ok, describe_trial_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_trial_errors(), tuple()}.
 describe_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trial(Client, Input, []).
@@ -15371,7 +16024,7 @@ describe_trial(Client, Input)
 -spec describe_trial(map(), describe_trial_request(), proplists:proplist()) ->
     {ok, describe_trial_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_trial_errors(), tuple()}.
 describe_trial(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrial">>, Input, Options).
@@ -15380,7 +16033,7 @@ describe_trial(Client, Input, Options)
 -spec describe_trial_component(map(), describe_trial_component_request()) ->
     {ok, describe_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_trial_component_errors(), tuple()}.
 describe_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trial_component(Client, Input, []).
@@ -15388,7 +16041,7 @@ describe_trial_component(Client, Input)
 -spec describe_trial_component(map(), describe_trial_component_request(), proplists:proplist()) ->
     {ok, describe_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_trial_component_errors(), tuple()}.
 describe_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrialComponent">>, Input, Options).
@@ -15399,8 +16052,7 @@ describe_trial_component(Client, Input, Options)
 -spec describe_user_profile(map(), describe_user_profile_request()) ->
     {ok, describe_user_profile_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_user_profile_errors(), tuple()}.
 describe_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_profile(Client, Input, []).
@@ -15408,8 +16060,7 @@ describe_user_profile(Client, Input)
 -spec describe_user_profile(map(), describe_user_profile_request(), proplists:proplist()) ->
     {ok, describe_user_profile_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, describe_user_profile_errors(), tuple()}.
 describe_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserProfile">>, Input, Options).
@@ -15496,7 +16147,7 @@ disable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
 -spec disassociate_trial_component(map(), disassociate_trial_component_request()) ->
     {ok, disassociate_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, disassociate_trial_component_errors(), tuple()}.
 disassociate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_trial_component(Client, Input, []).
@@ -15504,7 +16155,7 @@ disassociate_trial_component(Client, Input)
 -spec disassociate_trial_component(map(), disassociate_trial_component_request(), proplists:proplist()) ->
     {ok, disassociate_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, disassociate_trial_component_errors(), tuple()}.
 disassociate_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateTrialComponent">>, Input, Options).
@@ -15546,7 +16197,7 @@ get_device_fleet_report(Client, Input, Options)
 -spec get_lineage_group_policy(map(), get_lineage_group_policy_request()) ->
     {ok, get_lineage_group_policy_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, get_lineage_group_policy_errors(), tuple()}.
 get_lineage_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lineage_group_policy(Client, Input, []).
@@ -15554,7 +16205,7 @@ get_lineage_group_policy(Client, Input)
 -spec get_lineage_group_policy(map(), get_lineage_group_policy_request(), proplists:proplist()) ->
     {ok, get_lineage_group_policy_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, get_lineage_group_policy_errors(), tuple()}.
 get_lineage_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLineageGroupPolicy">>, Input, Options).
@@ -15607,7 +16258,7 @@ get_sagemaker_servicecatalog_portfolio_status(Client, Input, Options)
 -spec get_scaling_configuration_recommendation(map(), get_scaling_configuration_recommendation_request()) ->
     {ok, get_scaling_configuration_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, get_scaling_configuration_recommendation_errors(), tuple()}.
 get_scaling_configuration_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_scaling_configuration_recommendation(Client, Input, []).
@@ -15615,7 +16266,7 @@ get_scaling_configuration_recommendation(Client, Input)
 -spec get_scaling_configuration_recommendation(map(), get_scaling_configuration_recommendation_request(), proplists:proplist()) ->
     {ok, get_scaling_configuration_recommendation_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, get_scaling_configuration_recommendation_errors(), tuple()}.
 get_scaling_configuration_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetScalingConfigurationRecommendation">>, Input, Options).
@@ -15648,9 +16299,7 @@ get_search_suggestions(Client, Input, Options)
 -spec import_hub_content(map(), import_hub_content_request()) ->
     {ok, import_hub_content_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, import_hub_content_errors(), tuple()}.
 import_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_hub_content(Client, Input, []).
@@ -15658,9 +16307,7 @@ import_hub_content(Client, Input)
 -spec import_hub_content(map(), import_hub_content_request(), proplists:proplist()) ->
     {ok, import_hub_content_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, import_hub_content_errors(), tuple()}.
 import_hub_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportHubContent">>, Input, Options).
@@ -15669,7 +16316,7 @@ import_hub_content(Client, Input, Options)
 -spec list_actions(map(), list_actions_request()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_actions(Client, Input, []).
@@ -15677,7 +16324,7 @@ list_actions(Client, Input)
 -spec list_actions(map(), list_actions_request(), proplists:proplist()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_actions_errors(), tuple()}.
 list_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActions">>, Input, Options).
@@ -15701,7 +16348,7 @@ list_algorithms(Client, Input, Options)
 -spec list_aliases(map(), list_aliases_request()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
@@ -15709,7 +16356,7 @@ list_aliases(Client, Input)
 -spec list_aliases(map(), list_aliases_request(), proplists:proplist()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
@@ -15753,7 +16400,7 @@ list_apps(Client, Input, Options)
 -spec list_artifacts(map(), list_artifacts_request()) ->
     {ok, list_artifacts_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_artifacts_errors(), tuple()}.
 list_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_artifacts(Client, Input, []).
@@ -15761,7 +16408,7 @@ list_artifacts(Client, Input)
 -spec list_artifacts(map(), list_artifacts_request(), proplists:proplist()) ->
     {ok, list_artifacts_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_artifacts_errors(), tuple()}.
 list_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListArtifacts">>, Input, Options).
@@ -15770,7 +16417,7 @@ list_artifacts(Client, Input, Options)
 -spec list_associations(map(), list_associations_request()) ->
     {ok, list_associations_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_associations_errors(), tuple()}.
 list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations(Client, Input, []).
@@ -15778,7 +16425,7 @@ list_associations(Client, Input)
 -spec list_associations(map(), list_associations_request(), proplists:proplist()) ->
     {ok, list_associations_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_associations_errors(), tuple()}.
 list_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociations">>, Input, Options).
@@ -15802,7 +16449,7 @@ list_auto_ml_jobs(Client, Input, Options)
 -spec list_candidates_for_auto_ml_job(map(), list_candidates_for_auto_ml_job_request()) ->
     {ok, list_candidates_for_auto_ml_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_candidates_for_auto_ml_job_errors(), tuple()}.
 list_candidates_for_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_candidates_for_auto_ml_job(Client, Input, []).
@@ -15810,7 +16457,7 @@ list_candidates_for_auto_ml_job(Client, Input)
 -spec list_candidates_for_auto_ml_job(map(), list_candidates_for_auto_ml_job_request(), proplists:proplist()) ->
     {ok, list_candidates_for_auto_ml_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_candidates_for_auto_ml_job_errors(), tuple()}.
 list_candidates_for_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCandidatesForAutoMLJob">>, Input, Options).
@@ -15820,7 +16467,7 @@ list_candidates_for_auto_ml_job(Client, Input, Options)
 -spec list_cluster_nodes(map(), list_cluster_nodes_request()) ->
     {ok, list_cluster_nodes_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_cluster_nodes_errors(), tuple()}.
 list_cluster_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cluster_nodes(Client, Input, []).
@@ -15828,7 +16475,7 @@ list_cluster_nodes(Client, Input)
 -spec list_cluster_nodes(map(), list_cluster_nodes_request(), proplists:proplist()) ->
     {ok, list_cluster_nodes_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_cluster_nodes_errors(), tuple()}.
 list_cluster_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusterNodes">>, Input, Options).
@@ -15888,7 +16535,7 @@ list_compilation_jobs(Client, Input, Options)
 -spec list_contexts(map(), list_contexts_request()) ->
     {ok, list_contexts_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_contexts_errors(), tuple()}.
 list_contexts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contexts(Client, Input, []).
@@ -15896,7 +16543,7 @@ list_contexts(Client, Input)
 -spec list_contexts(map(), list_contexts_request(), proplists:proplist()) ->
     {ok, list_contexts_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_contexts_errors(), tuple()}.
 list_contexts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContexts">>, Input, Options).
@@ -16077,7 +16724,7 @@ list_flow_definitions(Client, Input, Options)
 -spec list_hub_content_versions(map(), list_hub_content_versions_request()) ->
     {ok, list_hub_content_versions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_hub_content_versions_errors(), tuple()}.
 list_hub_content_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hub_content_versions(Client, Input, []).
@@ -16085,7 +16732,7 @@ list_hub_content_versions(Client, Input)
 -spec list_hub_content_versions(map(), list_hub_content_versions_request(), proplists:proplist()) ->
     {ok, list_hub_content_versions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_hub_content_versions_errors(), tuple()}.
 list_hub_content_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHubContentVersions">>, Input, Options).
@@ -16096,7 +16743,7 @@ list_hub_content_versions(Client, Input, Options)
 -spec list_hub_contents(map(), list_hub_contents_request()) ->
     {ok, list_hub_contents_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_hub_contents_errors(), tuple()}.
 list_hub_contents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hub_contents(Client, Input, []).
@@ -16104,7 +16751,7 @@ list_hub_contents(Client, Input)
 -spec list_hub_contents(map(), list_hub_contents_request(), proplists:proplist()) ->
     {ok, list_hub_contents_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_hub_contents_errors(), tuple()}.
 list_hub_contents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHubContents">>, Input, Options).
@@ -16168,7 +16815,7 @@ list_hyper_parameter_tuning_jobs(Client, Input, Options)
 -spec list_image_versions(map(), list_image_versions_request()) ->
     {ok, list_image_versions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_image_versions_errors(), tuple()}.
 list_image_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_image_versions(Client, Input, []).
@@ -16176,7 +16823,7 @@ list_image_versions(Client, Input)
 -spec list_image_versions(map(), list_image_versions_request(), proplists:proplist()) ->
     {ok, list_image_versions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_image_versions_errors(), tuple()}.
 list_image_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImageVersions">>, Input, Options).
@@ -16237,7 +16884,7 @@ list_inference_experiments(Client, Input, Options)
 -spec list_inference_recommendations_job_steps(map(), list_inference_recommendations_job_steps_request()) ->
     {ok, list_inference_recommendations_job_steps_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_inference_recommendations_job_steps_errors(), tuple()}.
 list_inference_recommendations_job_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_recommendations_job_steps(Client, Input, []).
@@ -16245,7 +16892,7 @@ list_inference_recommendations_job_steps(Client, Input)
 -spec list_inference_recommendations_job_steps(map(), list_inference_recommendations_job_steps_request(), proplists:proplist()) ->
     {ok, list_inference_recommendations_job_steps_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_inference_recommendations_job_steps_errors(), tuple()}.
 list_inference_recommendations_job_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceRecommendationsJobSteps">>, Input, Options).
@@ -16284,7 +16931,7 @@ list_labeling_jobs(Client, Input, Options)
 -spec list_labeling_jobs_for_workteam(map(), list_labeling_jobs_for_workteam_request()) ->
     {ok, list_labeling_jobs_for_workteam_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_labeling_jobs_for_workteam_errors(), tuple()}.
 list_labeling_jobs_for_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_labeling_jobs_for_workteam(Client, Input, []).
@@ -16292,7 +16939,7 @@ list_labeling_jobs_for_workteam(Client, Input)
 -spec list_labeling_jobs_for_workteam(map(), list_labeling_jobs_for_workteam_request(), proplists:proplist()) ->
     {ok, list_labeling_jobs_for_workteam_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_labeling_jobs_for_workteam_errors(), tuple()}.
 list_labeling_jobs_for_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLabelingJobsForWorkteam">>, Input, Options).
@@ -16352,7 +16999,7 @@ list_model_card_export_jobs(Client, Input, Options)
 -spec list_model_card_versions(map(), list_model_card_versions_request()) ->
     {ok, list_model_card_versions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_model_card_versions_errors(), tuple()}.
 list_model_card_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_card_versions(Client, Input, []).
@@ -16360,7 +17007,7 @@ list_model_card_versions(Client, Input)
 -spec list_model_card_versions(map(), list_model_card_versions_request(), proplists:proplist()) ->
     {ok, list_model_card_versions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_model_card_versions_errors(), tuple()}.
 list_model_card_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelCardVersions">>, Input, Options).
@@ -16477,7 +17124,7 @@ list_models(Client, Input, Options)
 -spec list_monitoring_alert_history(map(), list_monitoring_alert_history_request()) ->
     {ok, list_monitoring_alert_history_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_monitoring_alert_history_errors(), tuple()}.
 list_monitoring_alert_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_alert_history(Client, Input, []).
@@ -16485,7 +17132,7 @@ list_monitoring_alert_history(Client, Input)
 -spec list_monitoring_alert_history(map(), list_monitoring_alert_history_request(), proplists:proplist()) ->
     {ok, list_monitoring_alert_history_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_monitoring_alert_history_errors(), tuple()}.
 list_monitoring_alert_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitoringAlertHistory">>, Input, Options).
@@ -16494,7 +17141,7 @@ list_monitoring_alert_history(Client, Input, Options)
 -spec list_monitoring_alerts(map(), list_monitoring_alerts_request()) ->
     {ok, list_monitoring_alerts_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_monitoring_alerts_errors(), tuple()}.
 list_monitoring_alerts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_alerts(Client, Input, []).
@@ -16502,7 +17149,7 @@ list_monitoring_alerts(Client, Input)
 -spec list_monitoring_alerts(map(), list_monitoring_alerts_request(), proplists:proplist()) ->
     {ok, list_monitoring_alerts_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_monitoring_alerts_errors(), tuple()}.
 list_monitoring_alerts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitoringAlerts">>, Input, Options).
@@ -16576,7 +17223,7 @@ list_notebook_instances(Client, Input, Options)
 -spec list_pipeline_execution_steps(map(), list_pipeline_execution_steps_request()) ->
     {ok, list_pipeline_execution_steps_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_pipeline_execution_steps_errors(), tuple()}.
 list_pipeline_execution_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_execution_steps(Client, Input, []).
@@ -16584,7 +17231,7 @@ list_pipeline_execution_steps(Client, Input)
 -spec list_pipeline_execution_steps(map(), list_pipeline_execution_steps_request(), proplists:proplist()) ->
     {ok, list_pipeline_execution_steps_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_pipeline_execution_steps_errors(), tuple()}.
 list_pipeline_execution_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelineExecutionSteps">>, Input, Options).
@@ -16593,7 +17240,7 @@ list_pipeline_execution_steps(Client, Input, Options)
 -spec list_pipeline_executions(map(), list_pipeline_executions_request()) ->
     {ok, list_pipeline_executions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_pipeline_executions_errors(), tuple()}.
 list_pipeline_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_executions(Client, Input, []).
@@ -16601,7 +17248,7 @@ list_pipeline_executions(Client, Input)
 -spec list_pipeline_executions(map(), list_pipeline_executions_request(), proplists:proplist()) ->
     {ok, list_pipeline_executions_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_pipeline_executions_errors(), tuple()}.
 list_pipeline_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelineExecutions">>, Input, Options).
@@ -16610,7 +17257,7 @@ list_pipeline_executions(Client, Input, Options)
 -spec list_pipeline_parameters_for_execution(map(), list_pipeline_parameters_for_execution_request()) ->
     {ok, list_pipeline_parameters_for_execution_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_pipeline_parameters_for_execution_errors(), tuple()}.
 list_pipeline_parameters_for_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_parameters_for_execution(Client, Input, []).
@@ -16618,7 +17265,7 @@ list_pipeline_parameters_for_execution(Client, Input)
 -spec list_pipeline_parameters_for_execution(map(), list_pipeline_parameters_for_execution_request(), proplists:proplist()) ->
     {ok, list_pipeline_parameters_for_execution_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_pipeline_parameters_for_execution_errors(), tuple()}.
 list_pipeline_parameters_for_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelineParametersForExecution">>, Input, Options).
@@ -16723,7 +17370,7 @@ list_stage_devices(Client, Input, Options)
 -spec list_studio_lifecycle_configs(map(), list_studio_lifecycle_configs_request()) ->
     {ok, list_studio_lifecycle_configs_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, list_studio_lifecycle_configs_errors(), tuple()}.
 list_studio_lifecycle_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_studio_lifecycle_configs(Client, Input, []).
@@ -16731,7 +17378,7 @@ list_studio_lifecycle_configs(Client, Input)
 -spec list_studio_lifecycle_configs(map(), list_studio_lifecycle_configs_request(), proplists:proplist()) ->
     {ok, list_studio_lifecycle_configs_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, list_studio_lifecycle_configs_errors(), tuple()}.
 list_studio_lifecycle_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStudioLifecycleConfigs">>, Input, Options).
@@ -16816,7 +17463,7 @@ list_training_jobs(Client, Input, Options)
 -spec list_training_jobs_for_hyper_parameter_tuning_job(map(), list_training_jobs_for_hyper_parameter_tuning_job_request()) ->
     {ok, list_training_jobs_for_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_training_jobs_for_hyper_parameter_tuning_job_errors(), tuple()}.
 list_training_jobs_for_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_training_jobs_for_hyper_parameter_tuning_job(Client, Input, []).
@@ -16824,7 +17471,7 @@ list_training_jobs_for_hyper_parameter_tuning_job(Client, Input)
 -spec list_training_jobs_for_hyper_parameter_tuning_job(map(), list_training_jobs_for_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
     {ok, list_training_jobs_for_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_training_jobs_for_hyper_parameter_tuning_job_errors(), tuple()}.
 list_training_jobs_for_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrainingJobsForHyperParameterTuningJob">>, Input, Options).
@@ -16859,7 +17506,7 @@ list_transform_jobs(Client, Input, Options)
 -spec list_trial_components(map(), list_trial_components_request()) ->
     {ok, list_trial_components_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_trial_components_errors(), tuple()}.
 list_trial_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_trial_components(Client, Input, []).
@@ -16867,7 +17514,7 @@ list_trial_components(Client, Input)
 -spec list_trial_components(map(), list_trial_components_request(), proplists:proplist()) ->
     {ok, list_trial_components_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_trial_components_errors(), tuple()}.
 list_trial_components(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrialComponents">>, Input, Options).
@@ -16885,7 +17532,7 @@ list_trial_components(Client, Input, Options)
 -spec list_trials(map(), list_trials_request()) ->
     {ok, list_trials_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_trials_errors(), tuple()}.
 list_trials(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_trials(Client, Input, []).
@@ -16893,7 +17540,7 @@ list_trials(Client, Input)
 -spec list_trials(map(), list_trials_request(), proplists:proplist()) ->
     {ok, list_trials_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, list_trials_errors(), tuple()}.
 list_trials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrials">>, Input, Options).
@@ -16961,7 +17608,7 @@ list_workteams(Client, Input, Options)
 -spec put_model_package_group_policy(map(), put_model_package_group_policy_input()) ->
     {ok, put_model_package_group_policy_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, put_model_package_group_policy_errors(), tuple()}.
 put_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_model_package_group_policy(Client, Input, []).
@@ -16969,7 +17616,7 @@ put_model_package_group_policy(Client, Input)
 -spec put_model_package_group_policy(map(), put_model_package_group_policy_input(), proplists:proplist()) ->
     {ok, put_model_package_group_policy_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, put_model_package_group_policy_errors(), tuple()}.
 put_model_package_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutModelPackageGroupPolicy">>, Input, Options).
@@ -16984,7 +17631,7 @@ put_model_package_group_policy(Client, Input, Options)
 -spec query_lineage(map(), query_lineage_request()) ->
     {ok, query_lineage_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, query_lineage_errors(), tuple()}.
 query_lineage(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_lineage(Client, Input, []).
@@ -16992,7 +17639,7 @@ query_lineage(Client, Input)
 -spec query_lineage(map(), query_lineage_request(), proplists:proplist()) ->
     {ok, query_lineage_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, query_lineage_errors(), tuple()}.
 query_lineage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"QueryLineage">>, Input, Options).
@@ -17001,7 +17648,7 @@ query_lineage(Client, Input, Options)
 -spec register_devices(map(), register_devices_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, register_devices_errors(), tuple()}.
 register_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_devices(Client, Input, []).
@@ -17009,7 +17656,7 @@ register_devices(Client, Input)
 -spec register_devices(map(), register_devices_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, register_devices_errors(), tuple()}.
 register_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDevices">>, Input, Options).
@@ -17019,7 +17666,7 @@ register_devices(Client, Input, Options)
 -spec render_ui_template(map(), render_ui_template_request()) ->
     {ok, render_ui_template_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, render_ui_template_errors(), tuple()}.
 render_ui_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     render_ui_template(Client, Input, []).
@@ -17027,7 +17674,7 @@ render_ui_template(Client, Input)
 -spec render_ui_template(map(), render_ui_template_request(), proplists:proplist()) ->
     {ok, render_ui_template_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, render_ui_template_errors(), tuple()}.
 render_ui_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RenderUiTemplate">>, Input, Options).
@@ -17036,9 +17683,7 @@ render_ui_template(Client, Input, Options)
 -spec retry_pipeline_execution(map(), retry_pipeline_execution_request()) ->
     {ok, retry_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, retry_pipeline_execution_errors(), tuple()}.
 retry_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_pipeline_execution(Client, Input, []).
@@ -17046,9 +17691,7 @@ retry_pipeline_execution(Client, Input)
 -spec retry_pipeline_execution(map(), retry_pipeline_execution_request(), proplists:proplist()) ->
     {ok, retry_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, retry_pipeline_execution_errors(), tuple()}.
 retry_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetryPipelineExecution">>, Input, Options).
@@ -17094,9 +17737,7 @@ search(Client, Input, Options)
 -spec send_pipeline_execution_step_failure(map(), send_pipeline_execution_step_failure_request()) ->
     {ok, send_pipeline_execution_step_failure_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, send_pipeline_execution_step_failure_errors(), tuple()}.
 send_pipeline_execution_step_failure(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_pipeline_execution_step_failure(Client, Input, []).
@@ -17104,9 +17745,7 @@ send_pipeline_execution_step_failure(Client, Input)
 -spec send_pipeline_execution_step_failure(map(), send_pipeline_execution_step_failure_request(), proplists:proplist()) ->
     {ok, send_pipeline_execution_step_failure_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, send_pipeline_execution_step_failure_errors(), tuple()}.
 send_pipeline_execution_step_failure(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendPipelineExecutionStepFailure">>, Input, Options).
@@ -17121,9 +17760,7 @@ send_pipeline_execution_step_failure(Client, Input, Options)
 -spec send_pipeline_execution_step_success(map(), send_pipeline_execution_step_success_request()) ->
     {ok, send_pipeline_execution_step_success_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, send_pipeline_execution_step_success_errors(), tuple()}.
 send_pipeline_execution_step_success(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_pipeline_execution_step_success(Client, Input, []).
@@ -17131,9 +17768,7 @@ send_pipeline_execution_step_success(Client, Input)
 -spec send_pipeline_execution_step_success(map(), send_pipeline_execution_step_success_request(), proplists:proplist()) ->
     {ok, send_pipeline_execution_step_success_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, send_pipeline_execution_step_success_errors(), tuple()}.
 send_pipeline_execution_step_success(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendPipelineExecutionStepSuccess">>, Input, Options).
@@ -17157,8 +17792,7 @@ start_edge_deployment_stage(Client, Input, Options)
 -spec start_inference_experiment(map(), start_inference_experiment_request()) ->
     {ok, start_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, start_inference_experiment_errors(), tuple()}.
 start_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_inference_experiment(Client, Input, []).
@@ -17166,8 +17800,7 @@ start_inference_experiment(Client, Input)
 -spec start_inference_experiment(map(), start_inference_experiment_request(), proplists:proplist()) ->
     {ok, start_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, start_inference_experiment_errors(), tuple()}.
 start_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInferenceExperiment">>, Input, Options).
@@ -17180,7 +17813,7 @@ start_inference_experiment(Client, Input, Options)
 -spec start_monitoring_schedule(map(), start_monitoring_schedule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, start_monitoring_schedule_errors(), tuple()}.
 start_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_monitoring_schedule(Client, Input, []).
@@ -17188,7 +17821,7 @@ start_monitoring_schedule(Client, Input)
 -spec start_monitoring_schedule(map(), start_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, start_monitoring_schedule_errors(), tuple()}.
 start_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMonitoringSchedule">>, Input, Options).
@@ -17204,7 +17837,7 @@ start_monitoring_schedule(Client, Input, Options)
 -spec start_notebook_instance(map(), start_notebook_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, start_notebook_instance_errors(), tuple()}.
 start_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_notebook_instance(Client, Input, []).
@@ -17212,7 +17845,7 @@ start_notebook_instance(Client, Input)
 -spec start_notebook_instance(map(), start_notebook_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, start_notebook_instance_errors(), tuple()}.
 start_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartNotebookInstance">>, Input, Options).
@@ -17221,9 +17854,7 @@ start_notebook_instance(Client, Input, Options)
 -spec start_pipeline_execution(map(), start_pipeline_execution_request()) ->
     {ok, start_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, start_pipeline_execution_errors(), tuple()}.
 start_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_pipeline_execution(Client, Input, []).
@@ -17231,9 +17862,7 @@ start_pipeline_execution(Client, Input)
 -spec start_pipeline_execution(map(), start_pipeline_execution_request(), proplists:proplist()) ->
     {ok, start_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, start_pipeline_execution_errors(), tuple()}.
 start_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPipelineExecution">>, Input, Options).
@@ -17242,7 +17871,7 @@ start_pipeline_execution(Client, Input, Options)
 -spec stop_auto_ml_job(map(), stop_auto_ml_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_auto_ml_job_errors(), tuple()}.
 stop_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_auto_ml_job(Client, Input, []).
@@ -17250,7 +17879,7 @@ stop_auto_ml_job(Client, Input)
 -spec stop_auto_ml_job(map(), stop_auto_ml_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_auto_ml_job_errors(), tuple()}.
 stop_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopAutoMLJob">>, Input, Options).
@@ -17269,7 +17898,7 @@ stop_auto_ml_job(Client, Input, Options)
 -spec stop_compilation_job(map(), stop_compilation_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_compilation_job_errors(), tuple()}.
 stop_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_compilation_job(Client, Input, []).
@@ -17277,7 +17906,7 @@ stop_compilation_job(Client, Input)
 -spec stop_compilation_job(map(), stop_compilation_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_compilation_job_errors(), tuple()}.
 stop_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCompilationJob">>, Input, Options).
@@ -17326,7 +17955,7 @@ stop_edge_packaging_job(Client, Input, Options)
 -spec stop_hyper_parameter_tuning_job(map(), stop_hyper_parameter_tuning_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_hyper_parameter_tuning_job_errors(), tuple()}.
 stop_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_hyper_parameter_tuning_job(Client, Input, []).
@@ -17334,7 +17963,7 @@ stop_hyper_parameter_tuning_job(Client, Input)
 -spec stop_hyper_parameter_tuning_job(map(), stop_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_hyper_parameter_tuning_job_errors(), tuple()}.
 stop_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopHyperParameterTuningJob">>, Input, Options).
@@ -17343,8 +17972,7 @@ stop_hyper_parameter_tuning_job(Client, Input, Options)
 -spec stop_inference_experiment(map(), stop_inference_experiment_request()) ->
     {ok, stop_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_inference_experiment_errors(), tuple()}.
 stop_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_inference_experiment(Client, Input, []).
@@ -17352,8 +17980,7 @@ stop_inference_experiment(Client, Input)
 -spec stop_inference_experiment(map(), stop_inference_experiment_request(), proplists:proplist()) ->
     {ok, stop_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_inference_experiment_errors(), tuple()}.
 stop_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInferenceExperiment">>, Input, Options).
@@ -17362,7 +17989,7 @@ stop_inference_experiment(Client, Input, Options)
 -spec stop_inference_recommendations_job(map(), stop_inference_recommendations_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_inference_recommendations_job_errors(), tuple()}.
 stop_inference_recommendations_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_inference_recommendations_job(Client, Input, []).
@@ -17370,7 +17997,7 @@ stop_inference_recommendations_job(Client, Input)
 -spec stop_inference_recommendations_job(map(), stop_inference_recommendations_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_inference_recommendations_job_errors(), tuple()}.
 stop_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInferenceRecommendationsJob">>, Input, Options).
@@ -17383,7 +18010,7 @@ stop_inference_recommendations_job(Client, Input, Options)
 -spec stop_labeling_job(map(), stop_labeling_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_labeling_job_errors(), tuple()}.
 stop_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_labeling_job(Client, Input, []).
@@ -17391,7 +18018,7 @@ stop_labeling_job(Client, Input)
 -spec stop_labeling_job(map(), stop_labeling_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_labeling_job_errors(), tuple()}.
 stop_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopLabelingJob">>, Input, Options).
@@ -17400,7 +18027,7 @@ stop_labeling_job(Client, Input, Options)
 -spec stop_monitoring_schedule(map(), stop_monitoring_schedule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_monitoring_schedule_errors(), tuple()}.
 stop_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_monitoring_schedule(Client, Input, []).
@@ -17408,7 +18035,7 @@ stop_monitoring_schedule(Client, Input)
 -spec stop_monitoring_schedule(map(), stop_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_monitoring_schedule_errors(), tuple()}.
 stop_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopMonitoringSchedule">>, Input, Options).
@@ -17480,8 +18107,7 @@ stop_notebook_instance(Client, Input, Options)
 -spec stop_pipeline_execution(map(), stop_pipeline_execution_request()) ->
     {ok, stop_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_pipeline_execution_errors(), tuple()}.
 stop_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pipeline_execution(Client, Input, []).
@@ -17489,8 +18115,7 @@ stop_pipeline_execution(Client, Input)
 -spec stop_pipeline_execution(map(), stop_pipeline_execution_request(), proplists:proplist()) ->
     {ok, stop_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_pipeline_execution_errors(), tuple()}.
 stop_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopPipelineExecution">>, Input, Options).
@@ -17499,7 +18124,7 @@ stop_pipeline_execution(Client, Input, Options)
 -spec stop_processing_job(map(), stop_processing_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_processing_job_errors(), tuple()}.
 stop_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_processing_job(Client, Input, []).
@@ -17507,7 +18132,7 @@ stop_processing_job(Client, Input)
 -spec stop_processing_job(map(), stop_processing_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_processing_job_errors(), tuple()}.
 stop_processing_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopProcessingJob">>, Input, Options).
@@ -17528,7 +18153,7 @@ stop_processing_job(Client, Input, Options)
 -spec stop_training_job(map(), stop_training_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_training_job_errors(), tuple()}.
 stop_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_job(Client, Input, []).
@@ -17536,7 +18161,7 @@ stop_training_job(Client, Input)
 -spec stop_training_job(map(), stop_training_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_training_job_errors(), tuple()}.
 stop_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTrainingJob">>, Input, Options).
@@ -17554,7 +18179,7 @@ stop_training_job(Client, Input, Options)
 -spec stop_transform_job(map(), stop_transform_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_transform_job_errors(), tuple()}.
 stop_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_transform_job(Client, Input, []).
@@ -17562,7 +18187,7 @@ stop_transform_job(Client, Input)
 -spec stop_transform_job(map(), stop_transform_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, stop_transform_job_errors(), tuple()}.
 stop_transform_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTransformJob">>, Input, Options).
@@ -17571,8 +18196,7 @@ stop_transform_job(Client, Input, Options)
 -spec update_action(map(), update_action_request()) ->
     {ok, update_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_action_errors(), tuple()}.
 update_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_action(Client, Input, []).
@@ -17580,8 +18204,7 @@ update_action(Client, Input)
 -spec update_action(map(), update_action_request(), proplists:proplist()) ->
     {ok, update_action_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_action_errors(), tuple()}.
 update_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAction">>, Input, Options).
@@ -17590,7 +18213,7 @@ update_action(Client, Input, Options)
 -spec update_app_image_config(map(), update_app_image_config_request()) ->
     {ok, update_app_image_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_app_image_config_errors(), tuple()}.
 update_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app_image_config(Client, Input, []).
@@ -17598,7 +18221,7 @@ update_app_image_config(Client, Input)
 -spec update_app_image_config(map(), update_app_image_config_request(), proplists:proplist()) ->
     {ok, update_app_image_config_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_app_image_config_errors(), tuple()}.
 update_app_image_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAppImageConfig">>, Input, Options).
@@ -17607,8 +18230,7 @@ update_app_image_config(Client, Input, Options)
 -spec update_artifact(map(), update_artifact_request()) ->
     {ok, update_artifact_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_artifact_errors(), tuple()}.
 update_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_artifact(Client, Input, []).
@@ -17616,8 +18238,7 @@ update_artifact(Client, Input)
 -spec update_artifact(map(), update_artifact_request(), proplists:proplist()) ->
     {ok, update_artifact_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_artifact_errors(), tuple()}.
 update_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateArtifact">>, Input, Options).
@@ -17626,9 +18247,7 @@ update_artifact(Client, Input, Options)
 -spec update_cluster(map(), update_cluster_request()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
@@ -17636,9 +18255,7 @@ update_cluster(Client, Input)
 -spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
@@ -17653,8 +18270,7 @@ update_cluster(Client, Input, Options)
 -spec update_cluster_software(map(), update_cluster_software_request()) ->
     {ok, update_cluster_software_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_cluster_software_errors(), tuple()}.
 update_cluster_software(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster_software(Client, Input, []).
@@ -17662,8 +18278,7 @@ update_cluster_software(Client, Input)
 -spec update_cluster_software(map(), update_cluster_software_request(), proplists:proplist()) ->
     {ok, update_cluster_software_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_cluster_software_errors(), tuple()}.
 update_cluster_software(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateClusterSoftware">>, Input, Options).
@@ -17672,7 +18287,7 @@ update_cluster_software(Client, Input, Options)
 -spec update_code_repository(map(), update_code_repository_input()) ->
     {ok, update_code_repository_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, update_code_repository_errors(), tuple()}.
 update_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_code_repository(Client, Input, []).
@@ -17680,7 +18295,7 @@ update_code_repository(Client, Input)
 -spec update_code_repository(map(), update_code_repository_input(), proplists:proplist()) ->
     {ok, update_code_repository_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, update_code_repository_errors(), tuple()}.
 update_code_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCodeRepository">>, Input, Options).
@@ -17689,8 +18304,7 @@ update_code_repository(Client, Input, Options)
 -spec update_context(map(), update_context_request()) ->
     {ok, update_context_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_context_errors(), tuple()}.
 update_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_context(Client, Input, []).
@@ -17698,8 +18312,7 @@ update_context(Client, Input)
 -spec update_context(map(), update_context_request(), proplists:proplist()) ->
     {ok, update_context_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_context_errors(), tuple()}.
 update_context(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContext">>, Input, Options).
@@ -17708,7 +18321,7 @@ update_context(Client, Input, Options)
 -spec update_device_fleet(map(), update_device_fleet_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, update_device_fleet_errors(), tuple()}.
 update_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_fleet(Client, Input, []).
@@ -17716,7 +18329,7 @@ update_device_fleet(Client, Input)
 -spec update_device_fleet(map(), update_device_fleet_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()}.
+    {error, update_device_fleet_errors(), tuple()}.
 update_device_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDeviceFleet">>, Input, Options).
@@ -17740,9 +18353,7 @@ update_devices(Client, Input, Options)
 -spec update_domain(map(), update_domain_request()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain(Client, Input, []).
@@ -17750,9 +18361,7 @@ update_domain(Client, Input)
 -spec update_domain(map(), update_domain_request(), proplists:proplist()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomain">>, Input, Options).
@@ -17790,7 +18399,7 @@ update_domain(Client, Input, Options)
 -spec update_endpoint(map(), update_endpoint_input()) ->
     {ok, update_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_endpoint_errors(), tuple()}.
 update_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint(Client, Input, []).
@@ -17798,7 +18407,7 @@ update_endpoint(Client, Input)
 -spec update_endpoint(map(), update_endpoint_input(), proplists:proplist()) ->
     {ok, update_endpoint_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_endpoint_errors(), tuple()}.
 update_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpoint">>, Input, Options).
@@ -17818,7 +18427,7 @@ update_endpoint(Client, Input, Options)
 -spec update_endpoint_weights_and_capacities(map(), update_endpoint_weights_and_capacities_input()) ->
     {ok, update_endpoint_weights_and_capacities_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_endpoint_weights_and_capacities_errors(), tuple()}.
 update_endpoint_weights_and_capacities(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_weights_and_capacities(Client, Input, []).
@@ -17826,7 +18435,7 @@ update_endpoint_weights_and_capacities(Client, Input)
 -spec update_endpoint_weights_and_capacities(map(), update_endpoint_weights_and_capacities_input(), proplists:proplist()) ->
     {ok, update_endpoint_weights_and_capacities_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_endpoint_weights_and_capacities_errors(), tuple()}.
 update_endpoint_weights_and_capacities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpointWeightsAndCapacities">>, Input, Options).
@@ -17838,8 +18447,7 @@ update_endpoint_weights_and_capacities(Client, Input, Options)
 -spec update_experiment(map(), update_experiment_request()) ->
     {ok, update_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_experiment_errors(), tuple()}.
 update_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_experiment(Client, Input, []).
@@ -17847,8 +18455,7 @@ update_experiment(Client, Input)
 -spec update_experiment(map(), update_experiment_request(), proplists:proplist()) ->
     {ok, update_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_experiment_errors(), tuple()}.
 update_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExperiment">>, Input, Options).
@@ -17878,8 +18485,7 @@ update_experiment(Client, Input, Options)
 -spec update_feature_group(map(), update_feature_group_request()) ->
     {ok, update_feature_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_feature_group_errors(), tuple()}.
 update_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_feature_group(Client, Input, []).
@@ -17887,8 +18493,7 @@ update_feature_group(Client, Input)
 -spec update_feature_group(map(), update_feature_group_request(), proplists:proplist()) ->
     {ok, update_feature_group_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_feature_group_errors(), tuple()}.
 update_feature_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFeatureGroup">>, Input, Options).
@@ -17897,7 +18502,7 @@ update_feature_group(Client, Input, Options)
 -spec update_feature_metadata(map(), update_feature_metadata_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_feature_metadata_errors(), tuple()}.
 update_feature_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_feature_metadata(Client, Input, []).
@@ -17905,7 +18510,7 @@ update_feature_metadata(Client, Input)
 -spec update_feature_metadata(map(), update_feature_metadata_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_feature_metadata_errors(), tuple()}.
 update_feature_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFeatureMetadata">>, Input, Options).
@@ -17916,7 +18521,7 @@ update_feature_metadata(Client, Input, Options)
 -spec update_hub(map(), update_hub_request()) ->
     {ok, update_hub_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_hub_errors(), tuple()}.
 update_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hub(Client, Input, []).
@@ -17924,7 +18529,7 @@ update_hub(Client, Input)
 -spec update_hub(map(), update_hub_request(), proplists:proplist()) ->
     {ok, update_hub_response(), tuple()} |
     {error, any()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_hub_errors(), tuple()}.
 update_hub(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHub">>, Input, Options).
@@ -17940,8 +18545,7 @@ update_hub(Client, Input, Options)
 -spec update_image(map(), update_image_request()) ->
     {ok, update_image_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_image_errors(), tuple()}.
 update_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image(Client, Input, []).
@@ -17949,8 +18553,7 @@ update_image(Client, Input)
 -spec update_image(map(), update_image_request(), proplists:proplist()) ->
     {ok, update_image_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_image_errors(), tuple()}.
 update_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImage">>, Input, Options).
@@ -17959,8 +18562,7 @@ update_image(Client, Input, Options)
 -spec update_image_version(map(), update_image_version_request()) ->
     {ok, update_image_version_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_image_version_errors(), tuple()}.
 update_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image_version(Client, Input, []).
@@ -17968,8 +18570,7 @@ update_image_version(Client, Input)
 -spec update_image_version(map(), update_image_version_request(), proplists:proplist()) ->
     {ok, update_image_version_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_image_version_errors(), tuple()}.
 update_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImageVersion">>, Input, Options).
@@ -17978,7 +18579,7 @@ update_image_version(Client, Input, Options)
 -spec update_inference_component(map(), update_inference_component_input()) ->
     {ok, update_inference_component_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_inference_component_errors(), tuple()}.
 update_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_component(Client, Input, []).
@@ -17986,7 +18587,7 @@ update_inference_component(Client, Input)
 -spec update_inference_component(map(), update_inference_component_input(), proplists:proplist()) ->
     {ok, update_inference_component_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_inference_component_errors(), tuple()}.
 update_inference_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceComponent">>, Input, Options).
@@ -17996,7 +18597,7 @@ update_inference_component(Client, Input, Options)
 -spec update_inference_component_runtime_config(map(), update_inference_component_runtime_config_input()) ->
     {ok, update_inference_component_runtime_config_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_inference_component_runtime_config_errors(), tuple()}.
 update_inference_component_runtime_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_component_runtime_config(Client, Input, []).
@@ -18004,7 +18605,7 @@ update_inference_component_runtime_config(Client, Input)
 -spec update_inference_component_runtime_config(map(), update_inference_component_runtime_config_input(), proplists:proplist()) ->
     {ok, update_inference_component_runtime_config_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_inference_component_runtime_config_errors(), tuple()}.
 update_inference_component_runtime_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceComponentRuntimeConfig">>, Input, Options).
@@ -18020,8 +18621,7 @@ update_inference_component_runtime_config(Client, Input, Options)
 -spec update_inference_experiment(map(), update_inference_experiment_request()) ->
     {ok, update_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_inference_experiment_errors(), tuple()}.
 update_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_experiment(Client, Input, []).
@@ -18029,8 +18629,7 @@ update_inference_experiment(Client, Input)
 -spec update_inference_experiment(map(), update_inference_experiment_request(), proplists:proplist()) ->
     {ok, update_inference_experiment_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_inference_experiment_errors(), tuple()}.
 update_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceExperiment">>, Input, Options).
@@ -18042,9 +18641,7 @@ update_inference_experiment(Client, Input, Options)
 -spec update_model_card(map(), update_model_card_request()) ->
     {ok, update_model_card_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_model_card_errors(), tuple()}.
 update_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_card(Client, Input, []).
@@ -18052,9 +18649,7 @@ update_model_card(Client, Input)
 -spec update_model_card(map(), update_model_card_request(), proplists:proplist()) ->
     {ok, update_model_card_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_model_card_errors(), tuple()}.
 update_model_card(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModelCard">>, Input, Options).
@@ -18063,7 +18658,7 @@ update_model_card(Client, Input, Options)
 -spec update_model_package(map(), update_model_package_input()) ->
     {ok, update_model_package_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, update_model_package_errors(), tuple()}.
 update_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_package(Client, Input, []).
@@ -18071,7 +18666,7 @@ update_model_package(Client, Input)
 -spec update_model_package(map(), update_model_package_input(), proplists:proplist()) ->
     {ok, update_model_package_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, update_model_package_errors(), tuple()}.
 update_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModelPackage">>, Input, Options).
@@ -18080,8 +18675,7 @@ update_model_package(Client, Input, Options)
 -spec update_monitoring_alert(map(), update_monitoring_alert_request()) ->
     {ok, update_monitoring_alert_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_monitoring_alert_errors(), tuple()}.
 update_monitoring_alert(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_monitoring_alert(Client, Input, []).
@@ -18089,8 +18683,7 @@ update_monitoring_alert(Client, Input)
 -spec update_monitoring_alert(map(), update_monitoring_alert_request(), proplists:proplist()) ->
     {ok, update_monitoring_alert_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_monitoring_alert_errors(), tuple()}.
 update_monitoring_alert(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMonitoringAlert">>, Input, Options).
@@ -18099,8 +18692,7 @@ update_monitoring_alert(Client, Input, Options)
 -spec update_monitoring_schedule(map(), update_monitoring_schedule_request()) ->
     {ok, update_monitoring_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_monitoring_schedule_errors(), tuple()}.
 update_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_monitoring_schedule(Client, Input, []).
@@ -18108,8 +18700,7 @@ update_monitoring_schedule(Client, Input)
 -spec update_monitoring_schedule(map(), update_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, update_monitoring_schedule_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_monitoring_schedule_errors(), tuple()}.
 update_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMonitoringSchedule">>, Input, Options).
@@ -18123,7 +18714,7 @@ update_monitoring_schedule(Client, Input, Options)
 -spec update_notebook_instance(map(), update_notebook_instance_input()) ->
     {ok, update_notebook_instance_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_notebook_instance_errors(), tuple()}.
 update_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook_instance(Client, Input, []).
@@ -18131,7 +18722,7 @@ update_notebook_instance(Client, Input)
 -spec update_notebook_instance(map(), update_notebook_instance_input(), proplists:proplist()) ->
     {ok, update_notebook_instance_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_notebook_instance_errors(), tuple()}.
 update_notebook_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotebookInstance">>, Input, Options).
@@ -18143,7 +18734,7 @@ update_notebook_instance(Client, Input, Options)
 -spec update_notebook_instance_lifecycle_config(map(), update_notebook_instance_lifecycle_config_input()) ->
     {ok, update_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_notebook_instance_lifecycle_config_errors(), tuple()}.
 update_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook_instance_lifecycle_config(Client, Input, []).
@@ -18151,7 +18742,7 @@ update_notebook_instance_lifecycle_config(Client, Input)
 -spec update_notebook_instance_lifecycle_config(map(), update_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
     {ok, update_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_notebook_instance_lifecycle_config_errors(), tuple()}.
 update_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotebookInstanceLifecycleConfig">>, Input, Options).
@@ -18160,8 +18751,7 @@ update_notebook_instance_lifecycle_config(Client, Input, Options)
 -spec update_pipeline(map(), update_pipeline_request()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline(Client, Input, []).
@@ -18169,8 +18759,7 @@ update_pipeline(Client, Input)
 -spec update_pipeline(map(), update_pipeline_request(), proplists:proplist()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePipeline">>, Input, Options).
@@ -18179,8 +18768,7 @@ update_pipeline(Client, Input, Options)
 -spec update_pipeline_execution(map(), update_pipeline_execution_request()) ->
     {ok, update_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_pipeline_execution_errors(), tuple()}.
 update_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline_execution(Client, Input, []).
@@ -18188,8 +18776,7 @@ update_pipeline_execution(Client, Input)
 -spec update_pipeline_execution(map(), update_pipeline_execution_request(), proplists:proplist()) ->
     {ok, update_pipeline_execution_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_pipeline_execution_errors(), tuple()}.
 update_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePipelineExecution">>, Input, Options).
@@ -18206,7 +18793,7 @@ update_pipeline_execution(Client, Input, Options)
 -spec update_project(map(), update_project_input()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
@@ -18214,7 +18801,7 @@ update_project(Client, Input)
 -spec update_project(map(), update_project_input(), proplists:proplist()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
@@ -18223,9 +18810,7 @@ update_project(Client, Input, Options)
 -spec update_space(map(), update_space_request()) ->
     {ok, update_space_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_space_errors(), tuple()}.
 update_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_space(Client, Input, []).
@@ -18233,9 +18818,7 @@ update_space(Client, Input)
 -spec update_space(map(), update_space_request(), proplists:proplist()) ->
     {ok, update_space_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_space_errors(), tuple()}.
 update_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSpace">>, Input, Options).
@@ -18246,8 +18829,7 @@ update_space(Client, Input, Options)
 -spec update_training_job(map(), update_training_job_request()) ->
     {ok, update_training_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_training_job_errors(), tuple()}.
 update_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_training_job(Client, Input, []).
@@ -18255,8 +18837,7 @@ update_training_job(Client, Input)
 -spec update_training_job(map(), update_training_job_request(), proplists:proplist()) ->
     {ok, update_training_job_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_training_job_errors(), tuple()}.
 update_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrainingJob">>, Input, Options).
@@ -18265,8 +18846,7 @@ update_training_job(Client, Input, Options)
 -spec update_trial(map(), update_trial_request()) ->
     {ok, update_trial_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_trial_errors(), tuple()}.
 update_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trial(Client, Input, []).
@@ -18274,8 +18854,7 @@ update_trial(Client, Input)
 -spec update_trial(map(), update_trial_request(), proplists:proplist()) ->
     {ok, update_trial_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_trial_errors(), tuple()}.
 update_trial(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrial">>, Input, Options).
@@ -18284,8 +18863,7 @@ update_trial(Client, Input, Options)
 -spec update_trial_component(map(), update_trial_component_request()) ->
     {ok, update_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_trial_component_errors(), tuple()}.
 update_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trial_component(Client, Input, []).
@@ -18293,8 +18871,7 @@ update_trial_component(Client, Input)
 -spec update_trial_component(map(), update_trial_component_request(), proplists:proplist()) ->
     {ok, update_trial_component_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_trial_component_errors(), tuple()}.
 update_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrialComponent">>, Input, Options).
@@ -18303,9 +18880,7 @@ update_trial_component(Client, Input, Options)
 -spec update_user_profile(map(), update_user_profile_request()) ->
     {ok, update_user_profile_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
@@ -18313,9 +18888,7 @@ update_user_profile(Client, Input)
 -spec update_user_profile(map(), update_user_profile_request(), proplists:proplist()) ->
     {ok, update_user_profile_response(), tuple()} |
     {error, any()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, resource_not_found(), tuple()}.
+    {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserProfile">>, Input, Options).
@@ -18367,7 +18940,7 @@ update_user_profile(Client, Input, Options)
 -spec update_workforce(map(), update_workforce_request()) ->
     {ok, update_workforce_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, update_workforce_errors(), tuple()}.
 update_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workforce(Client, Input, []).
@@ -18375,7 +18948,7 @@ update_workforce(Client, Input)
 -spec update_workforce(map(), update_workforce_request(), proplists:proplist()) ->
     {ok, update_workforce_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()}.
+    {error, update_workforce_errors(), tuple()}.
 update_workforce(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkforce">>, Input, Options).
@@ -18385,7 +18958,7 @@ update_workforce(Client, Input, Options)
 -spec update_workteam(map(), update_workteam_request()) ->
     {ok, update_workteam_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_workteam_errors(), tuple()}.
 update_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workteam(Client, Input, []).
@@ -18393,7 +18966,7 @@ update_workteam(Client, Input)
 -spec update_workteam(map(), update_workteam_request(), proplists:proplist()) ->
     {ok, update_workteam_response(), tuple()} |
     {error, any()} |
-    {error, resource_limit_exceeded(), tuple()}.
+    {error, update_workteam_errors(), tuple()}.
 update_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkteam">>, Input, Options).

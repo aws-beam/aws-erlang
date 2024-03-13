@@ -123,15 +123,18 @@
 %% }
 -type evaluation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_experiments_response() :: #{
 %%   <<"experiments">> => list(experiment()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_experiments_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_experiment_response() :: #{}
 -type delete_experiment_response() :: #{}.
+
 
 %% Example:
 %% treatment_config() :: #{
@@ -142,6 +145,7 @@
 %% }
 -type treatment_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% launch_group() :: #{
 %%   <<"description">> => string(),
@@ -150,11 +154,13 @@
 %% }
 -type launch_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_launches_response() :: #{
@@ -162,6 +168,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_launches_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_feature_request() :: #{
@@ -175,11 +182,13 @@
 %% }
 -type create_feature_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_feature_response() :: #{
 %%   <<"feature">> => feature()
 %% }
 -type create_feature_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_project_data_delivery_response() :: #{
@@ -187,11 +196,13 @@
 %% }
 -type update_project_data_delivery_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_experiment_response() :: #{
 %%   <<"experiment">> => experiment()
 %% }
 -type get_experiment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% test_segment_pattern_request() :: #{
@@ -199,6 +210,7 @@
 %%   <<"payload">> := string()
 %% }
 -type test_segment_pattern_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% feature() :: #{
@@ -219,6 +231,7 @@
 %% }
 -type feature() :: #{binary() => any()}.
 
+
 %% Example:
 %% online_ab_definition() :: #{
 %%   <<"controlTreatmentName">> => string(),
@@ -226,11 +239,13 @@
 %% }
 -type online_ab_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% scheduled_splits_launch_definition() :: #{
 %%   <<"steps">> => list(scheduled_split()())
 %% }
 -type scheduled_splits_launch_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_summary() :: #{
@@ -248,18 +263,22 @@
 %%   <<"tags">> => map()
 %% }
 -type project_summary() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% get_launch_response() :: #{
 %%   <<"launch">> => launch()
 %% }
 -type get_launch_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_segment_request() :: #{}
 -type get_segment_request() :: #{}.
+
 
 %% Example:
 %% put_project_events_response() :: #{
@@ -268,6 +287,7 @@
 %% }
 -type put_project_events_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% variation_config() :: #{
 %%   <<"name">> => string(),
@@ -275,14 +295,17 @@
 %% }
 -type variation_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_segment_pattern_response() :: #{
 %%   <<"match">> := [boolean()]
 %% }
 -type test_segment_pattern_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_project_request() :: #{}
 -type get_project_request() :: #{}.
+
 
 %% Example:
 %% list_segment_references_response() :: #{
@@ -291,11 +314,13 @@
 %% }
 -type list_segment_references_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_watch_logs_destination() :: #{
 %%   <<"logGroup">> => string()
 %% }
 -type cloud_watch_logs_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_project_events_result_entry() :: #{
@@ -305,12 +330,14 @@
 %% }
 -type put_project_events_result_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_features_response() :: #{
 %%   <<"features">> => list(feature_summary()()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_features_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_definition_config() :: #{
@@ -322,11 +349,13 @@
 %% }
 -type metric_definition_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_experiment_response() :: #{
 %%   <<"experiment">> := experiment()
 %% }
 -type create_experiment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% segment_override() :: #{
@@ -336,6 +365,7 @@
 %% }
 -type segment_override() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_launches_request() :: #{
 %%   <<"maxResults">> => integer(),
@@ -343,9 +373,11 @@
 %%   <<"status">> => string()
 %% }
 -type list_launches_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_launch_response() :: #{}
 -type delete_launch_response() :: #{}.
+
 
 %% Example:
 %% list_features_request() :: #{
@@ -353,6 +385,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_features_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_definition() :: #{
@@ -363,6 +396,7 @@
 %%   <<"valueKey">> => string()
 %% }
 -type metric_definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_launch_request() :: #{
@@ -376,12 +410,14 @@
 %% }
 -type create_launch_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_project_data_delivery_request() :: #{
 %%   <<"cloudWatchLogs">> => cloud_watch_logs_destination_config(),
 %%   <<"s3Destination">> => s3_destination_config()
 %% }
 -type update_project_data_delivery_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% variation() :: #{
@@ -390,17 +426,20 @@
 %% }
 -type variation() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_project_response() :: #{
 %%   <<"project">> := project()
 %% }
 -type update_project_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluate_feature_response() :: #{
@@ -410,6 +449,7 @@
 %%   <<"variation">> => [string()]
 %% }
 -type evaluate_feature_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_feature_request() :: #{
@@ -421,6 +461,7 @@
 %%   <<"removeVariations">> => list(string()())
 %% }
 -type update_feature_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% segment() :: #{
@@ -436,11 +477,13 @@
 %% }
 -type segment() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_project_events_request() :: #{
 %%   <<"events">> := list(event()())
 %% }
 -type put_project_events_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_data_delivery_config() :: #{
@@ -449,11 +492,13 @@
 %% }
 -type project_data_delivery_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_segment_response() :: #{
 %%   <<"segment">> := segment()
 %% }
 -type create_segment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_app_config_resource() :: #{
@@ -463,6 +508,7 @@
 %% }
 -type project_app_config_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_segments_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -470,12 +516,14 @@
 %% }
 -type list_segments_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% evaluate_feature_request() :: #{
 %%   <<"entityId">> := string(),
 %%   <<"evaluationContext">> => string()
 %% }
 -type evaluate_feature_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% scheduled_split_config() :: #{
@@ -485,11 +533,13 @@
 %% }
 -type scheduled_split_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_project_response() :: #{
 %%   <<"project">> := project()
 %% }
 -type create_project_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -499,6 +549,7 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
@@ -506,12 +557,15 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_experiment_request() :: #{}
 -type delete_experiment_request() :: #{}.
+
 %% Example:
 %% get_experiment_request() :: #{}
 -type get_experiment_request() :: #{}.
+
 
 %% Example:
 %% project() :: #{
@@ -532,6 +586,7 @@
 %% }
 -type project() :: #{binary() => any()}.
 
+
 %% Example:
 %% launch_group_config() :: #{
 %%   <<"description">> => string(),
@@ -541,11 +596,13 @@
 %% }
 -type launch_group_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_monitor() :: #{
 %%   <<"metricDefinition">> => metric_definition()
 %% }
 -type metric_monitor() :: #{binary() => any()}.
+
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -557,11 +614,13 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_feature_response() :: #{
 %%   <<"feature">> := feature()
 %% }
 -type update_feature_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_goal_config() :: #{
@@ -570,6 +629,7 @@
 %% }
 -type metric_goal_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_projects_response() :: #{
 %%   <<"nextToken">> => string(),
@@ -577,17 +637,20 @@
 %% }
 -type list_projects_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_project_response() :: #{
 %%   <<"project">> := project()
 %% }
 -type get_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% feature_summary() :: #{
@@ -604,6 +667,7 @@
 %% }
 -type feature_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
@@ -611,11 +675,13 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment_report() :: #{
@@ -626,17 +692,20 @@
 %% }
 -type experiment_report() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_evaluate_feature_response() :: #{
 %%   <<"results">> => list(evaluation_result()())
 %% }
 -type batch_evaluate_feature_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_segment_response() :: #{
 %%   <<"segment">> := segment()
 %% }
 -type get_segment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% ref_resource() :: #{
@@ -650,11 +719,13 @@
 %% }
 -type ref_resource() :: #{binary() => any()}.
 
+
 %% Example:
 %% scheduled_splits_launch_config() :: #{
 %%   <<"steps">> => list(scheduled_split_config()())
 %% }
 -type scheduled_splits_launch_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_segment_request() :: #{
@@ -665,11 +736,13 @@
 %% }
 -type create_segment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_watch_logs_destination_config() :: #{
 %%   <<"logGroup">> => string()
 %% }
 -type cloud_watch_logs_destination_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_destination() :: #{
@@ -677,6 +750,7 @@
 %%   <<"prefix">> => string()
 %% }
 -type s3_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_experiment_request() :: #{
@@ -691,6 +765,7 @@
 %% }
 -type update_experiment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_experiment_request() :: #{
 %%   <<"description">> => string(),
@@ -704,9 +779,11 @@
 %%   <<"treatments">> := list(treatment_config()())
 %% }
 -type create_experiment_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_segment_response() :: #{}
 -type delete_segment_response() :: #{}.
+
 
 %% Example:
 %% experiment_results_data() :: #{
@@ -717,11 +794,13 @@
 %% }
 -type experiment_results_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_schedule() :: #{
 %%   <<"analysisCompleteTime">> => [non_neg_integer()]
 %% }
 -type experiment_schedule() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_rule() :: #{
@@ -730,12 +809,14 @@
 %% }
 -type evaluation_rule() :: #{binary() => any()}.
 
+
 %% Example:
 %% experiment_execution() :: #{
 %%   <<"endedTime">> => [non_neg_integer()],
 %%   <<"startedTime">> => [non_neg_integer()]
 %% }
 -type experiment_execution() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_experiment_request() :: #{
@@ -744,14 +825,17 @@
 %% }
 -type stop_experiment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_project_response() :: #{}
 -type delete_project_response() :: #{}.
+
 
 %% Example:
 %% update_project_request() :: #{
@@ -759,6 +843,7 @@
 %%   <<"description">> => string()
 %% }
 -type update_project_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% event() :: #{
@@ -768,12 +853,14 @@
 %% }
 -type event() :: #{binary() => any()}.
 
+
 %% Example:
 %% online_ab_config() :: #{
 %%   <<"controlTreatmentName">> => string(),
 %%   <<"treatmentWeights">> => map()
 %% }
 -type online_ab_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% treatment() :: #{
@@ -783,11 +870,13 @@
 %% }
 -type treatment() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_experiment_response() :: #{
 %%   <<"startedTime">> => [non_neg_integer()]
 %% }
 -type start_experiment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_launch_response() :: #{
@@ -795,11 +884,13 @@
 %% }
 -type update_launch_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_data_delivery() :: #{
@@ -807,9 +898,11 @@
 %%   <<"s3Destination">> => s3_destination()
 %% }
 -type project_data_delivery() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -818,15 +911,18 @@
 %%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% batch_evaluate_feature_request() :: #{
 %%   <<"requests">> := list(evaluation_request()())
 %% }
 -type batch_evaluate_feature_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_experiments_request() :: #{
@@ -836,6 +932,7 @@
 %% }
 -type list_experiments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
@@ -843,6 +940,7 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_project_request() :: #{
@@ -854,11 +952,13 @@
 %% }
 -type create_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_experiment_request() :: #{
 %%   <<"analysisCompleteTime">> := [non_neg_integer()]
 %% }
 -type start_experiment_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_projects_request() :: #{
@@ -867,12 +967,14 @@
 %% }
 -type list_projects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_segments_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_segments_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_segment_references_request() :: #{
@@ -882,6 +984,7 @@
 %% }
 -type list_segment_references_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% metric_goal() :: #{
 %%   <<"desiredChange">> => string(),
@@ -889,15 +992,18 @@
 %% }
 -type metric_goal() :: #{binary() => any()}.
 
+
 %% Example:
 %% launch_execution() :: #{
 %%   <<"endedTime">> => [non_neg_integer()],
 %%   <<"startedTime">> => [non_neg_integer()]
 %% }
 -type launch_execution() :: #{binary() => any()}.
+
 %% Example:
 %% delete_segment_request() :: #{}
 -type delete_segment_request() :: #{}.
+
 
 %% Example:
 %% metric_monitor_config() :: #{
@@ -905,12 +1011,14 @@
 %% }
 -type metric_monitor_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% project_app_config_resource_config() :: #{
 %%   <<"applicationId">> => string(),
 %%   <<"environmentId">> => string()
 %% }
 -type project_app_config_resource_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% evaluation_result() :: #{
@@ -924,11 +1032,13 @@
 %% }
 -type evaluation_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% stop_experiment_response() :: #{
 %%   <<"endedTime">> => [non_neg_integer()]
 %% }
 -type stop_experiment_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_launch_request() :: #{
@@ -936,9 +1046,11 @@
 %%   <<"reason">> => string()
 %% }
 -type stop_launch_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_feature_response() :: #{}
 -type delete_feature_response() :: #{}.
+
 
 %% Example:
 %% start_launch_response() :: #{
@@ -946,14 +1058,17 @@
 %% }
 -type start_launch_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_feature_response() :: #{
 %%   <<"feature">> := feature()
 %% }
 -type get_feature_response() :: #{binary() => any()}.
+
 %% Example:
 %% start_launch_request() :: #{}
 -type start_launch_request() :: #{}.
+
 
 %% Example:
 %% launch() :: #{
@@ -975,6 +1090,7 @@
 %% }
 -type launch() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_experiment_results_response() :: #{
 %%   <<"details">> => [string()],
@@ -984,6 +1100,7 @@
 %% }
 -type get_experiment_results_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% scheduled_split() :: #{
 %%   <<"groupWeights">> => map(),
@@ -991,6 +1108,7 @@
 %%   <<"startTime">> => [non_neg_integer()]
 %% }
 -type scheduled_split() :: #{binary() => any()}.
+
 
 %% Example:
 %% experiment() :: #{
@@ -1014,9 +1132,11 @@
 %%   <<"type">> => string()
 %% }
 -type experiment() :: #{binary() => any()}.
+
 %% Example:
 %% delete_project_request() :: #{}
 -type delete_project_request() :: #{}.
+
 
 %% Example:
 %% stop_launch_response() :: #{
@@ -1024,14 +1144,17 @@
 %% }
 -type stop_launch_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_experiment_response() :: #{
 %%   <<"experiment">> := experiment()
 %% }
 -type update_experiment_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_launch_request() :: #{}
 -type get_launch_request() :: #{}.
+
 
 %% Example:
 %% s3_destination_config() :: #{
@@ -1039,6 +1162,7 @@
 %%   <<"prefix">> => string()
 %% }
 -type s3_destination_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_experiment_results_request() :: #{
@@ -1052,21 +1176,26 @@
 %%   <<"treatmentNames">> := list(string()())
 %% }
 -type get_experiment_results_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_feature_request() :: #{}
 -type delete_feature_request() :: #{}.
+
 %% Example:
 %% delete_launch_request() :: #{}
 -type delete_launch_request() :: #{}.
+
 %% Example:
 %% get_feature_request() :: #{}
 -type get_feature_request() :: #{}.
+
 
 %% Example:
 %% create_launch_response() :: #{
 %%   <<"launch">> := launch()
 %% }
 -type create_launch_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_launch_request() :: #{
@@ -1077,6 +1206,245 @@
 %%   <<"scheduledSplitsConfig">> => scheduled_splits_launch_config()
 %% }
 -type update_launch_request() :: #{binary() => any()}.
+
+-type batch_evaluate_feature_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type create_experiment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_feature_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_launch_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_project_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_segment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type delete_experiment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_feature_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_launch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_segment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type evaluate_feature_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_experiment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_experiment_results_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type get_feature_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_launch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_project_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_segment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_experiments_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_features_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_launches_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_projects_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_segment_references_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type list_segments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_project_events_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type start_experiment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_launch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_experiment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_launch_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type test_segment_pattern_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_experiment_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_feature_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_launch_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_project_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_project_data_delivery_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1116,20 +1484,14 @@
 -spec batch_evaluate_feature(map(), binary() | list(), batch_evaluate_feature_request()) ->
     {ok, batch_evaluate_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_evaluate_feature_errors(), tuple()}.
 batch_evaluate_feature(Client, Project, Input) ->
     batch_evaluate_feature(Client, Project, Input, []).
 
 -spec batch_evaluate_feature(map(), binary() | list(), batch_evaluate_feature_request(), proplists:proplist()) ->
     {ok, batch_evaluate_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_evaluate_feature_errors(), tuple()}.
 batch_evaluate_feature(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/evaluations"],
@@ -1175,22 +1537,14 @@ batch_evaluate_feature(Client, Project, Input0, Options0) ->
 -spec create_experiment(map(), binary() | list(), create_experiment_request()) ->
     {ok, create_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_experiment_errors(), tuple()}.
 create_experiment(Client, Project, Input) ->
     create_experiment(Client, Project, Input, []).
 
 -spec create_experiment(map(), binary() | list(), create_experiment_request(), proplists:proplist()) ->
     {ok, create_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_experiment_errors(), tuple()}.
 create_experiment(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments"],
@@ -1227,22 +1581,14 @@ create_experiment(Client, Project, Input0, Options0) ->
 -spec create_feature(map(), binary() | list(), create_feature_request()) ->
     {ok, create_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_feature_errors(), tuple()}.
 create_feature(Client, Project, Input) ->
     create_feature(Client, Project, Input, []).
 
 -spec create_feature(map(), binary() | list(), create_feature_request(), proplists:proplist()) ->
     {ok, create_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_feature_errors(), tuple()}.
 create_feature(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/features"],
@@ -1285,22 +1631,14 @@ create_feature(Client, Project, Input0, Options0) ->
 -spec create_launch(map(), binary() | list(), create_launch_request()) ->
     {ok, create_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_launch_errors(), tuple()}.
 create_launch(Client, Project, Input) ->
     create_launch(Client, Project, Input, []).
 
 -spec create_launch(map(), binary() | list(), create_launch_request(), proplists:proplist()) ->
     {ok, create_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_launch_errors(), tuple()}.
 create_launch(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches"],
@@ -1334,20 +1672,14 @@ create_launch(Client, Project, Input0, Options0) ->
 -spec create_project(map(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
 -spec create_project(map(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_project_errors(), tuple()}.
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
@@ -1399,20 +1731,14 @@ create_project(Client, Input0, Options0) ->
 -spec create_segment(map(), create_segment_request()) ->
     {ok, create_segment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_segment_errors(), tuple()}.
 create_segment(Client, Input) ->
     create_segment(Client, Input, []).
 
 -spec create_segment(map(), create_segment_request(), proplists:proplist()) ->
     {ok, create_segment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_segment_errors(), tuple()}.
 create_segment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/segments"],
@@ -1444,24 +1770,14 @@ create_segment(Client, Input0, Options0) ->
 -spec delete_experiment(map(), binary() | list(), binary() | list(), delete_experiment_request()) ->
     {ok, delete_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_experiment_errors(), tuple()}.
 delete_experiment(Client, Experiment, Project, Input) ->
     delete_experiment(Client, Experiment, Project, Input, []).
 
 -spec delete_experiment(map(), binary() | list(), binary() | list(), delete_experiment_request(), proplists:proplist()) ->
     {ok, delete_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_experiment_errors(), tuple()}.
 delete_experiment(Client, Experiment, Project, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), ""],
@@ -1488,22 +1804,14 @@ delete_experiment(Client, Experiment, Project, Input0, Options0) ->
 -spec delete_feature(map(), binary() | list(), binary() | list(), delete_feature_request()) ->
     {ok, delete_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_feature_errors(), tuple()}.
 delete_feature(Client, Feature, Project, Input) ->
     delete_feature(Client, Feature, Project, Input, []).
 
 -spec delete_feature(map(), binary() | list(), binary() | list(), delete_feature_request(), proplists:proplist()) ->
     {ok, delete_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_feature_errors(), tuple()}.
 delete_feature(Client, Feature, Project, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(Project), "/features/", aws_util:encode_uri(Feature), ""],
@@ -1535,22 +1843,14 @@ delete_feature(Client, Feature, Project, Input0, Options0) ->
 -spec delete_launch(map(), binary() | list(), binary() | list(), delete_launch_request()) ->
     {ok, delete_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_launch_errors(), tuple()}.
 delete_launch(Client, Launch, Project, Input) ->
     delete_launch(Client, Launch, Project, Input, []).
 
 -spec delete_launch(map(), binary() | list(), binary() | list(), delete_launch_request(), proplists:proplist()) ->
     {ok, delete_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_launch_errors(), tuple()}.
 delete_launch(Client, Launch, Project, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), ""],
@@ -1582,22 +1882,14 @@ delete_launch(Client, Launch, Project, Input0, Options0) ->
 -spec delete_project(map(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Project, Input) ->
     delete_project(Client, Project, Input, []).
 
 -spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_project_errors(), tuple()}.
 delete_project(Client, Project, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(Project), ""],
@@ -1628,22 +1920,14 @@ delete_project(Client, Project, Input0, Options0) ->
 -spec delete_segment(map(), binary() | list(), delete_segment_request()) ->
     {ok, delete_segment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_segment_errors(), tuple()}.
 delete_segment(Client, Segment, Input) ->
     delete_segment(Client, Segment, Input, []).
 
 -spec delete_segment(map(), binary() | list(), delete_segment_request(), proplists:proplist()) ->
     {ok, delete_segment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_segment_errors(), tuple()}.
 delete_segment(Client, Segment, Input0, Options0) ->
     Method = delete,
     Path = ["/segments/", aws_util:encode_uri(Segment), ""],
@@ -1718,20 +2002,14 @@ delete_segment(Client, Segment, Input0, Options0) ->
 -spec evaluate_feature(map(), binary() | list(), binary() | list(), evaluate_feature_request()) ->
     {ok, evaluate_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, evaluate_feature_errors(), tuple()}.
 evaluate_feature(Client, Feature, Project, Input) ->
     evaluate_feature(Client, Feature, Project, Input, []).
 
 -spec evaluate_feature(map(), binary() | list(), binary() | list(), evaluate_feature_request(), proplists:proplist()) ->
     {ok, evaluate_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, evaluate_feature_errors(), tuple()}.
 evaluate_feature(Client, Feature, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/evaluations/", aws_util:encode_uri(Feature), ""],
@@ -1763,10 +2041,7 @@ evaluate_feature(Client, Feature, Project, Input0, Options0) ->
 -spec get_experiment(map(), binary() | list(), binary() | list()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_errors(), tuple()}.
 get_experiment(Client, Experiment, Project)
   when is_map(Client) ->
     get_experiment(Client, Experiment, Project, #{}, #{}).
@@ -1774,10 +2049,7 @@ get_experiment(Client, Experiment, Project)
 -spec get_experiment(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_errors(), tuple()}.
 get_experiment(Client, Experiment, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_experiment(Client, Experiment, Project, QueryMap, HeadersMap, []).
@@ -1785,10 +2057,7 @@ get_experiment(Client, Experiment, Project, QueryMap, HeadersMap)
 -spec get_experiment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_errors(), tuple()}.
 get_experiment(Client, Experiment, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), ""],
@@ -1823,22 +2092,14 @@ get_experiment(Client, Experiment, Project, QueryMap, HeadersMap, Options0)
 -spec get_experiment_results(map(), binary() | list(), binary() | list(), get_experiment_results_request()) ->
     {ok, get_experiment_results_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_results_errors(), tuple()}.
 get_experiment_results(Client, Experiment, Project, Input) ->
     get_experiment_results(Client, Experiment, Project, Input, []).
 
 -spec get_experiment_results(map(), binary() | list(), binary() | list(), get_experiment_results_request(), proplists:proplist()) ->
     {ok, get_experiment_results_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_experiment_results_errors(), tuple()}.
 get_experiment_results(Client, Experiment, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), "/results"],
@@ -1869,10 +2130,7 @@ get_experiment_results(Client, Experiment, Project, Input0, Options0) ->
 -spec get_feature(map(), binary() | list(), binary() | list()) ->
     {ok, get_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_feature_errors(), tuple()}.
 get_feature(Client, Feature, Project)
   when is_map(Client) ->
     get_feature(Client, Feature, Project, #{}, #{}).
@@ -1880,10 +2138,7 @@ get_feature(Client, Feature, Project)
 -spec get_feature(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_feature_errors(), tuple()}.
 get_feature(Client, Feature, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_feature(Client, Feature, Project, QueryMap, HeadersMap, []).
@@ -1891,10 +2146,7 @@ get_feature(Client, Feature, Project, QueryMap, HeadersMap)
 -spec get_feature(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_feature_errors(), tuple()}.
 get_feature(Client, Feature, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/features/", aws_util:encode_uri(Feature), ""],
@@ -1920,10 +2172,7 @@ get_feature(Client, Feature, Project, QueryMap, HeadersMap, Options0)
 -spec get_launch(map(), binary() | list(), binary() | list()) ->
     {ok, get_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_errors(), tuple()}.
 get_launch(Client, Launch, Project)
   when is_map(Client) ->
     get_launch(Client, Launch, Project, #{}, #{}).
@@ -1931,10 +2180,7 @@ get_launch(Client, Launch, Project)
 -spec get_launch(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_errors(), tuple()}.
 get_launch(Client, Launch, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch(Client, Launch, Project, QueryMap, HeadersMap, []).
@@ -1942,10 +2188,7 @@ get_launch(Client, Launch, Project, QueryMap, HeadersMap)
 -spec get_launch(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_launch_errors(), tuple()}.
 get_launch(Client, Launch, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), ""],
@@ -1971,10 +2214,7 @@ get_launch(Client, Launch, Project, QueryMap, HeadersMap, Options0)
 -spec get_project(map(), binary() | list()) ->
     {ok, get_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_project_errors(), tuple()}.
 get_project(Client, Project)
   when is_map(Client) ->
     get_project(Client, Project, #{}, #{}).
@@ -1982,10 +2222,7 @@ get_project(Client, Project)
 -spec get_project(map(), binary() | list(), map(), map()) ->
     {ok, get_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_project_errors(), tuple()}.
 get_project(Client, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_project(Client, Project, QueryMap, HeadersMap, []).
@@ -1993,10 +2230,7 @@ get_project(Client, Project, QueryMap, HeadersMap)
 -spec get_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_project_errors(), tuple()}.
 get_project(Client, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), ""],
@@ -2020,10 +2254,7 @@ get_project(Client, Project, QueryMap, HeadersMap, Options0)
 -spec get_segment(map(), binary() | list()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_segment_errors(), tuple()}.
 get_segment(Client, Segment)
   when is_map(Client) ->
     get_segment(Client, Segment, #{}, #{}).
@@ -2031,10 +2262,7 @@ get_segment(Client, Segment)
 -spec get_segment(map(), binary() | list(), map(), map()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_segment_errors(), tuple()}.
 get_segment(Client, Segment, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment(Client, Segment, QueryMap, HeadersMap, []).
@@ -2042,10 +2270,7 @@ get_segment(Client, Segment, QueryMap, HeadersMap)
 -spec get_segment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_segment_errors(), tuple()}.
 get_segment(Client, Segment, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/segments/", aws_util:encode_uri(Segment), ""],
@@ -2067,9 +2292,7 @@ get_segment(Client, Segment, QueryMap, HeadersMap, Options0)
 -spec list_experiments(map(), binary() | list()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiments_errors(), tuple()}.
 list_experiments(Client, Project)
   when is_map(Client) ->
     list_experiments(Client, Project, #{}, #{}).
@@ -2077,9 +2300,7 @@ list_experiments(Client, Project)
 -spec list_experiments(map(), binary() | list(), map(), map()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiments_errors(), tuple()}.
 list_experiments(Client, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiments(Client, Project, QueryMap, HeadersMap, []).
@@ -2087,9 +2308,7 @@ list_experiments(Client, Project, QueryMap, HeadersMap)
 -spec list_experiments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_experiments_errors(), tuple()}.
 list_experiments(Client, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments"],
@@ -2117,10 +2336,7 @@ list_experiments(Client, Project, QueryMap, HeadersMap, Options0)
 -spec list_features(map(), binary() | list()) ->
     {ok, list_features_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_features_errors(), tuple()}.
 list_features(Client, Project)
   when is_map(Client) ->
     list_features(Client, Project, #{}, #{}).
@@ -2128,10 +2344,7 @@ list_features(Client, Project)
 -spec list_features(map(), binary() | list(), map(), map()) ->
     {ok, list_features_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_features_errors(), tuple()}.
 list_features(Client, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_features(Client, Project, QueryMap, HeadersMap, []).
@@ -2139,10 +2352,7 @@ list_features(Client, Project, QueryMap, HeadersMap)
 -spec list_features(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_features_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_features_errors(), tuple()}.
 list_features(Client, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/features"],
@@ -2169,9 +2379,7 @@ list_features(Client, Project, QueryMap, HeadersMap, Options0)
 -spec list_launches(map(), binary() | list()) ->
     {ok, list_launches_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_launches_errors(), tuple()}.
 list_launches(Client, Project)
   when is_map(Client) ->
     list_launches(Client, Project, #{}, #{}).
@@ -2179,9 +2387,7 @@ list_launches(Client, Project)
 -spec list_launches(map(), binary() | list(), map(), map()) ->
     {ok, list_launches_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_launches_errors(), tuple()}.
 list_launches(Client, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_launches(Client, Project, QueryMap, HeadersMap, []).
@@ -2189,9 +2395,7 @@ list_launches(Client, Project, QueryMap, HeadersMap)
 -spec list_launches(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_launches_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_launches_errors(), tuple()}.
 list_launches(Client, Project, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches"],
@@ -2220,9 +2424,7 @@ list_launches(Client, Project, QueryMap, HeadersMap, Options0)
 -spec list_projects(map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
@@ -2230,9 +2432,7 @@ list_projects(Client)
 -spec list_projects(map(), map(), map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
@@ -2240,9 +2440,7 @@ list_projects(Client, QueryMap, HeadersMap)
 -spec list_projects(map(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_projects_errors(), tuple()}.
 list_projects(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
@@ -2269,10 +2467,7 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
 -spec list_segment_references(map(), binary() | list(), binary() | list()) ->
     {ok, list_segment_references_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_segment_references_errors(), tuple()}.
 list_segment_references(Client, Segment, Type)
   when is_map(Client) ->
     list_segment_references(Client, Segment, Type, #{}, #{}).
@@ -2280,10 +2475,7 @@ list_segment_references(Client, Segment, Type)
 -spec list_segment_references(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_segment_references_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_segment_references_errors(), tuple()}.
 list_segment_references(Client, Segment, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_segment_references(Client, Segment, Type, QueryMap, HeadersMap, []).
@@ -2291,10 +2483,7 @@ list_segment_references(Client, Segment, Type, QueryMap, HeadersMap)
 -spec list_segment_references(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_segment_references_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_segment_references_errors(), tuple()}.
 list_segment_references(Client, Segment, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/segments/", aws_util:encode_uri(Segment), "/references"],
@@ -2322,9 +2511,7 @@ list_segment_references(Client, Segment, Type, QueryMap, HeadersMap, Options0)
 -spec list_segments(map()) ->
     {ok, list_segments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_segments_errors(), tuple()}.
 list_segments(Client)
   when is_map(Client) ->
     list_segments(Client, #{}, #{}).
@@ -2332,9 +2519,7 @@ list_segments(Client)
 -spec list_segments(map(), map(), map()) ->
     {ok, list_segments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_segments_errors(), tuple()}.
 list_segments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_segments(Client, QueryMap, HeadersMap, []).
@@ -2342,9 +2527,7 @@ list_segments(Client, QueryMap, HeadersMap)
 -spec list_segments(map(), map(), map(), proplists:proplist()) ->
     {ok, list_segments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_segments_errors(), tuple()}.
 list_segments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/segments"],
@@ -2370,9 +2553,7 @@ list_segments(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -2380,9 +2561,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -2390,9 +2569,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2416,20 +2593,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_project_events(map(), binary() | list(), put_project_events_request()) ->
     {ok, put_project_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_project_events_errors(), tuple()}.
 put_project_events(Client, Project, Input) ->
     put_project_events(Client, Project, Input, []).
 
 -spec put_project_events(map(), binary() | list(), put_project_events_request(), proplists:proplist()) ->
     {ok, put_project_events_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_project_events_errors(), tuple()}.
 put_project_events(Client, Project, Input0, Options0) ->
     Method = post,
     Path = ["/events/projects/", aws_util:encode_uri(Project), ""],
@@ -2460,24 +2631,14 @@ put_project_events(Client, Project, Input0, Options0) ->
 -spec start_experiment(map(), binary() | list(), binary() | list(), start_experiment_request()) ->
     {ok, start_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_experiment_errors(), tuple()}.
 start_experiment(Client, Experiment, Project, Input) ->
     start_experiment(Client, Experiment, Project, Input, []).
 
 -spec start_experiment(map(), binary() | list(), binary() | list(), start_experiment_request(), proplists:proplist()) ->
     {ok, start_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_experiment_errors(), tuple()}.
 start_experiment(Client, Experiment, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), "/start"],
@@ -2508,24 +2669,14 @@ start_experiment(Client, Experiment, Project, Input0, Options0) ->
 -spec start_launch(map(), binary() | list(), binary() | list(), start_launch_request()) ->
     {ok, start_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_launch_errors(), tuple()}.
 start_launch(Client, Launch, Project, Input) ->
     start_launch(Client, Launch, Project, Input, []).
 
 -spec start_launch(map(), binary() | list(), binary() | list(), start_launch_request(), proplists:proplist()) ->
     {ok, start_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_launch_errors(), tuple()}.
 start_launch(Client, Launch, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), "/start"],
@@ -2555,24 +2706,14 @@ start_launch(Client, Launch, Project, Input0, Options0) ->
 -spec stop_experiment(map(), binary() | list(), binary() | list(), stop_experiment_request()) ->
     {ok, stop_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_experiment_errors(), tuple()}.
 stop_experiment(Client, Experiment, Project, Input) ->
     stop_experiment(Client, Experiment, Project, Input, []).
 
 -spec stop_experiment(map(), binary() | list(), binary() | list(), stop_experiment_request(), proplists:proplist()) ->
     {ok, stop_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_experiment_errors(), tuple()}.
 stop_experiment(Client, Experiment, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), "/cancel"],
@@ -2607,20 +2748,14 @@ stop_experiment(Client, Experiment, Project, Input0, Options0) ->
 -spec stop_launch(map(), binary() | list(), binary() | list(), stop_launch_request()) ->
     {ok, stop_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_launch_errors(), tuple()}.
 stop_launch(Client, Launch, Project, Input) ->
     stop_launch(Client, Launch, Project, Input, []).
 
 -spec stop_launch(map(), binary() | list(), binary() | list(), stop_launch_request(), proplists:proplist()) ->
     {ok, stop_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_launch_errors(), tuple()}.
 stop_launch(Client, Launch, Project, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), "/cancel"],
@@ -2672,18 +2807,14 @@ stop_launch(Client, Launch, Project, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2714,18 +2845,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec test_segment_pattern(map(), test_segment_pattern_request()) ->
     {ok, test_segment_pattern_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_segment_pattern_errors(), tuple()}.
 test_segment_pattern(Client, Input) ->
     test_segment_pattern(Client, Input, []).
 
 -spec test_segment_pattern(map(), test_segment_pattern_request(), proplists:proplist()) ->
     {ok, test_segment_pattern_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, test_segment_pattern_errors(), tuple()}.
 test_segment_pattern(Client, Input0, Options0) ->
     Method = post,
     Path = ["/test-segment-pattern"],
@@ -2752,18 +2879,14 @@ test_segment_pattern(Client, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -2796,20 +2919,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_experiment(map(), binary() | list(), binary() | list(), update_experiment_request()) ->
     {ok, update_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_experiment_errors(), tuple()}.
 update_experiment(Client, Experiment, Project, Input) ->
     update_experiment(Client, Experiment, Project, Input, []).
 
 -spec update_experiment(map(), binary() | list(), binary() | list(), update_experiment_request(), proplists:proplist()) ->
     {ok, update_experiment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_experiment_errors(), tuple()}.
 update_experiment(Client, Experiment, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), ""],
@@ -2841,22 +2958,14 @@ update_experiment(Client, Experiment, Project, Input0, Options0) ->
 -spec update_feature(map(), binary() | list(), binary() | list(), update_feature_request()) ->
     {ok, update_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_feature_errors(), tuple()}.
 update_feature(Client, Feature, Project, Input) ->
     update_feature(Client, Feature, Project, Input, []).
 
 -spec update_feature(map(), binary() | list(), binary() | list(), update_feature_request(), proplists:proplist()) ->
     {ok, update_feature_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_feature_errors(), tuple()}.
 update_feature(Client, Feature, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), "/features/", aws_util:encode_uri(Feature), ""],
@@ -2888,20 +2997,14 @@ update_feature(Client, Feature, Project, Input0, Options0) ->
 -spec update_launch(map(), binary() | list(), binary() | list(), update_launch_request()) ->
     {ok, update_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_errors(), tuple()}.
 update_launch(Client, Launch, Project, Input) ->
     update_launch(Client, Launch, Project, Input, []).
 
 -spec update_launch(map(), binary() | list(), binary() | list(), update_launch_request(), proplists:proplist()) ->
     {ok, update_launch_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_launch_errors(), tuple()}.
 update_launch(Client, Launch, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), ""],
@@ -2940,22 +3043,14 @@ update_launch(Client, Launch, Project, Input0, Options0) ->
 -spec update_project(map(), binary() | list(), update_project_request()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Project, Input) ->
     update_project(Client, Project, Input, []).
 
 -spec update_project(map(), binary() | list(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_project_errors(), tuple()}.
 update_project(Client, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), ""],
@@ -2992,22 +3087,14 @@ update_project(Client, Project, Input0, Options0) ->
 -spec update_project_data_delivery(map(), binary() | list(), update_project_data_delivery_request()) ->
     {ok, update_project_data_delivery_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_project_data_delivery_errors(), tuple()}.
 update_project_data_delivery(Client, Project, Input) ->
     update_project_data_delivery(Client, Project, Input, []).
 
 -spec update_project_data_delivery(map(), binary() | list(), update_project_data_delivery_request(), proplists:proplist()) ->
     {ok, update_project_data_delivery_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_project_data_delivery_errors(), tuple()}.
 update_project_data_delivery(Client, Project, Input0, Options0) ->
     Method = patch,
     Path = ["/projects/", aws_util:encode_uri(Project), "/data-delivery"],

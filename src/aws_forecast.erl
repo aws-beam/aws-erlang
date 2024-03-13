@@ -1659,6 +1659,316 @@
 %% }
 -type dataset_group_summary() :: #{binary() => any()}.
 
+-type create_auto_predictor_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_dataset_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
+
+-type create_dataset_group_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_dataset_import_job_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_explainability_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_explainability_export_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_forecast_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_forecast_export_job_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_monitor_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_predictor_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_predictor_backtest_export_job_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_what_if_analysis_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_what_if_forecast_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_what_if_forecast_export_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_dataset_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_dataset_group_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_dataset_import_job_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_explainability_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_explainability_export_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_forecast_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_forecast_export_job_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_monitor_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_predictor_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_predictor_backtest_export_job_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_resource_tree_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_what_if_analysis_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_what_if_forecast_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_what_if_forecast_export_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type describe_auto_predictor_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_dataset_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_dataset_group_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_dataset_import_job_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_explainability_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_explainability_export_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_forecast_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_forecast_export_job_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_monitor_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_predictor_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_predictor_backtest_export_job_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_what_if_analysis_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_what_if_forecast_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type describe_what_if_forecast_export_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type get_accuracy_metrics_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type list_dataset_groups_errors() ::
+    invalid_next_token_exception().
+
+-type list_dataset_import_jobs_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_datasets_errors() ::
+    invalid_next_token_exception().
+
+-type list_explainabilities_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_explainability_exports_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_forecast_export_jobs_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_forecasts_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_monitor_evaluations_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception().
+
+-type list_monitors_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_predictor_backtest_export_jobs_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_predictors_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type list_what_if_analyses_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_what_if_forecast_exports_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type list_what_if_forecasts_errors() ::
+    invalid_input_exception() | 
+    invalid_next_token_exception().
+
+-type resume_resource_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type stop_resource_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception().
+
+-type update_dataset_group_errors() ::
+    invalid_input_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
 
 %%====================================================================
 %% API
@@ -1706,11 +2016,7 @@
 -spec create_auto_predictor(map(), create_auto_predictor_request()) ->
     {ok, create_auto_predictor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_auto_predictor_errors(), tuple()}.
 create_auto_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_predictor(Client, Input, []).
@@ -1718,11 +2024,7 @@ create_auto_predictor(Client, Input)
 -spec create_auto_predictor(map(), create_auto_predictor_request(), proplists:proplist()) ->
     {ok, create_auto_predictor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_auto_predictor_errors(), tuple()}.
 create_auto_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoPredictor">>, Input, Options).
@@ -1776,9 +2078,7 @@ create_auto_predictor(Client, Input, Options)
 -spec create_dataset(map(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
@@ -1786,9 +2086,7 @@ create_dataset(Client, Input)
 -spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataset">>, Input, Options).
@@ -1819,11 +2117,7 @@ create_dataset(Client, Input, Options)
 -spec create_dataset_group(map(), create_dataset_group_request()) ->
     {ok, create_dataset_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_dataset_group_errors(), tuple()}.
 create_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_group(Client, Input, []).
@@ -1831,11 +2125,7 @@ create_dataset_group(Client, Input)
 -spec create_dataset_group(map(), create_dataset_group_request(), proplists:proplist()) ->
     {ok, create_dataset_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_dataset_group_errors(), tuple()}.
 create_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatasetGroup">>, Input, Options).
@@ -1882,11 +2172,7 @@ create_dataset_group(Client, Input, Options)
 -spec create_dataset_import_job(map(), create_dataset_import_job_request()) ->
     {ok, create_dataset_import_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_dataset_import_job_errors(), tuple()}.
 create_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_import_job(Client, Input, []).
@@ -1894,11 +2180,7 @@ create_dataset_import_job(Client, Input)
 -spec create_dataset_import_job(map(), create_dataset_import_job_request(), proplists:proplist()) ->
     {ok, create_dataset_import_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_dataset_import_job_errors(), tuple()}.
 create_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatasetImportJob">>, Input, Options).
@@ -1997,11 +2279,7 @@ create_dataset_import_job(Client, Input, Options)
 -spec create_explainability(map(), create_explainability_request()) ->
     {ok, create_explainability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_explainability_errors(), tuple()}.
 create_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_explainability(Client, Input, []).
@@ -2009,11 +2287,7 @@ create_explainability(Client, Input)
 -spec create_explainability(map(), create_explainability_request(), proplists:proplist()) ->
     {ok, create_explainability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_explainability_errors(), tuple()}.
 create_explainability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExplainability">>, Input, Options).
@@ -2035,11 +2309,7 @@ create_explainability(Client, Input, Options)
 -spec create_explainability_export(map(), create_explainability_export_request()) ->
     {ok, create_explainability_export_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_explainability_export_errors(), tuple()}.
 create_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_explainability_export(Client, Input, []).
@@ -2047,11 +2317,7 @@ create_explainability_export(Client, Input)
 -spec create_explainability_export(map(), create_explainability_export_request(), proplists:proplist()) ->
     {ok, create_explainability_export_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_explainability_export_errors(), tuple()}.
 create_explainability_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExplainabilityExport">>, Input, Options).
@@ -2095,11 +2361,7 @@ create_explainability_export(Client, Input, Options)
 -spec create_forecast(map(), create_forecast_request()) ->
     {ok, create_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_forecast_errors(), tuple()}.
 create_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_forecast(Client, Input, []).
@@ -2107,11 +2369,7 @@ create_forecast(Client, Input)
 -spec create_forecast(map(), create_forecast_request(), proplists:proplist()) ->
     {ok, create_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_forecast_errors(), tuple()}.
 create_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateForecast">>, Input, Options).
@@ -2144,11 +2402,7 @@ create_forecast(Client, Input, Options)
 -spec create_forecast_export_job(map(), create_forecast_export_job_request()) ->
     {ok, create_forecast_export_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_forecast_export_job_errors(), tuple()}.
 create_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_forecast_export_job(Client, Input, []).
@@ -2156,11 +2410,7 @@ create_forecast_export_job(Client, Input)
 -spec create_forecast_export_job(map(), create_forecast_export_job_request(), proplists:proplist()) ->
     {ok, create_forecast_export_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_forecast_export_job_errors(), tuple()}.
 create_forecast_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateForecastExportJob">>, Input, Options).
@@ -2174,11 +2424,7 @@ create_forecast_export_job(Client, Input, Options)
 -spec create_monitor(map(), create_monitor_request()) ->
     {ok, create_monitor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_monitor_errors(), tuple()}.
 create_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_monitor(Client, Input, []).
@@ -2186,11 +2432,7 @@ create_monitor(Client, Input)
 -spec create_monitor(map(), create_monitor_request(), proplists:proplist()) ->
     {ok, create_monitor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_monitor_errors(), tuple()}.
 create_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMonitor">>, Input, Options).
@@ -2269,11 +2511,7 @@ create_monitor(Client, Input, Options)
 -spec create_predictor(map(), create_predictor_request()) ->
     {ok, create_predictor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_predictor_errors(), tuple()}.
 create_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_predictor(Client, Input, []).
@@ -2281,11 +2519,7 @@ create_predictor(Client, Input)
 -spec create_predictor(map(), create_predictor_request(), proplists:proplist()) ->
     {ok, create_predictor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_predictor_errors(), tuple()}.
 create_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePredictor">>, Input, Options).
@@ -2315,11 +2549,7 @@ create_predictor(Client, Input, Options)
 -spec create_predictor_backtest_export_job(map(), create_predictor_backtest_export_job_request()) ->
     {ok, create_predictor_backtest_export_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_predictor_backtest_export_job_errors(), tuple()}.
 create_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_predictor_backtest_export_job(Client, Input, []).
@@ -2327,11 +2557,7 @@ create_predictor_backtest_export_job(Client, Input)
 -spec create_predictor_backtest_export_job(map(), create_predictor_backtest_export_job_request(), proplists:proplist()) ->
     {ok, create_predictor_backtest_export_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_predictor_backtest_export_job_errors(), tuple()}.
 create_predictor_backtest_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePredictorBacktestExportJob">>, Input, Options).
@@ -2373,11 +2599,7 @@ create_predictor_backtest_export_job(Client, Input, Options)
 -spec create_what_if_analysis(map(), create_what_if_analysis_request()) ->
     {ok, create_what_if_analysis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_what_if_analysis_errors(), tuple()}.
 create_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_analysis(Client, Input, []).
@@ -2385,11 +2607,7 @@ create_what_if_analysis(Client, Input)
 -spec create_what_if_analysis(map(), create_what_if_analysis_request(), proplists:proplist()) ->
     {ok, create_what_if_analysis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_what_if_analysis_errors(), tuple()}.
 create_what_if_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWhatIfAnalysis">>, Input, Options).
@@ -2403,11 +2621,7 @@ create_what_if_analysis(Client, Input, Options)
 -spec create_what_if_forecast(map(), create_what_if_forecast_request()) ->
     {ok, create_what_if_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_what_if_forecast_errors(), tuple()}.
 create_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_forecast(Client, Input, []).
@@ -2415,11 +2629,7 @@ create_what_if_forecast(Client, Input)
 -spec create_what_if_forecast(map(), create_what_if_forecast_request(), proplists:proplist()) ->
     {ok, create_what_if_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_what_if_forecast_errors(), tuple()}.
 create_what_if_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWhatIfForecast">>, Input, Options).
@@ -2453,11 +2663,7 @@ create_what_if_forecast(Client, Input, Options)
 -spec create_what_if_forecast_export(map(), create_what_if_forecast_export_request()) ->
     {ok, create_what_if_forecast_export_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_what_if_forecast_export_errors(), tuple()}.
 create_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_forecast_export(Client, Input, []).
@@ -2465,11 +2671,7 @@ create_what_if_forecast_export(Client, Input)
 -spec create_what_if_forecast_export(map(), create_what_if_forecast_export_request(), proplists:proplist()) ->
     {ok, create_what_if_forecast_export_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_what_if_forecast_export_errors(), tuple()}.
 create_what_if_forecast_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWhatIfForecastExport">>, Input, Options).
@@ -2495,9 +2697,7 @@ create_what_if_forecast_export(Client, Input, Options)
 -spec delete_dataset(map(), delete_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
@@ -2505,9 +2705,7 @@ delete_dataset(Client, Input)
 -spec delete_dataset(map(), delete_dataset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataset">>, Input, Options).
@@ -2527,9 +2725,7 @@ delete_dataset(Client, Input, Options)
 -spec delete_dataset_group(map(), delete_dataset_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_dataset_group_errors(), tuple()}.
 delete_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_group(Client, Input, []).
@@ -2537,9 +2733,7 @@ delete_dataset_group(Client, Input)
 -spec delete_dataset_group(map(), delete_dataset_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_dataset_group_errors(), tuple()}.
 delete_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatasetGroup">>, Input, Options).
@@ -2557,9 +2751,7 @@ delete_dataset_group(Client, Input, Options)
 -spec delete_dataset_import_job(map(), delete_dataset_import_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_dataset_import_job_errors(), tuple()}.
 delete_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_import_job(Client, Input, []).
@@ -2567,9 +2759,7 @@ delete_dataset_import_job(Client, Input)
 -spec delete_dataset_import_job(map(), delete_dataset_import_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_dataset_import_job_errors(), tuple()}.
 delete_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatasetImportJob">>, Input, Options).
@@ -2582,9 +2772,7 @@ delete_dataset_import_job(Client, Input, Options)
 -spec delete_explainability(map(), delete_explainability_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_explainability_errors(), tuple()}.
 delete_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_explainability(Client, Input, []).
@@ -2592,9 +2780,7 @@ delete_explainability(Client, Input)
 -spec delete_explainability(map(), delete_explainability_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_explainability_errors(), tuple()}.
 delete_explainability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExplainability">>, Input, Options).
@@ -2603,9 +2789,7 @@ delete_explainability(Client, Input, Options)
 -spec delete_explainability_export(map(), delete_explainability_export_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_explainability_export_errors(), tuple()}.
 delete_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_explainability_export(Client, Input, []).
@@ -2613,9 +2797,7 @@ delete_explainability_export(Client, Input)
 -spec delete_explainability_export(map(), delete_explainability_export_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_explainability_export_errors(), tuple()}.
 delete_explainability_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExplainabilityExport">>, Input, Options).
@@ -2633,9 +2815,7 @@ delete_explainability_export(Client, Input, Options)
 -spec delete_forecast(map(), delete_forecast_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_forecast_errors(), tuple()}.
 delete_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_forecast(Client, Input, []).
@@ -2643,9 +2823,7 @@ delete_forecast(Client, Input)
 -spec delete_forecast(map(), delete_forecast_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_forecast_errors(), tuple()}.
 delete_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteForecast">>, Input, Options).
@@ -2660,9 +2838,7 @@ delete_forecast(Client, Input, Options)
 -spec delete_forecast_export_job(map(), delete_forecast_export_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_forecast_export_job_errors(), tuple()}.
 delete_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_forecast_export_job(Client, Input, []).
@@ -2670,9 +2846,7 @@ delete_forecast_export_job(Client, Input)
 -spec delete_forecast_export_job(map(), delete_forecast_export_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_forecast_export_job_errors(), tuple()}.
 delete_forecast_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteForecastExportJob">>, Input, Options).
@@ -2684,9 +2858,7 @@ delete_forecast_export_job(Client, Input, Options)
 -spec delete_monitor(map(), delete_monitor_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_monitor_errors(), tuple()}.
 delete_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_monitor(Client, Input, []).
@@ -2694,9 +2866,7 @@ delete_monitor(Client, Input)
 -spec delete_monitor(map(), delete_monitor_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_monitor_errors(), tuple()}.
 delete_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMonitor">>, Input, Options).
@@ -2710,9 +2880,7 @@ delete_monitor(Client, Input, Options)
 -spec delete_predictor(map(), delete_predictor_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_predictor_errors(), tuple()}.
 delete_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_predictor(Client, Input, []).
@@ -2720,9 +2888,7 @@ delete_predictor(Client, Input)
 -spec delete_predictor(map(), delete_predictor_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_predictor_errors(), tuple()}.
 delete_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePredictor">>, Input, Options).
@@ -2731,9 +2897,7 @@ delete_predictor(Client, Input, Options)
 -spec delete_predictor_backtest_export_job(map(), delete_predictor_backtest_export_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_predictor_backtest_export_job_errors(), tuple()}.
 delete_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_predictor_backtest_export_job(Client, Input, []).
@@ -2741,9 +2905,7 @@ delete_predictor_backtest_export_job(Client, Input)
 -spec delete_predictor_backtest_export_job(map(), delete_predictor_backtest_export_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_predictor_backtest_export_job_errors(), tuple()}.
 delete_predictor_backtest_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePredictorBacktestExportJob">>, Input, Options).
@@ -2778,9 +2940,7 @@ delete_predictor_backtest_export_job(Client, Input, Options)
 -spec delete_resource_tree(map(), delete_resource_tree_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_tree_errors(), tuple()}.
 delete_resource_tree(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_tree(Client, Input, []).
@@ -2788,9 +2948,7 @@ delete_resource_tree(Client, Input)
 -spec delete_resource_tree(map(), delete_resource_tree_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_tree_errors(), tuple()}.
 delete_resource_tree(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceTree">>, Input, Options).
@@ -2808,9 +2966,7 @@ delete_resource_tree(Client, Input, Options)
 -spec delete_what_if_analysis(map(), delete_what_if_analysis_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_what_if_analysis_errors(), tuple()}.
 delete_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_what_if_analysis(Client, Input, []).
@@ -2818,9 +2974,7 @@ delete_what_if_analysis(Client, Input)
 -spec delete_what_if_analysis(map(), delete_what_if_analysis_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_what_if_analysis_errors(), tuple()}.
 delete_what_if_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWhatIfAnalysis">>, Input, Options).
@@ -2839,9 +2993,7 @@ delete_what_if_analysis(Client, Input, Options)
 -spec delete_what_if_forecast(map(), delete_what_if_forecast_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_what_if_forecast_errors(), tuple()}.
 delete_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_what_if_forecast(Client, Input, []).
@@ -2849,9 +3001,7 @@ delete_what_if_forecast(Client, Input)
 -spec delete_what_if_forecast(map(), delete_what_if_forecast_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_what_if_forecast_errors(), tuple()}.
 delete_what_if_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWhatIfForecast">>, Input, Options).
@@ -2866,9 +3016,7 @@ delete_what_if_forecast(Client, Input, Options)
 -spec delete_what_if_forecast_export(map(), delete_what_if_forecast_export_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_what_if_forecast_export_errors(), tuple()}.
 delete_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_what_if_forecast_export(Client, Input, []).
@@ -2876,9 +3024,7 @@ delete_what_if_forecast_export(Client, Input)
 -spec delete_what_if_forecast_export(map(), delete_what_if_forecast_export_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_what_if_forecast_export_errors(), tuple()}.
 delete_what_if_forecast_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWhatIfForecastExport">>, Input, Options).
@@ -2888,8 +3034,7 @@ delete_what_if_forecast_export(Client, Input, Options)
 -spec describe_auto_predictor(map(), describe_auto_predictor_request()) ->
     {ok, describe_auto_predictor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_auto_predictor_errors(), tuple()}.
 describe_auto_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_predictor(Client, Input, []).
@@ -2897,8 +3042,7 @@ describe_auto_predictor(Client, Input)
 -spec describe_auto_predictor(map(), describe_auto_predictor_request(), proplists:proplist()) ->
     {ok, describe_auto_predictor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_auto_predictor_errors(), tuple()}.
 describe_auto_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoPredictor">>, Input, Options).
@@ -2919,8 +3063,7 @@ describe_auto_predictor(Client, Input, Options)
 -spec describe_dataset(map(), describe_dataset_request()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
@@ -2928,8 +3071,7 @@ describe_dataset(Client, Input)
 -spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
@@ -2952,8 +3094,7 @@ describe_dataset(Client, Input, Options)
 -spec describe_dataset_group(map(), describe_dataset_group_request()) ->
     {ok, describe_dataset_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_dataset_group_errors(), tuple()}.
 describe_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_group(Client, Input, []).
@@ -2961,8 +3102,7 @@ describe_dataset_group(Client, Input)
 -spec describe_dataset_group(map(), describe_dataset_group_request(), proplists:proplist()) ->
     {ok, describe_dataset_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_dataset_group_errors(), tuple()}.
 describe_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatasetGroup">>, Input, Options).
@@ -2990,8 +3130,7 @@ describe_dataset_group(Client, Input, Options)
 -spec describe_dataset_import_job(map(), describe_dataset_import_job_request()) ->
     {ok, describe_dataset_import_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_dataset_import_job_errors(), tuple()}.
 describe_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_import_job(Client, Input, []).
@@ -2999,8 +3138,7 @@ describe_dataset_import_job(Client, Input)
 -spec describe_dataset_import_job(map(), describe_dataset_import_job_request(), proplists:proplist()) ->
     {ok, describe_dataset_import_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_dataset_import_job_errors(), tuple()}.
 describe_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatasetImportJob">>, Input, Options).
@@ -3010,8 +3148,7 @@ describe_dataset_import_job(Client, Input, Options)
 -spec describe_explainability(map(), describe_explainability_request()) ->
     {ok, describe_explainability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_explainability_errors(), tuple()}.
 describe_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_explainability(Client, Input, []).
@@ -3019,8 +3156,7 @@ describe_explainability(Client, Input)
 -spec describe_explainability(map(), describe_explainability_request(), proplists:proplist()) ->
     {ok, describe_explainability_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_explainability_errors(), tuple()}.
 describe_explainability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExplainability">>, Input, Options).
@@ -3030,8 +3166,7 @@ describe_explainability(Client, Input, Options)
 -spec describe_explainability_export(map(), describe_explainability_export_request()) ->
     {ok, describe_explainability_export_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_explainability_export_errors(), tuple()}.
 describe_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_explainability_export(Client, Input, []).
@@ -3039,8 +3174,7 @@ describe_explainability_export(Client, Input)
 -spec describe_explainability_export(map(), describe_explainability_export_request(), proplists:proplist()) ->
     {ok, describe_explainability_export_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_explainability_export_errors(), tuple()}.
 describe_explainability_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExplainabilityExport">>, Input, Options).
@@ -3065,8 +3199,7 @@ describe_explainability_export(Client, Input, Options)
 -spec describe_forecast(map(), describe_forecast_request()) ->
     {ok, describe_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_forecast_errors(), tuple()}.
 describe_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_forecast(Client, Input, []).
@@ -3074,8 +3207,7 @@ describe_forecast(Client, Input)
 -spec describe_forecast(map(), describe_forecast_request(), proplists:proplist()) ->
     {ok, describe_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_forecast_errors(), tuple()}.
 describe_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeForecast">>, Input, Options).
@@ -3097,8 +3229,7 @@ describe_forecast(Client, Input, Options)
 -spec describe_forecast_export_job(map(), describe_forecast_export_job_request()) ->
     {ok, describe_forecast_export_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_forecast_export_job_errors(), tuple()}.
 describe_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_forecast_export_job(Client, Input, []).
@@ -3106,8 +3237,7 @@ describe_forecast_export_job(Client, Input)
 -spec describe_forecast_export_job(map(), describe_forecast_export_job_request(), proplists:proplist()) ->
     {ok, describe_forecast_export_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_forecast_export_job_errors(), tuple()}.
 describe_forecast_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeForecastExportJob">>, Input, Options).
@@ -3133,8 +3263,7 @@ describe_forecast_export_job(Client, Input, Options)
 -spec describe_monitor(map(), describe_monitor_request()) ->
     {ok, describe_monitor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_monitor_errors(), tuple()}.
 describe_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_monitor(Client, Input, []).
@@ -3142,8 +3271,7 @@ describe_monitor(Client, Input)
 -spec describe_monitor(map(), describe_monitor_request(), proplists:proplist()) ->
     {ok, describe_monitor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_monitor_errors(), tuple()}.
 describe_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMonitor">>, Input, Options).
@@ -3180,8 +3308,7 @@ describe_monitor(Client, Input, Options)
 -spec describe_predictor(map(), describe_predictor_request()) ->
     {ok, describe_predictor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_predictor_errors(), tuple()}.
 describe_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_predictor(Client, Input, []).
@@ -3189,8 +3316,7 @@ describe_predictor(Client, Input)
 -spec describe_predictor(map(), describe_predictor_request(), proplists:proplist()) ->
     {ok, describe_predictor_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_predictor_errors(), tuple()}.
 describe_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePredictor">>, Input, Options).
@@ -3212,8 +3338,7 @@ describe_predictor(Client, Input, Options)
 -spec describe_predictor_backtest_export_job(map(), describe_predictor_backtest_export_job_request()) ->
     {ok, describe_predictor_backtest_export_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_predictor_backtest_export_job_errors(), tuple()}.
 describe_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_predictor_backtest_export_job(Client, Input, []).
@@ -3221,8 +3346,7 @@ describe_predictor_backtest_export_job(Client, Input)
 -spec describe_predictor_backtest_export_job(map(), describe_predictor_backtest_export_job_request(), proplists:proplist()) ->
     {ok, describe_predictor_backtest_export_job_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_predictor_backtest_export_job_errors(), tuple()}.
 describe_predictor_backtest_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePredictorBacktestExportJob">>, Input, Options).
@@ -3244,8 +3368,7 @@ describe_predictor_backtest_export_job(Client, Input, Options)
 -spec describe_what_if_analysis(map(), describe_what_if_analysis_request()) ->
     {ok, describe_what_if_analysis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_what_if_analysis_errors(), tuple()}.
 describe_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_analysis(Client, Input, []).
@@ -3253,8 +3376,7 @@ describe_what_if_analysis(Client, Input)
 -spec describe_what_if_analysis(map(), describe_what_if_analysis_request(), proplists:proplist()) ->
     {ok, describe_what_if_analysis_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_what_if_analysis_errors(), tuple()}.
 describe_what_if_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWhatIfAnalysis">>, Input, Options).
@@ -3276,8 +3398,7 @@ describe_what_if_analysis(Client, Input, Options)
 -spec describe_what_if_forecast(map(), describe_what_if_forecast_request()) ->
     {ok, describe_what_if_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_what_if_forecast_errors(), tuple()}.
 describe_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_forecast(Client, Input, []).
@@ -3285,8 +3406,7 @@ describe_what_if_forecast(Client, Input)
 -spec describe_what_if_forecast(map(), describe_what_if_forecast_request(), proplists:proplist()) ->
     {ok, describe_what_if_forecast_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_what_if_forecast_errors(), tuple()}.
 describe_what_if_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWhatIfForecast">>, Input, Options).
@@ -3308,8 +3428,7 @@ describe_what_if_forecast(Client, Input, Options)
 -spec describe_what_if_forecast_export(map(), describe_what_if_forecast_export_request()) ->
     {ok, describe_what_if_forecast_export_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_what_if_forecast_export_errors(), tuple()}.
 describe_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_forecast_export(Client, Input, []).
@@ -3317,8 +3436,7 @@ describe_what_if_forecast_export(Client, Input)
 -spec describe_what_if_forecast_export(map(), describe_what_if_forecast_export_request(), proplists:proplist()) ->
     {ok, describe_what_if_forecast_export_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_what_if_forecast_export_errors(), tuple()}.
 describe_what_if_forecast_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWhatIfForecastExport">>, Input, Options).
@@ -3355,9 +3473,7 @@ describe_what_if_forecast_export(Client, Input, Options)
 -spec get_accuracy_metrics(map(), get_accuracy_metrics_request()) ->
     {ok, get_accuracy_metrics_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_accuracy_metrics_errors(), tuple()}.
 get_accuracy_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_accuracy_metrics(Client, Input, []).
@@ -3365,9 +3481,7 @@ get_accuracy_metrics(Client, Input)
 -spec get_accuracy_metrics(map(), get_accuracy_metrics_request(), proplists:proplist()) ->
     {ok, get_accuracy_metrics_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_accuracy_metrics_errors(), tuple()}.
 get_accuracy_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccuracyMetrics">>, Input, Options).
@@ -3387,7 +3501,7 @@ get_accuracy_metrics(Client, Input, Options)
 -spec list_dataset_groups(map(), list_dataset_groups_request()) ->
     {ok, list_dataset_groups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_dataset_groups_errors(), tuple()}.
 list_dataset_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_groups(Client, Input, []).
@@ -3395,7 +3509,7 @@ list_dataset_groups(Client, Input)
 -spec list_dataset_groups(map(), list_dataset_groups_request(), proplists:proplist()) ->
     {ok, list_dataset_groups_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_dataset_groups_errors(), tuple()}.
 list_dataset_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetGroups">>, Input, Options).
@@ -3416,8 +3530,7 @@ list_dataset_groups(Client, Input, Options)
 -spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request()) ->
     {ok, list_dataset_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_dataset_import_jobs_errors(), tuple()}.
 list_dataset_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_import_jobs(Client, Input, []).
@@ -3425,8 +3538,7 @@ list_dataset_import_jobs(Client, Input)
 -spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request(), proplists:proplist()) ->
     {ok, list_dataset_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_dataset_import_jobs_errors(), tuple()}.
 list_dataset_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetImportJobs">>, Input, Options).
@@ -3445,7 +3557,7 @@ list_dataset_import_jobs(Client, Input, Options)
 -spec list_datasets(map(), list_datasets_request()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
@@ -3453,7 +3565,7 @@ list_datasets(Client, Input)
 -spec list_datasets(map(), list_datasets_request(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasets">>, Input, Options).
@@ -3472,8 +3584,7 @@ list_datasets(Client, Input, Options)
 -spec list_explainabilities(map(), list_explainabilities_request()) ->
     {ok, list_explainabilities_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_explainabilities_errors(), tuple()}.
 list_explainabilities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_explainabilities(Client, Input, []).
@@ -3481,8 +3592,7 @@ list_explainabilities(Client, Input)
 -spec list_explainabilities(map(), list_explainabilities_request(), proplists:proplist()) ->
     {ok, list_explainabilities_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_explainabilities_errors(), tuple()}.
 list_explainabilities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExplainabilities">>, Input, Options).
@@ -3500,8 +3610,7 @@ list_explainabilities(Client, Input, Options)
 -spec list_explainability_exports(map(), list_explainability_exports_request()) ->
     {ok, list_explainability_exports_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_explainability_exports_errors(), tuple()}.
 list_explainability_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_explainability_exports(Client, Input, []).
@@ -3509,8 +3618,7 @@ list_explainability_exports(Client, Input)
 -spec list_explainability_exports(map(), list_explainability_exports_request(), proplists:proplist()) ->
     {ok, list_explainability_exports_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_explainability_exports_errors(), tuple()}.
 list_explainability_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExplainabilityExports">>, Input, Options).
@@ -3527,8 +3635,7 @@ list_explainability_exports(Client, Input, Options)
 -spec list_forecast_export_jobs(map(), list_forecast_export_jobs_request()) ->
     {ok, list_forecast_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_forecast_export_jobs_errors(), tuple()}.
 list_forecast_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_forecast_export_jobs(Client, Input, []).
@@ -3536,8 +3643,7 @@ list_forecast_export_jobs(Client, Input)
 -spec list_forecast_export_jobs(map(), list_forecast_export_jobs_request(), proplists:proplist()) ->
     {ok, list_forecast_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_forecast_export_jobs_errors(), tuple()}.
 list_forecast_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListForecastExportJobs">>, Input, Options).
@@ -3555,8 +3661,7 @@ list_forecast_export_jobs(Client, Input, Options)
 -spec list_forecasts(map(), list_forecasts_request()) ->
     {ok, list_forecasts_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_forecasts_errors(), tuple()}.
 list_forecasts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_forecasts(Client, Input, []).
@@ -3564,8 +3669,7 @@ list_forecasts(Client, Input)
 -spec list_forecasts(map(), list_forecasts_request(), proplists:proplist()) ->
     {ok, list_forecasts_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_forecasts_errors(), tuple()}.
 list_forecasts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListForecasts">>, Input, Options).
@@ -3581,9 +3685,7 @@ list_forecasts(Client, Input, Options)
 -spec list_monitor_evaluations(map(), list_monitor_evaluations_request()) ->
     {ok, list_monitor_evaluations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_monitor_evaluations_errors(), tuple()}.
 list_monitor_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitor_evaluations(Client, Input, []).
@@ -3591,9 +3693,7 @@ list_monitor_evaluations(Client, Input)
 -spec list_monitor_evaluations(map(), list_monitor_evaluations_request(), proplists:proplist()) ->
     {ok, list_monitor_evaluations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_monitor_evaluations_errors(), tuple()}.
 list_monitor_evaluations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitorEvaluations">>, Input, Options).
@@ -3608,8 +3708,7 @@ list_monitor_evaluations(Client, Input, Options)
 -spec list_monitors(map(), list_monitors_request()) ->
     {ok, list_monitors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_monitors_errors(), tuple()}.
 list_monitors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitors(Client, Input, []).
@@ -3617,8 +3716,7 @@ list_monitors(Client, Input)
 -spec list_monitors(map(), list_monitors_request(), proplists:proplist()) ->
     {ok, list_monitors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_monitors_errors(), tuple()}.
 list_monitors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitors">>, Input, Options).
@@ -3636,8 +3734,7 @@ list_monitors(Client, Input, Options)
 -spec list_predictor_backtest_export_jobs(map(), list_predictor_backtest_export_jobs_request()) ->
     {ok, list_predictor_backtest_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_predictor_backtest_export_jobs_errors(), tuple()}.
 list_predictor_backtest_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_predictor_backtest_export_jobs(Client, Input, []).
@@ -3645,8 +3742,7 @@ list_predictor_backtest_export_jobs(Client, Input)
 -spec list_predictor_backtest_export_jobs(map(), list_predictor_backtest_export_jobs_request(), proplists:proplist()) ->
     {ok, list_predictor_backtest_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_predictor_backtest_export_jobs_errors(), tuple()}.
 list_predictor_backtest_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPredictorBacktestExportJobs">>, Input, Options).
@@ -3664,8 +3760,7 @@ list_predictor_backtest_export_jobs(Client, Input, Options)
 -spec list_predictors(map(), list_predictors_request()) ->
     {ok, list_predictors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_predictors_errors(), tuple()}.
 list_predictors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_predictors(Client, Input, []).
@@ -3673,8 +3768,7 @@ list_predictors(Client, Input)
 -spec list_predictors(map(), list_predictors_request(), proplists:proplist()) ->
     {ok, list_predictors_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_predictors_errors(), tuple()}.
 list_predictors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPredictors">>, Input, Options).
@@ -3683,8 +3777,7 @@ list_predictors(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3692,8 +3785,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3708,8 +3800,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_what_if_analyses(map(), list_what_if_analyses_request()) ->
     {ok, list_what_if_analyses_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_what_if_analyses_errors(), tuple()}.
 list_what_if_analyses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_what_if_analyses(Client, Input, []).
@@ -3717,8 +3808,7 @@ list_what_if_analyses(Client, Input)
 -spec list_what_if_analyses(map(), list_what_if_analyses_request(), proplists:proplist()) ->
     {ok, list_what_if_analyses_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_what_if_analyses_errors(), tuple()}.
 list_what_if_analyses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWhatIfAnalyses">>, Input, Options).
@@ -3733,8 +3823,7 @@ list_what_if_analyses(Client, Input, Options)
 -spec list_what_if_forecast_exports(map(), list_what_if_forecast_exports_request()) ->
     {ok, list_what_if_forecast_exports_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_what_if_forecast_exports_errors(), tuple()}.
 list_what_if_forecast_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_what_if_forecast_exports(Client, Input, []).
@@ -3742,8 +3831,7 @@ list_what_if_forecast_exports(Client, Input)
 -spec list_what_if_forecast_exports(map(), list_what_if_forecast_exports_request(), proplists:proplist()) ->
     {ok, list_what_if_forecast_exports_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_what_if_forecast_exports_errors(), tuple()}.
 list_what_if_forecast_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWhatIfForecastExports">>, Input, Options).
@@ -3758,8 +3846,7 @@ list_what_if_forecast_exports(Client, Input, Options)
 -spec list_what_if_forecasts(map(), list_what_if_forecasts_request()) ->
     {ok, list_what_if_forecasts_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_what_if_forecasts_errors(), tuple()}.
 list_what_if_forecasts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_what_if_forecasts(Client, Input, []).
@@ -3767,8 +3854,7 @@ list_what_if_forecasts(Client, Input)
 -spec list_what_if_forecasts(map(), list_what_if_forecasts_request(), proplists:proplist()) ->
     {ok, list_what_if_forecasts_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_what_if_forecasts_errors(), tuple()}.
 list_what_if_forecasts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWhatIfForecasts">>, Input, Options).
@@ -3777,10 +3863,7 @@ list_what_if_forecasts(Client, Input, Options)
 -spec resume_resource(map(), resume_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, resume_resource_errors(), tuple()}.
 resume_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_resource(Client, Input, []).
@@ -3788,10 +3871,7 @@ resume_resource(Client, Input)
 -spec resume_resource(map(), resume_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, resume_resource_errors(), tuple()}.
 resume_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeResource">>, Input, Options).
@@ -3822,9 +3902,7 @@ resume_resource(Client, Input, Options)
 -spec stop_resource(map(), stop_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_resource_errors(), tuple()}.
 stop_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_resource(Client, Input, []).
@@ -3832,9 +3910,7 @@ stop_resource(Client, Input)
 -spec stop_resource(map(), stop_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_resource_errors(), tuple()}.
 stop_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopResource">>, Input, Options).
@@ -3850,9 +3926,7 @@ stop_resource(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3860,9 +3934,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3871,8 +3943,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3880,8 +3951,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3895,9 +3965,7 @@ untag_resource(Client, Input, Options)
 -spec update_dataset_group(map(), update_dataset_group_request()) ->
     {ok, update_dataset_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_dataset_group_errors(), tuple()}.
 update_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_dataset_group(Client, Input, []).
@@ -3905,9 +3973,7 @@ update_dataset_group(Client, Input)
 -spec update_dataset_group(map(), update_dataset_group_request(), proplists:proplist()) ->
     {ok, update_dataset_group_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_dataset_group_errors(), tuple()}.
 update_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDatasetGroup">>, Input, Options).

@@ -781,6 +781,211 @@
 %% }
 -type deploy_system_instance_request() :: #{binary() => any()}.
 
+-type associate_entity_to_thing_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type create_flow_template_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_system_instance_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type create_system_template_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type delete_flow_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_namespace_errors() ::
+    throttling_exception() | 
+    internal_failure_exception().
+
+-type delete_system_instance_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type delete_system_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type deploy_system_instance_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type deprecate_flow_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type deprecate_system_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_namespace_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type dissociate_entity_from_thing_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_entities_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_flow_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_flow_template_revisions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_namespace_deletion_status_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type get_system_instance_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_system_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_system_template_revisions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type get_upload_status_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_flow_execution_messages_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type search_entities_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type search_flow_executions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type search_flow_templates_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type search_system_instances_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type search_system_templates_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type search_things_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type tag_resource_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type undeploy_system_instance_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_failure_exception().
+
+-type untag_resource_errors() ::
+    resource_already_exists_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type update_flow_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type update_system_template_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type upload_entity_definitions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
 
 %%====================================================================
 %% API
@@ -794,10 +999,7 @@
 -spec associate_entity_to_thing(map(), associate_entity_to_thing_request()) ->
     {ok, associate_entity_to_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_entity_to_thing_errors(), tuple()}.
 associate_entity_to_thing(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_entity_to_thing(Client, Input, []).
@@ -805,10 +1007,7 @@ associate_entity_to_thing(Client, Input)
 -spec associate_entity_to_thing(map(), associate_entity_to_thing_request(), proplists:proplist()) ->
     {ok, associate_entity_to_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, associate_entity_to_thing_errors(), tuple()}.
 associate_entity_to_thing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateEntityToThing">>, Input, Options).
@@ -824,11 +1023,7 @@ associate_entity_to_thing(Client, Input, Options)
 -spec create_flow_template(map(), create_flow_template_request()) ->
     {ok, create_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_flow_template_errors(), tuple()}.
 create_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flow_template(Client, Input, []).
@@ -836,11 +1031,7 @@ create_flow_template(Client, Input)
 -spec create_flow_template(map(), create_flow_template_request(), proplists:proplist()) ->
     {ok, create_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_flow_template_errors(), tuple()}.
 create_flow_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFlowTemplate">>, Input, Options).
@@ -871,11 +1062,7 @@ create_flow_template(Client, Input, Options)
 -spec create_system_instance(map(), create_system_instance_request()) ->
     {ok, create_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_system_instance_errors(), tuple()}.
 create_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_system_instance(Client, Input, []).
@@ -883,11 +1070,7 @@ create_system_instance(Client, Input)
 -spec create_system_instance(map(), create_system_instance_request(), proplists:proplist()) ->
     {ok, create_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_system_instance_errors(), tuple()}.
 create_system_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSystemInstance">>, Input, Options).
@@ -900,10 +1083,7 @@ create_system_instance(Client, Input, Options)
 -spec create_system_template(map(), create_system_template_request()) ->
     {ok, create_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_system_template_errors(), tuple()}.
 create_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_system_template(Client, Input, []).
@@ -911,10 +1091,7 @@ create_system_template(Client, Input)
 -spec create_system_template(map(), create_system_template_request(), proplists:proplist()) ->
     {ok, create_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_system_template_errors(), tuple()}.
 create_system_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSystemTemplate">>, Input, Options).
@@ -928,10 +1105,7 @@ create_system_template(Client, Input, Options)
 -spec delete_flow_template(map(), delete_flow_template_request()) ->
     {ok, delete_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_flow_template_errors(), tuple()}.
 delete_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flow_template(Client, Input, []).
@@ -939,10 +1113,7 @@ delete_flow_template(Client, Input)
 -spec delete_flow_template(map(), delete_flow_template_request(), proplists:proplist()) ->
     {ok, delete_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_flow_template_errors(), tuple()}.
 delete_flow_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFlowTemplate">>, Input, Options).
@@ -956,8 +1127,7 @@ delete_flow_template(Client, Input, Options)
 -spec delete_namespace(map(), delete_namespace_request()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).
@@ -965,8 +1135,7 @@ delete_namespace(Client, Input)
 -spec delete_namespace(map(), delete_namespace_request(), proplists:proplist()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNamespace">>, Input, Options).
@@ -981,10 +1150,7 @@ delete_namespace(Client, Input, Options)
 -spec delete_system_instance(map(), delete_system_instance_request()) ->
     {ok, delete_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_system_instance_errors(), tuple()}.
 delete_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_system_instance(Client, Input, []).
@@ -992,10 +1158,7 @@ delete_system_instance(Client, Input)
 -spec delete_system_instance(map(), delete_system_instance_request(), proplists:proplist()) ->
     {ok, delete_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_system_instance_errors(), tuple()}.
 delete_system_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSystemInstance">>, Input, Options).
@@ -1008,10 +1171,7 @@ delete_system_instance(Client, Input, Options)
 -spec delete_system_template(map(), delete_system_template_request()) ->
     {ok, delete_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_system_template_errors(), tuple()}.
 delete_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_system_template(Client, Input, []).
@@ -1019,10 +1179,7 @@ delete_system_template(Client, Input)
 -spec delete_system_template(map(), delete_system_template_request(), proplists:proplist()) ->
     {ok, delete_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_system_template_errors(), tuple()}.
 delete_system_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSystemTemplate">>, Input, Options).
@@ -1052,11 +1209,7 @@ delete_system_template(Client, Input, Options)
 -spec deploy_system_instance(map(), deploy_system_instance_request()) ->
     {ok, deploy_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deploy_system_instance_errors(), tuple()}.
 deploy_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deploy_system_instance(Client, Input, []).
@@ -1064,11 +1217,7 @@ deploy_system_instance(Client, Input)
 -spec deploy_system_instance(map(), deploy_system_instance_request(), proplists:proplist()) ->
     {ok, deploy_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deploy_system_instance_errors(), tuple()}.
 deploy_system_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeploySystemInstance">>, Input, Options).
@@ -1080,10 +1229,7 @@ deploy_system_instance(Client, Input, Options)
 -spec deprecate_flow_template(map(), deprecate_flow_template_request()) ->
     {ok, deprecate_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deprecate_flow_template_errors(), tuple()}.
 deprecate_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_flow_template(Client, Input, []).
@@ -1091,10 +1237,7 @@ deprecate_flow_template(Client, Input)
 -spec deprecate_flow_template(map(), deprecate_flow_template_request(), proplists:proplist()) ->
     {ok, deprecate_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deprecate_flow_template_errors(), tuple()}.
 deprecate_flow_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprecateFlowTemplate">>, Input, Options).
@@ -1103,10 +1246,7 @@ deprecate_flow_template(Client, Input, Options)
 -spec deprecate_system_template(map(), deprecate_system_template_request()) ->
     {ok, deprecate_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deprecate_system_template_errors(), tuple()}.
 deprecate_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_system_template(Client, Input, []).
@@ -1114,10 +1254,7 @@ deprecate_system_template(Client, Input)
 -spec deprecate_system_template(map(), deprecate_system_template_request(), proplists:proplist()) ->
     {ok, deprecate_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, deprecate_system_template_errors(), tuple()}.
 deprecate_system_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprecateSystemTemplate">>, Input, Options).
@@ -1127,10 +1264,7 @@ deprecate_system_template(Client, Input, Options)
 -spec describe_namespace(map(), describe_namespace_request()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_namespace_errors(), tuple()}.
 describe_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_namespace(Client, Input, []).
@@ -1138,10 +1272,7 @@ describe_namespace(Client, Input)
 -spec describe_namespace(map(), describe_namespace_request(), proplists:proplist()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, describe_namespace_errors(), tuple()}.
 describe_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNamespace">>, Input, Options).
@@ -1154,10 +1285,7 @@ describe_namespace(Client, Input, Options)
 -spec dissociate_entity_from_thing(map(), dissociate_entity_from_thing_request()) ->
     {ok, dissociate_entity_from_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, dissociate_entity_from_thing_errors(), tuple()}.
 dissociate_entity_from_thing(Client, Input)
   when is_map(Client), is_map(Input) ->
     dissociate_entity_from_thing(Client, Input, []).
@@ -1165,10 +1293,7 @@ dissociate_entity_from_thing(Client, Input)
 -spec dissociate_entity_from_thing(map(), dissociate_entity_from_thing_request(), proplists:proplist()) ->
     {ok, dissociate_entity_from_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, dissociate_entity_from_thing_errors(), tuple()}.
 dissociate_entity_from_thing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DissociateEntityFromThing">>, Input, Options).
@@ -1202,10 +1327,7 @@ dissociate_entity_from_thing(Client, Input, Options)
 -spec get_entities(map(), get_entities_request()) ->
     {ok, get_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_entities_errors(), tuple()}.
 get_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entities(Client, Input, []).
@@ -1213,10 +1335,7 @@ get_entities(Client, Input)
 -spec get_entities(map(), get_entities_request(), proplists:proplist()) ->
     {ok, get_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_entities_errors(), tuple()}.
 get_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEntities">>, Input, Options).
@@ -1226,10 +1345,7 @@ get_entities(Client, Input, Options)
 -spec get_flow_template(map(), get_flow_template_request()) ->
     {ok, get_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_flow_template_errors(), tuple()}.
 get_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_flow_template(Client, Input, []).
@@ -1237,10 +1353,7 @@ get_flow_template(Client, Input)
 -spec get_flow_template(map(), get_flow_template_request(), proplists:proplist()) ->
     {ok, get_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_flow_template_errors(), tuple()}.
 get_flow_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFlowTemplate">>, Input, Options).
@@ -1254,10 +1367,7 @@ get_flow_template(Client, Input, Options)
 -spec get_flow_template_revisions(map(), get_flow_template_revisions_request()) ->
     {ok, get_flow_template_revisions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_flow_template_revisions_errors(), tuple()}.
 get_flow_template_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_flow_template_revisions(Client, Input, []).
@@ -1265,10 +1375,7 @@ get_flow_template_revisions(Client, Input)
 -spec get_flow_template_revisions(map(), get_flow_template_revisions_request(), proplists:proplist()) ->
     {ok, get_flow_template_revisions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_flow_template_revisions_errors(), tuple()}.
 get_flow_template_revisions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFlowTemplateRevisions">>, Input, Options).
@@ -1277,9 +1384,7 @@ get_flow_template_revisions(Client, Input, Options)
 -spec get_namespace_deletion_status(map(), get_namespace_deletion_status_request()) ->
     {ok, get_namespace_deletion_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_namespace_deletion_status_errors(), tuple()}.
 get_namespace_deletion_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_namespace_deletion_status(Client, Input, []).
@@ -1287,9 +1392,7 @@ get_namespace_deletion_status(Client, Input)
 -spec get_namespace_deletion_status(map(), get_namespace_deletion_status_request(), proplists:proplist()) ->
     {ok, get_namespace_deletion_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_namespace_deletion_status_errors(), tuple()}.
 get_namespace_deletion_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNamespaceDeletionStatus">>, Input, Options).
@@ -1298,10 +1401,7 @@ get_namespace_deletion_status(Client, Input, Options)
 -spec get_system_instance(map(), get_system_instance_request()) ->
     {ok, get_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_system_instance_errors(), tuple()}.
 get_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_system_instance(Client, Input, []).
@@ -1309,10 +1409,7 @@ get_system_instance(Client, Input)
 -spec get_system_instance(map(), get_system_instance_request(), proplists:proplist()) ->
     {ok, get_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_system_instance_errors(), tuple()}.
 get_system_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSystemInstance">>, Input, Options).
@@ -1321,10 +1418,7 @@ get_system_instance(Client, Input, Options)
 -spec get_system_template(map(), get_system_template_request()) ->
     {ok, get_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_system_template_errors(), tuple()}.
 get_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_system_template(Client, Input, []).
@@ -1332,10 +1426,7 @@ get_system_template(Client, Input)
 -spec get_system_template(map(), get_system_template_request(), proplists:proplist()) ->
     {ok, get_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_system_template_errors(), tuple()}.
 get_system_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSystemTemplate">>, Input, Options).
@@ -1349,10 +1440,7 @@ get_system_template(Client, Input, Options)
 -spec get_system_template_revisions(map(), get_system_template_revisions_request()) ->
     {ok, get_system_template_revisions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_system_template_revisions_errors(), tuple()}.
 get_system_template_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_system_template_revisions(Client, Input, []).
@@ -1360,10 +1448,7 @@ get_system_template_revisions(Client, Input)
 -spec get_system_template_revisions(map(), get_system_template_revisions_request(), proplists:proplist()) ->
     {ok, get_system_template_revisions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_system_template_revisions_errors(), tuple()}.
 get_system_template_revisions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSystemTemplateRevisions">>, Input, Options).
@@ -1372,10 +1457,7 @@ get_system_template_revisions(Client, Input, Options)
 -spec get_upload_status(map(), get_upload_status_request()) ->
     {ok, get_upload_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_upload_status_errors(), tuple()}.
 get_upload_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_upload_status(Client, Input, []).
@@ -1383,10 +1465,7 @@ get_upload_status(Client, Input)
 -spec get_upload_status(map(), get_upload_status_request(), proplists:proplist()) ->
     {ok, get_upload_status_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_upload_status_errors(), tuple()}.
 get_upload_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUploadStatus">>, Input, Options).
@@ -1396,10 +1475,7 @@ get_upload_status(Client, Input, Options)
 -spec list_flow_execution_messages(map(), list_flow_execution_messages_request()) ->
     {ok, list_flow_execution_messages_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_flow_execution_messages_errors(), tuple()}.
 list_flow_execution_messages(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_flow_execution_messages(Client, Input, []).
@@ -1407,10 +1483,7 @@ list_flow_execution_messages(Client, Input)
 -spec list_flow_execution_messages(map(), list_flow_execution_messages_request(), proplists:proplist()) ->
     {ok, list_flow_execution_messages_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_flow_execution_messages_errors(), tuple()}.
 list_flow_execution_messages(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFlowExecutionMessages">>, Input, Options).
@@ -1419,10 +1492,7 @@ list_flow_execution_messages(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1430,10 +1500,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1445,9 +1512,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec search_entities(map(), search_entities_request()) ->
     {ok, search_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_entities_errors(), tuple()}.
 search_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_entities(Client, Input, []).
@@ -1455,9 +1520,7 @@ search_entities(Client, Input)
 -spec search_entities(map(), search_entities_request(), proplists:proplist()) ->
     {ok, search_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_entities_errors(), tuple()}.
 search_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchEntities">>, Input, Options).
@@ -1466,10 +1529,7 @@ search_entities(Client, Input, Options)
 -spec search_flow_executions(map(), search_flow_executions_request()) ->
     {ok, search_flow_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_flow_executions_errors(), tuple()}.
 search_flow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_flow_executions(Client, Input, []).
@@ -1477,10 +1537,7 @@ search_flow_executions(Client, Input)
 -spec search_flow_executions(map(), search_flow_executions_request(), proplists:proplist()) ->
     {ok, search_flow_executions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_flow_executions_errors(), tuple()}.
 search_flow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchFlowExecutions">>, Input, Options).
@@ -1489,9 +1546,7 @@ search_flow_executions(Client, Input, Options)
 -spec search_flow_templates(map(), search_flow_templates_request()) ->
     {ok, search_flow_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_flow_templates_errors(), tuple()}.
 search_flow_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_flow_templates(Client, Input, []).
@@ -1499,9 +1554,7 @@ search_flow_templates(Client, Input)
 -spec search_flow_templates(map(), search_flow_templates_request(), proplists:proplist()) ->
     {ok, search_flow_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_flow_templates_errors(), tuple()}.
 search_flow_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchFlowTemplates">>, Input, Options).
@@ -1510,9 +1563,7 @@ search_flow_templates(Client, Input, Options)
 -spec search_system_instances(map(), search_system_instances_request()) ->
     {ok, search_system_instances_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_system_instances_errors(), tuple()}.
 search_system_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_system_instances(Client, Input, []).
@@ -1520,9 +1571,7 @@ search_system_instances(Client, Input)
 -spec search_system_instances(map(), search_system_instances_request(), proplists:proplist()) ->
     {ok, search_system_instances_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_system_instances_errors(), tuple()}.
 search_system_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchSystemInstances">>, Input, Options).
@@ -1535,9 +1584,7 @@ search_system_instances(Client, Input, Options)
 -spec search_system_templates(map(), search_system_templates_request()) ->
     {ok, search_system_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_system_templates_errors(), tuple()}.
 search_system_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_system_templates(Client, Input, []).
@@ -1545,9 +1592,7 @@ search_system_templates(Client, Input)
 -spec search_system_templates(map(), search_system_templates_request(), proplists:proplist()) ->
     {ok, search_system_templates_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_system_templates_errors(), tuple()}.
 search_system_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchSystemTemplates">>, Input, Options).
@@ -1567,10 +1612,7 @@ search_system_templates(Client, Input, Options)
 -spec search_things(map(), search_things_request()) ->
     {ok, search_things_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_things_errors(), tuple()}.
 search_things(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_things(Client, Input, []).
@@ -1578,10 +1620,7 @@ search_things(Client, Input)
 -spec search_things(map(), search_things_request(), proplists:proplist()) ->
     {ok, search_things_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_things_errors(), tuple()}.
 search_things(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchThings">>, Input, Options).
@@ -1590,10 +1629,7 @@ search_things(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1601,10 +1637,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1613,11 +1646,7 @@ tag_resource(Client, Input, Options)
 -spec undeploy_system_instance(map(), undeploy_system_instance_request()) ->
     {ok, undeploy_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, undeploy_system_instance_errors(), tuple()}.
 undeploy_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeploy_system_instance(Client, Input, []).
@@ -1625,11 +1654,7 @@ undeploy_system_instance(Client, Input)
 -spec undeploy_system_instance(map(), undeploy_system_instance_request(), proplists:proplist()) ->
     {ok, undeploy_system_instance_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, undeploy_system_instance_errors(), tuple()}.
 undeploy_system_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UndeploySystemInstance">>, Input, Options).
@@ -1638,10 +1663,7 @@ undeploy_system_instance(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1649,10 +1671,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1667,10 +1686,7 @@ untag_resource(Client, Input, Options)
 -spec update_flow_template(map(), update_flow_template_request()) ->
     {ok, update_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_flow_template_errors(), tuple()}.
 update_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_flow_template(Client, Input, []).
@@ -1678,10 +1694,7 @@ update_flow_template(Client, Input)
 -spec update_flow_template(map(), update_flow_template_request(), proplists:proplist()) ->
     {ok, update_flow_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_flow_template_errors(), tuple()}.
 update_flow_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFlowTemplate">>, Input, Options).
@@ -1694,10 +1707,7 @@ update_flow_template(Client, Input, Options)
 -spec update_system_template(map(), update_system_template_request()) ->
     {ok, update_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_system_template_errors(), tuple()}.
 update_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_system_template(Client, Input, []).
@@ -1705,10 +1715,7 @@ update_system_template(Client, Input)
 -spec update_system_template(map(), update_system_template_request(), proplists:proplist()) ->
     {ok, update_system_template_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_system_template_errors(), tuple()}.
 update_system_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSystemTemplate">>, Input, Options).
@@ -1745,9 +1752,7 @@ update_system_template(Client, Input, Options)
 -spec upload_entity_definitions(map(), upload_entity_definitions_request()) ->
     {ok, upload_entity_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, upload_entity_definitions_errors(), tuple()}.
 upload_entity_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_entity_definitions(Client, Input, []).
@@ -1755,9 +1760,7 @@ upload_entity_definitions(Client, Input)
 -spec upload_entity_definitions(map(), upload_entity_definitions_request(), proplists:proplist()) ->
     {ok, upload_entity_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, upload_entity_definitions_errors(), tuple()}.
 upload_entity_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadEntityDefinitions">>, Input, Options).

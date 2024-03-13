@@ -142,9 +142,11 @@
 %%   <<"type">> => string()
 %% }
 -type missing_parameter_value_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_archive_input() :: #{}
 -type delete_archive_input() :: #{}.
+
 
 %% Example:
 %% initiate_job_output() :: #{
@@ -153,33 +155,41 @@
 %%   <<"location">> => string()
 %% }
 -type initiate_job_output() :: #{binary() => any()}.
+
 %% Example:
 %% describe_job_input() :: #{}
 -type describe_job_input() :: #{}.
+
 
 %% Example:
 %% remove_tags_from_vault_input() :: #{
 %%   <<"TagKeys">> => list(string()())
 %% }
 -type remove_tags_from_vault_input() :: #{binary() => any()}.
+
 %% Example:
 %% abort_multipart_upload_input() :: #{}
 -type abort_multipart_upload_input() :: #{}.
+
 
 %% Example:
 %% get_vault_access_policy_output() :: #{
 %%   <<"policy">> => vault_access_policy()
 %% }
 -type get_vault_access_policy_output() :: #{binary() => any()}.
+
 %% Example:
 %% list_provisioned_capacity_input() :: #{}
 -type list_provisioned_capacity_input() :: #{}.
+
 %% Example:
 %% get_data_retrieval_policy_input() :: #{}
 -type get_data_retrieval_policy_input() :: #{}.
+
 %% Example:
 %% describe_vault_input() :: #{}
 -type describe_vault_input() :: #{}.
+
 
 %% Example:
 %% list_tags_for_vault_output() :: #{
@@ -187,11 +197,13 @@
 %% }
 -type list_tags_for_vault_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% set_vault_access_policy_input() :: #{
 %%   <<"policy">> => vault_access_policy()
 %% }
 -type set_vault_access_policy_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% data_retrieval_rule() :: #{
@@ -199,6 +211,7 @@
 %%   <<"Strategy">> => string()
 %% }
 -type data_retrieval_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% upload_archive_input() :: #{
@@ -208,17 +221,20 @@
 %% }
 -type upload_archive_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% input_serialization() :: #{
 %%   <<"csv">> => csv_input()
 %% }
 -type input_serialization() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_provisioned_capacity_output() :: #{
 %%   <<"ProvisionedCapacityList">> => list(provisioned_capacity_description()())
 %% }
 -type list_provisioned_capacity_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% grantee() :: #{
@@ -229,9 +245,11 @@
 %%   <<"URI">> => string()
 %% }
 -type grantee() :: #{binary() => any()}.
+
 %% Example:
 %% get_vault_notifications_input() :: #{}
 -type get_vault_notifications_input() :: #{}.
+
 
 %% Example:
 %% request_timeout_exception() :: #{
@@ -241,17 +259,20 @@
 %% }
 -type request_timeout_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% vault_access_policy() :: #{
 %%   <<"Policy">> => string()
 %% }
 -type vault_access_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% initiate_job_input() :: #{
 %%   <<"jobParameters">> => job_parameters()
 %% }
 -type initiate_job_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% inventory_retrieval_job_description() :: #{
@@ -263,6 +284,7 @@
 %% }
 -type inventory_retrieval_job_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% select_parameters() :: #{
 %%   <<"Expression">> => string(),
@@ -272,6 +294,7 @@
 %% }
 -type select_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% insufficient_capacity_exception() :: #{
 %%   <<"code">> => string(),
@@ -280,11 +303,13 @@
 %% }
 -type insufficient_capacity_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_vault_output() :: #{
 %%   <<"location">> => string()
 %% }
 -type create_vault_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_parameters() :: #{
@@ -301,30 +326,36 @@
 %% }
 -type job_parameters() :: #{binary() => any()}.
 
+
 %% Example:
 %% complete_multipart_upload_input() :: #{
 %%   <<"archiveSize">> => string(),
 %%   <<"checksum">> => string()
 %% }
 -type complete_multipart_upload_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_vault_notifications_input() :: #{}
 -type delete_vault_notifications_input() :: #{}.
+
 
 %% Example:
 %% set_vault_notifications_input() :: #{
 %%   <<"vaultNotificationConfig">> => vault_notification_config()
 %% }
 -type set_vault_notifications_input() :: #{binary() => any()}.
+
 %% Example:
 %% get_vault_lock_input() :: #{}
 -type get_vault_lock_input() :: #{}.
+
 
 %% Example:
 %% data_retrieval_policy() :: #{
 %%   <<"Rules">> => list(data_retrieval_rule()())
 %% }
 -type data_retrieval_policy() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -334,6 +365,7 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% provisioned_capacity_description() :: #{
 %%   <<"CapacityId">> => string(),
@@ -342,12 +374,14 @@
 %% }
 -type provisioned_capacity_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% part_list_element() :: #{
 %%   <<"RangeInBytes">> => string(),
 %%   <<"SHA256TreeHash">> => string()
 %% }
 -type part_list_element() :: #{binary() => any()}.
+
 
 %% Example:
 %% grant() :: #{
@@ -356,11 +390,13 @@
 %% }
 -type grant() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_vault_notifications_output() :: #{
 %%   <<"vaultNotificationConfig">> => vault_notification_config()
 %% }
 -type get_vault_notifications_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_vaults_input() :: #{
@@ -369,6 +405,7 @@
 %% }
 -type list_vaults_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_value_exception() :: #{
 %%   <<"code">> => string(),
@@ -376,6 +413,7 @@
 %%   <<"type">> => string()
 %% }
 -type invalid_parameter_value_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% csv_input() :: #{
@@ -388,11 +426,13 @@
 %% }
 -type csv_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_job_output_input() :: #{
 %%   <<"range">> => string()
 %% }
 -type get_job_output_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% archive_creation_output() :: #{
@@ -402,6 +442,7 @@
 %% }
 -type archive_creation_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% encryption() :: #{
 %%   <<"EncryptionType">> => list(any()),
@@ -409,18 +450,22 @@
 %%   <<"KMSKeyId">> => string()
 %% }
 -type encryption() :: #{binary() => any()}.
+
 %% Example:
 %% delete_vault_access_policy_input() :: #{}
 -type delete_vault_access_policy_input() :: #{}.
+
 %% Example:
 %% purchase_provisioned_capacity_input() :: #{}
 -type purchase_provisioned_capacity_input() :: #{}.
+
 
 %% Example:
 %% output_location() :: #{
 %%   <<"S3">> => s3_location()
 %% }
 -type output_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% upload_list_element() :: #{
@@ -432,6 +477,7 @@
 %% }
 -type upload_list_element() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"code">> => string(),
@@ -440,6 +486,7 @@
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% upload_multipart_part_input() :: #{
 %%   <<"body">> => binary(),
@@ -447,6 +494,7 @@
 %%   <<"range">> => string()
 %% }
 -type upload_multipart_part_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_location() :: #{
@@ -461,6 +509,7 @@
 %% }
 -type s3_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% initiate_multipart_upload_input() :: #{
 %%   <<"archiveDescription">> => string(),
@@ -468,11 +517,13 @@
 %% }
 -type initiate_multipart_upload_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% set_data_retrieval_policy_input() :: #{
 %%   <<"Policy">> => data_retrieval_policy()
 %% }
 -type set_data_retrieval_policy_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_vaults_output() :: #{
@@ -481,14 +532,17 @@
 %% }
 -type list_vaults_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% vault_lock_policy() :: #{
 %%   <<"Policy">> => string()
 %% }
 -type vault_lock_policy() :: #{binary() => any()}.
+
 %% Example:
 %% get_vault_access_policy_input() :: #{}
 -type get_vault_access_policy_input() :: #{}.
+
 
 %% Example:
 %% policy_enforced_exception() :: #{
@@ -498,24 +552,29 @@
 %% }
 -type policy_enforced_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_output() :: #{
 %%   <<"JobList">> => list(glacier_job_description()()),
 %%   <<"Marker">> => string()
 %% }
 -type list_jobs_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_vault_input() :: #{}
 -type delete_vault_input() :: #{}.
+
 
 %% Example:
 %% upload_multipart_part_output() :: #{
 %%   <<"checksum">> => string()
 %% }
 -type upload_multipart_part_output() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_vault_input() :: #{}
 -type list_tags_for_vault_input() :: #{}.
+
 
 %% Example:
 %% initiate_vault_lock_input() :: #{
@@ -523,11 +582,13 @@
 %% }
 -type initiate_vault_lock_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% purchase_provisioned_capacity_output() :: #{
 %%   <<"capacityId">> => string()
 %% }
 -type purchase_provisioned_capacity_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% vault_notification_config() :: #{
@@ -535,6 +596,7 @@
 %%   <<"SNSTopic">> => string()
 %% }
 -type vault_notification_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% glacier_job_description() :: #{
@@ -562,6 +624,7 @@
 %% }
 -type glacier_job_description() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_jobs_input() :: #{
 %%   <<"completed">> => string(),
@@ -571,12 +634,14 @@
 %% }
 -type list_jobs_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_multipart_uploads_output() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"UploadsList">> => list(upload_list_element()())
 %% }
 -type list_multipart_uploads_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_parts_input() :: #{
@@ -585,11 +650,13 @@
 %% }
 -type list_parts_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% initiate_vault_lock_output() :: #{
 %%   <<"lockId">> => string()
 %% }
 -type initiate_vault_lock_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_parts_output() :: #{
@@ -603,6 +670,7 @@
 %% }
 -type list_parts_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% csv_output() :: #{
 %%   <<"FieldDelimiter">> => string(),
@@ -613,6 +681,7 @@
 %% }
 -type csv_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% inventory_retrieval_job_input() :: #{
 %%   <<"EndDate">> => string(),
@@ -622,6 +691,7 @@
 %% }
 -type inventory_retrieval_job_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"code">> => string(),
@@ -629,6 +699,7 @@
 %%   <<"type">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_job_output_output() :: #{
@@ -642,6 +713,7 @@
 %% }
 -type get_job_output_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_vault_output() :: #{
 %%   <<"CreationDate">> => string(),
@@ -653,6 +725,7 @@
 %% }
 -type describe_vault_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% initiate_multipart_upload_output() :: #{
 %%   <<"location">> => string(),
@@ -660,11 +733,13 @@
 %% }
 -type initiate_multipart_upload_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_tags_to_vault_input() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type add_tags_to_vault_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_multipart_uploads_input() :: #{
@@ -673,17 +748,21 @@
 %% }
 -type list_multipart_uploads_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% output_serialization() :: #{
 %%   <<"csv">> => csv_output()
 %% }
 -type output_serialization() :: #{binary() => any()}.
+
 %% Example:
 %% create_vault_input() :: #{}
 -type create_vault_input() :: #{}.
+
 %% Example:
 %% abort_vault_lock_input() :: #{}
 -type abort_vault_lock_input() :: #{}.
+
 
 %% Example:
 %% get_vault_lock_output() :: #{
@@ -694,14 +773,216 @@
 %% }
 -type get_vault_lock_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_data_retrieval_policy_output() :: #{
 %%   <<"Policy">> => data_retrieval_policy()
 %% }
 -type get_data_retrieval_policy_output() :: #{binary() => any()}.
+
 %% Example:
 %% complete_vault_lock_input() :: #{}
 -type complete_vault_lock_input() :: #{}.
+
+-type abort_multipart_upload_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type abort_vault_lock_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type add_tags_to_vault_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type complete_multipart_upload_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type complete_vault_lock_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type create_vault_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_archive_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_vault_access_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type delete_vault_notifications_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_job_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type describe_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_data_retrieval_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type get_job_output_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_vault_access_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_vault_lock_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type get_vault_notifications_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type initiate_job_errors() ::
+    policy_enforced_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    insufficient_capacity_exception() | 
+    missing_parameter_value_exception().
+
+-type initiate_multipart_upload_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type initiate_vault_lock_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_jobs_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_multipart_uploads_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_parts_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_provisioned_capacity_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type list_tags_for_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type list_vaults_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type purchase_provisioned_capacity_errors() ::
+    limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type remove_tags_from_vault_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type set_data_retrieval_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception().
+
+-type set_vault_access_policy_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type set_vault_notifications_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception().
+
+-type upload_archive_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception() | 
+    missing_parameter_value_exception().
+
+-type upload_multipart_part_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception() | 
+    missing_parameter_value_exception().
 
 %%====================================================================
 %% API
@@ -741,20 +1022,14 @@
 -spec abort_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), abort_multipart_upload_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, abort_multipart_upload_errors(), tuple()}.
 abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
 
 -spec abort_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), abort_multipart_upload_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, abort_multipart_upload_errors(), tuple()}.
 abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
@@ -808,20 +1083,14 @@ abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0)
 -spec abort_vault_lock(map(), binary() | list(), binary() | list(), abort_vault_lock_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, abort_vault_lock_errors(), tuple()}.
 abort_vault_lock(Client, AccountId, VaultName, Input) ->
     abort_vault_lock(Client, AccountId, VaultName, Input, []).
 
 -spec abort_vault_lock(map(), binary() | list(), binary() | list(), abort_vault_lock_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, abort_vault_lock_errors(), tuple()}.
 abort_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
@@ -859,22 +1128,14 @@ abort_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
 -spec add_tags_to_vault(map(), binary() | list(), binary() | list(), add_tags_to_vault_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, add_tags_to_vault_errors(), tuple()}.
 add_tags_to_vault(Client, AccountId, VaultName, Input) ->
     add_tags_to_vault(Client, AccountId, VaultName, Input, []).
 
 -spec add_tags_to_vault(map(), binary() | list(), binary() | list(), add_tags_to_vault_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, add_tags_to_vault_errors(), tuple()}.
 add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=add"],
@@ -971,20 +1232,14 @@ add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
 -spec complete_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), complete_multipart_upload_input()) ->
     {ok, archive_creation_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, complete_multipart_upload_errors(), tuple()}.
 complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
 
 -spec complete_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), complete_multipart_upload_input(), proplists:proplist()) ->
     {ok, archive_creation_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, complete_multipart_upload_errors(), tuple()}.
 complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
@@ -1056,20 +1311,14 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
 -spec complete_vault_lock(map(), binary() | list(), binary() | list(), binary() | list(), complete_vault_lock_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, complete_vault_lock_errors(), tuple()}.
 complete_vault_lock(Client, AccountId, LockId, VaultName, Input) ->
     complete_vault_lock(Client, AccountId, LockId, VaultName, Input, []).
 
 -spec complete_vault_lock(map(), binary() | list(), binary() | list(), binary() | list(), complete_vault_lock_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, complete_vault_lock_errors(), tuple()}.
 complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy/", aws_util:encode_uri(LockId), ""],
@@ -1130,20 +1379,14 @@ complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options0) ->
 -spec create_vault(map(), binary() | list(), binary() | list(), create_vault_input()) ->
     {ok, create_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_vault_errors(), tuple()}.
 create_vault(Client, AccountId, VaultName, Input) ->
     create_vault(Client, AccountId, VaultName, Input, []).
 
 -spec create_vault(map(), binary() | list(), binary() | list(), create_vault_input(), proplists:proplist()) ->
     {ok, create_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, create_vault_errors(), tuple()}.
 create_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
@@ -1226,20 +1469,14 @@ create_vault(Client, AccountId, VaultName, Input0, Options0) ->
 -spec delete_archive(map(), binary() | list(), binary() | list(), binary() | list(), delete_archive_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_archive_errors(), tuple()}.
 delete_archive(Client, AccountId, ArchiveId, VaultName, Input) ->
     delete_archive(Client, AccountId, ArchiveId, VaultName, Input, []).
 
 -spec delete_archive(map(), binary() | list(), binary() | list(), binary() | list(), delete_archive_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_archive_errors(), tuple()}.
 delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives/", aws_util:encode_uri(ArchiveId), ""],
@@ -1304,20 +1541,14 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
 -spec delete_vault(map(), binary() | list(), binary() | list(), delete_vault_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_vault_errors(), tuple()}.
 delete_vault(Client, AccountId, VaultName, Input) ->
     delete_vault(Client, AccountId, VaultName, Input, []).
 
 -spec delete_vault(map(), binary() | list(), binary() | list(), delete_vault_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_vault_errors(), tuple()}.
 delete_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
@@ -1359,20 +1590,14 @@ delete_vault(Client, AccountId, VaultName, Input0, Options0) ->
 -spec delete_vault_access_policy(map(), binary() | list(), binary() | list(), delete_vault_access_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_vault_access_policy_errors(), tuple()}.
 delete_vault_access_policy(Client, AccountId, VaultName, Input) ->
     delete_vault_access_policy(Client, AccountId, VaultName, Input, []).
 
 -spec delete_vault_access_policy(map(), binary() | list(), binary() | list(), delete_vault_access_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_vault_access_policy_errors(), tuple()}.
 delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
@@ -1425,20 +1650,14 @@ delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
 -spec delete_vault_notifications(map(), binary() | list(), binary() | list(), delete_vault_notifications_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_vault_notifications_errors(), tuple()}.
 delete_vault_notifications(Client, AccountId, VaultName, Input) ->
     delete_vault_notifications(Client, AccountId, VaultName, Input, []).
 
 -spec delete_vault_notifications(map(), binary() | list(), binary() | list(), delete_vault_notifications_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, delete_vault_notifications_errors(), tuple()}.
 delete_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
@@ -1497,10 +1716,7 @@ delete_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
 -spec describe_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, glacier_job_description(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
     describe_job(Client, AccountId, JobId, VaultName, #{}, #{}).
@@ -1508,10 +1724,7 @@ describe_job(Client, AccountId, JobId, VaultName)
 -spec describe_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, glacier_job_description(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
@@ -1519,10 +1732,7 @@ describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
 -spec describe_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, glacier_job_description(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_job_errors(), tuple()}.
 describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), ""],
@@ -1579,10 +1789,7 @@ describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0
 -spec describe_vault(map(), binary() | list(), binary() | list()) ->
     {ok, describe_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_vault_errors(), tuple()}.
 describe_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
     describe_vault(Client, AccountId, VaultName, #{}, #{}).
@@ -1590,10 +1797,7 @@ describe_vault(Client, AccountId, VaultName)
 -spec describe_vault(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_vault_errors(), tuple()}.
 describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
@@ -1601,10 +1805,7 @@ describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
 -spec describe_vault(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, describe_vault_errors(), tuple()}.
 describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
@@ -1631,9 +1832,7 @@ describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 -spec get_data_retrieval_policy(map(), binary() | list()) ->
     {ok, get_data_retrieval_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_data_retrieval_policy_errors(), tuple()}.
 get_data_retrieval_policy(Client, AccountId)
   when is_map(Client) ->
     get_data_retrieval_policy(Client, AccountId, #{}, #{}).
@@ -1641,9 +1840,7 @@ get_data_retrieval_policy(Client, AccountId)
 -spec get_data_retrieval_policy(map(), binary() | list(), map(), map()) ->
     {ok, get_data_retrieval_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_data_retrieval_policy_errors(), tuple()}.
 get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, []).
@@ -1651,9 +1848,7 @@ get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap)
 -spec get_data_retrieval_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_retrieval_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_data_retrieval_policy_errors(), tuple()}.
 get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
@@ -1740,10 +1935,7 @@ get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
 -spec get_job_output(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_job_output_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_job_output_errors(), tuple()}.
 get_job_output(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
     get_job_output(Client, AccountId, JobId, VaultName, #{}, #{}).
@@ -1751,10 +1943,7 @@ get_job_output(Client, AccountId, JobId, VaultName)
 -spec get_job_output(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_job_output_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_job_output_errors(), tuple()}.
 get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
@@ -1762,10 +1951,7 @@ get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
 -spec get_job_output(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_output_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_job_output_errors(), tuple()}.
 get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), "/output"],
@@ -1822,10 +2008,7 @@ get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Option
 -spec get_vault_access_policy(map(), binary() | list(), binary() | list()) ->
     {ok, get_vault_access_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_vault_access_policy_errors(), tuple()}.
 get_vault_access_policy(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_access_policy(Client, AccountId, VaultName, #{}, #{}).
@@ -1833,10 +2016,7 @@ get_vault_access_policy(Client, AccountId, VaultName)
 -spec get_vault_access_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_vault_access_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_vault_access_policy_errors(), tuple()}.
 get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
@@ -1844,10 +2024,7 @@ get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap)
 -spec get_vault_access_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_vault_access_policy_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_vault_access_policy_errors(), tuple()}.
 get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
@@ -1899,10 +2076,7 @@ get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, Opti
 -spec get_vault_lock(map(), binary() | list(), binary() | list()) ->
     {ok, get_vault_lock_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_vault_lock_errors(), tuple()}.
 get_vault_lock(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_lock(Client, AccountId, VaultName, #{}, #{}).
@@ -1910,10 +2084,7 @@ get_vault_lock(Client, AccountId, VaultName)
 -spec get_vault_lock(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_vault_lock_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_vault_lock_errors(), tuple()}.
 get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
@@ -1921,10 +2092,7 @@ get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap)
 -spec get_vault_lock(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_vault_lock_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_vault_lock_errors(), tuple()}.
 get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
@@ -1974,10 +2142,7 @@ get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 -spec get_vault_notifications(map(), binary() | list(), binary() | list()) ->
     {ok, get_vault_notifications_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_vault_notifications_errors(), tuple()}.
 get_vault_notifications(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_notifications(Client, AccountId, VaultName, #{}, #{}).
@@ -1985,10 +2150,7 @@ get_vault_notifications(Client, AccountId, VaultName)
 -spec get_vault_notifications(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_vault_notifications_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_vault_notifications_errors(), tuple()}.
 get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
@@ -1996,10 +2158,7 @@ get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap)
 -spec get_vault_notifications(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_vault_notifications_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, get_vault_notifications_errors(), tuple()}.
 get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
@@ -2027,24 +2186,14 @@ get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Opti
 -spec initiate_job(map(), binary() | list(), binary() | list(), initiate_job_input()) ->
     {ok, initiate_job_output(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, policy_enforced_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, initiate_job_errors(), tuple()}.
 initiate_job(Client, AccountId, VaultName, Input) ->
     initiate_job(Client, AccountId, VaultName, Input, []).
 
 -spec initiate_job(map(), binary() | list(), binary() | list(), initiate_job_input(), proplists:proplist()) ->
     {ok, initiate_job_output(), tuple()} |
     {error, any()} |
-    {error, insufficient_capacity_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, policy_enforced_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, initiate_job_errors(), tuple()}.
 initiate_job(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
@@ -2145,20 +2294,14 @@ initiate_job(Client, AccountId, VaultName, Input0, Options0) ->
 -spec initiate_multipart_upload(map(), binary() | list(), binary() | list(), initiate_multipart_upload_input()) ->
     {ok, initiate_multipart_upload_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, initiate_multipart_upload_errors(), tuple()}.
 initiate_multipart_upload(Client, AccountId, VaultName, Input) ->
     initiate_multipart_upload(Client, AccountId, VaultName, Input, []).
 
 -spec initiate_multipart_upload(map(), binary() | list(), binary() | list(), initiate_multipart_upload_input(), proplists:proplist()) ->
     {ok, initiate_multipart_upload_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, initiate_multipart_upload_errors(), tuple()}.
 initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
@@ -2247,20 +2390,14 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
 -spec initiate_vault_lock(map(), binary() | list(), binary() | list(), initiate_vault_lock_input()) ->
     {ok, initiate_vault_lock_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, initiate_vault_lock_errors(), tuple()}.
 initiate_vault_lock(Client, AccountId, VaultName, Input) ->
     initiate_vault_lock(Client, AccountId, VaultName, Input, []).
 
 -spec initiate_vault_lock(map(), binary() | list(), binary() | list(), initiate_vault_lock_input(), proplists:proplist()) ->
     {ok, initiate_vault_lock_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, initiate_vault_lock_errors(), tuple()}.
 initiate_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
@@ -2358,10 +2495,7 @@ initiate_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
 -spec list_jobs(map(), binary() | list(), binary() | list()) ->
     {ok, list_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_jobs(Client, AccountId, VaultName, #{}, #{}).
@@ -2369,10 +2503,7 @@ list_jobs(Client, AccountId, VaultName)
 -spec list_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
@@ -2380,10 +2511,7 @@ list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap)
 -spec list_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
@@ -2459,10 +2587,7 @@ list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 -spec list_multipart_uploads(map(), binary() | list(), binary() | list()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_multipart_uploads_errors(), tuple()}.
 list_multipart_uploads(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_multipart_uploads(Client, AccountId, VaultName, #{}, #{}).
@@ -2470,10 +2595,7 @@ list_multipart_uploads(Client, AccountId, VaultName)
 -spec list_multipart_uploads(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_multipart_uploads_errors(), tuple()}.
 list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
@@ -2481,10 +2603,7 @@ list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap)
 -spec list_multipart_uploads(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_multipart_uploads_errors(), tuple()}.
 list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
@@ -2549,10 +2668,7 @@ list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, Optio
 -spec list_parts(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_parts_errors(), tuple()}.
 list_parts(Client, AccountId, UploadId, VaultName)
   when is_map(Client) ->
     list_parts(Client, AccountId, UploadId, VaultName, #{}, #{}).
@@ -2560,10 +2676,7 @@ list_parts(Client, AccountId, UploadId, VaultName)
 -spec list_parts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_parts_errors(), tuple()}.
 list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, []).
@@ -2571,10 +2684,7 @@ list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap)
 -spec list_parts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_parts_errors(), tuple()}.
 list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
@@ -2602,9 +2712,7 @@ list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, Options
 -spec list_provisioned_capacity(map(), binary() | list()) ->
     {ok, list_provisioned_capacity_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_provisioned_capacity_errors(), tuple()}.
 list_provisioned_capacity(Client, AccountId)
   when is_map(Client) ->
     list_provisioned_capacity(Client, AccountId, #{}, #{}).
@@ -2612,9 +2720,7 @@ list_provisioned_capacity(Client, AccountId)
 -spec list_provisioned_capacity(map(), binary() | list(), map(), map()) ->
     {ok, list_provisioned_capacity_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_provisioned_capacity_errors(), tuple()}.
 list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, []).
@@ -2622,9 +2728,7 @@ list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap)
 -spec list_provisioned_capacity(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioned_capacity_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_provisioned_capacity_errors(), tuple()}.
 list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
@@ -2651,10 +2755,7 @@ list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_vault(map(), binary() | list(), binary() | list()) ->
     {ok, list_tags_for_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_for_vault_errors(), tuple()}.
 list_tags_for_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_tags_for_vault(Client, AccountId, VaultName, #{}, #{}).
@@ -2662,10 +2763,7 @@ list_tags_for_vault(Client, AccountId, VaultName)
 -spec list_tags_for_vault(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_for_vault_errors(), tuple()}.
 list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
@@ -2673,10 +2771,7 @@ list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
 -spec list_tags_for_vault(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_vault_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_tags_for_vault_errors(), tuple()}.
 list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags"],
@@ -2734,10 +2829,7 @@ list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0
 -spec list_vaults(map(), binary() | list()) ->
     {ok, list_vaults_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_vaults_errors(), tuple()}.
 list_vaults(Client, AccountId)
   when is_map(Client) ->
     list_vaults(Client, AccountId, #{}, #{}).
@@ -2745,10 +2837,7 @@ list_vaults(Client, AccountId)
 -spec list_vaults(map(), binary() | list(), map(), map()) ->
     {ok, list_vaults_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_vaults_errors(), tuple()}.
 list_vaults(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vaults(Client, AccountId, QueryMap, HeadersMap, []).
@@ -2756,10 +2845,7 @@ list_vaults(Client, AccountId, QueryMap, HeadersMap)
 -spec list_vaults(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vaults_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, list_vaults_errors(), tuple()}.
 list_vaults(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults"],
@@ -2786,20 +2872,14 @@ list_vaults(Client, AccountId, QueryMap, HeadersMap, Options0)
 -spec purchase_provisioned_capacity(map(), binary() | list(), purchase_provisioned_capacity_input()) ->
     {ok, purchase_provisioned_capacity_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, purchase_provisioned_capacity_errors(), tuple()}.
 purchase_provisioned_capacity(Client, AccountId, Input) ->
     purchase_provisioned_capacity(Client, AccountId, Input, []).
 
 -spec purchase_provisioned_capacity(map(), binary() | list(), purchase_provisioned_capacity_input(), proplists:proplist()) ->
     {ok, purchase_provisioned_capacity_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, purchase_provisioned_capacity_errors(), tuple()}.
 purchase_provisioned_capacity(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
@@ -2850,20 +2930,14 @@ purchase_provisioned_capacity(Client, AccountId, Input0, Options0) ->
 -spec remove_tags_from_vault(map(), binary() | list(), binary() | list(), remove_tags_from_vault_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, remove_tags_from_vault_errors(), tuple()}.
 remove_tags_from_vault(Client, AccountId, VaultName, Input) ->
     remove_tags_from_vault(Client, AccountId, VaultName, Input, []).
 
 -spec remove_tags_from_vault(map(), binary() | list(), binary() | list(), remove_tags_from_vault_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, remove_tags_from_vault_errors(), tuple()}.
 remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=remove"],
@@ -2902,18 +2976,14 @@ remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options0) ->
 -spec set_data_retrieval_policy(map(), binary() | list(), set_data_retrieval_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_data_retrieval_policy_errors(), tuple()}.
 set_data_retrieval_policy(Client, AccountId, Input) ->
     set_data_retrieval_policy(Client, AccountId, Input, []).
 
 -spec set_data_retrieval_policy(map(), binary() | list(), set_data_retrieval_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_data_retrieval_policy_errors(), tuple()}.
 set_data_retrieval_policy(Client, AccountId, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
@@ -2952,20 +3022,14 @@ set_data_retrieval_policy(Client, AccountId, Input0, Options0) ->
 -spec set_vault_access_policy(map(), binary() | list(), binary() | list(), set_vault_access_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_vault_access_policy_errors(), tuple()}.
 set_vault_access_policy(Client, AccountId, VaultName, Input) ->
     set_vault_access_policy(Client, AccountId, VaultName, Input, []).
 
 -spec set_vault_access_policy(map(), binary() | list(), binary() | list(), set_vault_access_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_vault_access_policy_errors(), tuple()}.
 set_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
@@ -3043,20 +3107,14 @@ set_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
 -spec set_vault_notifications(map(), binary() | list(), binary() | list(), set_vault_notifications_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_vault_notifications_errors(), tuple()}.
 set_vault_notifications(Client, AccountId, VaultName, Input) ->
     set_vault_notifications(Client, AccountId, VaultName, Input, []).
 
 -spec set_vault_notifications(map(), binary() | list(), binary() | list(), set_vault_notifications_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, set_vault_notifications_errors(), tuple()}.
 set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
@@ -3140,22 +3198,14 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
 -spec upload_archive(map(), binary() | list(), binary() | list(), upload_archive_input()) ->
     {ok, archive_creation_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, upload_archive_errors(), tuple()}.
 upload_archive(Client, AccountId, VaultName, Input) ->
     upload_archive(Client, AccountId, VaultName, Input, []).
 
 -spec upload_archive(map(), binary() | list(), binary() | list(), upload_archive_input(), proplists:proplist()) ->
     {ok, archive_creation_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, upload_archive_errors(), tuple()}.
 upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives"],
@@ -3272,22 +3322,14 @@ upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
 -spec upload_multipart_part(map(), binary() | list(), binary() | list(), binary() | list(), upload_multipart_part_input()) ->
     {ok, upload_multipart_part_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, upload_multipart_part_errors(), tuple()}.
 upload_multipart_part(Client, AccountId, UploadId, VaultName, Input) ->
     upload_multipart_part(Client, AccountId, UploadId, VaultName, Input, []).
 
 -spec upload_multipart_part(map(), binary() | list(), binary() | list(), binary() | list(), upload_multipart_part_input(), proplists:proplist()) ->
     {ok, upload_multipart_part_output(), tuple()} |
     {error, any()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, missing_parameter_value_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()}.
+    {error, upload_multipart_part_errors(), tuple()}.
 upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],

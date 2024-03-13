@@ -820,6 +820,147 @@
 %% }
 -type get_namespace_request() :: #{binary() => any()}.
 
+-type create_http_namespace_errors() ::
+    too_many_tags_exception() | 
+    resource_limit_exceeded() | 
+    namespace_already_exists() | 
+    duplicate_request() | 
+    invalid_input().
+
+-type create_private_dns_namespace_errors() ::
+    too_many_tags_exception() | 
+    resource_limit_exceeded() | 
+    namespace_already_exists() | 
+    duplicate_request() | 
+    invalid_input().
+
+-type create_public_dns_namespace_errors() ::
+    too_many_tags_exception() | 
+    resource_limit_exceeded() | 
+    namespace_already_exists() | 
+    duplicate_request() | 
+    invalid_input().
+
+-type create_service_errors() ::
+    too_many_tags_exception() | 
+    service_already_exists() | 
+    resource_limit_exceeded() | 
+    namespace_not_found() | 
+    invalid_input().
+
+-type delete_namespace_errors() ::
+    namespace_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type delete_service_errors() ::
+    service_not_found() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type deregister_instance_errors() ::
+    instance_not_found() | 
+    service_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type discover_instances_errors() ::
+    namespace_not_found() | 
+    request_limit_exceeded() | 
+    service_not_found() | 
+    invalid_input().
+
+-type discover_instances_revision_errors() ::
+    namespace_not_found() | 
+    request_limit_exceeded() | 
+    service_not_found() | 
+    invalid_input().
+
+-type get_instance_errors() ::
+    instance_not_found() | 
+    service_not_found() | 
+    invalid_input().
+
+-type get_instances_health_status_errors() ::
+    instance_not_found() | 
+    service_not_found() | 
+    invalid_input().
+
+-type get_namespace_errors() ::
+    namespace_not_found() | 
+    invalid_input().
+
+-type get_operation_errors() ::
+    operation_not_found() | 
+    invalid_input().
+
+-type get_service_errors() ::
+    service_not_found() | 
+    invalid_input().
+
+-type list_instances_errors() ::
+    service_not_found() | 
+    invalid_input().
+
+-type list_namespaces_errors() ::
+    invalid_input().
+
+-type list_operations_errors() ::
+    invalid_input().
+
+-type list_services_errors() ::
+    invalid_input().
+
+-type list_tags_for_resource_errors() ::
+    resource_not_found_exception() | 
+    invalid_input().
+
+-type register_instance_errors() ::
+    resource_limit_exceeded() | 
+    service_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    invalid_input().
+
+-type untag_resource_errors() ::
+    resource_not_found_exception() | 
+    invalid_input().
+
+-type update_http_namespace_errors() ::
+    namespace_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type update_instance_custom_health_status_errors() ::
+    instance_not_found() | 
+    service_not_found() | 
+    custom_health_not_found() | 
+    invalid_input().
+
+-type update_private_dns_namespace_errors() ::
+    namespace_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type update_public_dns_namespace_errors() ::
+    namespace_not_found() | 
+    duplicate_request() | 
+    resource_in_use() | 
+    invalid_input().
+
+-type update_service_errors() ::
+    service_not_found() | 
+    duplicate_request() | 
+    invalid_input().
 
 %%====================================================================
 %% API
@@ -840,11 +981,7 @@
 -spec create_http_namespace(map(), create_http_namespace_request()) ->
     {ok, create_http_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_already_exists(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_http_namespace_errors(), tuple()}.
 create_http_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_http_namespace(Client, Input, []).
@@ -852,11 +989,7 @@ create_http_namespace(Client, Input)
 -spec create_http_namespace(map(), create_http_namespace_request(), proplists:proplist()) ->
     {ok, create_http_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_already_exists(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_http_namespace_errors(), tuple()}.
 create_http_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHttpNamespace">>, Input, Options).
@@ -882,11 +1015,7 @@ create_http_namespace(Client, Input, Options)
 -spec create_private_dns_namespace(map(), create_private_dns_namespace_request()) ->
     {ok, create_private_dns_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_already_exists(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_private_dns_namespace_errors(), tuple()}.
 create_private_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_dns_namespace(Client, Input, []).
@@ -894,11 +1023,7 @@ create_private_dns_namespace(Client, Input)
 -spec create_private_dns_namespace(map(), create_private_dns_namespace_request(), proplists:proplist()) ->
     {ok, create_private_dns_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_already_exists(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_private_dns_namespace_errors(), tuple()}.
 create_private_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePrivateDnsNamespace">>, Input, Options).
@@ -926,11 +1051,7 @@ create_private_dns_namespace(Client, Input, Options)
 -spec create_public_dns_namespace(map(), create_public_dns_namespace_request()) ->
     {ok, create_public_dns_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_already_exists(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_public_dns_namespace_errors(), tuple()}.
 create_public_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_dns_namespace(Client, Input, []).
@@ -938,11 +1059,7 @@ create_public_dns_namespace(Client, Input)
 -spec create_public_dns_namespace(map(), create_public_dns_namespace_request(), proplists:proplist()) ->
     {ok, create_public_dns_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_already_exists(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_public_dns_namespace_errors(), tuple()}.
 create_public_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePublicDnsNamespace">>, Input, Options).
@@ -982,11 +1099,7 @@ create_public_dns_namespace(Client, Input, Options)
 -spec create_service(map(), create_service_request()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, service_already_exists(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -994,11 +1107,7 @@ create_service(Client, Input)
 -spec create_service(map(), create_service_request(), proplists:proplist()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, service_already_exists(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_service_errors(), tuple()}.
 create_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateService">>, Input, Options).
@@ -1010,10 +1119,7 @@ create_service(Client, Input, Options)
 -spec delete_namespace(map(), delete_namespace_request()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).
@@ -1021,10 +1127,7 @@ delete_namespace(Client, Input)
 -spec delete_namespace(map(), delete_namespace_request(), proplists:proplist()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNamespace">>, Input, Options).
@@ -1036,9 +1139,7 @@ delete_namespace(Client, Input, Options)
 -spec delete_service(map(), delete_service_request()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_in_use(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
@@ -1046,9 +1147,7 @@ delete_service(Client, Input)
 -spec delete_service(map(), delete_service_request(), proplists:proplist()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_in_use(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, delete_service_errors(), tuple()}.
 delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
@@ -1059,11 +1158,7 @@ delete_service(Client, Input, Options)
 -spec deregister_instance(map(), deregister_instance_request()) ->
     {ok, deregister_instance_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, instance_not_found(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_in_use(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, deregister_instance_errors(), tuple()}.
 deregister_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instance(Client, Input, []).
@@ -1071,11 +1166,7 @@ deregister_instance(Client, Input)
 -spec deregister_instance(map(), deregister_instance_request(), proplists:proplist()) ->
     {ok, deregister_instance_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, instance_not_found(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_in_use(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, deregister_instance_errors(), tuple()}.
 deregister_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterInstance">>, Input, Options).
@@ -1092,10 +1183,7 @@ deregister_instance(Client, Input, Options)
 -spec discover_instances(map(), discover_instances_request()) ->
     {ok, discover_instances_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, discover_instances_errors(), tuple()}.
 discover_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_instances(Client, Input, []).
@@ -1103,10 +1191,7 @@ discover_instances(Client, Input)
 -spec discover_instances(map(), discover_instances_request(), proplists:proplist()) ->
     {ok, discover_instances_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, discover_instances_errors(), tuple()}.
 discover_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverInstances">>, Input, Options).
@@ -1115,10 +1200,7 @@ discover_instances(Client, Input, Options)
 -spec discover_instances_revision(map(), discover_instances_revision_request()) ->
     {ok, discover_instances_revision_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, discover_instances_revision_errors(), tuple()}.
 discover_instances_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_instances_revision(Client, Input, []).
@@ -1126,10 +1208,7 @@ discover_instances_revision(Client, Input)
 -spec discover_instances_revision(map(), discover_instances_revision_request(), proplists:proplist()) ->
     {ok, discover_instances_revision_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, request_limit_exceeded(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, discover_instances_revision_errors(), tuple()}.
 discover_instances_revision(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverInstancesRevision">>, Input, Options).
@@ -1138,9 +1217,7 @@ discover_instances_revision(Client, Input, Options)
 -spec get_instance(map(), get_instance_request()) ->
     {ok, get_instance_response(), tuple()} |
     {error, any()} |
-    {error, instance_not_found(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, get_instance_errors(), tuple()}.
 get_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance(Client, Input, []).
@@ -1148,9 +1225,7 @@ get_instance(Client, Input)
 -spec get_instance(map(), get_instance_request(), proplists:proplist()) ->
     {ok, get_instance_response(), tuple()} |
     {error, any()} |
-    {error, instance_not_found(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, get_instance_errors(), tuple()}.
 get_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstance">>, Input, Options).
@@ -1166,9 +1241,7 @@ get_instance(Client, Input, Options)
 -spec get_instances_health_status(map(), get_instances_health_status_request()) ->
     {ok, get_instances_health_status_response(), tuple()} |
     {error, any()} |
-    {error, instance_not_found(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, get_instances_health_status_errors(), tuple()}.
 get_instances_health_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instances_health_status(Client, Input, []).
@@ -1176,9 +1249,7 @@ get_instances_health_status(Client, Input)
 -spec get_instances_health_status(map(), get_instances_health_status_request(), proplists:proplist()) ->
     {ok, get_instances_health_status_response(), tuple()} |
     {error, any()} |
-    {error, instance_not_found(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, get_instances_health_status_errors(), tuple()}.
 get_instances_health_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstancesHealthStatus">>, Input, Options).
@@ -1187,8 +1258,7 @@ get_instances_health_status(Client, Input, Options)
 -spec get_namespace(map(), get_namespace_request()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()}.
+    {error, get_namespace_errors(), tuple()}.
 get_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_namespace(Client, Input, []).
@@ -1196,8 +1266,7 @@ get_namespace(Client, Input)
 -spec get_namespace(map(), get_namespace_request(), proplists:proplist()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()}.
+    {error, get_namespace_errors(), tuple()}.
 get_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNamespace">>, Input, Options).
@@ -1212,8 +1281,7 @@ get_namespace(Client, Input, Options)
 -spec get_operation(map(), get_operation_request()) ->
     {ok, get_operation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_not_found(), tuple()}.
+    {error, get_operation_errors(), tuple()}.
 get_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operation(Client, Input, []).
@@ -1221,8 +1289,7 @@ get_operation(Client, Input)
 -spec get_operation(map(), get_operation_request(), proplists:proplist()) ->
     {ok, get_operation_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, operation_not_found(), tuple()}.
+    {error, get_operation_errors(), tuple()}.
 get_operation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOperation">>, Input, Options).
@@ -1231,8 +1298,7 @@ get_operation(Client, Input, Options)
 -spec get_service(map(), get_service_request()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, get_service_errors(), tuple()}.
 get_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service(Client, Input, []).
@@ -1240,8 +1306,7 @@ get_service(Client, Input)
 -spec get_service(map(), get_service_request(), proplists:proplist()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, get_service_errors(), tuple()}.
 get_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetService">>, Input, Options).
@@ -1252,8 +1317,7 @@ get_service(Client, Input, Options)
 -spec list_instances(map(), list_instances_request()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
@@ -1261,8 +1325,7 @@ list_instances(Client, Input)
 -spec list_instances(map(), list_instances_request(), proplists:proplist()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstances">>, Input, Options).
@@ -1272,7 +1335,7 @@ list_instances(Client, Input, Options)
 -spec list_namespaces(map(), list_namespaces_request()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_namespaces(Client, Input, []).
@@ -1280,7 +1343,7 @@ list_namespaces(Client, Input)
 -spec list_namespaces(map(), list_namespaces_request(), proplists:proplist()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_namespaces_errors(), tuple()}.
 list_namespaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNamespaces">>, Input, Options).
@@ -1289,7 +1352,7 @@ list_namespaces(Client, Input, Options)
 -spec list_operations(map(), list_operations_request()) ->
     {ok, list_operations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_operations_errors(), tuple()}.
 list_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_operations(Client, Input, []).
@@ -1297,7 +1360,7 @@ list_operations(Client, Input)
 -spec list_operations(map(), list_operations_request(), proplists:proplist()) ->
     {ok, list_operations_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_operations_errors(), tuple()}.
 list_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOperations">>, Input, Options).
@@ -1308,7 +1371,7 @@ list_operations(Client, Input, Options)
 -spec list_services(map(), list_services_request()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
@@ -1316,7 +1379,7 @@ list_services(Client, Input)
 -spec list_services(map(), list_services_request(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()}.
+    {error, list_services_errors(), tuple()}.
 list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
@@ -1325,8 +1388,7 @@ list_services(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1334,8 +1396,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1388,11 +1449,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec register_instance(map(), register_instance_request()) ->
     {ok, register_instance_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, register_instance_errors(), tuple()}.
 register_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance(Client, Input, []).
@@ -1400,11 +1457,7 @@ register_instance(Client, Input)
 -spec register_instance(map(), register_instance_request(), proplists:proplist()) ->
     {ok, register_instance_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_in_use(), tuple()} |
-    {error, resource_limit_exceeded(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, register_instance_errors(), tuple()}.
 register_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterInstance">>, Input, Options).
@@ -1413,9 +1466,7 @@ register_instance(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1423,9 +1474,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1434,8 +1483,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1443,8 +1491,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_input(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1454,10 +1501,7 @@ untag_resource(Client, Input, Options)
 -spec update_http_namespace(map(), update_http_namespace_request()) ->
     {ok, update_http_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, update_http_namespace_errors(), tuple()}.
 update_http_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_http_namespace(Client, Input, []).
@@ -1465,10 +1509,7 @@ update_http_namespace(Client, Input)
 -spec update_http_namespace(map(), update_http_namespace_request(), proplists:proplist()) ->
     {ok, update_http_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, update_http_namespace_errors(), tuple()}.
 update_http_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHttpNamespace">>, Input, Options).
@@ -1490,10 +1531,7 @@ update_http_namespace(Client, Input, Options)
 -spec update_instance_custom_health_status(map(), update_instance_custom_health_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, custom_health_not_found(), tuple()} |
-    {error, instance_not_found(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, update_instance_custom_health_status_errors(), tuple()}.
 update_instance_custom_health_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_custom_health_status(Client, Input, []).
@@ -1501,10 +1539,7 @@ update_instance_custom_health_status(Client, Input)
 -spec update_instance_custom_health_status(map(), update_instance_custom_health_status_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, custom_health_not_found(), tuple()} |
-    {error, instance_not_found(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, update_instance_custom_health_status_errors(), tuple()}.
 update_instance_custom_health_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstanceCustomHealthStatus">>, Input, Options).
@@ -1514,10 +1549,7 @@ update_instance_custom_health_status(Client, Input, Options)
 -spec update_private_dns_namespace(map(), update_private_dns_namespace_request()) ->
     {ok, update_private_dns_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, update_private_dns_namespace_errors(), tuple()}.
 update_private_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_private_dns_namespace(Client, Input, []).
@@ -1525,10 +1557,7 @@ update_private_dns_namespace(Client, Input)
 -spec update_private_dns_namespace(map(), update_private_dns_namespace_request(), proplists:proplist()) ->
     {ok, update_private_dns_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, update_private_dns_namespace_errors(), tuple()}.
 update_private_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePrivateDnsNamespace">>, Input, Options).
@@ -1538,10 +1567,7 @@ update_private_dns_namespace(Client, Input, Options)
 -spec update_public_dns_namespace(map(), update_public_dns_namespace_request()) ->
     {ok, update_public_dns_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, update_public_dns_namespace_errors(), tuple()}.
 update_public_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_public_dns_namespace(Client, Input, []).
@@ -1549,10 +1575,7 @@ update_public_dns_namespace(Client, Input)
 -spec update_public_dns_namespace(map(), update_public_dns_namespace_request(), proplists:proplist()) ->
     {ok, update_public_dns_namespace_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, namespace_not_found(), tuple()} |
-    {error, resource_in_use(), tuple()}.
+    {error, update_public_dns_namespace_errors(), tuple()}.
 update_public_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePublicDnsNamespace">>, Input, Options).
@@ -1585,9 +1608,7 @@ update_public_dns_namespace(Client, Input, Options)
 -spec update_service(map(), update_service_request()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, update_service_errors(), tuple()}.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
@@ -1595,9 +1616,7 @@ update_service(Client, Input)
 -spec update_service(map(), update_service_request(), proplists:proplist()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_request(), tuple()} |
-    {error, invalid_input(), tuple()} |
-    {error, service_not_found(), tuple()}.
+    {error, update_service_errors(), tuple()}.
 update_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateService">>, Input, Options).

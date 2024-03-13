@@ -80,6 +80,7 @@
 %% }
 -type update_backend_auth_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_backend_auth_response() :: #{
 %%   <<"AppId">> => string(),
@@ -91,6 +92,7 @@
 %% }
 -type import_backend_auth_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backend_auth_forgot_password_config() :: #{
 %%   <<"DeliveryMethod">> => list(any()),
@@ -98,6 +100,7 @@
 %%   <<"SmsSettings">> => sms_settings()
 %% }
 -type create_backend_auth_forgot_password_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_backend_storage_resource_config() :: #{
@@ -107,9 +110,11 @@
 %%   <<"ServiceName">> => list(any())
 %% }
 -type get_backend_storage_resource_config() :: #{binary() => any()}.
+
 %% Example:
 %% remove_backend_config_request() :: #{}
 -type remove_backend_config_request() :: #{}.
+
 
 %% Example:
 %% delete_backend_storage_request() :: #{
@@ -118,11 +123,13 @@
 %% }
 -type delete_backend_storage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backend_api_models_request() :: #{
 %%   <<"ResourceName">> := string()
 %% }
 -type get_backend_api_models_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% generate_backend_api_models_response() :: #{
@@ -135,6 +142,7 @@
 %% }
 -type generate_backend_api_models_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% backend_api_resource_config() :: #{
 %%   <<"AdditionalAuthTypes">> => list(backend_api_auth_type()()),
@@ -146,6 +154,7 @@
 %% }
 -type backend_api_resource_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backend_storage_response() :: #{
 %%   <<"AppId">> => string(),
@@ -155,11 +164,13 @@
 %% }
 -type create_backend_storage_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_token_response() :: #{
 %%   <<"IsSuccess">> => boolean()
 %% }
 -type delete_token_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% backend_api_auth_type() :: #{
@@ -167,6 +178,7 @@
 %%   <<"Settings">> => backend_api_app_sync_auth_settings()
 %% }
 -type backend_api_auth_type() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backend_auth_response() :: #{
@@ -178,9 +190,11 @@
 %%   <<"Status">> => string()
 %% }
 -type create_backend_auth_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_backend_job_request() :: #{}
 -type get_backend_job_request() :: #{}.
+
 
 %% Example:
 %% backend_job_resp_obj() :: #{
@@ -195,11 +209,13 @@
 %% }
 -type backend_job_resp_obj() :: #{binary() => any()}.
 
+
 %% Example:
 %% clone_backend_request() :: #{
 %%   <<"TargetEnvironmentName">> := string()
 %% }
 -type clone_backend_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backend_auth_verification_message_config() :: #{
@@ -208,6 +224,7 @@
 %%   <<"SmsSettings">> => sms_settings()
 %% }
 -type create_backend_auth_verification_message_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_backend_jobs_request() :: #{
@@ -219,6 +236,7 @@
 %% }
 -type list_backend_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% social_provider_settings() :: #{
 %%   <<"Facebook">> => backend_auth_social_provider_config(),
@@ -228,12 +246,14 @@
 %% }
 -type social_provider_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_backend_auth_mfa_config() :: #{
 %%   <<"MFAMode">> => list(any()),
 %%   <<"Settings">> => settings()
 %% }
 -type update_backend_auth_mfa_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_backend_auth_o_auth_config() :: #{
@@ -246,6 +266,7 @@
 %% }
 -type update_backend_auth_o_auth_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_backend_storage_response() :: #{
 %%   <<"AppId">> => string(),
@@ -255,6 +276,7 @@
 %% }
 -type import_backend_storage_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backend_auth_password_policy_config() :: #{
 %%   <<"AdditionalConstraints">> => list(list(any())()),
@@ -262,12 +284,14 @@
 %% }
 -type create_backend_auth_password_policy_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"LimitType">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_backend_auth_resource_config() :: #{
@@ -278,6 +302,7 @@
 %% }
 -type update_backend_auth_resource_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_token_response() :: #{
 %%   <<"AppId">> => string(),
@@ -287,6 +312,7 @@
 %% }
 -type get_token_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_bucket_info() :: #{
 %%   <<"CreationDate">> => string(),
@@ -294,11 +320,13 @@
 %% }
 -type s3_bucket_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_backend_config_response() :: #{
 %%   <<"Error">> => string()
 %% }
 -type remove_backend_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_s3_buckets_response() :: #{
@@ -307,12 +335,14 @@
 %% }
 -type list_s3_buckets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% email_settings() :: #{
 %%   <<"EmailMessage">> => string(),
 %%   <<"EmailSubject">> => string()
 %% }
 -type email_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_backend_auth_user_pool_config() :: #{
@@ -324,6 +354,7 @@
 %% }
 -type update_backend_auth_user_pool_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_backend_auth_password_policy_config() :: #{
 %%   <<"AdditionalConstraints">> => list(list(any())()),
@@ -331,11 +362,13 @@
 %% }
 -type update_backend_auth_password_policy_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backend_request() :: #{
 %%   <<"BackendEnvironmentName">> => string()
 %% }
 -type get_backend_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% backend_api_app_sync_auth_settings() :: #{
@@ -350,6 +383,7 @@
 %% }
 -type backend_api_app_sync_auth_settings() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_backend_api_request() :: #{
 %%   <<"ResourceConfig">> => backend_api_resource_config(),
@@ -357,12 +391,14 @@
 %% }
 -type update_backend_api_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_backend_jobs_response() :: #{
 %%   <<"Jobs">> => list(backend_job_resp_obj()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backend_jobs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_backend_auth_response() :: #{
@@ -375,6 +411,7 @@
 %% }
 -type update_backend_auth_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backend_api_request() :: #{
 %%   <<"ResourceConfig">> => backend_api_resource_config(),
@@ -382,11 +419,13 @@
 %% }
 -type get_backend_api_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_backend_config_request() :: #{
 %%   <<"LoginAuthConfig">> => login_auth_config_req_obj()
 %% }
 -type update_backend_config_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_backend_auth_response() :: #{
@@ -399,6 +438,7 @@
 %% }
 -type delete_backend_auth_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Message">> => string(),
@@ -406,11 +446,13 @@
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% backend_api_conflict_resolution() :: #{
 %%   <<"ResolutionStrategy">> => list(any())
 %% }
 -type backend_api_conflict_resolution() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backend_auth_user_pool_config() :: #{
@@ -425,15 +467,18 @@
 %% }
 -type create_backend_auth_user_pool_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% settings() :: #{
 %%   <<"MfaTypes">> => list(list(any())()),
 %%   <<"SmsMessage">> => string()
 %% }
 -type settings() :: #{binary() => any()}.
+
 %% Example:
 %% delete_token_request() :: #{}
 -type delete_token_request() :: #{}.
+
 
 %% Example:
 %% generate_backend_api_models_request() :: #{
@@ -441,11 +486,13 @@
 %% }
 -type generate_backend_api_models_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backend_auth_request() :: #{
 %%   <<"ResourceName">> := string()
 %% }
 -type get_backend_auth_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backend_storage_resource_config() :: #{
@@ -455,12 +502,14 @@
 %% }
 -type create_backend_storage_resource_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_backend_api_request() :: #{
 %%   <<"ResourceConfig">> => backend_api_resource_config(),
 %%   <<"ResourceName">> := string()
 %% }
 -type delete_backend_api_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% backend_auth_apple_provider_config() :: #{
@@ -471,11 +520,13 @@
 %% }
 -type backend_auth_apple_provider_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_all_backends_request() :: #{
 %%   <<"CleanAmplifyApp">> => boolean()
 %% }
 -type remove_all_backends_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_backend_api_models_response() :: #{
@@ -484,6 +535,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type get_backend_api_models_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_backend_response() :: #{
@@ -496,6 +548,7 @@
 %% }
 -type delete_backend_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backend_response() :: #{
 %%   <<"AppId">> => string(),
@@ -506,9 +559,11 @@
 %%   <<"Status">> => string()
 %% }
 -type create_backend_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_backend_request() :: #{}
 -type delete_backend_request() :: #{}.
+
 
 %% Example:
 %% create_backend_config_request() :: #{
@@ -516,17 +571,20 @@
 %% }
 -type create_backend_config_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_s3_buckets_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
 -type list_s3_buckets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backend_storage_request() :: #{
 %%   <<"ResourceName">> := string()
 %% }
 -type get_backend_storage_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% remove_all_backends_response() :: #{
@@ -537,6 +595,7 @@
 %%   <<"Status">> => string()
 %% }
 -type remove_all_backends_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backend_api_response() :: #{
@@ -549,15 +608,18 @@
 %% }
 -type create_backend_api_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_backend_storage_request() :: #{
 %%   <<"BucketName">> => string(),
 %%   <<"ServiceName">> := list(any())
 %% }
 -type import_backend_storage_request() :: #{binary() => any()}.
+
 %% Example:
 %% resource_config() :: #{}
 -type resource_config() :: #{}.
+
 
 %% Example:
 %% login_auth_config_req_obj() :: #{
@@ -567,6 +629,7 @@
 %%   <<"AwsUserPoolsWebClientId">> => string()
 %% }
 -type login_auth_config_req_obj() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backend_request() :: #{
@@ -578,6 +641,7 @@
 %% }
 -type create_backend_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_backend_storage_response() :: #{
 %%   <<"AppId">> => string(),
@@ -586,6 +650,7 @@
 %%   <<"ResourceName">> => string()
 %% }
 -type get_backend_storage_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_backend_storage_response() :: #{
@@ -596,6 +661,7 @@
 %% }
 -type update_backend_storage_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_backend_config_response() :: #{
 %%   <<"AppId">> => string(),
@@ -604,6 +670,7 @@
 %%   <<"LoginAuthConfig">> => login_auth_config_req_obj()
 %% }
 -type update_backend_config_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_backend_job_response() :: #{
@@ -618,6 +685,7 @@
 %% }
 -type get_backend_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backend_auth_resource_config() :: #{
 %%   <<"AuthResources">> => list(any()),
@@ -627,6 +695,7 @@
 %% }
 -type create_backend_auth_resource_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backend_auth_request() :: #{
 %%   <<"BackendEnvironmentName">> := string(),
@@ -634,6 +703,7 @@
 %%   <<"ResourceName">> := string()
 %% }
 -type create_backend_auth_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backend_storage_request() :: #{
@@ -643,12 +713,14 @@
 %% }
 -type create_backend_storage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% backend_auth_social_provider_config() :: #{
 %%   <<"ClientId">> => string(),
 %%   <<"ClientSecret">> => string()
 %% }
 -type backend_auth_social_provider_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_backend_response() :: #{
@@ -662,11 +734,13 @@
 %% }
 -type get_backend_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% sms_settings() :: #{
 %%   <<"SmsMessage">> => string()
 %% }
 -type sms_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_backend_api_response() :: #{
@@ -679,6 +753,7 @@
 %% }
 -type update_backend_api_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% backend_storage_permissions() :: #{
 %%   <<"Authenticated">> => list(list(any())()),
@@ -686,11 +761,13 @@
 %% }
 -type backend_storage_permissions() :: #{binary() => any()}.
 
+
 %% Example:
 %% gateway_timeout_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type gateway_timeout_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backend_config_response() :: #{
@@ -701,6 +778,7 @@
 %% }
 -type create_backend_config_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backend_auth_identity_pool_config() :: #{
 %%   <<"IdentityPoolName">> => string(),
@@ -708,12 +786,14 @@
 %% }
 -type create_backend_auth_identity_pool_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_backend_job_request() :: #{
 %%   <<"Operation">> => string(),
 %%   <<"Status">> => string()
 %% }
 -type update_backend_job_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_backend_auth_o_auth_config() :: #{
@@ -726,11 +806,13 @@
 %% }
 -type create_backend_auth_o_auth_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_backend_auth_response() :: #{
@@ -742,6 +824,7 @@
 %% }
 -type get_backend_auth_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_token_response() :: #{
 %%   <<"AppId">> => string(),
@@ -750,9 +833,11 @@
 %%   <<"Ttl">> => string()
 %% }
 -type create_token_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_token_request() :: #{}
 -type get_token_request() :: #{}.
+
 
 %% Example:
 %% get_backend_api_response() :: #{
@@ -764,6 +849,7 @@
 %% }
 -type get_backend_api_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_backend_storage_response() :: #{
 %%   <<"AppId">> => string(),
@@ -772,6 +858,7 @@
 %%   <<"Status">> => string()
 %% }
 -type delete_backend_storage_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_backend_auth_request() :: #{
@@ -782,6 +869,7 @@
 %% }
 -type import_backend_auth_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_backend_auth_forgot_password_config() :: #{
 %%   <<"DeliveryMethod">> => list(any()),
@@ -790,11 +878,13 @@
 %% }
 -type update_backend_auth_forgot_password_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_backend_auth_request() :: #{
 %%   <<"ResourceName">> := string()
 %% }
 -type delete_backend_auth_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_backend_storage_resource_config() :: #{
@@ -803,12 +893,14 @@
 %% }
 -type update_backend_storage_resource_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backend_auth_mfa_config() :: #{
 %%   <<"MFAMode">> => list(any()),
 %%   <<"Settings">> => settings()
 %% }
 -type create_backend_auth_mfa_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_backend_api_response() :: #{
@@ -821,11 +913,13 @@
 %% }
 -type delete_backend_api_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_backend_auth_identity_pool_config() :: #{
 %%   <<"UnauthenticatedLogin">> => boolean()
 %% }
 -type update_backend_auth_identity_pool_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_backend_auth_verification_message_config() :: #{
@@ -834,9 +928,11 @@
 %%   <<"SmsSettings">> => sms_settings()
 %% }
 -type update_backend_auth_verification_message_config() :: #{binary() => any()}.
+
 %% Example:
 %% create_token_request() :: #{}
 -type create_token_request() :: #{}.
+
 
 %% Example:
 %% update_backend_storage_request() :: #{
@@ -845,6 +941,7 @@
 %% }
 -type update_backend_storage_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_backend_api_request() :: #{
 %%   <<"BackendEnvironmentName">> := string(),
@@ -852,6 +949,7 @@
 %%   <<"ResourceName">> := string()
 %% }
 -type create_backend_api_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_backend_job_response() :: #{
@@ -866,6 +964,7 @@
 %% }
 -type update_backend_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% clone_backend_response() :: #{
 %%   <<"AppId">> => string(),
@@ -877,6 +976,192 @@
 %% }
 -type clone_backend_response() :: #{binary() => any()}.
 
+-type clone_backend_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_backend_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_backend_api_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_backend_auth_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_backend_config_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_backend_storage_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_token_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_backend_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_backend_api_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_backend_auth_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_backend_storage_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_token_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type generate_backend_api_models_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_backend_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_backend_api_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_backend_api_models_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_backend_auth_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_backend_job_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_backend_storage_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_token_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type import_backend_auth_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type import_backend_storage_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_backend_jobs_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_s3_buckets_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type remove_all_backends_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type remove_backend_config_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_backend_api_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_backend_auth_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_backend_config_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_backend_job_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_backend_storage_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -885,20 +1170,14 @@
 -spec clone_backend(map(), binary() | list(), binary() | list(), clone_backend_request()) ->
     {ok, clone_backend_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, clone_backend_errors(), tuple()}.
 clone_backend(Client, AppId, BackendEnvironmentName, Input) ->
     clone_backend(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec clone_backend(map(), binary() | list(), binary() | list(), clone_backend_request(), proplists:proplist()) ->
     {ok, clone_backend_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, clone_backend_errors(), tuple()}.
 clone_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/environments/", aws_util:encode_uri(BackendEnvironmentName), "/clone"],
@@ -927,20 +1206,14 @@ clone_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec create_backend(map(), create_backend_request()) ->
     {ok, create_backend_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_errors(), tuple()}.
 create_backend(Client, Input) ->
     create_backend(Client, Input, []).
 
 -spec create_backend(map(), create_backend_request(), proplists:proplist()) ->
     {ok, create_backend_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_errors(), tuple()}.
 create_backend(Client, Input0, Options0) ->
     Method = post,
     Path = ["/backend"],
@@ -967,20 +1240,14 @@ create_backend(Client, Input0, Options0) ->
 -spec create_backend_api(map(), binary() | list(), create_backend_api_request()) ->
     {ok, create_backend_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_api_errors(), tuple()}.
 create_backend_api(Client, AppId, Input) ->
     create_backend_api(Client, AppId, Input, []).
 
 -spec create_backend_api(map(), binary() | list(), create_backend_api_request(), proplists:proplist()) ->
     {ok, create_backend_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_api_errors(), tuple()}.
 create_backend_api(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api"],
@@ -1007,20 +1274,14 @@ create_backend_api(Client, AppId, Input0, Options0) ->
 -spec create_backend_auth(map(), binary() | list(), create_backend_auth_request()) ->
     {ok, create_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_auth_errors(), tuple()}.
 create_backend_auth(Client, AppId, Input) ->
     create_backend_auth(Client, AppId, Input, []).
 
 -spec create_backend_auth(map(), binary() | list(), create_backend_auth_request(), proplists:proplist()) ->
     {ok, create_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_auth_errors(), tuple()}.
 create_backend_auth(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth"],
@@ -1047,20 +1308,14 @@ create_backend_auth(Client, AppId, Input0, Options0) ->
 -spec create_backend_config(map(), binary() | list(), create_backend_config_request()) ->
     {ok, create_backend_config_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_config_errors(), tuple()}.
 create_backend_config(Client, AppId, Input) ->
     create_backend_config(Client, AppId, Input, []).
 
 -spec create_backend_config(map(), binary() | list(), create_backend_config_request(), proplists:proplist()) ->
     {ok, create_backend_config_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_config_errors(), tuple()}.
 create_backend_config(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/config"],
@@ -1087,20 +1342,14 @@ create_backend_config(Client, AppId, Input0, Options0) ->
 -spec create_backend_storage(map(), binary() | list(), create_backend_storage_request()) ->
     {ok, create_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_storage_errors(), tuple()}.
 create_backend_storage(Client, AppId, Input) ->
     create_backend_storage(Client, AppId, Input, []).
 
 -spec create_backend_storage(map(), binary() | list(), create_backend_storage_request(), proplists:proplist()) ->
     {ok, create_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_backend_storage_errors(), tuple()}.
 create_backend_storage(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage"],
@@ -1128,20 +1377,14 @@ create_backend_storage(Client, AppId, Input0, Options0) ->
 -spec create_token(map(), binary() | list(), create_token_request()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_token_errors(), tuple()}.
 create_token(Client, AppId, Input) ->
     create_token(Client, AppId, Input, []).
 
 -spec create_token(map(), binary() | list(), create_token_request(), proplists:proplist()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_token_errors(), tuple()}.
 create_token(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/challenge"],
@@ -1168,20 +1411,14 @@ create_token(Client, AppId, Input0, Options0) ->
 -spec delete_backend(map(), binary() | list(), binary() | list(), delete_backend_request()) ->
     {ok, delete_backend_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_backend_errors(), tuple()}.
 delete_backend(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec delete_backend(map(), binary() | list(), binary() | list(), delete_backend_request(), proplists:proplist()) ->
     {ok, delete_backend_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_backend_errors(), tuple()}.
 delete_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/environments/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
@@ -1208,20 +1445,14 @@ delete_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec delete_backend_api(map(), binary() | list(), binary() | list(), delete_backend_api_request()) ->
     {ok, delete_backend_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_backend_api_errors(), tuple()}.
 delete_backend_api(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend_api(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec delete_backend_api(map(), binary() | list(), binary() | list(), delete_backend_api_request(), proplists:proplist()) ->
     {ok, delete_backend_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_backend_api_errors(), tuple()}.
 delete_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
@@ -1248,20 +1479,14 @@ delete_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec delete_backend_auth(map(), binary() | list(), binary() | list(), delete_backend_auth_request()) ->
     {ok, delete_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_backend_auth_errors(), tuple()}.
 delete_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec delete_backend_auth(map(), binary() | list(), binary() | list(), delete_backend_auth_request(), proplists:proplist()) ->
     {ok, delete_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_backend_auth_errors(), tuple()}.
 delete_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
@@ -1288,20 +1513,14 @@ delete_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec delete_backend_storage(map(), binary() | list(), binary() | list(), delete_backend_storage_request()) ->
     {ok, delete_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_backend_storage_errors(), tuple()}.
 delete_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec delete_backend_storage(map(), binary() | list(), binary() | list(), delete_backend_storage_request(), proplists:proplist()) ->
     {ok, delete_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_backend_storage_errors(), tuple()}.
 delete_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
@@ -1328,20 +1547,14 @@ delete_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) 
 -spec delete_token(map(), binary() | list(), binary() | list(), delete_token_request()) ->
     {ok, delete_token_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_token_errors(), tuple()}.
 delete_token(Client, AppId, SessionId, Input) ->
     delete_token(Client, AppId, SessionId, Input, []).
 
 -spec delete_token(map(), binary() | list(), binary() | list(), delete_token_request(), proplists:proplist()) ->
     {ok, delete_token_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_token_errors(), tuple()}.
 delete_token(Client, AppId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/challenge/", aws_util:encode_uri(SessionId), "/remove"],
@@ -1368,20 +1581,14 @@ delete_token(Client, AppId, SessionId, Input0, Options0) ->
 -spec generate_backend_api_models(map(), binary() | list(), binary() | list(), generate_backend_api_models_request()) ->
     {ok, generate_backend_api_models_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, generate_backend_api_models_errors(), tuple()}.
 generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input) ->
     generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec generate_backend_api_models(map(), binary() | list(), binary() | list(), generate_backend_api_models_request(), proplists:proplist()) ->
     {ok, generate_backend_api_models_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, generate_backend_api_models_errors(), tuple()}.
 generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/generateModels"],
@@ -1408,20 +1615,14 @@ generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Optio
 -spec get_backend(map(), binary() | list(), get_backend_request()) ->
     {ok, get_backend_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_errors(), tuple()}.
 get_backend(Client, AppId, Input) ->
     get_backend(Client, AppId, Input, []).
 
 -spec get_backend(map(), binary() | list(), get_backend_request(), proplists:proplist()) ->
     {ok, get_backend_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_errors(), tuple()}.
 get_backend(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/details"],
@@ -1448,20 +1649,14 @@ get_backend(Client, AppId, Input0, Options0) ->
 -spec get_backend_api(map(), binary() | list(), binary() | list(), get_backend_api_request()) ->
     {ok, get_backend_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_api_errors(), tuple()}.
 get_backend_api(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_api(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec get_backend_api(map(), binary() | list(), binary() | list(), get_backend_api_request(), proplists:proplist()) ->
     {ok, get_backend_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_api_errors(), tuple()}.
 get_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/details"],
@@ -1489,20 +1684,14 @@ get_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec get_backend_api_models(map(), binary() | list(), binary() | list(), get_backend_api_models_request()) ->
     {ok, get_backend_api_models_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_api_models_errors(), tuple()}.
 get_backend_api_models(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_api_models(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec get_backend_api_models(map(), binary() | list(), binary() | list(), get_backend_api_models_request(), proplists:proplist()) ->
     {ok, get_backend_api_models_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_api_models_errors(), tuple()}.
 get_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/getModels"],
@@ -1529,20 +1718,14 @@ get_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options0) 
 -spec get_backend_auth(map(), binary() | list(), binary() | list(), get_backend_auth_request()) ->
     {ok, get_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_auth_errors(), tuple()}.
 get_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec get_backend_auth(map(), binary() | list(), binary() | list(), get_backend_auth_request(), proplists:proplist()) ->
     {ok, get_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_auth_errors(), tuple()}.
 get_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/details"],
@@ -1569,10 +1752,7 @@ get_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec get_backend_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_backend_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_job_errors(), tuple()}.
 get_backend_job(Client, AppId, BackendEnvironmentName, JobId)
   when is_map(Client) ->
     get_backend_job(Client, AppId, BackendEnvironmentName, JobId, #{}, #{}).
@@ -1580,10 +1760,7 @@ get_backend_job(Client, AppId, BackendEnvironmentName, JobId)
 -spec get_backend_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_backend_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_job_errors(), tuple()}.
 get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap, []).
@@ -1591,10 +1768,7 @@ get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersM
 -spec get_backend_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backend_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_job_errors(), tuple()}.
 get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), "/", aws_util:encode_uri(JobId), ""],
@@ -1615,20 +1789,14 @@ get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersM
 -spec get_backend_storage(map(), binary() | list(), binary() | list(), get_backend_storage_request()) ->
     {ok, get_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_storage_errors(), tuple()}.
 get_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec get_backend_storage(map(), binary() | list(), binary() | list(), get_backend_storage_request(), proplists:proplist()) ->
     {ok, get_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_backend_storage_errors(), tuple()}.
 get_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), "/details"],
@@ -1655,10 +1823,7 @@ get_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec get_token(map(), binary() | list(), binary() | list()) ->
     {ok, get_token_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_token_errors(), tuple()}.
 get_token(Client, AppId, SessionId)
   when is_map(Client) ->
     get_token(Client, AppId, SessionId, #{}, #{}).
@@ -1666,10 +1831,7 @@ get_token(Client, AppId, SessionId)
 -spec get_token(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_token_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_token_errors(), tuple()}.
 get_token(Client, AppId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_token(Client, AppId, SessionId, QueryMap, HeadersMap, []).
@@ -1677,10 +1839,7 @@ get_token(Client, AppId, SessionId, QueryMap, HeadersMap)
 -spec get_token(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_token_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_token_errors(), tuple()}.
 get_token(Client, AppId, SessionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/challenge/", aws_util:encode_uri(SessionId), ""],
@@ -1701,20 +1860,14 @@ get_token(Client, AppId, SessionId, QueryMap, HeadersMap, Options0)
 -spec import_backend_auth(map(), binary() | list(), binary() | list(), import_backend_auth_request()) ->
     {ok, import_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, import_backend_auth_errors(), tuple()}.
 import_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     import_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec import_backend_auth(map(), binary() | list(), binary() | list(), import_backend_auth_request(), proplists:proplist()) ->
     {ok, import_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, import_backend_auth_errors(), tuple()}.
 import_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/import"],
@@ -1741,20 +1894,14 @@ import_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec import_backend_storage(map(), binary() | list(), binary() | list(), import_backend_storage_request()) ->
     {ok, import_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, import_backend_storage_errors(), tuple()}.
 import_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
     import_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec import_backend_storage(map(), binary() | list(), binary() | list(), import_backend_storage_request(), proplists:proplist()) ->
     {ok, import_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, import_backend_storage_errors(), tuple()}.
 import_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), "/import"],
@@ -1781,20 +1928,14 @@ import_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) 
 -spec list_backend_jobs(map(), binary() | list(), binary() | list(), list_backend_jobs_request()) ->
     {ok, list_backend_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_backend_jobs_errors(), tuple()}.
 list_backend_jobs(Client, AppId, BackendEnvironmentName, Input) ->
     list_backend_jobs(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec list_backend_jobs(map(), binary() | list(), binary() | list(), list_backend_jobs_request(), proplists:proplist()) ->
     {ok, list_backend_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_backend_jobs_errors(), tuple()}.
 list_backend_jobs(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), ""],
@@ -1821,20 +1962,14 @@ list_backend_jobs(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec list_s3_buckets(map(), list_s3_buckets_request()) ->
     {ok, list_s3_buckets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_s3_buckets_errors(), tuple()}.
 list_s3_buckets(Client, Input) ->
     list_s3_buckets(Client, Input, []).
 
 -spec list_s3_buckets(map(), list_s3_buckets_request(), proplists:proplist()) ->
     {ok, list_s3_buckets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_s3_buckets_errors(), tuple()}.
 list_s3_buckets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/s3Buckets"],
@@ -1861,20 +1996,14 @@ list_s3_buckets(Client, Input0, Options0) ->
 -spec remove_all_backends(map(), binary() | list(), remove_all_backends_request()) ->
     {ok, remove_all_backends_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_all_backends_errors(), tuple()}.
 remove_all_backends(Client, AppId, Input) ->
     remove_all_backends(Client, AppId, Input, []).
 
 -spec remove_all_backends(map(), binary() | list(), remove_all_backends_request(), proplists:proplist()) ->
     {ok, remove_all_backends_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_all_backends_errors(), tuple()}.
 remove_all_backends(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/remove"],
@@ -1901,20 +2030,14 @@ remove_all_backends(Client, AppId, Input0, Options0) ->
 -spec remove_backend_config(map(), binary() | list(), remove_backend_config_request()) ->
     {ok, remove_backend_config_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_backend_config_errors(), tuple()}.
 remove_backend_config(Client, AppId, Input) ->
     remove_backend_config(Client, AppId, Input, []).
 
 -spec remove_backend_config(map(), binary() | list(), remove_backend_config_request(), proplists:proplist()) ->
     {ok, remove_backend_config_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, remove_backend_config_errors(), tuple()}.
 remove_backend_config(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/config/remove"],
@@ -1941,20 +2064,14 @@ remove_backend_config(Client, AppId, Input0, Options0) ->
 -spec update_backend_api(map(), binary() | list(), binary() | list(), update_backend_api_request()) ->
     {ok, update_backend_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_api_errors(), tuple()}.
 update_backend_api(Client, AppId, BackendEnvironmentName, Input) ->
     update_backend_api(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec update_backend_api(map(), binary() | list(), binary() | list(), update_backend_api_request(), proplists:proplist()) ->
     {ok, update_backend_api_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_api_errors(), tuple()}.
 update_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), ""],
@@ -1981,20 +2098,14 @@ update_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec update_backend_auth(map(), binary() | list(), binary() | list(), update_backend_auth_request()) ->
     {ok, update_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_auth_errors(), tuple()}.
 update_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     update_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec update_backend_auth(map(), binary() | list(), binary() | list(), update_backend_auth_request(), proplists:proplist()) ->
     {ok, update_backend_auth_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_auth_errors(), tuple()}.
 update_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), ""],
@@ -2021,20 +2132,14 @@ update_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 -spec update_backend_config(map(), binary() | list(), update_backend_config_request()) ->
     {ok, update_backend_config_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_config_errors(), tuple()}.
 update_backend_config(Client, AppId, Input) ->
     update_backend_config(Client, AppId, Input, []).
 
 -spec update_backend_config(map(), binary() | list(), update_backend_config_request(), proplists:proplist()) ->
     {ok, update_backend_config_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_config_errors(), tuple()}.
 update_backend_config(Client, AppId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/config/update"],
@@ -2061,20 +2166,14 @@ update_backend_config(Client, AppId, Input0, Options0) ->
 -spec update_backend_job(map(), binary() | list(), binary() | list(), binary() | list(), update_backend_job_request()) ->
     {ok, update_backend_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_job_errors(), tuple()}.
 update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input) ->
     update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input, []).
 
 -spec update_backend_job(map(), binary() | list(), binary() | list(), binary() | list(), update_backend_job_request(), proplists:proplist()) ->
     {ok, update_backend_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_job_errors(), tuple()}.
 update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), "/", aws_util:encode_uri(JobId), ""],
@@ -2101,20 +2200,14 @@ update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input0, Options
 -spec update_backend_storage(map(), binary() | list(), binary() | list(), update_backend_storage_request()) ->
     {ok, update_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_storage_errors(), tuple()}.
 update_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
     update_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
 
 -spec update_backend_storage(map(), binary() | list(), binary() | list(), update_backend_storage_request(), proplists:proplist()) ->
     {ok, update_backend_storage_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, gateway_timeout_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_backend_storage_errors(), tuple()}.
 update_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), ""],

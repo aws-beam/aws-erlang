@@ -884,6 +884,216 @@
 %% }
 -type delete_applications_request() :: #{binary() => any()}.
 
+-type associate_configuration_items_to_application_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type batch_delete_agents_errors() ::
+    authorization_error_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type batch_delete_import_data_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type create_application_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type create_tags_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    server_internal_error_exception().
+
+-type delete_applications_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type delete_tags_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    server_internal_error_exception().
+
+-type describe_agents_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type describe_batch_delete_configuration_task_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type describe_configurations_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type describe_continuous_exports_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    server_internal_error_exception().
+
+-type describe_export_configurations_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    server_internal_error_exception().
+
+-type describe_export_tasks_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type describe_import_tasks_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type describe_tags_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    server_internal_error_exception().
+
+-type disassociate_configuration_items_from_application_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type export_configurations_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type get_discovery_summary_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type list_configurations_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    server_internal_error_exception().
+
+-type list_server_neighbors_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type start_batch_delete_configuration_task_errors() ::
+    limit_exceeded_exception() | 
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type start_continuous_export_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    conflict_error_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_in_use_exception() | 
+    server_internal_error_exception().
+
+-type start_data_collection_by_agent_ids_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type start_export_task_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type start_import_task_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_in_use_exception() | 
+    server_internal_error_exception().
+
+-type stop_continuous_export_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    server_internal_error_exception().
+
+-type stop_data_collection_by_agent_ids_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
+
+-type update_application_errors() ::
+    authorization_error_exception() | 
+    home_region_not_set_exception() | 
+    invalid_parameter_exception() | 
+    invalid_parameter_value_exception() | 
+    server_internal_error_exception().
 
 %%====================================================================
 %% API
@@ -893,11 +1103,7 @@
 -spec associate_configuration_items_to_application(map(), associate_configuration_items_to_application_request()) ->
     {ok, associate_configuration_items_to_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, associate_configuration_items_to_application_errors(), tuple()}.
 associate_configuration_items_to_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_configuration_items_to_application(Client, Input, []).
@@ -905,11 +1111,7 @@ associate_configuration_items_to_application(Client, Input)
 -spec associate_configuration_items_to_application(map(), associate_configuration_items_to_application_request(), proplists:proplist()) ->
     {ok, associate_configuration_items_to_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, associate_configuration_items_to_application_errors(), tuple()}.
 associate_configuration_items_to_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateConfigurationItemsToApplication">>, Input, Options).
@@ -923,10 +1125,7 @@ associate_configuration_items_to_application(Client, Input, Options)
 -spec batch_delete_agents(map(), batch_delete_agents_request()) ->
     {ok, batch_delete_agents_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, batch_delete_agents_errors(), tuple()}.
 batch_delete_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_agents(Client, Input, []).
@@ -934,10 +1133,7 @@ batch_delete_agents(Client, Input)
 -spec batch_delete_agents(map(), batch_delete_agents_request(), proplists:proplist()) ->
     {ok, batch_delete_agents_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, batch_delete_agents_errors(), tuple()}.
 batch_delete_agents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteAgents">>, Input, Options).
@@ -959,11 +1155,7 @@ batch_delete_agents(Client, Input, Options)
 -spec batch_delete_import_data(map(), batch_delete_import_data_request()) ->
     {ok, batch_delete_import_data_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, batch_delete_import_data_errors(), tuple()}.
 batch_delete_import_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_import_data(Client, Input, []).
@@ -971,11 +1163,7 @@ batch_delete_import_data(Client, Input)
 -spec batch_delete_import_data(map(), batch_delete_import_data_request(), proplists:proplist()) ->
     {ok, batch_delete_import_data_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, batch_delete_import_data_errors(), tuple()}.
 batch_delete_import_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteImportData">>, Input, Options).
@@ -984,11 +1172,7 @@ batch_delete_import_data(Client, Input, Options)
 -spec create_application(map(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -996,11 +1180,7 @@ create_application(Client, Input)
 -spec create_application(map(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
@@ -1015,12 +1195,7 @@ create_application(Client, Input, Options)
 -spec create_tags(map(), create_tags_request()) ->
     {ok, create_tags_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tags(Client, Input, []).
@@ -1028,12 +1203,7 @@ create_tags(Client, Input)
 -spec create_tags(map(), create_tags_request(), proplists:proplist()) ->
     {ok, create_tags_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, create_tags_errors(), tuple()}.
 create_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTags">>, Input, Options).
@@ -1044,11 +1214,7 @@ create_tags(Client, Input, Options)
 -spec delete_applications(map(), delete_applications_request()) ->
     {ok, delete_applications_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, delete_applications_errors(), tuple()}.
 delete_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_applications(Client, Input, []).
@@ -1056,11 +1222,7 @@ delete_applications(Client, Input)
 -spec delete_applications(map(), delete_applications_request(), proplists:proplist()) ->
     {ok, delete_applications_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, delete_applications_errors(), tuple()}.
 delete_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplications">>, Input, Options).
@@ -1073,12 +1235,7 @@ delete_applications(Client, Input, Options)
 -spec delete_tags(map(), delete_tags_request()) ->
     {ok, delete_tags_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
@@ -1086,12 +1243,7 @@ delete_tags(Client, Input)
 -spec delete_tags(map(), delete_tags_request(), proplists:proplist()) ->
     {ok, delete_tags_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
@@ -1105,11 +1257,7 @@ delete_tags(Client, Input, Options)
 -spec describe_agents(map(), describe_agents_request()) ->
     {ok, describe_agents_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_agents_errors(), tuple()}.
 describe_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agents(Client, Input, []).
@@ -1117,11 +1265,7 @@ describe_agents(Client, Input)
 -spec describe_agents(map(), describe_agents_request(), proplists:proplist()) ->
     {ok, describe_agents_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_agents_errors(), tuple()}.
 describe_agents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgents">>, Input, Options).
@@ -1132,10 +1276,7 @@ describe_agents(Client, Input, Options)
 -spec describe_batch_delete_configuration_task(map(), describe_batch_delete_configuration_task_request()) ->
     {ok, describe_batch_delete_configuration_task_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_batch_delete_configuration_task_errors(), tuple()}.
 describe_batch_delete_configuration_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_delete_configuration_task(Client, Input, []).
@@ -1143,10 +1284,7 @@ describe_batch_delete_configuration_task(Client, Input)
 -spec describe_batch_delete_configuration_task(map(), describe_batch_delete_configuration_task_request(), proplists:proplist()) ->
     {ok, describe_batch_delete_configuration_task_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_batch_delete_configuration_task_errors(), tuple()}.
 describe_batch_delete_configuration_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBatchDeleteConfigurationTask">>, Input, Options).
@@ -1177,11 +1315,7 @@ describe_batch_delete_configuration_task(Client, Input, Options)
 -spec describe_configurations(map(), describe_configurations_request()) ->
     {ok, describe_configurations_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_configurations_errors(), tuple()}.
 describe_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configurations(Client, Input, []).
@@ -1189,11 +1323,7 @@ describe_configurations(Client, Input)
 -spec describe_configurations(map(), describe_configurations_request(), proplists:proplist()) ->
     {ok, describe_configurations_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_configurations_errors(), tuple()}.
 describe_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurations">>, Input, Options).
@@ -1207,13 +1337,7 @@ describe_configurations(Client, Input, Options)
 -spec describe_continuous_exports(map(), describe_continuous_exports_request()) ->
     {ok, describe_continuous_exports_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_continuous_exports_errors(), tuple()}.
 describe_continuous_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_continuous_exports(Client, Input, []).
@@ -1221,13 +1345,7 @@ describe_continuous_exports(Client, Input)
 -spec describe_continuous_exports(map(), describe_continuous_exports_request(), proplists:proplist()) ->
     {ok, describe_continuous_exports_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_continuous_exports_errors(), tuple()}.
 describe_continuous_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContinuousExports">>, Input, Options).
@@ -1241,12 +1359,7 @@ describe_continuous_exports(Client, Input, Options)
 -spec describe_export_configurations(map(), describe_export_configurations_request()) ->
     {ok, describe_export_configurations_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_export_configurations_errors(), tuple()}.
 describe_export_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_configurations(Client, Input, []).
@@ -1254,12 +1367,7 @@ describe_export_configurations(Client, Input)
 -spec describe_export_configurations(map(), describe_export_configurations_request(), proplists:proplist()) ->
     {ok, describe_export_configurations_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_export_configurations_errors(), tuple()}.
 describe_export_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExportConfigurations">>, Input, Options).
@@ -1271,11 +1379,7 @@ describe_export_configurations(Client, Input, Options)
 -spec describe_export_tasks(map(), describe_export_tasks_request()) ->
     {ok, describe_export_tasks_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_export_tasks_errors(), tuple()}.
 describe_export_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_tasks(Client, Input, []).
@@ -1283,11 +1387,7 @@ describe_export_tasks(Client, Input)
 -spec describe_export_tasks(map(), describe_export_tasks_request(), proplists:proplist()) ->
     {ok, describe_export_tasks_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_export_tasks_errors(), tuple()}.
 describe_export_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExportTasks">>, Input, Options).
@@ -1298,11 +1398,7 @@ describe_export_tasks(Client, Input, Options)
 -spec describe_import_tasks(map(), describe_import_tasks_request()) ->
     {ok, describe_import_tasks_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_import_tasks_errors(), tuple()}.
 describe_import_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_import_tasks(Client, Input, []).
@@ -1310,11 +1406,7 @@ describe_import_tasks(Client, Input)
 -spec describe_import_tasks(map(), describe_import_tasks_request(), proplists:proplist()) ->
     {ok, describe_import_tasks_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_import_tasks_errors(), tuple()}.
 describe_import_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImportTasks">>, Input, Options).
@@ -1338,12 +1430,7 @@ describe_import_tasks(Client, Input, Options)
 -spec describe_tags(map(), describe_tags_request()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -1351,12 +1438,7 @@ describe_tags(Client, Input)
 -spec describe_tags(map(), describe_tags_request(), proplists:proplist()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -1365,11 +1447,7 @@ describe_tags(Client, Input, Options)
 -spec disassociate_configuration_items_from_application(map(), disassociate_configuration_items_from_application_request()) ->
     {ok, disassociate_configuration_items_from_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, disassociate_configuration_items_from_application_errors(), tuple()}.
 disassociate_configuration_items_from_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_configuration_items_from_application(Client, Input, []).
@@ -1377,11 +1455,7 @@ disassociate_configuration_items_from_application(Client, Input)
 -spec disassociate_configuration_items_from_application(map(), disassociate_configuration_items_from_application_request(), proplists:proplist()) ->
     {ok, disassociate_configuration_items_from_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, disassociate_configuration_items_from_application_errors(), tuple()}.
 disassociate_configuration_items_from_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateConfigurationItemsFromApplication">>, Input, Options).
@@ -1401,12 +1475,7 @@ disassociate_configuration_items_from_application(Client, Input, Options)
 -spec export_configurations(map(), #{}) ->
     {ok, export_configurations_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, export_configurations_errors(), tuple()}.
 export_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_configurations(Client, Input, []).
@@ -1414,12 +1483,7 @@ export_configurations(Client, Input)
 -spec export_configurations(map(), #{}, proplists:proplist()) ->
     {ok, export_configurations_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, export_configurations_errors(), tuple()}.
 export_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportConfigurations">>, Input, Options).
@@ -1432,11 +1496,7 @@ export_configurations(Client, Input, Options)
 -spec get_discovery_summary(map(), get_discovery_summary_request()) ->
     {ok, get_discovery_summary_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, get_discovery_summary_errors(), tuple()}.
 get_discovery_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_discovery_summary(Client, Input, []).
@@ -1444,11 +1504,7 @@ get_discovery_summary(Client, Input)
 -spec get_discovery_summary(map(), get_discovery_summary_request(), proplists:proplist()) ->
     {ok, get_discovery_summary_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, get_discovery_summary_errors(), tuple()}.
 get_discovery_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDiscoverySummary">>, Input, Options).
@@ -1462,12 +1518,7 @@ get_discovery_summary(Client, Input, Options)
 -spec list_configurations(map(), list_configurations_request()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, list_configurations_errors(), tuple()}.
 list_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_configurations(Client, Input, []).
@@ -1475,12 +1526,7 @@ list_configurations(Client, Input)
 -spec list_configurations(map(), list_configurations_request(), proplists:proplist()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, list_configurations_errors(), tuple()}.
 list_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConfigurations">>, Input, Options).
@@ -1491,11 +1537,7 @@ list_configurations(Client, Input, Options)
 -spec list_server_neighbors(map(), list_server_neighbors_request()) ->
     {ok, list_server_neighbors_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, list_server_neighbors_errors(), tuple()}.
 list_server_neighbors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_server_neighbors(Client, Input, []).
@@ -1503,11 +1545,7 @@ list_server_neighbors(Client, Input)
 -spec list_server_neighbors(map(), list_server_neighbors_request(), proplists:proplist()) ->
     {ok, list_server_neighbors_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, list_server_neighbors_errors(), tuple()}.
 list_server_neighbors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServerNeighbors">>, Input, Options).
@@ -1521,12 +1559,7 @@ list_server_neighbors(Client, Input, Options)
 -spec start_batch_delete_configuration_task(map(), start_batch_delete_configuration_task_request()) ->
     {ok, start_batch_delete_configuration_task_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_batch_delete_configuration_task_errors(), tuple()}.
 start_batch_delete_configuration_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_batch_delete_configuration_task(Client, Input, []).
@@ -1534,12 +1567,7 @@ start_batch_delete_configuration_task(Client, Input)
 -spec start_batch_delete_configuration_task(map(), start_batch_delete_configuration_task_request(), proplists:proplist()) ->
     {ok, start_batch_delete_configuration_task_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_batch_delete_configuration_task_errors(), tuple()}.
 start_batch_delete_configuration_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartBatchDeleteConfigurationTask">>, Input, Options).
@@ -1549,14 +1577,7 @@ start_batch_delete_configuration_task(Client, Input, Options)
 -spec start_continuous_export(map(), start_continuous_export_request()) ->
     {ok, start_continuous_export_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, conflict_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_continuous_export_errors(), tuple()}.
 start_continuous_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_continuous_export(Client, Input, []).
@@ -1564,14 +1585,7 @@ start_continuous_export(Client, Input)
 -spec start_continuous_export(map(), start_continuous_export_request(), proplists:proplist()) ->
     {ok, start_continuous_export_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, conflict_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_continuous_export_errors(), tuple()}.
 start_continuous_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartContinuousExport">>, Input, Options).
@@ -1580,11 +1594,7 @@ start_continuous_export(Client, Input, Options)
 -spec start_data_collection_by_agent_ids(map(), start_data_collection_by_agent_ids_request()) ->
     {ok, start_data_collection_by_agent_ids_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_data_collection_by_agent_ids_errors(), tuple()}.
 start_data_collection_by_agent_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_collection_by_agent_ids(Client, Input, []).
@@ -1592,11 +1602,7 @@ start_data_collection_by_agent_ids(Client, Input)
 -spec start_data_collection_by_agent_ids(map(), start_data_collection_by_agent_ids_request(), proplists:proplist()) ->
     {ok, start_data_collection_by_agent_ids_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_data_collection_by_agent_ids_errors(), tuple()}.
 start_data_collection_by_agent_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDataCollectionByAgentIds">>, Input, Options).
@@ -1639,12 +1645,7 @@ start_data_collection_by_agent_ids(Client, Input, Options)
 -spec start_export_task(map(), start_export_task_request()) ->
     {ok, start_export_task_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_export_task_errors(), tuple()}.
 start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).
@@ -1652,12 +1653,7 @@ start_export_task(Client, Input)
 -spec start_export_task(map(), start_export_task_request(), proplists:proplist()) ->
     {ok, start_export_task_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_export_task_errors(), tuple()}.
 start_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExportTask">>, Input, Options).
@@ -1709,12 +1705,7 @@ start_export_task(Client, Input, Options)
 -spec start_import_task(map(), start_import_task_request()) ->
     {ok, start_import_task_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_import_task_errors(), tuple()}.
 start_import_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_import_task(Client, Input, []).
@@ -1722,12 +1713,7 @@ start_import_task(Client, Input)
 -spec start_import_task(map(), start_import_task_request(), proplists:proplist()) ->
     {ok, start_import_task_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, start_import_task_errors(), tuple()}.
 start_import_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartImportTask">>, Input, Options).
@@ -1737,14 +1723,7 @@ start_import_task(Client, Input, Options)
 -spec stop_continuous_export(map(), stop_continuous_export_request()) ->
     {ok, stop_continuous_export_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, stop_continuous_export_errors(), tuple()}.
 stop_continuous_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_continuous_export(Client, Input, []).
@@ -1752,14 +1731,7 @@ stop_continuous_export(Client, Input)
 -spec stop_continuous_export(map(), stop_continuous_export_request(), proplists:proplist()) ->
     {ok, stop_continuous_export_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, stop_continuous_export_errors(), tuple()}.
 stop_continuous_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopContinuousExport">>, Input, Options).
@@ -1768,11 +1740,7 @@ stop_continuous_export(Client, Input, Options)
 -spec stop_data_collection_by_agent_ids(map(), stop_data_collection_by_agent_ids_request()) ->
     {ok, stop_data_collection_by_agent_ids_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, stop_data_collection_by_agent_ids_errors(), tuple()}.
 stop_data_collection_by_agent_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_data_collection_by_agent_ids(Client, Input, []).
@@ -1780,11 +1748,7 @@ stop_data_collection_by_agent_ids(Client, Input)
 -spec stop_data_collection_by_agent_ids(map(), stop_data_collection_by_agent_ids_request(), proplists:proplist()) ->
     {ok, stop_data_collection_by_agent_ids_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, stop_data_collection_by_agent_ids_errors(), tuple()}.
 stop_data_collection_by_agent_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDataCollectionByAgentIds">>, Input, Options).
@@ -1793,11 +1757,7 @@ stop_data_collection_by_agent_ids(Client, Input, Options)
 -spec update_application(map(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
@@ -1805,11 +1765,7 @@ update_application(Client, Input)
 -spec update_application(map(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, authorization_error_exception(), tuple()} |
-    {error, home_region_not_set_exception(), tuple()} |
-    {error, invalid_parameter_exception(), tuple()} |
-    {error, invalid_parameter_value_exception(), tuple()} |
-    {error, server_internal_error_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplication">>, Input, Options).

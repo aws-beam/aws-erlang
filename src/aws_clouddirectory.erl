@@ -161,12 +161,14 @@
 %% }
 -type incompatible_schema_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_facet_request() :: #{
 %%   <<"Name">> := string(),
 %%   <<"SchemaArn">> := string()
 %% }
 -type get_facet_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% object_attribute_range() :: #{
@@ -175,12 +177,14 @@
 %% }
 -type object_attribute_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_link_attributes() :: #{
 %%   <<"AttributeNames">> => list(string()()),
 %%   <<"TypedLinkSpecifier">> => typed_link_specifier()
 %% }
 -type batch_get_link_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_policy_attachments() :: #{
@@ -190,12 +194,14 @@
 %% }
 -type batch_list_policy_attachments() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_object_request() :: #{
 %%   <<"DirectoryArn">> := string(),
 %%   <<"ObjectReference">> := object_reference()
 %% }
 -type delete_object_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% policy_to_path() :: #{
@@ -204,6 +210,7 @@
 %% }
 -type policy_to_path() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_incoming_typed_links_response() :: #{
 %%   <<"LinkSpecifiers">> => list(typed_link_specifier()()),
@@ -211,11 +218,13 @@
 %% }
 -type list_incoming_typed_links_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_object_attributes_response() :: #{
 %%   <<"Attributes">> => list(attribute_key_and_value()())
 %% }
 -type get_object_attributes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_attach_object() :: #{
@@ -224,6 +233,7 @@
 %%   <<"ParentReference">> => object_reference()
 %% }
 -type batch_attach_object() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_index() :: #{
@@ -234,11 +244,13 @@
 %% }
 -type batch_list_index() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_detach_object_response() :: #{
 %%   <<"detachedObjectIdentifier">> => string()
 %% }
 -type batch_detach_object_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_directory_request() :: #{
@@ -246,6 +258,7 @@
 %%   <<"SchemaArn">> := string()
 %% }
 -type create_directory_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_lookup_policy() :: #{
@@ -255,12 +268,14 @@
 %% }
 -type batch_lookup_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_object_policies_response() :: #{
@@ -269,6 +284,7 @@
 %% }
 -type list_object_policies_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_published_schema_arns_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -276,17 +292,20 @@
 %% }
 -type list_published_schema_arns_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_attach_to_index_response() :: #{
 %%   <<"AttachedObjectIdentifier">> => string()
 %% }
 -type batch_attach_to_index_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_schema_request() :: #{
 %%   <<"Name">> := string()
 %% }
 -type create_schema_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_object_attributes() :: #{
@@ -296,6 +315,7 @@
 %% }
 -type batch_get_object_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% typed_link_specifier() :: #{
 %%   <<"IdentityAttributeValues">> => list(attribute_name_and_value()()),
@@ -304,6 +324,7 @@
 %%   <<"TypedLinkFacet">> => typed_link_schema_and_facet_name()
 %% }
 -type typed_link_specifier() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_incoming_typed_links() :: #{
@@ -315,6 +336,7 @@
 %% }
 -type batch_list_incoming_typed_links() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_remove_facet_from_object() :: #{
 %%   <<"ObjectReference">> => object_reference(),
@@ -322,20 +344,24 @@
 %% }
 -type batch_remove_facet_from_object() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_applied_schema_version_response() :: #{
 %%   <<"AppliedSchemaArn">> => string()
 %% }
 -type get_applied_schema_version_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_index_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_index_exception() :: #{binary() => any()}.
+
 %% Example:
 %% create_typed_link_facet_response() :: #{}
 -type create_typed_link_facet_response() :: #{}.
+
 
 %% Example:
 %% batch_list_attached_indices() :: #{
@@ -345,11 +371,13 @@
 %% }
 -type batch_list_attached_indices() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_directory_response() :: #{
 %%   <<"DirectoryArn">> => string()
 %% }
 -type disable_directory_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_schema_as_json_response() :: #{
@@ -358,11 +386,13 @@
 %% }
 -type get_schema_as_json_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% retryable_conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type retryable_conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_directory_response() :: #{
@@ -373,14 +403,17 @@
 %% }
 -type create_directory_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_applied_schema_version_request() :: #{
 %%   <<"SchemaArn">> := string()
 %% }
 -type get_applied_schema_version_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% delete_schema_request() :: #{
@@ -388,12 +421,14 @@
 %% }
 -type delete_schema_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% schema_facet() :: #{
 %%   <<"FacetName">> => string(),
 %%   <<"SchemaArn">> => string()
 %% }
 -type schema_facet() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_object_attributes() :: #{
@@ -403,15 +438,18 @@
 %%   <<"ObjectReference">> => object_reference()
 %% }
 -type batch_list_object_attributes() :: #{binary() => any()}.
+
 %% Example:
 %% delete_object_response() :: #{}
 -type delete_object_response() :: #{}.
+
 
 %% Example:
 %% object_reference() :: #{
 %%   <<"Selector">> => string()
 %% }
 -type object_reference() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_write_operation_response() :: #{
@@ -433,6 +471,7 @@
 %% }
 -type batch_write_operation_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_write_request() :: #{
 %%   <<"DirectoryArn">> := string(),
@@ -440,11 +479,13 @@
 %% }
 -type batch_write_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_directory_request() :: #{
 %%   <<"DirectoryArn">> := string()
 %% }
 -type enable_directory_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_policy_attachments_response() :: #{
@@ -453,11 +494,13 @@
 %% }
 -type batch_list_policy_attachments_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_facet_update_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_facet_update_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_incoming_typed_links_response() :: #{
@@ -466,11 +509,13 @@
 %% }
 -type batch_list_incoming_typed_links_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% facet_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type facet_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_attached_indices_request() :: #{
@@ -481,15 +526,18 @@
 %%   <<"TargetReference">> := object_reference()
 %% }
 -type list_attached_indices_request() :: #{binary() => any()}.
+
 %% Example:
 %% batch_delete_object_response() :: #{}
 -type batch_delete_object_response() :: #{}.
+
 
 %% Example:
 %% directory_deleted_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type directory_deleted_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% lookup_policy_request() :: #{
@@ -500,12 +548,14 @@
 %% }
 -type lookup_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_read_operation_response() :: #{
 %%   <<"ExceptionResponse">> => batch_read_exception(),
 %%   <<"SuccessfulResponse">> => batch_read_successful_response()
 %% }
 -type batch_read_operation_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_typed_link_facet_names_request() :: #{
@@ -515,12 +565,14 @@
 %% }
 -type list_typed_link_facet_names_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_object_children_response() :: #{
 %%   <<"Children">> => map(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_object_children_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_read_successful_response() :: #{
@@ -541,12 +593,14 @@
 %% }
 -type batch_read_successful_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% typed_link_schema_and_facet_name() :: #{
 %%   <<"SchemaArn">> => string(),
 %%   <<"TypedLinkName">> => string()
 %% }
 -type typed_link_schema_and_facet_name() :: #{binary() => any()}.
+
 
 %% Example:
 %% typed_attribute_value_range() :: #{
@@ -556,6 +610,7 @@
 %%   <<"StartValue">> => list()
 %% }
 -type typed_attribute_value_range() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_object_attributes_request() :: #{
@@ -567,9 +622,11 @@
 %%   <<"ObjectReference">> := object_reference()
 %% }
 -type list_object_attributes_request() :: #{binary() => any()}.
+
 %% Example:
 %% batch_update_link_attributes_response() :: #{}
 -type batch_update_link_attributes_response() :: #{}.
+
 
 %% Example:
 %% detach_policy_request() :: #{
@@ -579,11 +636,13 @@
 %% }
 -type detach_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% publish_schema_response() :: #{
 %%   <<"PublishedSchemaArn">> => string()
 %% }
 -type publish_schema_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% directory() :: #{
@@ -594,6 +653,7 @@
 %% }
 -type directory() :: #{binary() => any()}.
 
+
 %% Example:
 %% link_attribute_action() :: #{
 %%   <<"AttributeActionType">> => list(any()),
@@ -601,17 +661,20 @@
 %% }
 -type link_attribute_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_schema_response() :: #{
 %%   <<"SchemaArn">> => string()
 %% }
 -type update_schema_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_directory_response() :: #{
 %%   <<"DirectoryArn">> => string()
 %% }
 -type enable_directory_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_object_policies_request() :: #{
@@ -623,14 +686,17 @@
 %% }
 -type list_object_policies_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
+
 %% Example:
 %% batch_detach_policy_response() :: #{}
 -type batch_detach_policy_response() :: #{}.
+
 
 %% Example:
 %% facet_attribute() :: #{
@@ -641,6 +707,7 @@
 %% }
 -type facet_attribute() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_typed_link_facet_attributes_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -649,6 +716,7 @@
 %%   <<"SchemaArn">> := string()
 %% }
 -type list_typed_link_facet_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_link_attributes_request() :: #{
@@ -659,6 +727,7 @@
 %% }
 -type get_link_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_development_schema_arns_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -666,17 +735,20 @@
 %% }
 -type list_development_schema_arns_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_schema_response() :: #{
 %%   <<"SchemaArn">> => string()
 %% }
 -type create_schema_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% disable_directory_request() :: #{
 %%   <<"DirectoryArn">> := string()
 %% }
 -type disable_directory_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -685,21 +757,25 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% apply_schema_request() :: #{
 %%   <<"DirectoryArn">> := string(),
 %%   <<"PublishedSchemaArn">> := string()
 %% }
 -type apply_schema_request() :: #{binary() => any()}.
+
 %% Example:
 %% batch_attach_policy_response() :: #{}
 -type batch_attach_policy_response() :: #{}.
+
 
 %% Example:
 %% schema_already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type schema_already_exists_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% apply_schema_response() :: #{
@@ -708,17 +784,20 @@
 %% }
 -type apply_schema_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% schema_already_published_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type schema_already_published_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_create_index_response() :: #{
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type batch_create_index_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_facet_attributes_request() :: #{
@@ -728,12 +807,15 @@
 %%   <<"SchemaArn">> := string()
 %% }
 -type list_facet_attributes_request() :: #{binary() => any()}.
+
 %% Example:
 %% batch_add_facet_to_object_response() :: #{}
 -type batch_add_facet_to_object_response() :: #{}.
+
 %% Example:
 %% batch_remove_facet_from_object_response() :: #{}
 -type batch_remove_facet_from_object_response() :: #{}.
+
 
 %% Example:
 %% batch_get_object_information() :: #{
@@ -741,11 +823,13 @@
 %% }
 -type batch_get_object_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_arn_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_arn_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_object_policies_response() :: #{
@@ -753,6 +837,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type batch_list_object_policies_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_published_schema_request() :: #{
@@ -763,6 +848,7 @@
 %% }
 -type upgrade_published_schema_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_object_attributes_request() :: #{
 %%   <<"AttributeUpdates">> := list(object_attribute_update()()),
@@ -770,6 +856,7 @@
 %%   <<"ObjectReference">> := object_reference()
 %% }
 -type update_object_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_object_parent_paths_request() :: #{
@@ -780,6 +867,7 @@
 %% }
 -type list_object_parent_paths_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_typed_link_facet_attributes_response() :: #{
 %%   <<"Attributes">> => list(typed_link_attribute_definition()()),
@@ -787,11 +875,13 @@
 %% }
 -type list_typed_link_facet_attributes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_node_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type not_node_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_object_parent_paths_response() :: #{
@@ -800,12 +890,14 @@
 %% }
 -type batch_list_object_parent_paths_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% index_attachment() :: #{
 %%   <<"IndexedAttributes">> => list(attribute_key_and_value()()),
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type index_attachment() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_object_parents_response() :: #{
@@ -814,11 +906,13 @@
 %% }
 -type batch_list_object_parents_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_write_response() :: #{
 %%   <<"Responses">> => list(batch_write_operation_response()())
 %% }
 -type batch_write_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_object_parent_paths() :: #{
@@ -827,15 +921,18 @@
 %%   <<"ObjectReference">> => object_reference()
 %% }
 -type batch_list_object_parent_paths() :: #{binary() => any()}.
+
 %% Example:
 %% create_facet_response() :: #{}
 -type create_facet_response() :: #{}.
+
 
 %% Example:
 %% put_schema_from_json_response() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type put_schema_from_json_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_object_parents_response() :: #{
@@ -845,11 +942,13 @@
 %% }
 -type list_object_parents_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_directory_response() :: #{
 %%   <<"Directory">> => directory()
 %% }
 -type get_directory_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% attribute_name_and_value() :: #{
@@ -857,6 +956,7 @@
 %%   <<"Value">> => list()
 %% }
 -type attribute_name_and_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% attach_object_request() :: #{
@@ -867,12 +967,14 @@
 %% }
 -type attach_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_read_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => list(any())
 %% }
 -type batch_read_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_object_children_request() :: #{
@@ -883,6 +985,7 @@
 %%   <<"ObjectReference">> := object_reference()
 %% }
 -type list_object_children_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% typed_link_attribute_definition() :: #{
@@ -895,12 +998,14 @@
 %% }
 -type typed_link_attribute_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_facet_names_response() :: #{
 %%   <<"FacetNames">> => list(string()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_facet_names_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% facet_attribute_update() :: #{
@@ -909,11 +1014,13 @@
 %% }
 -type facet_attribute_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_applied_schema_arns_request() :: #{
@@ -924,17 +1031,21 @@
 %% }
 -type list_applied_schema_arns_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% detach_object_response() :: #{
 %%   <<"DetachedObjectIdentifier">> => string()
 %% }
 -type detach_object_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_link_attributes_response() :: #{}
 -type update_link_attributes_response() :: #{}.
+
 %% Example:
 %% add_facet_to_object_response() :: #{}
 -type add_facet_to_object_response() :: #{}.
+
 
 %% Example:
 %% batch_lookup_policy_response() :: #{
@@ -943,12 +1054,14 @@
 %% }
 -type batch_lookup_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_detach_policy() :: #{
@@ -957,14 +1070,17 @@
 %% }
 -type batch_detach_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% directory_already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type directory_already_exists_exception() :: #{binary() => any()}.
+
 %% Example:
 %% attach_policy_response() :: #{}
 -type attach_policy_response() :: #{}.
+
 
 %% Example:
 %% batch_update_link_attributes() :: #{
@@ -973,11 +1089,13 @@
 %% }
 -type batch_update_link_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_create_object_response() :: #{
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type batch_create_object_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% attach_policy_request() :: #{
@@ -987,6 +1105,7 @@
 %% }
 -type attach_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% facet_attribute_reference() :: #{
 %%   <<"TargetAttributeName">> => string(),
@@ -994,11 +1113,13 @@
 %% }
 -type facet_attribute_reference() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_schema_doc_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_schema_doc_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_next_token_exception() :: #{
@@ -1006,11 +1127,13 @@
 %% }
 -type invalid_next_token_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_directory_response() :: #{
 %%   <<"DirectoryArn">> => string()
 %% }
 -type delete_directory_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_typed_link_facet_information_request() :: #{
@@ -1018,6 +1141,7 @@
 %%   <<"SchemaArn">> := string()
 %% }
 -type get_typed_link_facet_information_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% attach_to_index_request() :: #{
@@ -1027,6 +1151,7 @@
 %% }
 -type attach_to_index_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_object_information_response() :: #{
 %%   <<"ObjectIdentifier">> => string(),
@@ -1034,11 +1159,13 @@
 %% }
 -type batch_get_object_information_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% detach_from_index_response() :: #{
 %%   <<"DetachedObjectIdentifier">> => string()
 %% }
 -type detach_from_index_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% detach_from_index_request() :: #{
@@ -1048,17 +1175,20 @@
 %% }
 -type detach_from_index_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% facet_in_use_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type facet_in_use_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_schema_response() :: #{
 %%   <<"SchemaArn">> => string()
 %% }
 -type delete_schema_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_detach_object() :: #{
@@ -1068,6 +1198,7 @@
 %% }
 -type batch_detach_object() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_facet_names_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1076,6 +1207,7 @@
 %% }
 -type list_facet_names_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_list_attached_indices_response() :: #{
 %%   <<"IndexAttachments">> => list(index_attachment()()),
@@ -1083,12 +1215,14 @@
 %% }
 -type batch_list_attached_indices_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_facet_request() :: #{
 %%   <<"Name">> := string(),
 %%   <<"SchemaArn">> := string()
 %% }
 -type delete_facet_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_policy_attachments_request() :: #{
@@ -1100,6 +1234,7 @@
 %% }
 -type list_policy_attachments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_create_object() :: #{
 %%   <<"BatchReferenceName">> => string(),
@@ -1109,6 +1244,7 @@
 %%   <<"SchemaFacet">> => list(schema_facet()())
 %% }
 -type batch_create_object() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_read_operation() :: #{
@@ -1129,6 +1265,7 @@
 %% }
 -type batch_read_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_incoming_typed_links_request() :: #{
 %%   <<"ConsistencyLevel">> => list(any()),
@@ -1141,12 +1278,14 @@
 %% }
 -type list_incoming_typed_links_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_facet_attributes_response() :: #{
 %%   <<"Attributes">> => list(facet_attribute()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_facet_attributes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -1155,6 +1294,7 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_attribute_update() :: #{
 %%   <<"ObjectAttributeAction">> => object_attribute_action(),
@@ -1162,14 +1302,17 @@
 %% }
 -type object_attribute_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% upgrade_published_schema_response() :: #{
 %%   <<"UpgradedSchemaArn">> => string()
 %% }
 -type upgrade_published_schema_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_facet_response() :: #{}
 -type update_facet_response() :: #{}.
+
 
 %% Example:
 %% list_outgoing_typed_links_request() :: #{
@@ -1183,11 +1326,13 @@
 %% }
 -type list_outgoing_typed_links_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_object_attributes_response() :: #{
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type batch_update_object_attributes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_index_response() :: #{
@@ -1196,6 +1341,7 @@
 %% }
 -type batch_list_index_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_outgoing_typed_links_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -1203,17 +1349,20 @@
 %% }
 -type list_outgoing_typed_links_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% attach_to_index_response() :: #{
 %%   <<"AttachedObjectIdentifier">> => string()
 %% }
 -type attach_to_index_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% indexed_attribute_missing_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type indexed_attribute_missing_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_link_attributes_request() :: #{
@@ -1223,6 +1372,7 @@
 %% }
 -type update_link_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_attribute_action() :: #{
 %%   <<"ObjectAttributeActionType">> => list(any()),
@@ -1230,12 +1380,14 @@
 %% }
 -type object_attribute_action() :: #{binary() => any()}.
 
+
 %% Example:
 %% rule() :: #{
 %%   <<"Parameters">> => map(),
 %%   <<"Type">> => list(any())
 %% }
 -type rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% attach_typed_link_request() :: #{
@@ -1247,12 +1399,14 @@
 %% }
 -type attach_typed_link_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_applied_schema_arns_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SchemaArns">> => list(string()())
 %% }
 -type list_applied_schema_arns_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_write_operation() :: #{
@@ -1274,6 +1428,7 @@
 %% }
 -type batch_write_operation() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_attach_typed_link() :: #{
 %%   <<"Attributes">> => list(attribute_name_and_value()()),
@@ -1283,11 +1438,13 @@
 %% }
 -type batch_attach_typed_link() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_index_type_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type unsupported_index_type_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_index_request() :: #{
@@ -1300,6 +1457,7 @@
 %% }
 -type list_index_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% link_attribute_update() :: #{
 %%   <<"AttributeAction">> => link_attribute_action(),
@@ -1307,11 +1465,13 @@
 %% }
 -type link_attribute_update() :: #{binary() => any()}.
 
+
 %% Example:
 %% link_name_already_in_use_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type link_name_already_in_use_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% policy_attachment() :: #{
@@ -1321,11 +1481,13 @@
 %% }
 -type policy_attachment() :: #{binary() => any()}.
 
+
 %% Example:
 %% attach_typed_link_response() :: #{
 %%   <<"TypedLinkSpecifier">> => typed_link_specifier()
 %% }
 -type attach_typed_link_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_update_object_attributes() :: #{
@@ -1334,15 +1496,18 @@
 %% }
 -type batch_update_object_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_object_attributes_response() :: #{
 %%   <<"Attributes">> => list(attribute_key_and_value()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_object_attributes_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_typed_link_facet_response() :: #{}
 -type update_typed_link_facet_response() :: #{}.
+
 
 %% Example:
 %% batch_list_object_attributes_response() :: #{
@@ -1350,6 +1515,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type batch_list_object_attributes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% publish_schema_request() :: #{
@@ -1360,6 +1526,7 @@
 %% }
 -type publish_schema_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_object_information_response() :: #{
 %%   <<"ObjectIdentifier">> => string(),
@@ -1367,11 +1534,13 @@
 %% }
 -type get_object_information_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_read_response() :: #{
 %%   <<"Responses">> => list(batch_read_operation_response()())
 %% }
 -type batch_read_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% path_to_object_identifiers() :: #{
@@ -1380,6 +1549,7 @@
 %% }
 -type path_to_object_identifiers() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_attach_policy() :: #{
 %%   <<"ObjectReference">> => object_reference(),
@@ -1387,12 +1557,14 @@
 %% }
 -type batch_attach_policy() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_object_parent_paths_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PathToObjectIdentifiersList">> => list(path_to_object_identifiers()())
 %% }
 -type list_object_parent_paths_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_object_parents() :: #{
@@ -1402,12 +1574,14 @@
 %% }
 -type batch_list_object_parents() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_schema_from_json_request() :: #{
 %%   <<"Document">> := string(),
 %%   <<"SchemaArn">> := string()
 %% }
 -type put_schema_from_json_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_attach_to_index() :: #{
@@ -1416,12 +1590,14 @@
 %% }
 -type batch_attach_to_index() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_typed_link_facet_request() :: #{
 %%   <<"Name">> := string(),
 %%   <<"SchemaArn">> := string()
 %% }
 -type delete_typed_link_facet_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_facet_request() :: #{
@@ -1433,6 +1609,7 @@
 %% }
 -type create_facet_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_directories_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1441,11 +1618,13 @@
 %% }
 -type list_directories_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% cannot_list_parent_of_root_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type cannot_list_parent_of_root_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_applied_schema_request() :: #{
@@ -1454,6 +1633,7 @@
 %%   <<"PublishedSchemaArn">> := string()
 %% }
 -type upgrade_applied_schema_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_index_request() :: #{
@@ -1465,6 +1645,7 @@
 %% }
 -type create_index_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_typed_link_facet_request() :: #{
 %%   <<"AttributeUpdates">> := list(typed_link_facet_attribute_update()()),
@@ -1474,11 +1655,13 @@
 %% }
 -type update_typed_link_facet_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_attach_typed_link_response() :: #{
 %%   <<"TypedLinkSpecifier">> => typed_link_specifier()
 %% }
 -type batch_attach_typed_link_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_information_request() :: #{
@@ -1488,12 +1671,14 @@
 %% }
 -type get_object_information_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_identifier_and_link_name_tuple() :: #{
 %%   <<"LinkName">> => string(),
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type object_identifier_and_link_name_tuple() :: #{binary() => any()}.
+
 
 %% Example:
 %% detach_object_request() :: #{
@@ -1503,17 +1688,20 @@
 %% }
 -type detach_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_object_attributes_response() :: #{
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type update_object_attributes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_typed_link_facet_names_response() :: #{
@@ -1522,29 +1710,35 @@
 %% }
 -type list_typed_link_facet_names_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% still_contains_links_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type still_contains_links_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_directory_request() :: #{
 %%   <<"DirectoryArn">> := string()
 %% }
 -type delete_directory_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% facet_already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type facet_already_exists_exception() :: #{binary() => any()}.
+
 %% Example:
 %% detach_policy_response() :: #{}
 -type detach_policy_response() :: #{}.
+
 
 %% Example:
 %% list_development_schema_arns_response() :: #{
@@ -1553,21 +1747,25 @@
 %% }
 -type list_development_schema_arns_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_managed_schema_arns_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SchemaArns">> => list(string()())
 %% }
 -type list_managed_schema_arns_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_facet_response() :: #{}
 -type delete_facet_response() :: #{}.
+
 
 %% Example:
 %% get_link_attributes_response() :: #{
 %%   <<"Attributes">> => list(attribute_key_and_value()())
 %% }
 -type get_link_attributes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_object_children() :: #{
@@ -1577,12 +1775,14 @@
 %% }
 -type batch_list_object_children() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_attached_indices_response() :: #{
 %%   <<"IndexAttachments">> => list(index_attachment()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_attached_indices_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% attribute_key_and_value() :: #{
@@ -1591,17 +1791,20 @@
 %% }
 -type attribute_key_and_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_detach_typed_link() :: #{
 %%   <<"TypedLinkSpecifier">> => typed_link_specifier()
 %% }
 -type batch_detach_typed_link() :: #{binary() => any()}.
 
+
 %% Example:
 %% directory_not_disabled_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type directory_not_disabled_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_create_index() :: #{
@@ -1613,11 +1816,13 @@
 %% }
 -type batch_create_index() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_request() :: #{
@@ -1626,6 +1831,7 @@
 %%   <<"ResourceArn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_facet_request() :: #{
@@ -1636,6 +1842,7 @@
 %% }
 -type update_facet_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% facet() :: #{
 %%   <<"FacetStyle">> => list(any()),
@@ -1643,9 +1850,11 @@
 %%   <<"ObjectType">> => list(any())
 %% }
 -type facet() :: #{binary() => any()}.
+
 %% Example:
 %% batch_detach_typed_link_response() :: #{}
 -type batch_detach_typed_link_response() :: #{}.
+
 
 %% Example:
 %% create_typed_link_facet_request() :: #{
@@ -1654,11 +1863,13 @@
 %% }
 -type create_typed_link_facet_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% facet_validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type facet_validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_object_policies() :: #{
@@ -1668,6 +1879,7 @@
 %% }
 -type batch_list_object_policies() :: #{binary() => any()}.
 
+
 %% Example:
 %% typed_link_facet() :: #{
 %%   <<"Attributes">> => list(typed_link_attribute_definition()()),
@@ -1676,17 +1888,20 @@
 %% }
 -type typed_link_facet() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_rule_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_rule_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_attach_object_response() :: #{
 %%   <<"attachedObjectIdentifier">> => string()
 %% }
 -type batch_attach_object_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_object_children_response() :: #{
@@ -1695,11 +1910,13 @@
 %% }
 -type batch_list_object_children_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_detach_from_index_response() :: #{
 %%   <<"DetachedObjectIdentifier">> => string()
 %% }
 -type batch_detach_from_index_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_published_schema_arns_request() :: #{
@@ -1709,6 +1926,7 @@
 %% }
 -type list_published_schema_arns_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_policy_attachments_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -1716,11 +1934,13 @@
 %% }
 -type list_policy_attachments_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_object_attributes_response() :: #{
 %%   <<"Attributes">> => list(attribute_key_and_value()())
 %% }
 -type batch_get_object_attributes_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% object_not_detached_exception() :: #{
@@ -1728,11 +1948,13 @@
 %% }
 -type object_not_detached_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_outgoing_typed_links_response() :: #{
@@ -1741,11 +1963,13 @@
 %% }
 -type batch_list_outgoing_typed_links_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% attach_object_response() :: #{
 %%   <<"AttachedObjectIdentifier">> => string()
 %% }
 -type attach_object_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% not_policy_exception() :: #{
@@ -1753,15 +1977,18 @@
 %% }
 -type not_policy_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_detach_from_index() :: #{
 %%   <<"IndexReference">> => object_reference(),
 %%   <<"TargetReference">> => object_reference()
 %% }
 -type batch_detach_from_index() :: #{binary() => any()}.
+
 %% Example:
 %% remove_facet_from_object_response() :: #{}
 -type remove_facet_from_object_response() :: #{}.
+
 
 %% Example:
 %% directory_not_enabled_exception() :: #{
@@ -1769,12 +1996,14 @@
 %% }
 -type directory_not_enabled_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_index_response() :: #{
 %%   <<"IndexAttachments">> => list(index_attachment()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_index_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_object_parents_request() :: #{
@@ -1787,12 +2016,14 @@
 %% }
 -type list_object_parents_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% detach_typed_link_request() :: #{
 %%   <<"DirectoryArn">> := string(),
 %%   <<"TypedLinkSpecifier">> := typed_link_specifier()
 %% }
 -type detach_typed_link_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_directories_response() :: #{
@@ -1801,11 +2032,13 @@
 %% }
 -type list_directories_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_index_response() :: #{
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type create_index_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% upgrade_applied_schema_response() :: #{
@@ -1813,6 +2046,7 @@
 %%   <<"UpgradedSchemaArn">> => string()
 %% }
 -type upgrade_applied_schema_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_object_request() :: #{
@@ -1824,11 +2058,13 @@
 %% }
 -type create_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_object_response() :: #{
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type create_object_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_facet_to_object_request() :: #{
@@ -1838,6 +2074,7 @@
 %%   <<"SchemaFacet">> := schema_facet()
 %% }
 -type add_facet_to_object_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_list_outgoing_typed_links() :: #{
@@ -1849,11 +2086,13 @@
 %% }
 -type batch_list_outgoing_typed_links() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_object() :: #{
 %%   <<"ObjectReference">> => object_reference()
 %% }
 -type batch_delete_object() :: #{binary() => any()}.
+
 
 %% Example:
 %% attribute_key() :: #{
@@ -1863,12 +2102,14 @@
 %% }
 -type attribute_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% typed_link_facet_attribute_update() :: #{
 %%   <<"Action">> => list(any()),
 %%   <<"Attribute">> => typed_link_attribute_definition()
 %% }
 -type typed_link_facet_attribute_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% lookup_policy_response() :: #{
@@ -1877,11 +2118,13 @@
 %% }
 -type lookup_policy_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_attachment_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_attachment_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% facet_attribute_definition() :: #{
@@ -1892,6 +2135,7 @@
 %% }
 -type facet_attribute_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% remove_facet_from_object_request() :: #{
 %%   <<"DirectoryArn">> := string(),
@@ -1900,6 +2144,7 @@
 %% }
 -type remove_facet_from_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_read_request() :: #{
 %%   <<"ConsistencyLevel">> => list(any()),
@@ -1907,9 +2152,11 @@
 %%   <<"Operations">> := list(batch_read_operation()())
 %% }
 -type batch_read_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_typed_link_facet_response() :: #{}
 -type delete_typed_link_facet_response() :: #{}.
+
 
 %% Example:
 %% object_already_detached_exception() :: #{
@@ -1917,11 +2164,13 @@
 %% }
 -type object_already_detached_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_schema_as_json_request() :: #{
 %%   <<"SchemaArn">> := string()
 %% }
 -type get_schema_as_json_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% typed_link_attribute_range() :: #{
@@ -1930,17 +2179,20 @@
 %% }
 -type typed_link_attribute_range() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_directory_request() :: #{
 %%   <<"DirectoryArn">> := string()
 %% }
 -type get_directory_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_facet_response() :: #{
 %%   <<"Facet">> => facet()
 %% }
 -type get_facet_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_managed_schema_arns_request() :: #{
@@ -1950,6 +2202,7 @@
 %% }
 -type list_managed_schema_arns_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_write_exception() :: #{
 %%   <<"Index">> => integer(),
@@ -1957,6 +2210,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type batch_write_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_object_attributes_request() :: #{
@@ -1968,17 +2222,20 @@
 %% }
 -type get_object_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_link_attributes_response() :: #{
 %%   <<"Attributes">> => list(attribute_key_and_value()())
 %% }
 -type batch_get_link_attributes_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_typed_link_facet_information_response() :: #{
 %%   <<"IdentityAttributeOrder">> => list(string()())
 %% }
 -type get_typed_link_facet_information_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_schema_request() :: #{
@@ -1987,11 +2244,13 @@
 %% }
 -type update_schema_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_tagging_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_tagging_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_add_facet_to_object() :: #{
@@ -2000,6 +2259,721 @@
 %%   <<"SchemaFacet">> => schema_facet()
 %% }
 -type batch_add_facet_to_object() :: #{binary() => any()}.
+
+-type add_facet_to_object_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type apply_schema_errors() ::
+    invalid_attachment_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    schema_already_exists_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type attach_object_errors() ::
+    invalid_attachment_exception() | 
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    link_name_already_in_use_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type attach_policy_errors() ::
+    directory_not_enabled_exception() | 
+    not_policy_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type attach_to_index_errors() ::
+    invalid_attachment_exception() | 
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    link_name_already_in_use_exception() | 
+    indexed_attribute_missing_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception() | 
+    not_index_exception().
+
+-type attach_typed_link_errors() ::
+    invalid_attachment_exception() | 
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type batch_read_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type batch_write_errors() ::
+    batch_write_exception() | 
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type create_directory_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    directory_already_exists_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type create_facet_errors() ::
+    limit_exceeded_exception() | 
+    invalid_rule_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    facet_already_exists_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type create_index_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    link_name_already_in_use_exception() | 
+    unsupported_index_type_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type create_object_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    link_name_already_in_use_exception() | 
+    unsupported_index_type_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type create_schema_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_arn_exception() | 
+    schema_already_exists_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type create_typed_link_facet_errors() ::
+    limit_exceeded_exception() | 
+    invalid_rule_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    facet_already_exists_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type delete_directory_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    directory_not_disabled_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    directory_deleted_exception() | 
+    retryable_conflict_exception().
+
+-type delete_facet_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    facet_in_use_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    facet_not_found_exception() | 
+    retryable_conflict_exception().
+
+-type delete_object_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    object_not_detached_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type delete_schema_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    still_contains_links_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type delete_typed_link_facet_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    facet_not_found_exception() | 
+    retryable_conflict_exception().
+
+-type detach_from_index_errors() ::
+    object_already_detached_exception() | 
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception() | 
+    not_index_exception().
+
+-type detach_object_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    not_node_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type detach_policy_errors() ::
+    directory_not_enabled_exception() | 
+    not_policy_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type detach_typed_link_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type disable_directory_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    directory_deleted_exception() | 
+    retryable_conflict_exception().
+
+-type enable_directory_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    directory_deleted_exception() | 
+    retryable_conflict_exception().
+
+-type get_applied_schema_version_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type get_directory_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type get_facet_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    facet_not_found_exception() | 
+    retryable_conflict_exception().
+
+-type get_link_attributes_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type get_object_attributes_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type get_object_information_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type get_schema_as_json_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type get_typed_link_facet_information_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    facet_not_found_exception() | 
+    retryable_conflict_exception().
+
+-type list_applied_schema_arns_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_attached_indices_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_development_schema_arns_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_directories_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_facet_attributes_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    facet_not_found_exception() | 
+    retryable_conflict_exception().
+
+-type list_facet_names_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_incoming_typed_links_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_index_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception() | 
+    not_index_exception().
+
+-type list_managed_schema_arns_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception().
+
+-type list_object_attributes_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_object_children_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    not_node_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_object_parent_paths_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_object_parents_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    cannot_list_parent_of_root_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_object_policies_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_outgoing_typed_links_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_policy_attachments_errors() ::
+    directory_not_enabled_exception() | 
+    not_policy_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_published_schema_arns_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_tagging_request_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type list_typed_link_facet_attributes_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    facet_not_found_exception() | 
+    retryable_conflict_exception().
+
+-type list_typed_link_facet_names_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type lookup_policy_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type publish_schema_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    schema_already_published_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type put_schema_from_json_errors() ::
+    limit_exceeded_exception() | 
+    invalid_rule_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    invalid_schema_doc_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type remove_facet_from_object_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type tag_resource_errors() ::
+    invalid_tagging_request_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type untag_resource_errors() ::
+    invalid_tagging_request_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type update_facet_errors() ::
+    limit_exceeded_exception() | 
+    invalid_rule_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    facet_not_found_exception() | 
+    invalid_facet_update_exception() | 
+    retryable_conflict_exception().
+
+-type update_link_attributes_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type update_object_attributes_errors() ::
+    directory_not_enabled_exception() | 
+    limit_exceeded_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    link_name_already_in_use_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type update_schema_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception().
+
+-type update_typed_link_facet_errors() ::
+    limit_exceeded_exception() | 
+    invalid_rule_exception() | 
+    facet_validation_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    facet_not_found_exception() | 
+    invalid_facet_update_exception() | 
+    retryable_conflict_exception().
+
+-type upgrade_applied_schema_errors() ::
+    invalid_attachment_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    schema_already_exists_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception() | 
+    incompatible_schema_exception().
+
+-type upgrade_published_schema_errors() ::
+    invalid_attachment_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    retryable_conflict_exception() | 
+    incompatible_schema_exception().
 
 %%====================================================================
 %% API
@@ -2011,30 +2985,14 @@
 -spec add_facet_to_object(map(), add_facet_to_object_request()) ->
     {ok, add_facet_to_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_facet_to_object_errors(), tuple()}.
 add_facet_to_object(Client, Input) ->
     add_facet_to_object(Client, Input, []).
 
 -spec add_facet_to_object(map(), add_facet_to_object_request(), proplists:proplist()) ->
     {ok, add_facet_to_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, add_facet_to_object_errors(), tuple()}.
 add_facet_to_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/facets"],
@@ -2065,30 +3023,14 @@ add_facet_to_object(Client, Input0, Options0) ->
 -spec apply_schema(map(), apply_schema_request()) ->
     {ok, apply_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, schema_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, apply_schema_errors(), tuple()}.
 apply_schema(Client, Input) ->
     apply_schema(Client, Input, []).
 
 -spec apply_schema(map(), apply_schema_request(), proplists:proplist()) ->
     {ok, apply_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, schema_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, apply_schema_errors(), tuple()}.
 apply_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/apply"],
@@ -2124,34 +3066,14 @@ apply_schema(Client, Input0, Options0) ->
 -spec attach_object(map(), attach_object_request()) ->
     {ok, attach_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_object_errors(), tuple()}.
 attach_object(Client, Input) ->
     attach_object(Client, Input, []).
 
 -spec attach_object(map(), attach_object_request(), proplists:proplist()) ->
     {ok, attach_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_object_errors(), tuple()}.
 attach_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/attach"],
@@ -2183,30 +3105,14 @@ attach_object(Client, Input0, Options0) ->
 -spec attach_policy(map(), attach_policy_request()) ->
     {ok, attach_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_policy_errors(), tuple()}.
 attach_policy(Client, Input) ->
     attach_policy(Client, Input, []).
 
 -spec attach_policy(map(), attach_policy_request(), proplists:proplist()) ->
     {ok, attach_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_policy_errors(), tuple()}.
 attach_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/policy/attach"],
@@ -2235,36 +3141,14 @@ attach_policy(Client, Input0, Options0) ->
 -spec attach_to_index(map(), attach_to_index_request()) ->
     {ok, attach_to_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, indexed_attribute_missing_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, not_index_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_to_index_errors(), tuple()}.
 attach_to_index(Client, Input) ->
     attach_to_index(Client, Input, []).
 
 -spec attach_to_index(map(), attach_to_index_request(), proplists:proplist()) ->
     {ok, attach_to_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, indexed_attribute_missing_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, not_index_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_to_index_errors(), tuple()}.
 attach_to_index(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/index/attach"],
@@ -2296,32 +3180,14 @@ attach_to_index(Client, Input0, Options0) ->
 -spec attach_typed_link(map(), attach_typed_link_request()) ->
     {ok, attach_typed_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_typed_link_errors(), tuple()}.
 attach_typed_link(Client, Input) ->
     attach_typed_link(Client, Input, []).
 
 -spec attach_typed_link(map(), attach_typed_link_request(), proplists:proplist()) ->
     {ok, attach_typed_link_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, attach_typed_link_errors(), tuple()}.
 attach_typed_link(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attach"],
@@ -2350,26 +3216,14 @@ attach_typed_link(Client, Input0, Options0) ->
 -spec batch_read(map(), batch_read_request()) ->
     {ok, batch_read_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_read_errors(), tuple()}.
 batch_read(Client, Input) ->
     batch_read(Client, Input, []).
 
 -spec batch_read(map(), batch_read_request(), proplists:proplist()) ->
     {ok, batch_read_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_read_errors(), tuple()}.
 batch_read(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/batchread"],
@@ -2402,28 +3256,14 @@ batch_read(Client, Input0, Options0) ->
 -spec batch_write(map(), batch_write_request()) ->
     {ok, batch_write_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, batch_write_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_write_errors(), tuple()}.
 batch_write(Client, Input) ->
     batch_write(Client, Input, []).
 
 -spec batch_write(map(), batch_write_request(), proplists:proplist()) ->
     {ok, batch_write_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, batch_write_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_write_errors(), tuple()}.
 batch_write(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/batchwrite"],
@@ -2460,28 +3300,14 @@ batch_write(Client, Input0, Options0) ->
 -spec create_directory(map(), create_directory_request()) ->
     {ok, create_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_already_exists_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_directory_errors(), tuple()}.
 create_directory(Client, Input) ->
     create_directory(Client, Input, []).
 
 -spec create_directory(map(), create_directory_request(), proplists:proplist()) ->
     {ok, create_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_already_exists_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_directory_errors(), tuple()}.
 create_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory/create"],
@@ -2513,32 +3339,14 @@ create_directory(Client, Input0, Options0) ->
 -spec create_facet(map(), create_facet_request()) ->
     {ok, create_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_already_exists_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_facet_errors(), tuple()}.
 create_facet(Client, Input) ->
     create_facet(Client, Input, []).
 
 -spec create_facet(map(), create_facet_request(), proplists:proplist()) ->
     {ok, create_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_already_exists_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_facet_errors(), tuple()}.
 create_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/facet/create"],
@@ -2571,34 +3379,14 @@ create_facet(Client, Input0, Options0) ->
 -spec create_index(map(), create_index_request()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, unsupported_index_type_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_index_errors(), tuple()}.
 create_index(Client, Input) ->
     create_index(Client, Input, []).
 
 -spec create_index(map(), create_index_request(), proplists:proplist()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, unsupported_index_type_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_index_errors(), tuple()}.
 create_index(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/index"],
@@ -2635,34 +3423,14 @@ create_index(Client, Input0, Options0) ->
 -spec create_object(map(), create_object_request()) ->
     {ok, create_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, unsupported_index_type_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_object_errors(), tuple()}.
 create_object(Client, Input) ->
     create_object(Client, Input, []).
 
 -spec create_object(map(), create_object_request(), proplists:proplist()) ->
     {ok, create_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, unsupported_index_type_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_object_errors(), tuple()}.
 create_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object"],
@@ -2707,26 +3475,14 @@ create_object(Client, Input0, Options0) ->
 -spec create_schema(map(), create_schema_request()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, schema_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_schema_errors(), tuple()}.
 create_schema(Client, Input) ->
     create_schema(Client, Input, []).
 
 -spec create_schema(map(), create_schema_request(), proplists:proplist()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, schema_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_schema_errors(), tuple()}.
 create_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/create"],
@@ -2756,32 +3512,14 @@ create_schema(Client, Input0, Options0) ->
 -spec create_typed_link_facet(map(), create_typed_link_facet_request()) ->
     {ok, create_typed_link_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_already_exists_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_typed_link_facet_errors(), tuple()}.
 create_typed_link_facet(Client, Input) ->
     create_typed_link_facet(Client, Input, []).
 
 -spec create_typed_link_facet(map(), create_typed_link_facet_request(), proplists:proplist()) ->
     {ok, create_typed_link_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_already_exists_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_typed_link_facet_errors(), tuple()}.
 create_typed_link_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/create"],
@@ -2815,30 +3553,14 @@ create_typed_link_facet(Client, Input0, Options0) ->
 -spec delete_directory(map(), delete_directory_request()) ->
     {ok, delete_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_deleted_exception(), tuple()} |
-    {error, directory_not_disabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_directory_errors(), tuple()}.
 delete_directory(Client, Input) ->
     delete_directory(Client, Input, []).
 
 -spec delete_directory(map(), delete_directory_request(), proplists:proplist()) ->
     {ok, delete_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_deleted_exception(), tuple()} |
-    {error, directory_not_disabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_directory_errors(), tuple()}.
 delete_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory"],
@@ -2872,30 +3594,14 @@ delete_directory(Client, Input0, Options0) ->
 -spec delete_facet(map(), delete_facet_request()) ->
     {ok, delete_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_in_use_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_facet_errors(), tuple()}.
 delete_facet(Client, Input) ->
     delete_facet(Client, Input, []).
 
 -spec delete_facet(map(), delete_facet_request(), proplists:proplist()) ->
     {ok, delete_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_in_use_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_facet_errors(), tuple()}.
 delete_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/facet/delete"],
@@ -2930,30 +3636,14 @@ delete_facet(Client, Input0, Options0) ->
 -spec delete_object(map(), delete_object_request()) ->
     {ok, delete_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, object_not_detached_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_object_errors(), tuple()}.
 delete_object(Client, Input) ->
     delete_object(Client, Input, []).
 
 -spec delete_object(map(), delete_object_request(), proplists:proplist()) ->
     {ok, delete_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, object_not_detached_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_object_errors(), tuple()}.
 delete_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/delete"],
@@ -2984,28 +3674,14 @@ delete_object(Client, Input0, Options0) ->
 -spec delete_schema(map(), delete_schema_request()) ->
     {ok, delete_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, still_contains_links_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_schema_errors(), tuple()}.
 delete_schema(Client, Input) ->
     delete_schema(Client, Input, []).
 
 -spec delete_schema(map(), delete_schema_request(), proplists:proplist()) ->
     {ok, delete_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, still_contains_links_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_schema_errors(), tuple()}.
 delete_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema"],
@@ -3037,28 +3713,14 @@ delete_schema(Client, Input0, Options0) ->
 -spec delete_typed_link_facet(map(), delete_typed_link_facet_request()) ->
     {ok, delete_typed_link_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_typed_link_facet_errors(), tuple()}.
 delete_typed_link_facet(Client, Input) ->
     delete_typed_link_facet(Client, Input, []).
 
 -spec delete_typed_link_facet(map(), delete_typed_link_facet_request(), proplists:proplist()) ->
     {ok, delete_typed_link_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_typed_link_facet_errors(), tuple()}.
 delete_typed_link_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/delete"],
@@ -3087,32 +3749,14 @@ delete_typed_link_facet(Client, Input0, Options0) ->
 -spec detach_from_index(map(), detach_from_index_request()) ->
     {ok, detach_from_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_index_exception(), tuple()} |
-    {error, object_already_detached_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_from_index_errors(), tuple()}.
 detach_from_index(Client, Input) ->
     detach_from_index(Client, Input, []).
 
 -spec detach_from_index(map(), detach_from_index_request(), proplists:proplist()) ->
     {ok, detach_from_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_index_exception(), tuple()} |
-    {error, object_already_detached_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_from_index_errors(), tuple()}.
 detach_from_index(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/index/detach"],
@@ -3144,30 +3788,14 @@ detach_from_index(Client, Input0, Options0) ->
 -spec detach_object(map(), detach_object_request()) ->
     {ok, detach_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_node_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_object_errors(), tuple()}.
 detach_object(Client, Input) ->
     detach_object(Client, Input, []).
 
 -spec detach_object(map(), detach_object_request(), proplists:proplist()) ->
     {ok, detach_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_node_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_object_errors(), tuple()}.
 detach_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/detach"],
@@ -3196,30 +3824,14 @@ detach_object(Client, Input0, Options0) ->
 -spec detach_policy(map(), detach_policy_request()) ->
     {ok, detach_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_policy_errors(), tuple()}.
 detach_policy(Client, Input) ->
     detach_policy(Client, Input, []).
 
 -spec detach_policy(map(), detach_policy_request(), proplists:proplist()) ->
     {ok, detach_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_policy_errors(), tuple()}.
 detach_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/policy/detach"],
@@ -3251,30 +3863,14 @@ detach_policy(Client, Input0, Options0) ->
 -spec detach_typed_link(map(), detach_typed_link_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_typed_link_errors(), tuple()}.
 detach_typed_link(Client, Input) ->
     detach_typed_link(Client, Input, []).
 
 -spec detach_typed_link(map(), detach_typed_link_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, detach_typed_link_errors(), tuple()}.
 detach_typed_link(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/detach"],
@@ -3307,28 +3903,14 @@ detach_typed_link(Client, Input0, Options0) ->
 -spec disable_directory(map(), disable_directory_request()) ->
     {ok, disable_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_deleted_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_directory_errors(), tuple()}.
 disable_directory(Client, Input) ->
     disable_directory(Client, Input, []).
 
 -spec disable_directory(map(), disable_directory_request(), proplists:proplist()) ->
     {ok, disable_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_deleted_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_directory_errors(), tuple()}.
 disable_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory/disable"],
@@ -3360,28 +3942,14 @@ disable_directory(Client, Input0, Options0) ->
 -spec enable_directory(map(), enable_directory_request()) ->
     {ok, enable_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_deleted_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_directory_errors(), tuple()}.
 enable_directory(Client, Input) ->
     enable_directory(Client, Input, []).
 
 -spec enable_directory(map(), enable_directory_request(), proplists:proplist()) ->
     {ok, enable_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_deleted_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_directory_errors(), tuple()}.
 enable_directory(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/directory/enable"],
@@ -3411,26 +3979,14 @@ enable_directory(Client, Input0, Options0) ->
 -spec get_applied_schema_version(map(), get_applied_schema_version_request()) ->
     {ok, get_applied_schema_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_applied_schema_version_errors(), tuple()}.
 get_applied_schema_version(Client, Input) ->
     get_applied_schema_version(Client, Input, []).
 
 -spec get_applied_schema_version(map(), get_applied_schema_version_request(), proplists:proplist()) ->
     {ok, get_applied_schema_version_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_applied_schema_version_errors(), tuple()}.
 get_applied_schema_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/getappliedschema"],
@@ -3457,24 +4013,14 @@ get_applied_schema_version(Client, Input0, Options0) ->
 -spec get_directory(map(), get_directory_request()) ->
     {ok, get_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_directory_errors(), tuple()}.
 get_directory(Client, Input) ->
     get_directory(Client, Input, []).
 
 -spec get_directory(map(), get_directory_request(), proplists:proplist()) ->
     {ok, get_directory_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_directory_errors(), tuple()}.
 get_directory(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/directory/get"],
@@ -3507,28 +4053,14 @@ get_directory(Client, Input0, Options0) ->
 -spec get_facet(map(), get_facet_request()) ->
     {ok, get_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_facet_errors(), tuple()}.
 get_facet(Client, Input) ->
     get_facet(Client, Input, []).
 
 -spec get_facet(map(), get_facet_request(), proplists:proplist()) ->
     {ok, get_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_facet_errors(), tuple()}.
 get_facet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/facet"],
@@ -3557,30 +4089,14 @@ get_facet(Client, Input0, Options0) ->
 -spec get_link_attributes(map(), get_link_attributes_request()) ->
     {ok, get_link_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_link_attributes_errors(), tuple()}.
 get_link_attributes(Client, Input) ->
     get_link_attributes(Client, Input, []).
 
 -spec get_link_attributes(map(), get_link_attributes_request(), proplists:proplist()) ->
     {ok, get_link_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_link_attributes_errors(), tuple()}.
 get_link_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attributes/get"],
@@ -3610,30 +4126,14 @@ get_link_attributes(Client, Input0, Options0) ->
 -spec get_object_attributes(map(), get_object_attributes_request()) ->
     {ok, get_object_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_object_attributes_errors(), tuple()}.
 get_object_attributes(Client, Input) ->
     get_object_attributes(Client, Input, []).
 
 -spec get_object_attributes(map(), get_object_attributes_request(), proplists:proplist()) ->
     {ok, get_object_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_object_attributes_errors(), tuple()}.
 get_object_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/attributes/get"],
@@ -3663,28 +4163,14 @@ get_object_attributes(Client, Input0, Options0) ->
 -spec get_object_information(map(), get_object_information_request()) ->
     {ok, get_object_information_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_object_information_errors(), tuple()}.
 get_object_information(Client, Input) ->
     get_object_information(Client, Input, []).
 
 -spec get_object_information(map(), get_object_information_request(), proplists:proplist()) ->
     {ok, get_object_information_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_object_information_errors(), tuple()}.
 get_object_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/information"],
@@ -3718,26 +4204,14 @@ get_object_information(Client, Input0, Options0) ->
 -spec get_schema_as_json(map(), get_schema_as_json_request()) ->
     {ok, get_schema_as_json_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schema_as_json_errors(), tuple()}.
 get_schema_as_json(Client, Input) ->
     get_schema_as_json(Client, Input, []).
 
 -spec get_schema_as_json(map(), get_schema_as_json_request(), proplists:proplist()) ->
     {ok, get_schema_as_json_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_schema_as_json_errors(), tuple()}.
 get_schema_as_json(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/json"],
@@ -3770,30 +4244,14 @@ get_schema_as_json(Client, Input0, Options0) ->
 -spec get_typed_link_facet_information(map(), get_typed_link_facet_information_request()) ->
     {ok, get_typed_link_facet_information_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_typed_link_facet_information_errors(), tuple()}.
 get_typed_link_facet_information(Client, Input) ->
     get_typed_link_facet_information(Client, Input, []).
 
 -spec get_typed_link_facet_information(map(), get_typed_link_facet_information_request(), proplists:proplist()) ->
     {ok, get_typed_link_facet_information_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_typed_link_facet_information_errors(), tuple()}.
 get_typed_link_facet_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/get"],
@@ -3824,28 +4282,14 @@ get_typed_link_facet_information(Client, Input0, Options0) ->
 -spec list_applied_schema_arns(map(), list_applied_schema_arns_request()) ->
     {ok, list_applied_schema_arns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_applied_schema_arns_errors(), tuple()}.
 list_applied_schema_arns(Client, Input) ->
     list_applied_schema_arns(Client, Input, []).
 
 -spec list_applied_schema_arns(map(), list_applied_schema_arns_request(), proplists:proplist()) ->
     {ok, list_applied_schema_arns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_applied_schema_arns_errors(), tuple()}.
 list_applied_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/applied"],
@@ -3872,28 +4316,14 @@ list_applied_schema_arns(Client, Input0, Options0) ->
 -spec list_attached_indices(map(), list_attached_indices_request()) ->
     {ok, list_attached_indices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attached_indices_errors(), tuple()}.
 list_attached_indices(Client, Input) ->
     list_attached_indices(Client, Input, []).
 
 -spec list_attached_indices(map(), list_attached_indices_request(), proplists:proplist()) ->
     {ok, list_attached_indices_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_attached_indices_errors(), tuple()}.
 list_attached_indices(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/indices"],
@@ -3925,28 +4355,14 @@ list_attached_indices(Client, Input0, Options0) ->
 -spec list_development_schema_arns(map(), list_development_schema_arns_request()) ->
     {ok, list_development_schema_arns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_development_schema_arns_errors(), tuple()}.
 list_development_schema_arns(Client, Input) ->
     list_development_schema_arns(Client, Input, []).
 
 -spec list_development_schema_arns(map(), list_development_schema_arns_request(), proplists:proplist()) ->
     {ok, list_development_schema_arns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_development_schema_arns_errors(), tuple()}.
 list_development_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/development"],
@@ -3973,26 +4389,14 @@ list_development_schema_arns(Client, Input0, Options0) ->
 -spec list_directories(map(), list_directories_request()) ->
     {ok, list_directories_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_directories_errors(), tuple()}.
 list_directories(Client, Input) ->
     list_directories(Client, Input, []).
 
 -spec list_directories(map(), list_directories_request(), proplists:proplist()) ->
     {ok, list_directories_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_directories_errors(), tuple()}.
 list_directories(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/directory/list"],
@@ -4019,30 +4423,14 @@ list_directories(Client, Input0, Options0) ->
 -spec list_facet_attributes(map(), list_facet_attributes_request()) ->
     {ok, list_facet_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_facet_attributes_errors(), tuple()}.
 list_facet_attributes(Client, Input) ->
     list_facet_attributes(Client, Input, []).
 
 -spec list_facet_attributes(map(), list_facet_attributes_request(), proplists:proplist()) ->
     {ok, list_facet_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_facet_attributes_errors(), tuple()}.
 list_facet_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/facet/attributes"],
@@ -4071,28 +4459,14 @@ list_facet_attributes(Client, Input0, Options0) ->
 -spec list_facet_names(map(), list_facet_names_request()) ->
     {ok, list_facet_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_facet_names_errors(), tuple()}.
 list_facet_names(Client, Input) ->
     list_facet_names(Client, Input, []).
 
 -spec list_facet_names(map(), list_facet_names_request(), proplists:proplist()) ->
     {ok, list_facet_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_facet_names_errors(), tuple()}.
 list_facet_names(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/facet/list"],
@@ -4126,32 +4500,14 @@ list_facet_names(Client, Input0, Options0) ->
 -spec list_incoming_typed_links(map(), list_incoming_typed_links_request()) ->
     {ok, list_incoming_typed_links_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_incoming_typed_links_errors(), tuple()}.
 list_incoming_typed_links(Client, Input) ->
     list_incoming_typed_links(Client, Input, []).
 
 -spec list_incoming_typed_links(map(), list_incoming_typed_links_request(), proplists:proplist()) ->
     {ok, list_incoming_typed_links_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_incoming_typed_links_errors(), tuple()}.
 list_incoming_typed_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/incoming"],
@@ -4180,34 +4536,14 @@ list_incoming_typed_links(Client, Input0, Options0) ->
 -spec list_index(map(), list_index_request()) ->
     {ok, list_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_index_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_index_errors(), tuple()}.
 list_index(Client, Input) ->
     list_index(Client, Input, []).
 
 -spec list_index(map(), list_index_request(), proplists:proplist()) ->
     {ok, list_index_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_index_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_index_errors(), tuple()}.
 list_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/index/targets"],
@@ -4240,24 +4576,14 @@ list_index(Client, Input0, Options0) ->
 -spec list_managed_schema_arns(map(), list_managed_schema_arns_request()) ->
     {ok, list_managed_schema_arns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_managed_schema_arns_errors(), tuple()}.
 list_managed_schema_arns(Client, Input) ->
     list_managed_schema_arns(Client, Input, []).
 
 -spec list_managed_schema_arns(map(), list_managed_schema_arns_request(), proplists:proplist()) ->
     {ok, list_managed_schema_arns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_managed_schema_arns_errors(), tuple()}.
 list_managed_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/managed"],
@@ -4284,32 +4610,14 @@ list_managed_schema_arns(Client, Input0, Options0) ->
 -spec list_object_attributes(map(), list_object_attributes_request()) ->
     {ok, list_object_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_attributes_errors(), tuple()}.
 list_object_attributes(Client, Input) ->
     list_object_attributes(Client, Input, []).
 
 -spec list_object_attributes(map(), list_object_attributes_request(), proplists:proplist()) ->
     {ok, list_object_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_attributes_errors(), tuple()}.
 list_object_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/attributes"],
@@ -4341,32 +4649,14 @@ list_object_attributes(Client, Input0, Options0) ->
 -spec list_object_children(map(), list_object_children_request()) ->
     {ok, list_object_children_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_node_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_children_errors(), tuple()}.
 list_object_children(Client, Input) ->
     list_object_children(Client, Input, []).
 
 -spec list_object_children(map(), list_object_children_request(), proplists:proplist()) ->
     {ok, list_object_children_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_node_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_children_errors(), tuple()}.
 list_object_children(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/children"],
@@ -4413,30 +4703,14 @@ list_object_children(Client, Input0, Options0) ->
 -spec list_object_parent_paths(map(), list_object_parent_paths_request()) ->
     {ok, list_object_parent_paths_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_parent_paths_errors(), tuple()}.
 list_object_parent_paths(Client, Input) ->
     list_object_parent_paths(Client, Input, []).
 
 -spec list_object_parent_paths(map(), list_object_parent_paths_request(), proplists:proplist()) ->
     {ok, list_object_parent_paths_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_parent_paths_errors(), tuple()}.
 list_object_parent_paths(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/parentpaths"],
@@ -4467,32 +4741,14 @@ list_object_parent_paths(Client, Input0, Options0) ->
 -spec list_object_parents(map(), list_object_parents_request()) ->
     {ok, list_object_parents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, cannot_list_parent_of_root_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_parents_errors(), tuple()}.
 list_object_parents(Client, Input) ->
     list_object_parents(Client, Input, []).
 
 -spec list_object_parents(map(), list_object_parents_request(), proplists:proplist()) ->
     {ok, list_object_parents_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, cannot_list_parent_of_root_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_parents_errors(), tuple()}.
 list_object_parents(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/parent"],
@@ -4522,30 +4778,14 @@ list_object_parents(Client, Input0, Options0) ->
 -spec list_object_policies(map(), list_object_policies_request()) ->
     {ok, list_object_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_policies_errors(), tuple()}.
 list_object_policies(Client, Input) ->
     list_object_policies(Client, Input, []).
 
 -spec list_object_policies(map(), list_object_policies_request(), proplists:proplist()) ->
     {ok, list_object_policies_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_object_policies_errors(), tuple()}.
 list_object_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/object/policy"],
@@ -4580,32 +4820,14 @@ list_object_policies(Client, Input0, Options0) ->
 -spec list_outgoing_typed_links(map(), list_outgoing_typed_links_request()) ->
     {ok, list_outgoing_typed_links_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_outgoing_typed_links_errors(), tuple()}.
 list_outgoing_typed_links(Client, Input) ->
     list_outgoing_typed_links(Client, Input, []).
 
 -spec list_outgoing_typed_links(map(), list_outgoing_typed_links_request(), proplists:proplist()) ->
     {ok, list_outgoing_typed_links_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_outgoing_typed_links_errors(), tuple()}.
 list_outgoing_typed_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/outgoing"],
@@ -4635,32 +4857,14 @@ list_outgoing_typed_links(Client, Input0, Options0) ->
 -spec list_policy_attachments(map(), list_policy_attachments_request()) ->
     {ok, list_policy_attachments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_policy_attachments_errors(), tuple()}.
 list_policy_attachments(Client, Input) ->
     list_policy_attachments(Client, Input, []).
 
 -spec list_policy_attachments(map(), list_policy_attachments_request(), proplists:proplist()) ->
     {ok, list_policy_attachments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_policy_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_policy_attachments_errors(), tuple()}.
 list_policy_attachments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/policy/attachment"],
@@ -4693,28 +4897,14 @@ list_policy_attachments(Client, Input0, Options0) ->
 -spec list_published_schema_arns(map(), list_published_schema_arns_request()) ->
     {ok, list_published_schema_arns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_published_schema_arns_errors(), tuple()}.
 list_published_schema_arns(Client, Input) ->
     list_published_schema_arns(Client, Input, []).
 
 -spec list_published_schema_arns(map(), list_published_schema_arns_request(), proplists:proplist()) ->
     {ok, list_published_schema_arns_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_published_schema_arns_errors(), tuple()}.
 list_published_schema_arns(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/schema/published"],
@@ -4746,28 +4936,14 @@ list_published_schema_arns(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tagging_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tagging_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/tags"],
@@ -4798,30 +4974,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 -spec list_typed_link_facet_attributes(map(), list_typed_link_facet_attributes_request()) ->
     {ok, list_typed_link_facet_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_typed_link_facet_attributes_errors(), tuple()}.
 list_typed_link_facet_attributes(Client, Input) ->
     list_typed_link_facet_attributes(Client, Input, []).
 
 -spec list_typed_link_facet_attributes(map(), list_typed_link_facet_attributes_request(), proplists:proplist()) ->
     {ok, list_typed_link_facet_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_typed_link_facet_attributes_errors(), tuple()}.
 list_typed_link_facet_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/attributes"],
@@ -4854,28 +5014,14 @@ list_typed_link_facet_attributes(Client, Input0, Options0) ->
 -spec list_typed_link_facet_names(map(), list_typed_link_facet_names_request()) ->
     {ok, list_typed_link_facet_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_typed_link_facet_names_errors(), tuple()}.
 list_typed_link_facet_names(Client, Input) ->
     list_typed_link_facet_names(Client, Input, []).
 
 -spec list_typed_link_facet_names(map(), list_typed_link_facet_names_request(), proplists:proplist()) ->
     {ok, list_typed_link_facet_names_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_typed_link_facet_names_errors(), tuple()}.
 list_typed_link_facet_names(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/list"],
@@ -4916,30 +5062,14 @@ list_typed_link_facet_names(Client, Input0, Options0) ->
 -spec lookup_policy(map(), lookup_policy_request()) ->
     {ok, lookup_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, lookup_policy_errors(), tuple()}.
 lookup_policy(Client, Input) ->
     lookup_policy(Client, Input, []).
 
 -spec lookup_policy(map(), lookup_policy_request(), proplists:proplist()) ->
     {ok, lookup_policy_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, lookup_policy_errors(), tuple()}.
 lookup_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/policy/lookup"],
@@ -4969,28 +5099,14 @@ lookup_policy(Client, Input0, Options0) ->
 -spec publish_schema(map(), publish_schema_request()) ->
     {ok, publish_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, schema_already_published_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_schema_errors(), tuple()}.
 publish_schema(Client, Input) ->
     publish_schema(Client, Input, []).
 
 -spec publish_schema(map(), publish_schema_request(), proplists:proplist()) ->
     {ok, publish_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, schema_already_published_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, publish_schema_errors(), tuple()}.
 publish_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/publish"],
@@ -5023,28 +5139,14 @@ publish_schema(Client, Input0, Options0) ->
 -spec put_schema_from_json(map(), put_schema_from_json_request()) ->
     {ok, put_schema_from_json_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, invalid_schema_doc_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_schema_from_json_errors(), tuple()}.
 put_schema_from_json(Client, Input) ->
     put_schema_from_json(Client, Input, []).
 
 -spec put_schema_from_json(map(), put_schema_from_json_request(), proplists:proplist()) ->
     {ok, put_schema_from_json_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, invalid_schema_doc_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_schema_from_json_errors(), tuple()}.
 put_schema_from_json(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/json"],
@@ -5073,30 +5175,14 @@ put_schema_from_json(Client, Input0, Options0) ->
 -spec remove_facet_from_object(map(), remove_facet_from_object_request()) ->
     {ok, remove_facet_from_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_facet_from_object_errors(), tuple()}.
 remove_facet_from_object(Client, Input) ->
     remove_facet_from_object(Client, Input, []).
 
 -spec remove_facet_from_object(map(), remove_facet_from_object_request(), proplists:proplist()) ->
     {ok, remove_facet_from_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, remove_facet_from_object_errors(), tuple()}.
 remove_facet_from_object(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/facets/delete"],
@@ -5125,28 +5211,14 @@ remove_facet_from_object(Client, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tagging_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tagging_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/tags/add"],
@@ -5173,28 +5245,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tagging_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_tagging_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/tags/remove"],
@@ -5227,34 +5285,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_facet(map(), update_facet_request()) ->
     {ok, update_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_facet_update_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_facet_errors(), tuple()}.
 update_facet(Client, Input) ->
     update_facet(Client, Input, []).
 
 -spec update_facet(map(), update_facet_request(), proplists:proplist()) ->
     {ok, update_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_facet_update_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_facet_errors(), tuple()}.
 update_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/facet"],
@@ -5286,30 +5324,14 @@ update_facet(Client, Input0, Options0) ->
 -spec update_link_attributes(map(), update_link_attributes_request()) ->
     {ok, update_link_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_link_attributes_errors(), tuple()}.
 update_link_attributes(Client, Input) ->
     update_link_attributes(Client, Input, []).
 
 -spec update_link_attributes(map(), update_link_attributes_request(), proplists:proplist()) ->
     {ok, update_link_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_link_attributes_errors(), tuple()}.
 update_link_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attributes/update"],
@@ -5338,32 +5360,14 @@ update_link_attributes(Client, Input0, Options0) ->
 -spec update_object_attributes(map(), update_object_attributes_request()) ->
     {ok, update_object_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_object_attributes_errors(), tuple()}.
 update_object_attributes(Client, Input) ->
     update_object_attributes(Client, Input, []).
 
 -spec update_object_attributes(map(), update_object_attributes_request(), proplists:proplist()) ->
     {ok, update_object_attributes_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, directory_not_enabled_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, link_name_already_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_object_attributes_errors(), tuple()}.
 update_object_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/object/update"],
@@ -5395,26 +5399,14 @@ update_object_attributes(Client, Input0, Options0) ->
 -spec update_schema(map(), update_schema_request()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_schema_errors(), tuple()}.
 update_schema(Client, Input) ->
     update_schema(Client, Input, []).
 
 -spec update_schema(map(), update_schema_request(), proplists:proplist()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_schema_errors(), tuple()}.
 update_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/update"],
@@ -5446,34 +5438,14 @@ update_schema(Client, Input0, Options0) ->
 -spec update_typed_link_facet(map(), update_typed_link_facet_request()) ->
     {ok, update_typed_link_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_facet_update_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_typed_link_facet_errors(), tuple()}.
 update_typed_link_facet(Client, Input) ->
     update_typed_link_facet(Client, Input, []).
 
 -spec update_typed_link_facet(map(), update_typed_link_facet_request(), proplists:proplist()) ->
     {ok, update_typed_link_facet_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, facet_not_found_exception(), tuple()} |
-    {error, facet_validation_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_facet_update_exception(), tuple()} |
-    {error, invalid_rule_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_typed_link_facet_errors(), tuple()}.
 update_typed_link_facet(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet"],
@@ -5509,30 +5481,14 @@ update_typed_link_facet(Client, Input0, Options0) ->
 -spec upgrade_applied_schema(map(), upgrade_applied_schema_request()) ->
     {ok, upgrade_applied_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_schema_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, schema_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, upgrade_applied_schema_errors(), tuple()}.
 upgrade_applied_schema(Client, Input) ->
     upgrade_applied_schema(Client, Input, []).
 
 -spec upgrade_applied_schema(map(), upgrade_applied_schema_request(), proplists:proplist()) ->
     {ok, upgrade_applied_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_schema_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, schema_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, upgrade_applied_schema_errors(), tuple()}.
 upgrade_applied_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/upgradeapplied"],
@@ -5560,30 +5516,14 @@ upgrade_applied_schema(Client, Input0, Options0) ->
 -spec upgrade_published_schema(map(), upgrade_published_schema_request()) ->
     {ok, upgrade_published_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_schema_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, upgrade_published_schema_errors(), tuple()}.
 upgrade_published_schema(Client, Input) ->
     upgrade_published_schema(Client, Input, []).
 
 -spec upgrade_published_schema(map(), upgrade_published_schema_request(), proplists:proplist()) ->
     {ok, upgrade_published_schema_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incompatible_schema_exception(), tuple()} |
-    {error, internal_service_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_attachment_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, retryable_conflict_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, upgrade_published_schema_errors(), tuple()}.
 upgrade_published_schema(Client, Input0, Options0) ->
     Method = put,
     Path = ["/amazonclouddirectory/2017-01-11/schema/upgradepublished"],

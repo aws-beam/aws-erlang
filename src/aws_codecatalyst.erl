@@ -229,9 +229,11 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_source_repository_branches_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_space_request() :: #{}
 -type delete_space_request() :: #{}.
+
 
 %% Example:
 %% project_information() :: #{
@@ -239,6 +241,7 @@
 %%   <<"projectId">> => [string()]
 %% }
 -type project_information() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_token_response() :: #{
@@ -249,12 +252,14 @@
 %% }
 -type create_access_token_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% ide_configuration() :: #{
 %%   <<"name">> => [string()],
 %%   <<"runtime">> => [string()]
 %% }
 -type ide_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_space_response() :: #{
@@ -263,12 +268,14 @@
 %% }
 -type delete_space_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_user_details_request() :: #{
 %%   <<"id">> => [string()],
 %%   <<"userName">> => [string()]
 %% }
 -type get_user_details_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% project_summary() :: #{
@@ -277,9 +284,11 @@
 %%   <<"name">> => [string()]
 %% }
 -type project_summary() :: #{binary() => any()}.
+
 %% Example:
 %% workflow_run_sort_criteria() :: #{}
 -type workflow_run_sort_criteria() :: #{}.
+
 
 %% Example:
 %% ide() :: #{
@@ -287,9 +296,11 @@
 %%   <<"runtime">> => [string()]
 %% }
 -type ide() :: #{binary() => any()}.
+
 %% Example:
 %% get_project_request() :: #{}
 -type get_project_request() :: #{}.
+
 
 %% Example:
 %% access_token_summary() :: #{
@@ -299,11 +310,13 @@
 %% }
 -type access_token_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_source_repository_request() :: #{
 %%   <<"description">> => string()
 %% }
 -type create_source_repository_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_dev_environment_response() :: #{
@@ -323,9 +336,11 @@
 %%   <<"vpcConnectionName">> => string()
 %% }
 -type get_dev_environment_response() :: #{binary() => any()}.
+
 %% Example:
 %% stop_dev_environment_request() :: #{}
 -type stop_dev_environment_request() :: #{}.
+
 
 %% Example:
 %% user_identity() :: #{
@@ -336,6 +351,7 @@
 %% }
 -type user_identity() :: #{binary() => any()}.
 
+
 %% Example:
 %% dev_environment_access_details() :: #{
 %%   <<"streamUrl">> => string(),
@@ -343,14 +359,17 @@
 %% }
 -type dev_environment_access_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_dev_environment_session_request() :: #{
 %%   <<"sessionConfiguration">> := dev_environment_session_configuration()
 %% }
 -type start_dev_environment_session_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_space_request() :: #{}
 -type get_space_request() :: #{}.
+
 
 %% Example:
 %% get_subscription_response() :: #{
@@ -358,6 +377,7 @@
 %%   <<"subscriptionType">> => [string()]
 %% }
 -type get_subscription_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_project_response() :: #{
@@ -368,11 +388,13 @@
 %% }
 -type update_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_source_repository_branch_request() :: #{
 %%   <<"headCommitId">> => [string()]
 %% }
 -type create_source_repository_branch_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_address() :: #{
@@ -380,6 +402,7 @@
 %%   <<"verified">> => [boolean()]
 %% }
 -type email_address() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_log_entry() :: #{
@@ -401,6 +424,7 @@
 %% }
 -type event_log_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_source_repository_response() :: #{
 %%   <<"name">> => string(),
@@ -408,9 +432,11 @@
 %%   <<"spaceName">> => string()
 %% }
 -type delete_source_repository_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_workflow_request() :: #{}
 -type get_workflow_request() :: #{}.
+
 
 %% Example:
 %% repository_input() :: #{
@@ -418,6 +444,7 @@
 %%   <<"repositoryName">> => string()
 %% }
 -type repository_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_user_details_response() :: #{
@@ -428,6 +455,7 @@
 %%   <<"version">> => [string()]
 %% }
 -type get_user_details_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dev_environment_response() :: #{
@@ -442,12 +470,14 @@
 %% }
 -type update_dev_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_dev_environment_sessions_response() :: #{
 %%   <<"items">> => list(dev_environment_session_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_dev_environment_sessions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_dev_environment_response() :: #{
@@ -457,9 +487,11 @@
 %%   <<"status">> := string()
 %% }
 -type start_dev_environment_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_source_repository_request() :: #{}
 -type get_source_repository_request() :: #{}.
+
 
 %% Example:
 %% list_access_tokens_request() :: #{
@@ -467,6 +499,7 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_access_tokens_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_project_response() :: #{
@@ -477,20 +510,24 @@
 %% }
 -type create_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_dev_environment_request() :: #{}
 -type delete_dev_environment_request() :: #{}.
+
 
 %% Example:
 %% list_source_repositories_item() :: #{
@@ -502,11 +539,13 @@
 %% }
 -type list_source_repositories_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_workflow_run_request() :: #{
@@ -514,6 +553,7 @@
 %%   <<"workflowId">> := string()
 %% }
 -type start_workflow_run_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% dev_environment_summary() :: #{
@@ -534,6 +574,7 @@
 %% }
 -type dev_environment_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workflows_request() :: #{
 %%   <<"maxResults">> => [integer()],
@@ -542,12 +583,14 @@
 %% }
 -type list_workflows_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_projects_response() :: #{
 %%   <<"items">> => list(project_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_projects_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_dev_environment_response() :: #{
@@ -558,6 +601,7 @@
 %% }
 -type stop_dev_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_project_response() :: #{
 %%   <<"description">> => [string()],
@@ -566,6 +610,7 @@
 %%   <<"spaceName">> => string()
 %% }
 -type get_project_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_dev_environment_request() :: #{
@@ -577,6 +622,7 @@
 %% }
 -type update_dev_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_event_logs_request() :: #{
 %%   <<"endTime">> := non_neg_integer(),
@@ -586,6 +632,7 @@
 %%   <<"startTime">> := non_neg_integer()
 %% }
 -type list_event_logs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_dev_environment_request() :: #{
@@ -600,6 +647,7 @@
 %% }
 -type create_dev_environment_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_workflow_run_response() :: #{
 %%   <<"id">> => string(),
@@ -609,6 +657,7 @@
 %% }
 -type start_workflow_run_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_space_response() :: #{
 %%   <<"description">> => [string()],
@@ -617,18 +666,22 @@
 %% }
 -type update_space_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_dev_environment_sessions_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_dev_environment_sessions_request() :: #{binary() => any()}.
+
 %% Example:
 %% workflow_run_status_reason() :: #{}
 -type workflow_run_status_reason() :: #{}.
+
 %% Example:
 %% get_dev_environment_request() :: #{}
 -type get_dev_environment_request() :: #{}.
+
 
 %% Example:
 %% list_source_repository_branches_response() :: #{
@@ -636,6 +689,7 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_source_repository_branches_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter() :: #{
@@ -645,6 +699,7 @@
 %% }
 -type filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workflow_runs_request() :: #{
 %%   <<"maxResults">> => [integer()],
@@ -653,9 +708,11 @@
 %%   <<"workflowId">> => string()
 %% }
 -type list_workflow_runs_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_source_repository_clone_urls_request() :: #{}
 -type get_source_repository_clone_urls_request() :: #{}.
+
 
 %% Example:
 %% workflow_summary() :: #{
@@ -671,6 +728,7 @@
 %% }
 -type workflow_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_dev_environment_request() :: #{
 %%   <<"ides">> => list(ide_configuration()()),
@@ -678,12 +736,15 @@
 %%   <<"instanceType">> => string()
 %% }
 -type start_dev_environment_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_source_repository_request() :: #{}
 -type delete_source_repository_request() :: #{}.
+
 %% Example:
 %% get_subscription_request() :: #{}
 -type get_subscription_request() :: #{}.
+
 
 %% Example:
 %% start_dev_environment_session_response() :: #{
@@ -695,11 +756,13 @@
 %% }
 -type start_dev_environment_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% workflow_definition_summary() :: #{
 %%   <<"path">> => [string()]
 %% }
 -type workflow_definition_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_project_response() :: #{
@@ -709,17 +772,20 @@
 %% }
 -type delete_project_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% persistent_storage_configuration() :: #{
 %%   <<"sizeInGiB">> => [integer()]
 %% }
 -type persistent_storage_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_project_request() :: #{
 %%   <<"description">> => string()
 %% }
 -type update_project_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% dev_environment_session_summary() :: #{
@@ -730,6 +796,7 @@
 %%   <<"startedTime">> => non_neg_integer()
 %% }
 -type dev_environment_session_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_source_repository_response() :: #{
@@ -742,6 +809,7 @@
 %% }
 -type get_source_repository_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_dev_environments_request() :: #{
 %%   <<"filters">> => list(filter()()),
@@ -751,6 +819,7 @@
 %% }
 -type list_dev_environments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% project_list_filter() :: #{
 %%   <<"comparisonOperator">> => string(),
@@ -758,6 +827,7 @@
 %%   <<"values">> => list([string()]())
 %% }
 -type project_list_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_dev_environment_session_response() :: #{
@@ -768,11 +838,13 @@
 %% }
 -type stop_dev_environment_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_space_request() :: #{
@@ -780,12 +852,14 @@
 %% }
 -type update_space_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workflow_runs_response() :: #{
 %%   <<"items">> => list(workflow_run_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_workflow_runs_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_dev_environment_response() :: #{
@@ -795,9 +869,11 @@
 %%   <<"vpcConnectionName">> => string()
 %% }
 -type create_dev_environment_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_access_token_request() :: #{}
 -type delete_access_token_request() :: #{}.
+
 
 %% Example:
 %% list_event_logs_response() :: #{
@@ -806,17 +882,20 @@
 %% }
 -type list_event_logs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% verify_session_response() :: #{
 %%   <<"identity">> => [string()]
 %% }
 -type verify_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% persistent_storage() :: #{
 %%   <<"sizeInGiB">> => [integer()]
 %% }
 -type persistent_storage() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_access_token_request() :: #{
@@ -825,6 +904,7 @@
 %% }
 -type create_access_token_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_spaces_response() :: #{
 %%   <<"items">> => list(space_summary()()),
@@ -832,11 +912,13 @@
 %% }
 -type list_spaces_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% dev_environment_repository_summary() :: #{
@@ -845,11 +927,13 @@
 %% }
 -type dev_environment_repository_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_project_request() :: #{
@@ -858,12 +942,14 @@
 %% }
 -type create_project_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_dev_environments_response() :: #{
 %%   <<"items">> := list(dev_environment_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_dev_environments_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_space_response() :: #{
@@ -874,6 +960,7 @@
 %% }
 -type get_space_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_projects_request() :: #{
 %%   <<"filters">> => list(project_list_filter()()),
@@ -881,6 +968,7 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_projects_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_source_repository_branches_item() :: #{
@@ -890,15 +978,19 @@
 %%   <<"ref">> => string()
 %% }
 -type list_source_repository_branches_item() :: #{binary() => any()}.
+
 %% Example:
 %% stop_dev_environment_session_request() :: #{}
 -type stop_dev_environment_session_request() :: #{}.
+
 %% Example:
 %% get_workflow_run_request() :: #{}
 -type get_workflow_run_request() :: #{}.
+
 %% Example:
 %% delete_access_token_response() :: #{}
 -type delete_access_token_response() :: #{}.
+
 
 %% Example:
 %% execute_command_session_configuration() :: #{
@@ -906,6 +998,7 @@
 %%   <<"command">> => [string()]
 %% }
 -type execute_command_session_configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_dev_environment_response() :: #{
@@ -915,14 +1008,17 @@
 %% }
 -type delete_dev_environment_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% workflow_definition() :: #{
 %%   <<"path">> => [string()]
 %% }
 -type workflow_definition() :: #{binary() => any()}.
+
 %% Example:
 %% delete_project_request() :: #{}
 -type delete_project_request() :: #{}.
+
 
 %% Example:
 %% list_source_repositories_request() :: #{
@@ -930,6 +1026,7 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_source_repositories_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_source_repository_response() :: #{
@@ -940,12 +1037,14 @@
 %% }
 -type create_source_repository_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_workflows_response() :: #{
 %%   <<"items">> => list(workflow_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_workflow_run_response() :: #{
@@ -960,9 +1059,11 @@
 %%   <<"workflowId">> => string()
 %% }
 -type get_workflow_run_response() :: #{binary() => any()}.
+
 %% Example:
 %% workflow_sort_criteria() :: #{}
 -type workflow_sort_criteria() :: #{}.
+
 
 %% Example:
 %% list_source_repositories_response() :: #{
@@ -970,6 +1071,7 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_source_repositories_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% workflow_run_summary() :: #{
@@ -984,6 +1086,7 @@
 %% }
 -type workflow_run_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% dev_environment_session_configuration() :: #{
 %%   <<"executeCommandSessionConfiguration">> => execute_command_session_configuration(),
@@ -991,12 +1094,14 @@
 %% }
 -type dev_environment_session_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_access_tokens_response() :: #{
 %%   <<"items">> => list(access_token_summary()()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_access_tokens_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% space_summary() :: #{
@@ -1007,11 +1112,13 @@
 %% }
 -type space_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_source_repository_clone_urls_response() :: #{
 %%   <<"https">> := [string()]
 %% }
 -type get_source_repository_clone_urls_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_spaces_request() :: #{
@@ -1019,12 +1126,14 @@
 %% }
 -type list_spaces_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_payload() :: #{
 %%   <<"contentType">> => [string()],
 %%   <<"data">> => [string()]
 %% }
 -type event_payload() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_workflow_response() :: #{
@@ -1042,6 +1151,7 @@
 %% }
 -type get_workflow_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_source_repository_branch_response() :: #{
 %%   <<"headCommitId">> => [string()],
@@ -1050,6 +1160,8 @@
 %%   <<"ref">> => string()
 %% }
 -type create_source_repository_branch_response() :: #{binary() => any()}.
+
+
 
 %%====================================================================
 %% API

@@ -724,6 +724,236 @@
 %% }
 -type describe_stream_summary_output() :: #{binary() => any()}.
 
+-type add_tags_to_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_in_use_exception().
+
+-type decrease_stream_retention_period_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_resource_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type deregister_stream_consumer_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception().
+
+-type describe_limits_errors() ::
+    limit_exceeded_exception().
+
+-type describe_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type describe_stream_consumer_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception().
+
+-type describe_stream_summary_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type disable_enhanced_monitoring_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type enable_enhanced_monitoring_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type get_records_errors() ::
+    kms_invalid_state_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    kms_not_found_exception() | 
+    kms_access_denied_exception() | 
+    expired_iterator_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    kms_disabled_exception().
+
+-type get_resource_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type get_shard_iterator_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception().
+
+-type increase_stream_retention_period_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type list_shards_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    expired_next_token_exception() | 
+    resource_in_use_exception().
+
+-type list_stream_consumers_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    expired_next_token_exception() | 
+    resource_in_use_exception().
+
+-type list_streams_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    expired_next_token_exception().
+
+-type list_tags_for_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type merge_shards_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type put_record_errors() ::
+    kms_invalid_state_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    kms_not_found_exception() | 
+    kms_access_denied_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    kms_disabled_exception().
+
+-type put_records_errors() ::
+    kms_invalid_state_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    kms_not_found_exception() | 
+    kms_access_denied_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    kms_disabled_exception().
+
+-type put_resource_policy_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type register_stream_consumer_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type remove_tags_from_stream_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type split_shard_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type start_stream_encryption_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    kms_not_found_exception() | 
+    kms_access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    kms_disabled_exception().
+
+-type stop_stream_encryption_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type subscribe_to_shard_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_shard_count_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_stream_mode_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
 
 %%====================================================================
 %% API
@@ -746,11 +976,7 @@
 -spec add_tags_to_stream(map(), add_tags_to_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_tags_to_stream_errors(), tuple()}.
 add_tags_to_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_stream(Client, Input, []).
@@ -758,11 +984,7 @@ add_tags_to_stream(Client, Input)
 -spec add_tags_to_stream(map(), add_tags_to_stream_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_tags_to_stream_errors(), tuple()}.
 add_tags_to_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToStream">>, Input, Options).
@@ -836,9 +1058,7 @@ add_tags_to_stream(Client, Input, Options)
 -spec create_stream(map(), create_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_stream_errors(), tuple()}.
 create_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stream(Client, Input, []).
@@ -846,9 +1066,7 @@ create_stream(Client, Input)
 -spec create_stream(map(), create_stream_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()}.
+    {error, create_stream_errors(), tuple()}.
 create_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStream">>, Input, Options).
@@ -872,11 +1090,7 @@ create_stream(Client, Input, Options)
 -spec decrease_stream_retention_period(map(), decrease_stream_retention_period_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, decrease_stream_retention_period_errors(), tuple()}.
 decrease_stream_retention_period(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_stream_retention_period(Client, Input, []).
@@ -884,11 +1098,7 @@ decrease_stream_retention_period(Client, Input)
 -spec decrease_stream_retention_period(map(), decrease_stream_retention_period_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, decrease_stream_retention_period_errors(), tuple()}.
 decrease_stream_retention_period(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecreaseStreamRetentionPeriod">>, Input, Options).
@@ -904,11 +1114,7 @@ decrease_stream_retention_period(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -916,11 +1122,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -960,11 +1162,7 @@ delete_resource_policy(Client, Input, Options)
 -spec delete_stream(map(), delete_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_stream_errors(), tuple()}.
 delete_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stream(Client, Input, []).
@@ -972,11 +1170,7 @@ delete_stream(Client, Input)
 -spec delete_stream(map(), delete_stream_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_stream_errors(), tuple()}.
 delete_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStream">>, Input, Options).
@@ -999,9 +1193,7 @@ delete_stream(Client, Input, Options)
 -spec deregister_stream_consumer(map(), deregister_stream_consumer_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deregister_stream_consumer_errors(), tuple()}.
 deregister_stream_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_stream_consumer(Client, Input, []).
@@ -1009,9 +1201,7 @@ deregister_stream_consumer(Client, Input)
 -spec deregister_stream_consumer(map(), deregister_stream_consumer_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deregister_stream_consumer_errors(), tuple()}.
 deregister_stream_consumer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterStreamConsumer">>, Input, Options).
@@ -1026,7 +1216,7 @@ deregister_stream_consumer(Client, Input, Options)
 -spec describe_limits(map(), describe_limits_input()) ->
     {ok, describe_limits_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_limits_errors(), tuple()}.
 describe_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_limits(Client, Input, []).
@@ -1034,7 +1224,7 @@ describe_limits(Client, Input)
 -spec describe_limits(map(), describe_limits_input(), proplists:proplist()) ->
     {ok, describe_limits_output(), tuple()} |
     {error, any()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, describe_limits_errors(), tuple()}.
 describe_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLimits">>, Input, Options).
@@ -1080,10 +1270,7 @@ describe_limits(Client, Input, Options)
 -spec describe_stream(map(), describe_stream_input()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream(Client, Input, []).
@@ -1091,10 +1278,7 @@ describe_stream(Client, Input)
 -spec describe_stream(map(), describe_stream_input(), proplists:proplist()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStream">>, Input, Options).
@@ -1120,9 +1304,7 @@ describe_stream(Client, Input, Options)
 -spec describe_stream_consumer(map(), describe_stream_consumer_input()) ->
     {ok, describe_stream_consumer_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_stream_consumer_errors(), tuple()}.
 describe_stream_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream_consumer(Client, Input, []).
@@ -1130,9 +1312,7 @@ describe_stream_consumer(Client, Input)
 -spec describe_stream_consumer(map(), describe_stream_consumer_input(), proplists:proplist()) ->
     {ok, describe_stream_consumer_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_stream_consumer_errors(), tuple()}.
 describe_stream_consumer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStreamConsumer">>, Input, Options).
@@ -1156,10 +1336,7 @@ describe_stream_consumer(Client, Input, Options)
 -spec describe_stream_summary(map(), describe_stream_summary_input()) ->
     {ok, describe_stream_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_stream_summary_errors(), tuple()}.
 describe_stream_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream_summary(Client, Input, []).
@@ -1167,10 +1344,7 @@ describe_stream_summary(Client, Input)
 -spec describe_stream_summary(map(), describe_stream_summary_input(), proplists:proplist()) ->
     {ok, describe_stream_summary_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_stream_summary_errors(), tuple()}.
 describe_stream_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStreamSummary">>, Input, Options).
@@ -1183,11 +1357,7 @@ describe_stream_summary(Client, Input, Options)
 -spec disable_enhanced_monitoring(map(), disable_enhanced_monitoring_input()) ->
     {ok, enhanced_monitoring_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_enhanced_monitoring_errors(), tuple()}.
 disable_enhanced_monitoring(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_enhanced_monitoring(Client, Input, []).
@@ -1195,11 +1365,7 @@ disable_enhanced_monitoring(Client, Input)
 -spec disable_enhanced_monitoring(map(), disable_enhanced_monitoring_input(), proplists:proplist()) ->
     {ok, enhanced_monitoring_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_enhanced_monitoring_errors(), tuple()}.
 disable_enhanced_monitoring(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableEnhancedMonitoring">>, Input, Options).
@@ -1213,11 +1379,7 @@ disable_enhanced_monitoring(Client, Input, Options)
 -spec enable_enhanced_monitoring(map(), enable_enhanced_monitoring_input()) ->
     {ok, enhanced_monitoring_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_enhanced_monitoring_errors(), tuple()}.
 enable_enhanced_monitoring(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_enhanced_monitoring(Client, Input, []).
@@ -1225,11 +1387,7 @@ enable_enhanced_monitoring(Client, Input)
 -spec enable_enhanced_monitoring(map(), enable_enhanced_monitoring_input(), proplists:proplist()) ->
     {ok, enhanced_monitoring_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_enhanced_monitoring_errors(), tuple()}.
 enable_enhanced_monitoring(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableEnhancedMonitoring">>, Input, Options).
@@ -1331,17 +1489,7 @@ enable_enhanced_monitoring(Client, Input, Options)
 -spec get_records(map(), get_records_input()) ->
     {ok, get_records_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_iterator_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_records_errors(), tuple()}.
 get_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_records(Client, Input, []).
@@ -1349,17 +1497,7 @@ get_records(Client, Input)
 -spec get_records(map(), get_records_input(), proplists:proplist()) ->
     {ok, get_records_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_iterator_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_records_errors(), tuple()}.
 get_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecords">>, Input, Options).
@@ -1375,10 +1513,7 @@ get_records(Client, Input, Options)
 -spec get_resource_policy(map(), get_resource_policy_input()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
@@ -1386,10 +1521,7 @@ get_resource_policy(Client, Input)
 -spec get_resource_policy(map(), get_resource_policy_input(), proplists:proplist()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_resource_policy_errors(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
@@ -1458,10 +1590,7 @@ get_resource_policy(Client, Input, Options)
 -spec get_shard_iterator(map(), get_shard_iterator_input()) ->
     {ok, get_shard_iterator_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_shard_iterator_errors(), tuple()}.
 get_shard_iterator(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_shard_iterator(Client, Input, []).
@@ -1469,10 +1598,7 @@ get_shard_iterator(Client, Input)
 -spec get_shard_iterator(map(), get_shard_iterator_input(), proplists:proplist()) ->
     {ok, get_shard_iterator_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, get_shard_iterator_errors(), tuple()}.
 get_shard_iterator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetShardIterator">>, Input, Options).
@@ -1502,11 +1628,7 @@ get_shard_iterator(Client, Input, Options)
 -spec increase_stream_retention_period(map(), increase_stream_retention_period_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, increase_stream_retention_period_errors(), tuple()}.
 increase_stream_retention_period(Client, Input)
   when is_map(Client), is_map(Input) ->
     increase_stream_retention_period(Client, Input, []).
@@ -1514,11 +1636,7 @@ increase_stream_retention_period(Client, Input)
 -spec increase_stream_retention_period(map(), increase_stream_retention_period_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, increase_stream_retention_period_errors(), tuple()}.
 increase_stream_retention_period(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IncreaseStreamRetentionPeriod">>, Input, Options).
@@ -1550,12 +1668,7 @@ increase_stream_retention_period(Client, Input, Options)
 -spec list_shards(map(), list_shards_input()) ->
     {ok, list_shards_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_shards_errors(), tuple()}.
 list_shards(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_shards(Client, Input, []).
@@ -1563,12 +1676,7 @@ list_shards(Client, Input)
 -spec list_shards(map(), list_shards_input(), proplists:proplist()) ->
     {ok, list_shards_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_shards_errors(), tuple()}.
 list_shards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListShards">>, Input, Options).
@@ -1581,11 +1689,7 @@ list_shards(Client, Input, Options)
 -spec list_stream_consumers(map(), list_stream_consumers_input()) ->
     {ok, list_stream_consumers_output(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_stream_consumers_errors(), tuple()}.
 list_stream_consumers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stream_consumers(Client, Input, []).
@@ -1593,11 +1697,7 @@ list_stream_consumers(Client, Input)
 -spec list_stream_consumers(map(), list_stream_consumers_input(), proplists:proplist()) ->
     {ok, list_stream_consumers_output(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_stream_consumers_errors(), tuple()}.
 list_stream_consumers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStreamConsumers">>, Input, Options).
@@ -1628,9 +1728,7 @@ list_stream_consumers(Client, Input, Options)
 -spec list_streams(map(), list_streams_input()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_streams_errors(), tuple()}.
 list_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_streams(Client, Input, []).
@@ -1638,9 +1736,7 @@ list_streams(Client, Input)
 -spec list_streams(map(), list_streams_input(), proplists:proplist()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
-    {error, expired_next_token_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, list_streams_errors(), tuple()}.
 list_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStreams">>, Input, Options).
@@ -1656,10 +1752,7 @@ list_streams(Client, Input, Options)
 -spec list_tags_for_stream(map(), list_tags_for_stream_input()) ->
     {ok, list_tags_for_stream_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_stream_errors(), tuple()}.
 list_tags_for_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_stream(Client, Input, []).
@@ -1667,10 +1760,7 @@ list_tags_for_stream(Client, Input)
 -spec list_tags_for_stream(map(), list_tags_for_stream_input(), proplists:proplist()) ->
     {ok, list_tags_for_stream_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_stream_errors(), tuple()}.
 list_tags_for_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForStream">>, Input, Options).
@@ -1743,12 +1833,7 @@ list_tags_for_stream(Client, Input, Options)
 -spec merge_shards(map(), merge_shards_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, merge_shards_errors(), tuple()}.
 merge_shards(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_shards(Client, Input, []).
@@ -1756,12 +1841,7 @@ merge_shards(Client, Input)
 -spec merge_shards(map(), merge_shards_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, merge_shards_errors(), tuple()}.
 merge_shards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeShards">>, Input, Options).
@@ -1840,16 +1920,7 @@ merge_shards(Client, Input, Options)
 -spec put_record(map(), put_record_input()) ->
     {ok, put_record_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_record_errors(), tuple()}.
 put_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_record(Client, Input, []).
@@ -1857,16 +1928,7 @@ put_record(Client, Input)
 -spec put_record(map(), put_record_input(), proplists:proplist()) ->
     {ok, put_record_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_record_errors(), tuple()}.
 put_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecord">>, Input, Options).
@@ -1980,16 +2042,7 @@ put_record(Client, Input, Options)
 -spec put_records(map(), put_records_input()) ->
     {ok, put_records_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_records_errors(), tuple()}.
 put_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_records(Client, Input, []).
@@ -1997,16 +2050,7 @@ put_records(Client, Input)
 -spec put_records(map(), put_records_input(), proplists:proplist()) ->
     {ok, put_records_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_records_errors(), tuple()}.
 put_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecords">>, Input, Options).
@@ -2037,11 +2081,7 @@ put_records(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -2049,11 +2089,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -2087,10 +2123,7 @@ put_resource_policy(Client, Input, Options)
 -spec register_stream_consumer(map(), register_stream_consumer_input()) ->
     {ok, register_stream_consumer_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, register_stream_consumer_errors(), tuple()}.
 register_stream_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_stream_consumer(Client, Input, []).
@@ -2098,10 +2131,7 @@ register_stream_consumer(Client, Input)
 -spec register_stream_consumer(map(), register_stream_consumer_input(), proplists:proplist()) ->
     {ok, register_stream_consumer_output(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, register_stream_consumer_errors(), tuple()}.
 register_stream_consumer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterStreamConsumer">>, Input, Options).
@@ -2122,11 +2152,7 @@ register_stream_consumer(Client, Input, Options)
 -spec remove_tags_from_stream(map(), remove_tags_from_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, remove_tags_from_stream_errors(), tuple()}.
 remove_tags_from_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_stream(Client, Input, []).
@@ -2134,11 +2160,7 @@ remove_tags_from_stream(Client, Input)
 -spec remove_tags_from_stream(map(), remove_tags_from_stream_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, remove_tags_from_stream_errors(), tuple()}.
 remove_tags_from_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromStream">>, Input, Options).
@@ -2223,12 +2245,7 @@ remove_tags_from_stream(Client, Input, Options)
 -spec split_shard(map(), split_shard_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, split_shard_errors(), tuple()}.
 split_shard(Client, Input)
   when is_map(Client), is_map(Input) ->
     split_shard(Client, Input, []).
@@ -2236,12 +2253,7 @@ split_shard(Client, Input)
 -spec split_shard(map(), split_shard_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, split_shard_errors(), tuple()}.
 split_shard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SplitShard">>, Input, Options).
@@ -2281,17 +2293,7 @@ split_shard(Client, Input, Options)
 -spec start_stream_encryption(map(), start_stream_encryption_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_stream_encryption_errors(), tuple()}.
 start_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stream_encryption(Client, Input, []).
@@ -2299,17 +2301,7 @@ start_stream_encryption(Client, Input)
 -spec start_stream_encryption(map(), start_stream_encryption_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, kms_access_denied_exception(), tuple()} |
-    {error, kms_disabled_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, kms_not_found_exception(), tuple()} |
-    {error, kms_opt_in_required(), tuple()} |
-    {error, kms_throttling_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_stream_encryption_errors(), tuple()}.
 start_stream_encryption(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartStreamEncryption">>, Input, Options).
@@ -2349,11 +2341,7 @@ start_stream_encryption(Client, Input, Options)
 -spec stop_stream_encryption(map(), stop_stream_encryption_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_stream_encryption_errors(), tuple()}.
 stop_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_stream_encryption(Client, Input, []).
@@ -2361,11 +2349,7 @@ stop_stream_encryption(Client, Input)
 -spec stop_stream_encryption(map(), stop_stream_encryption_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_stream_encryption_errors(), tuple()}.
 stop_stream_encryption(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopStreamEncryption">>, Input, Options).
@@ -2412,11 +2396,7 @@ stop_stream_encryption(Client, Input, Options)
 -spec subscribe_to_shard(map(), subscribe_to_shard_input()) ->
     {ok, subscribe_to_shard_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, subscribe_to_shard_errors(), tuple()}.
 subscribe_to_shard(Client, Input)
   when is_map(Client), is_map(Input) ->
     subscribe_to_shard(Client, Input, []).
@@ -2424,11 +2404,7 @@ subscribe_to_shard(Client, Input)
 -spec subscribe_to_shard(map(), subscribe_to_shard_input(), proplists:proplist()) ->
     {ok, subscribe_to_shard_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, subscribe_to_shard_errors(), tuple()}.
 subscribe_to_shard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubscribeToShard">>, Input, Options).
@@ -2502,12 +2478,7 @@ subscribe_to_shard(Client, Input, Options)
 -spec update_shard_count(map(), update_shard_count_input()) ->
     {ok, update_shard_count_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_shard_count_errors(), tuple()}.
 update_shard_count(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_shard_count(Client, Input, []).
@@ -2515,12 +2486,7 @@ update_shard_count(Client, Input)
 -spec update_shard_count(map(), update_shard_count_input(), proplists:proplist()) ->
     {ok, update_shard_count_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_shard_count_errors(), tuple()}.
 update_shard_count(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateShardCount">>, Input, Options).
@@ -2533,10 +2499,7 @@ update_shard_count(Client, Input, Options)
 -spec update_stream_mode(map(), update_stream_mode_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_stream_mode_errors(), tuple()}.
 update_stream_mode(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stream_mode(Client, Input, []).
@@ -2544,10 +2507,7 @@ update_stream_mode(Client, Input)
 -spec update_stream_mode(map(), update_stream_mode_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_stream_mode_errors(), tuple()}.
 update_stream_mode(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStreamMode">>, Input, Options).

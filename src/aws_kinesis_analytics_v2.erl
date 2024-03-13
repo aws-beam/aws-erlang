@@ -1527,6 +1527,219 @@
 %% }
 -type delete_application_output_response() :: #{binary() => any()}.
 
+-type add_application_cloud_watch_logging_option_errors() ::
+    concurrent_modification_exception() | 
+    invalid_application_configuration_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type add_application_input_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    code_validation_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type add_application_input_processing_configuration_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type add_application_output_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type add_application_reference_data_source_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type add_application_vpc_configuration_errors() ::
+    concurrent_modification_exception() | 
+    invalid_application_configuration_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_application_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    code_validation_exception() | 
+    invalid_request_exception() | 
+    resource_in_use_exception() | 
+    unsupported_operation_exception().
+
+-type create_application_presigned_url_errors() ::
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type create_application_snapshot_errors() ::
+    limit_exceeded_exception() | 
+    invalid_application_configuration_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    unsupported_operation_exception().
+
+-type delete_application_errors() ::
+    concurrent_modification_exception() | 
+    invalid_application_configuration_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_application_cloud_watch_logging_option_errors() ::
+    concurrent_modification_exception() | 
+    invalid_application_configuration_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_application_input_processing_configuration_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_application_output_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_application_reference_data_source_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type delete_application_snapshot_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    unsupported_operation_exception().
+
+-type delete_application_vpc_configuration_errors() ::
+    concurrent_modification_exception() | 
+    invalid_application_configuration_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type describe_application_errors() ::
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_application_snapshot_errors() ::
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type describe_application_version_errors() ::
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type discover_input_schema_errors() ::
+    invalid_argument_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unable_to_detect_schema_exception() | 
+    resource_provisioned_throughput_exceeded_exception() | 
+    unsupported_operation_exception().
+
+-type list_application_snapshots_errors() ::
+    invalid_argument_exception() | 
+    unsupported_operation_exception().
+
+-type list_application_versions_errors() ::
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    unsupported_operation_exception().
+
+-type list_applications_errors() ::
+    invalid_request_exception().
+
+-type list_tags_for_resource_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception().
+
+-type rollback_application_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    unsupported_operation_exception().
+
+-type start_application_errors() ::
+    invalid_application_configuration_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type stop_application_errors() ::
+    concurrent_modification_exception() | 
+    invalid_application_configuration_exception() | 
+    invalid_argument_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type untag_resource_errors() ::
+    too_many_tags_exception() | 
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_application_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_application_configuration_exception() | 
+    invalid_argument_exception() | 
+    code_validation_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_application_maintenance_configuration_errors() ::
+    concurrent_modification_exception() | 
+    invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    unsupported_operation_exception().
 
 %%====================================================================
 %% API
@@ -1537,12 +1750,7 @@
 -spec add_application_cloud_watch_logging_option(map(), add_application_cloud_watch_logging_option_request()) ->
     {ok, add_application_cloud_watch_logging_option_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_cloud_watch_logging_option_errors(), tuple()}.
 add_application_cloud_watch_logging_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_cloud_watch_logging_option(Client, Input, []).
@@ -1550,12 +1758,7 @@ add_application_cloud_watch_logging_option(Client, Input)
 -spec add_application_cloud_watch_logging_option(map(), add_application_cloud_watch_logging_option_request(), proplists:proplist()) ->
     {ok, add_application_cloud_watch_logging_option_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_cloud_watch_logging_option_errors(), tuple()}.
 add_application_cloud_watch_logging_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationCloudWatchLoggingOption">>, Input, Options).
@@ -1578,12 +1781,7 @@ add_application_cloud_watch_logging_option(Client, Input, Options)
 -spec add_application_input(map(), add_application_input_request()) ->
     {ok, add_application_input_response(), tuple()} |
     {error, any()} |
-    {error, code_validation_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_input_errors(), tuple()}.
 add_application_input(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input(Client, Input, []).
@@ -1591,12 +1789,7 @@ add_application_input(Client, Input)
 -spec add_application_input(map(), add_application_input_request(), proplists:proplist()) ->
     {ok, add_application_input_response(), tuple()} |
     {error, any()} |
-    {error, code_validation_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_input_errors(), tuple()}.
 add_application_input(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationInput">>, Input, Options).
@@ -1611,11 +1804,7 @@ add_application_input(Client, Input, Options)
 -spec add_application_input_processing_configuration(map(), add_application_input_processing_configuration_request()) ->
     {ok, add_application_input_processing_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_input_processing_configuration_errors(), tuple()}.
 add_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input_processing_configuration(Client, Input, []).
@@ -1623,11 +1812,7 @@ add_application_input_processing_configuration(Client, Input)
 -spec add_application_input_processing_configuration(map(), add_application_input_processing_configuration_request(), proplists:proplist()) ->
     {ok, add_application_input_processing_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_input_processing_configuration_errors(), tuple()}.
 add_application_input_processing_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationInputProcessingConfiguration">>, Input, Options).
@@ -1659,11 +1844,7 @@ add_application_input_processing_configuration(Client, Input, Options)
 -spec add_application_output(map(), add_application_output_request()) ->
     {ok, add_application_output_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_output_errors(), tuple()}.
 add_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_output(Client, Input, []).
@@ -1671,11 +1852,7 @@ add_application_output(Client, Input)
 -spec add_application_output(map(), add_application_output_request(), proplists:proplist()) ->
     {ok, add_application_output_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_output_errors(), tuple()}.
 add_application_output(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationOutput">>, Input, Options).
@@ -1695,11 +1872,7 @@ add_application_output(Client, Input, Options)
 -spec add_application_reference_data_source(map(), add_application_reference_data_source_request()) ->
     {ok, add_application_reference_data_source_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_reference_data_source_errors(), tuple()}.
 add_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_reference_data_source(Client, Input, []).
@@ -1707,11 +1880,7 @@ add_application_reference_data_source(Client, Input)
 -spec add_application_reference_data_source(map(), add_application_reference_data_source_request(), proplists:proplist()) ->
     {ok, add_application_reference_data_source_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_reference_data_source_errors(), tuple()}.
 add_application_reference_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationReferenceDataSource">>, Input, Options).
@@ -1733,11 +1902,7 @@ add_application_reference_data_source(Client, Input, Options)
 -spec add_application_vpc_configuration(map(), add_application_vpc_configuration_request()) ->
     {ok, add_application_vpc_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_vpc_configuration_errors(), tuple()}.
 add_application_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_vpc_configuration(Client, Input, []).
@@ -1745,11 +1910,7 @@ add_application_vpc_configuration(Client, Input)
 -spec add_application_vpc_configuration(map(), add_application_vpc_configuration_request(), proplists:proplist()) ->
     {ok, add_application_vpc_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, add_application_vpc_configuration_errors(), tuple()}.
 add_application_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationVpcConfiguration">>, Input, Options).
@@ -1763,14 +1924,7 @@ add_application_vpc_configuration(Client, Input, Options)
 -spec create_application(map(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, code_validation_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -1778,14 +1932,7 @@ create_application(Client, Input)
 -spec create_application(map(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
-    {error, code_validation_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_application_errors(), tuple()}.
 create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
@@ -1814,9 +1961,7 @@ create_application(Client, Input, Options)
 -spec create_application_presigned_url(map(), create_application_presigned_url_request()) ->
     {ok, create_application_presigned_url_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_application_presigned_url_errors(), tuple()}.
 create_application_presigned_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application_presigned_url(Client, Input, []).
@@ -1824,9 +1969,7 @@ create_application_presigned_url(Client, Input)
 -spec create_application_presigned_url(map(), create_application_presigned_url_request(), proplists:proplist()) ->
     {ok, create_application_presigned_url_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_application_presigned_url_errors(), tuple()}.
 create_application_presigned_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplicationPresignedUrl">>, Input, Options).
@@ -1835,13 +1978,7 @@ create_application_presigned_url(Client, Input, Options)
 -spec create_application_snapshot(map(), create_application_snapshot_request()) ->
     {ok, create_application_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_application_snapshot_errors(), tuple()}.
 create_application_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application_snapshot(Client, Input, []).
@@ -1849,13 +1986,7 @@ create_application_snapshot(Client, Input)
 -spec create_application_snapshot(map(), create_application_snapshot_request(), proplists:proplist()) ->
     {ok, create_application_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, create_application_snapshot_errors(), tuple()}.
 create_application_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplicationSnapshot">>, Input, Options).
@@ -1867,12 +1998,7 @@ create_application_snapshot(Client, Input, Options)
 -spec delete_application(map(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -1880,12 +2006,7 @@ delete_application(Client, Input)
 -spec delete_application(map(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_errors(), tuple()}.
 delete_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplication">>, Input, Options).
@@ -1895,12 +2016,7 @@ delete_application(Client, Input, Options)
 -spec delete_application_cloud_watch_logging_option(map(), delete_application_cloud_watch_logging_option_request()) ->
     {ok, delete_application_cloud_watch_logging_option_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_cloud_watch_logging_option_errors(), tuple()}.
 delete_application_cloud_watch_logging_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_cloud_watch_logging_option(Client, Input, []).
@@ -1908,12 +2024,7 @@ delete_application_cloud_watch_logging_option(Client, Input)
 -spec delete_application_cloud_watch_logging_option(map(), delete_application_cloud_watch_logging_option_request(), proplists:proplist()) ->
     {ok, delete_application_cloud_watch_logging_option_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_cloud_watch_logging_option_errors(), tuple()}.
 delete_application_cloud_watch_logging_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationCloudWatchLoggingOption">>, Input, Options).
@@ -1922,11 +2033,7 @@ delete_application_cloud_watch_logging_option(Client, Input, Options)
 -spec delete_application_input_processing_configuration(map(), delete_application_input_processing_configuration_request()) ->
     {ok, delete_application_input_processing_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_input_processing_configuration_errors(), tuple()}.
 delete_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_input_processing_configuration(Client, Input, []).
@@ -1934,11 +2041,7 @@ delete_application_input_processing_configuration(Client, Input)
 -spec delete_application_input_processing_configuration(map(), delete_application_input_processing_configuration_request(), proplists:proplist()) ->
     {ok, delete_application_input_processing_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_input_processing_configuration_errors(), tuple()}.
 delete_application_input_processing_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationInputProcessingConfiguration">>, Input, Options).
@@ -1952,11 +2055,7 @@ delete_application_input_processing_configuration(Client, Input, Options)
 -spec delete_application_output(map(), delete_application_output_request()) ->
     {ok, delete_application_output_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_output_errors(), tuple()}.
 delete_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_output(Client, Input, []).
@@ -1964,11 +2063,7 @@ delete_application_output(Client, Input)
 -spec delete_application_output(map(), delete_application_output_request(), proplists:proplist()) ->
     {ok, delete_application_output_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_output_errors(), tuple()}.
 delete_application_output(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationOutput">>, Input, Options).
@@ -1983,11 +2078,7 @@ delete_application_output(Client, Input, Options)
 -spec delete_application_reference_data_source(map(), delete_application_reference_data_source_request()) ->
     {ok, delete_application_reference_data_source_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_reference_data_source_errors(), tuple()}.
 delete_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_reference_data_source(Client, Input, []).
@@ -1995,11 +2086,7 @@ delete_application_reference_data_source(Client, Input)
 -spec delete_application_reference_data_source(map(), delete_application_reference_data_source_request(), proplists:proplist()) ->
     {ok, delete_application_reference_data_source_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_reference_data_source_errors(), tuple()}.
 delete_application_reference_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationReferenceDataSource">>, Input, Options).
@@ -2008,12 +2095,7 @@ delete_application_reference_data_source(Client, Input, Options)
 -spec delete_application_snapshot(map(), delete_application_snapshot_request()) ->
     {ok, delete_application_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_application_snapshot_errors(), tuple()}.
 delete_application_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_snapshot(Client, Input, []).
@@ -2021,12 +2103,7 @@ delete_application_snapshot(Client, Input)
 -spec delete_application_snapshot(map(), delete_application_snapshot_request(), proplists:proplist()) ->
     {ok, delete_application_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_application_snapshot_errors(), tuple()}.
 delete_application_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationSnapshot">>, Input, Options).
@@ -2036,11 +2113,7 @@ delete_application_snapshot(Client, Input, Options)
 -spec delete_application_vpc_configuration(map(), delete_application_vpc_configuration_request()) ->
     {ok, delete_application_vpc_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_vpc_configuration_errors(), tuple()}.
 delete_application_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_vpc_configuration(Client, Input, []).
@@ -2048,11 +2121,7 @@ delete_application_vpc_configuration(Client, Input)
 -spec delete_application_vpc_configuration(map(), delete_application_vpc_configuration_request(), proplists:proplist()) ->
     {ok, delete_application_vpc_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_application_vpc_configuration_errors(), tuple()}.
 delete_application_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationVpcConfiguration">>, Input, Options).
@@ -2065,9 +2134,7 @@ delete_application_vpc_configuration(Client, Input, Options)
 -spec describe_application(map(), describe_application_request()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_application_errors(), tuple()}.
 describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
@@ -2075,9 +2142,7 @@ describe_application(Client, Input)
 -spec describe_application(map(), describe_application_request(), proplists:proplist()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_application_errors(), tuple()}.
 describe_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplication">>, Input, Options).
@@ -2086,9 +2151,7 @@ describe_application(Client, Input, Options)
 -spec describe_application_snapshot(map(), describe_application_snapshot_request()) ->
     {ok, describe_application_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_application_snapshot_errors(), tuple()}.
 describe_application_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_snapshot(Client, Input, []).
@@ -2096,9 +2159,7 @@ describe_application_snapshot(Client, Input)
 -spec describe_application_snapshot(map(), describe_application_snapshot_request(), proplists:proplist()) ->
     {ok, describe_application_snapshot_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_application_snapshot_errors(), tuple()}.
 describe_application_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicationSnapshot">>, Input, Options).
@@ -2114,9 +2175,7 @@ describe_application_snapshot(Client, Input, Options)
 -spec describe_application_version(map(), describe_application_version_request()) ->
     {ok, describe_application_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_application_version_errors(), tuple()}.
 describe_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_version(Client, Input, []).
@@ -2124,9 +2183,7 @@ describe_application_version(Client, Input)
 -spec describe_application_version(map(), describe_application_version_request(), proplists:proplist()) ->
     {ok, describe_application_version_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, describe_application_version_errors(), tuple()}.
 describe_application_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicationVersion">>, Input, Options).
@@ -2149,12 +2206,7 @@ describe_application_version(Client, Input, Options)
 -spec discover_input_schema(map(), discover_input_schema_request()) ->
     {ok, discover_input_schema_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unable_to_detect_schema_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, discover_input_schema_errors(), tuple()}.
 discover_input_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_input_schema(Client, Input, []).
@@ -2162,12 +2214,7 @@ discover_input_schema(Client, Input)
 -spec discover_input_schema(map(), discover_input_schema_request(), proplists:proplist()) ->
     {ok, discover_input_schema_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_provisioned_throughput_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, unable_to_detect_schema_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, discover_input_schema_errors(), tuple()}.
 discover_input_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverInputSchema">>, Input, Options).
@@ -2176,8 +2223,7 @@ discover_input_schema(Client, Input, Options)
 -spec list_application_snapshots(map(), list_application_snapshots_request()) ->
     {ok, list_application_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_application_snapshots_errors(), tuple()}.
 list_application_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_snapshots(Client, Input, []).
@@ -2185,8 +2231,7 @@ list_application_snapshots(Client, Input)
 -spec list_application_snapshots(map(), list_application_snapshots_request(), proplists:proplist()) ->
     {ok, list_application_snapshots_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_application_snapshots_errors(), tuple()}.
 list_application_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationSnapshots">>, Input, Options).
@@ -2205,9 +2250,7 @@ list_application_snapshots(Client, Input, Options)
 -spec list_application_versions(map(), list_application_versions_request()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_application_versions_errors(), tuple()}.
 list_application_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_versions(Client, Input, []).
@@ -2215,9 +2258,7 @@ list_application_versions(Client, Input)
 -spec list_application_versions(map(), list_application_versions_request(), proplists:proplist()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, list_application_versions_errors(), tuple()}.
 list_application_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationVersions">>, Input, Options).
@@ -2235,7 +2276,7 @@ list_application_versions(Client, Input, Options)
 -spec list_applications(map(), list_applications_request()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
@@ -2243,7 +2284,7 @@ list_applications(Client, Input)
 -spec list_applications(map(), list_applications_request(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
-    {error, invalid_request_exception(), tuple()}.
+    {error, list_applications_errors(), tuple()}.
 list_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplications">>, Input, Options).
@@ -2256,9 +2297,7 @@ list_applications(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2266,9 +2305,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2291,12 +2328,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec rollback_application(map(), rollback_application_request()) ->
     {ok, rollback_application_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, rollback_application_errors(), tuple()}.
 rollback_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     rollback_application(Client, Input, []).
@@ -2304,12 +2336,7 @@ rollback_application(Client, Input)
 -spec rollback_application(map(), rollback_application_request(), proplists:proplist()) ->
     {ok, rollback_application_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, rollback_application_errors(), tuple()}.
 rollback_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RollbackApplication">>, Input, Options).
@@ -2321,11 +2348,7 @@ rollback_application(Client, Input, Options)
 -spec start_application(map(), start_application_request()) ->
     {ok, start_application_response(), tuple()} |
     {error, any()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_application_errors(), tuple()}.
 start_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_application(Client, Input, []).
@@ -2333,11 +2356,7 @@ start_application(Client, Input)
 -spec start_application(map(), start_application_request(), proplists:proplist()) ->
     {ok, start_application_response(), tuple()} |
     {error, any()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_application_errors(), tuple()}.
 start_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartApplication">>, Input, Options).
@@ -2358,12 +2377,7 @@ start_application(Client, Input, Options)
 -spec stop_application(map(), stop_application_request()) ->
     {ok, stop_application_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_application_errors(), tuple()}.
 stop_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_application(Client, Input, []).
@@ -2371,12 +2385,7 @@ stop_application(Client, Input)
 -spec stop_application(map(), stop_application_request(), proplists:proplist()) ->
     {ok, stop_application_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, stop_application_errors(), tuple()}.
 stop_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopApplication">>, Input, Options).
@@ -2392,11 +2401,7 @@ stop_application(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2404,11 +2409,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2421,11 +2422,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2433,11 +2430,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2460,14 +2453,7 @@ untag_resource(Client, Input, Options)
 -spec update_application(map(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, code_validation_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
@@ -2475,14 +2461,7 @@ update_application(Client, Input)
 -spec update_application(map(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
-    {error, code_validation_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_application_configuration_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_application_errors(), tuple()}.
 update_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplication">>, Input, Options).
@@ -2521,11 +2500,7 @@ update_application(Client, Input, Options)
 -spec update_application_maintenance_configuration(map(), update_application_maintenance_configuration_request()) ->
     {ok, update_application_maintenance_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_application_maintenance_configuration_errors(), tuple()}.
 update_application_maintenance_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application_maintenance_configuration(Client, Input, []).
@@ -2533,11 +2508,7 @@ update_application_maintenance_configuration(Client, Input)
 -spec update_application_maintenance_configuration(map(), update_application_maintenance_configuration_request(), proplists:proplist()) ->
     {ok, update_application_maintenance_configuration_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_application_maintenance_configuration_errors(), tuple()}.
 update_application_maintenance_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplicationMaintenanceConfiguration">>, Input, Options).

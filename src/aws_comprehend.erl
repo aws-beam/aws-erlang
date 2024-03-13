@@ -2571,6 +2571,570 @@
 %% }
 -type list_dominant_language_detection_jobs_response() :: #{binary() => any()}.
 
+-type batch_detect_dominant_language_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    batch_size_limit_exceeded_exception() | 
+    invalid_request_exception().
+
+-type batch_detect_entities_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    batch_size_limit_exceeded_exception() | 
+    invalid_request_exception().
+
+-type batch_detect_key_phrases_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    batch_size_limit_exceeded_exception() | 
+    invalid_request_exception().
+
+-type batch_detect_sentiment_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    batch_size_limit_exceeded_exception() | 
+    invalid_request_exception().
+
+-type batch_detect_syntax_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    batch_size_limit_exceeded_exception() | 
+    invalid_request_exception().
+
+-type batch_detect_targeted_sentiment_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    batch_size_limit_exceeded_exception() | 
+    invalid_request_exception().
+
+-type classify_document_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_unavailable_exception().
+
+-type contains_pii_entities_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type create_dataset_errors() ::
+    too_many_tags_exception() | 
+    internal_server_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type create_document_classifier_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    unsupported_language_exception() | 
+    internal_server_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type create_endpoint_errors() ::
+    too_many_tags_exception() | 
+    internal_server_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_unavailable_exception() | 
+    resource_in_use_exception().
+
+-type create_entity_recognizer_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    unsupported_language_exception() | 
+    internal_server_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type create_flywheel_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    unsupported_language_exception() | 
+    internal_server_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_unavailable_exception() | 
+    resource_in_use_exception().
+
+-type delete_document_classifier_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_unavailable_exception() | 
+    resource_in_use_exception().
+
+-type delete_endpoint_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type delete_entity_recognizer_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_unavailable_exception() | 
+    resource_in_use_exception().
+
+-type delete_flywheel_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_unavailable_exception() | 
+    resource_in_use_exception().
+
+-type delete_resource_policy_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_dataset_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_document_classification_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type describe_document_classifier_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_dominant_language_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type describe_endpoint_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_entities_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type describe_entity_recognizer_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_events_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type describe_flywheel_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_flywheel_iteration_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_key_phrases_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type describe_pii_entities_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type describe_resource_policy_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type describe_sentiment_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type describe_targeted_sentiment_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type describe_topics_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type detect_dominant_language_errors() ::
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type detect_entities_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_unavailable_exception().
+
+-type detect_key_phrases_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type detect_pii_entities_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type detect_sentiment_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type detect_syntax_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type detect_targeted_sentiment_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type detect_toxic_content_errors() ::
+    unsupported_language_exception() | 
+    text_size_limit_exceeded_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type import_model_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_unavailable_exception() | 
+    resource_in_use_exception().
+
+-type list_datasets_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_document_classification_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_document_classifier_summaries_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_document_classifiers_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_dominant_language_detection_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_endpoints_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_entities_detection_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_entity_recognizer_summaries_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception().
+
+-type list_entity_recognizers_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_events_detection_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_flywheel_iteration_history_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_flywheels_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_key_phrases_detection_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_pii_entities_detection_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_sentiment_detection_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type list_targeted_sentiment_detection_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type list_topics_detection_jobs_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    invalid_filter_exception() | 
+    too_many_requests_exception().
+
+-type put_resource_policy_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type start_document_classification_job_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_unavailable_exception() | 
+    resource_in_use_exception().
+
+-type start_dominant_language_detection_job_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type start_entities_detection_job_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_unavailable_exception() | 
+    resource_in_use_exception().
+
+-type start_events_detection_job_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type start_flywheel_iteration_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type start_key_phrases_detection_job_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type start_pii_entities_detection_job_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type start_sentiment_detection_job_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type start_targeted_sentiment_detection_job_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type start_topics_detection_job_errors() ::
+    too_many_tags_exception() | 
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    too_many_requests_exception() | 
+    resource_in_use_exception().
+
+-type stop_dominant_language_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type stop_entities_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type stop_events_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type stop_key_phrases_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type stop_pii_entities_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type stop_sentiment_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type stop_targeted_sentiment_detection_job_errors() ::
+    job_not_found_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception().
+
+-type stop_training_document_classifier_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type stop_training_entity_recognizer_errors() ::
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    concurrent_modification_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    concurrent_modification_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_tag_keys_exception().
+
+-type update_endpoint_errors() ::
+    internal_server_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_unavailable_exception() | 
+    resource_in_use_exception().
+
+-type update_flywheel_errors() ::
+    kms_key_validation_exception() | 
+    internal_server_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
 
 %%====================================================================
 %% API
@@ -2586,10 +3150,7 @@
 -spec batch_detect_dominant_language(map(), batch_detect_dominant_language_request()) ->
     {ok, batch_detect_dominant_language_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()}.
+    {error, batch_detect_dominant_language_errors(), tuple()}.
 batch_detect_dominant_language(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_dominant_language(Client, Input, []).
@@ -2597,10 +3158,7 @@ batch_detect_dominant_language(Client, Input)
 -spec batch_detect_dominant_language(map(), batch_detect_dominant_language_request(), proplists:proplist()) ->
     {ok, batch_detect_dominant_language_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()}.
+    {error, batch_detect_dominant_language_errors(), tuple()}.
 batch_detect_dominant_language(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDetectDominantLanguage">>, Input, Options).
@@ -2616,11 +3174,7 @@ batch_detect_dominant_language(Client, Input, Options)
 -spec batch_detect_entities(map(), batch_detect_entities_request()) ->
     {ok, batch_detect_entities_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_entities_errors(), tuple()}.
 batch_detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_entities(Client, Input, []).
@@ -2628,11 +3182,7 @@ batch_detect_entities(Client, Input)
 -spec batch_detect_entities(map(), batch_detect_entities_request(), proplists:proplist()) ->
     {ok, batch_detect_entities_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_entities_errors(), tuple()}.
 batch_detect_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDetectEntities">>, Input, Options).
@@ -2641,11 +3191,7 @@ batch_detect_entities(Client, Input, Options)
 -spec batch_detect_key_phrases(map(), batch_detect_key_phrases_request()) ->
     {ok, batch_detect_key_phrases_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_key_phrases_errors(), tuple()}.
 batch_detect_key_phrases(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_key_phrases(Client, Input, []).
@@ -2653,11 +3199,7 @@ batch_detect_key_phrases(Client, Input)
 -spec batch_detect_key_phrases(map(), batch_detect_key_phrases_request(), proplists:proplist()) ->
     {ok, batch_detect_key_phrases_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_key_phrases_errors(), tuple()}.
 batch_detect_key_phrases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDetectKeyPhrases">>, Input, Options).
@@ -2669,11 +3211,7 @@ batch_detect_key_phrases(Client, Input, Options)
 -spec batch_detect_sentiment(map(), batch_detect_sentiment_request()) ->
     {ok, batch_detect_sentiment_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_sentiment_errors(), tuple()}.
 batch_detect_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_sentiment(Client, Input, []).
@@ -2681,11 +3219,7 @@ batch_detect_sentiment(Client, Input)
 -spec batch_detect_sentiment(map(), batch_detect_sentiment_request(), proplists:proplist()) ->
     {ok, batch_detect_sentiment_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_sentiment_errors(), tuple()}.
 batch_detect_sentiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDetectSentiment">>, Input, Options).
@@ -2700,11 +3234,7 @@ batch_detect_sentiment(Client, Input, Options)
 -spec batch_detect_syntax(map(), batch_detect_syntax_request()) ->
     {ok, batch_detect_syntax_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_syntax_errors(), tuple()}.
 batch_detect_syntax(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_syntax(Client, Input, []).
@@ -2712,11 +3242,7 @@ batch_detect_syntax(Client, Input)
 -spec batch_detect_syntax(map(), batch_detect_syntax_request(), proplists:proplist()) ->
     {ok, batch_detect_syntax_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_syntax_errors(), tuple()}.
 batch_detect_syntax(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDetectSyntax">>, Input, Options).
@@ -2730,11 +3256,7 @@ batch_detect_syntax(Client, Input, Options)
 -spec batch_detect_targeted_sentiment(map(), batch_detect_targeted_sentiment_request()) ->
     {ok, batch_detect_targeted_sentiment_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_targeted_sentiment_errors(), tuple()}.
 batch_detect_targeted_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_targeted_sentiment(Client, Input, []).
@@ -2742,11 +3264,7 @@ batch_detect_targeted_sentiment(Client, Input)
 -spec batch_detect_targeted_sentiment(map(), batch_detect_targeted_sentiment_request(), proplists:proplist()) ->
     {ok, batch_detect_targeted_sentiment_response(), tuple()} |
     {error, any()} |
-    {error, batch_size_limit_exceeded_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, batch_detect_targeted_sentiment_errors(), tuple()}.
 batch_detect_targeted_sentiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDetectTargetedSentiment">>, Input, Options).
@@ -2791,10 +3309,7 @@ batch_detect_targeted_sentiment(Client, Input, Options)
 -spec classify_document(map(), classify_document_request()) ->
     {ok, classify_document_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()}.
+    {error, classify_document_errors(), tuple()}.
 classify_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     classify_document(Client, Input, []).
@@ -2802,10 +3317,7 @@ classify_document(Client, Input)
 -spec classify_document(map(), classify_document_request(), proplists:proplist()) ->
     {ok, classify_document_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()}.
+    {error, classify_document_errors(), tuple()}.
 classify_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ClassifyDocument">>, Input, Options).
@@ -2818,10 +3330,7 @@ classify_document(Client, Input, Options)
 -spec contains_pii_entities(map(), contains_pii_entities_request()) ->
     {ok, contains_pii_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, contains_pii_entities_errors(), tuple()}.
 contains_pii_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     contains_pii_entities(Client, Input, []).
@@ -2829,10 +3338,7 @@ contains_pii_entities(Client, Input)
 -spec contains_pii_entities(map(), contains_pii_entities_request(), proplists:proplist()) ->
     {ok, contains_pii_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, contains_pii_entities_errors(), tuple()}.
 contains_pii_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ContainsPiiEntities">>, Input, Options).
@@ -2847,13 +3353,7 @@ contains_pii_entities(Client, Input, Options)
 -spec create_dataset(map(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
@@ -2861,13 +3361,7 @@ create_dataset(Client, Input)
 -spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataset">>, Input, Options).
@@ -2885,14 +3379,7 @@ create_dataset(Client, Input, Options)
 -spec create_document_classifier(map(), create_document_classifier_request()) ->
     {ok, create_document_classifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, create_document_classifier_errors(), tuple()}.
 create_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document_classifier(Client, Input, []).
@@ -2900,14 +3387,7 @@ create_document_classifier(Client, Input)
 -spec create_document_classifier(map(), create_document_classifier_request(), proplists:proplist()) ->
     {ok, create_document_classifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, create_document_classifier_errors(), tuple()}.
 create_document_classifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDocumentClassifier">>, Input, Options).
@@ -2920,14 +3400,7 @@ create_document_classifier(Client, Input, Options)
 -spec create_endpoint(map(), create_endpoint_request()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -2935,14 +3408,7 @@ create_endpoint(Client, Input)
 -spec create_endpoint(map(), create_endpoint_request(), proplists:proplist()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpoint">>, Input, Options).
@@ -2956,14 +3422,7 @@ create_endpoint(Client, Input, Options)
 -spec create_entity_recognizer(map(), create_entity_recognizer_request()) ->
     {ok, create_entity_recognizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, create_entity_recognizer_errors(), tuple()}.
 create_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_entity_recognizer(Client, Input, []).
@@ -2971,14 +3430,7 @@ create_entity_recognizer(Client, Input)
 -spec create_entity_recognizer(map(), create_entity_recognizer_request(), proplists:proplist()) ->
     {ok, create_entity_recognizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, create_entity_recognizer_errors(), tuple()}.
 create_entity_recognizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEntityRecognizer">>, Input, Options).
@@ -3009,16 +3461,7 @@ create_entity_recognizer(Client, Input, Options)
 -spec create_flywheel(map(), create_flywheel_request()) ->
     {ok, create_flywheel_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, create_flywheel_errors(), tuple()}.
 create_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flywheel(Client, Input, []).
@@ -3026,16 +3469,7 @@ create_flywheel(Client, Input)
 -spec create_flywheel(map(), create_flywheel_request(), proplists:proplist()) ->
     {ok, create_flywheel_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, create_flywheel_errors(), tuple()}.
 create_flywheel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFlywheel">>, Input, Options).
@@ -3057,12 +3491,7 @@ create_flywheel(Client, Input, Options)
 -spec delete_document_classifier(map(), delete_document_classifier_request()) ->
     {ok, delete_document_classifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_document_classifier_errors(), tuple()}.
 delete_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_document_classifier(Client, Input, []).
@@ -3070,12 +3499,7 @@ delete_document_classifier(Client, Input)
 -spec delete_document_classifier(map(), delete_document_classifier_request(), proplists:proplist()) ->
     {ok, delete_document_classifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_document_classifier_errors(), tuple()}.
 delete_document_classifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDocumentClassifier">>, Input, Options).
@@ -3090,11 +3514,7 @@ delete_document_classifier(Client, Input, Options)
 -spec delete_endpoint(map(), delete_endpoint_request()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
@@ -3102,11 +3522,7 @@ delete_endpoint(Client, Input)
 -spec delete_endpoint(map(), delete_endpoint_request(), proplists:proplist()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpoint">>, Input, Options).
@@ -3127,12 +3543,7 @@ delete_endpoint(Client, Input, Options)
 -spec delete_entity_recognizer(map(), delete_entity_recognizer_request()) ->
     {ok, delete_entity_recognizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_entity_recognizer_errors(), tuple()}.
 delete_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_entity_recognizer(Client, Input, []).
@@ -3140,12 +3551,7 @@ delete_entity_recognizer(Client, Input)
 -spec delete_entity_recognizer(map(), delete_entity_recognizer_request(), proplists:proplist()) ->
     {ok, delete_entity_recognizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_entity_recognizer_errors(), tuple()}.
 delete_entity_recognizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEntityRecognizer">>, Input, Options).
@@ -3162,12 +3568,7 @@ delete_entity_recognizer(Client, Input, Options)
 -spec delete_flywheel(map(), delete_flywheel_request()) ->
     {ok, delete_flywheel_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_flywheel_errors(), tuple()}.
 delete_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flywheel(Client, Input, []).
@@ -3175,12 +3576,7 @@ delete_flywheel(Client, Input)
 -spec delete_flywheel(map(), delete_flywheel_request(), proplists:proplist()) ->
     {ok, delete_flywheel_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_flywheel_errors(), tuple()}.
 delete_flywheel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFlywheel">>, Input, Options).
@@ -3189,9 +3585,7 @@ delete_flywheel(Client, Input, Options)
 -spec delete_resource_policy(map(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -3199,9 +3593,7 @@ delete_resource_policy(Client, Input)
 -spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -3215,10 +3607,7 @@ delete_resource_policy(Client, Input, Options)
 -spec describe_dataset(map(), describe_dataset_request()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
@@ -3226,10 +3615,7 @@ describe_dataset(Client, Input)
 -spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_dataset_errors(), tuple()}.
 describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
@@ -3241,10 +3627,7 @@ describe_dataset(Client, Input, Options)
 -spec describe_document_classification_job(map(), describe_document_classification_job_request()) ->
     {ok, describe_document_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_document_classification_job_errors(), tuple()}.
 describe_document_classification_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document_classification_job(Client, Input, []).
@@ -3252,10 +3635,7 @@ describe_document_classification_job(Client, Input)
 -spec describe_document_classification_job(map(), describe_document_classification_job_request(), proplists:proplist()) ->
     {ok, describe_document_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_document_classification_job_errors(), tuple()}.
 describe_document_classification_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDocumentClassificationJob">>, Input, Options).
@@ -3264,10 +3644,7 @@ describe_document_classification_job(Client, Input, Options)
 -spec describe_document_classifier(map(), describe_document_classifier_request()) ->
     {ok, describe_document_classifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_document_classifier_errors(), tuple()}.
 describe_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document_classifier(Client, Input, []).
@@ -3275,10 +3652,7 @@ describe_document_classifier(Client, Input)
 -spec describe_document_classifier(map(), describe_document_classifier_request(), proplists:proplist()) ->
     {ok, describe_document_classifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_document_classifier_errors(), tuple()}.
 describe_document_classifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDocumentClassifier">>, Input, Options).
@@ -3291,10 +3665,7 @@ describe_document_classifier(Client, Input, Options)
 -spec describe_dominant_language_detection_job(map(), describe_dominant_language_detection_job_request()) ->
     {ok, describe_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_dominant_language_detection_job_errors(), tuple()}.
 describe_dominant_language_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dominant_language_detection_job(Client, Input, []).
@@ -3302,10 +3673,7 @@ describe_dominant_language_detection_job(Client, Input)
 -spec describe_dominant_language_detection_job(map(), describe_dominant_language_detection_job_request(), proplists:proplist()) ->
     {ok, describe_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_dominant_language_detection_job_errors(), tuple()}.
 describe_dominant_language_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDominantLanguageDetectionJob">>, Input, Options).
@@ -3319,10 +3687,7 @@ describe_dominant_language_detection_job(Client, Input, Options)
 -spec describe_endpoint(map(), describe_endpoint_request()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_endpoint_errors(), tuple()}.
 describe_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint(Client, Input, []).
@@ -3330,10 +3695,7 @@ describe_endpoint(Client, Input)
 -spec describe_endpoint(map(), describe_endpoint_request(), proplists:proplist()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_endpoint_errors(), tuple()}.
 describe_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpoint">>, Input, Options).
@@ -3345,10 +3707,7 @@ describe_endpoint(Client, Input, Options)
 -spec describe_entities_detection_job(map(), describe_entities_detection_job_request()) ->
     {ok, describe_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_entities_detection_job_errors(), tuple()}.
 describe_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entities_detection_job(Client, Input, []).
@@ -3356,10 +3715,7 @@ describe_entities_detection_job(Client, Input)
 -spec describe_entities_detection_job(map(), describe_entities_detection_job_request(), proplists:proplist()) ->
     {ok, describe_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_entities_detection_job_errors(), tuple()}.
 describe_entities_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEntitiesDetectionJob">>, Input, Options).
@@ -3370,10 +3726,7 @@ describe_entities_detection_job(Client, Input, Options)
 -spec describe_entity_recognizer(map(), describe_entity_recognizer_request()) ->
     {ok, describe_entity_recognizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_entity_recognizer_errors(), tuple()}.
 describe_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entity_recognizer(Client, Input, []).
@@ -3381,10 +3734,7 @@ describe_entity_recognizer(Client, Input)
 -spec describe_entity_recognizer(map(), describe_entity_recognizer_request(), proplists:proplist()) ->
     {ok, describe_entity_recognizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_entity_recognizer_errors(), tuple()}.
 describe_entity_recognizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEntityRecognizer">>, Input, Options).
@@ -3393,10 +3743,7 @@ describe_entity_recognizer(Client, Input, Options)
 -spec describe_events_detection_job(map(), describe_events_detection_job_request()) ->
     {ok, describe_events_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_events_detection_job_errors(), tuple()}.
 describe_events_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events_detection_job(Client, Input, []).
@@ -3404,10 +3751,7 @@ describe_events_detection_job(Client, Input)
 -spec describe_events_detection_job(map(), describe_events_detection_job_request(), proplists:proplist()) ->
     {ok, describe_events_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_events_detection_job_errors(), tuple()}.
 describe_events_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventsDetectionJob">>, Input, Options).
@@ -3421,10 +3765,7 @@ describe_events_detection_job(Client, Input, Options)
 -spec describe_flywheel(map(), describe_flywheel_request()) ->
     {ok, describe_flywheel_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flywheel_errors(), tuple()}.
 describe_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flywheel(Client, Input, []).
@@ -3432,10 +3773,7 @@ describe_flywheel(Client, Input)
 -spec describe_flywheel(map(), describe_flywheel_request(), proplists:proplist()) ->
     {ok, describe_flywheel_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flywheel_errors(), tuple()}.
 describe_flywheel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFlywheel">>, Input, Options).
@@ -3449,10 +3787,7 @@ describe_flywheel(Client, Input, Options)
 -spec describe_flywheel_iteration(map(), describe_flywheel_iteration_request()) ->
     {ok, describe_flywheel_iteration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flywheel_iteration_errors(), tuple()}.
 describe_flywheel_iteration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flywheel_iteration(Client, Input, []).
@@ -3460,10 +3795,7 @@ describe_flywheel_iteration(Client, Input)
 -spec describe_flywheel_iteration(map(), describe_flywheel_iteration_request(), proplists:proplist()) ->
     {ok, describe_flywheel_iteration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_flywheel_iteration_errors(), tuple()}.
 describe_flywheel_iteration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFlywheelIteration">>, Input, Options).
@@ -3475,10 +3807,7 @@ describe_flywheel_iteration(Client, Input, Options)
 -spec describe_key_phrases_detection_job(map(), describe_key_phrases_detection_job_request()) ->
     {ok, describe_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_key_phrases_detection_job_errors(), tuple()}.
 describe_key_phrases_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_key_phrases_detection_job(Client, Input, []).
@@ -3486,10 +3815,7 @@ describe_key_phrases_detection_job(Client, Input)
 -spec describe_key_phrases_detection_job(map(), describe_key_phrases_detection_job_request(), proplists:proplist()) ->
     {ok, describe_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_key_phrases_detection_job_errors(), tuple()}.
 describe_key_phrases_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeKeyPhrasesDetectionJob">>, Input, Options).
@@ -3501,10 +3827,7 @@ describe_key_phrases_detection_job(Client, Input, Options)
 -spec describe_pii_entities_detection_job(map(), describe_pii_entities_detection_job_request()) ->
     {ok, describe_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_pii_entities_detection_job_errors(), tuple()}.
 describe_pii_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pii_entities_detection_job(Client, Input, []).
@@ -3512,10 +3835,7 @@ describe_pii_entities_detection_job(Client, Input)
 -spec describe_pii_entities_detection_job(map(), describe_pii_entities_detection_job_request(), proplists:proplist()) ->
     {ok, describe_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_pii_entities_detection_job_errors(), tuple()}.
 describe_pii_entities_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePiiEntitiesDetectionJob">>, Input, Options).
@@ -3526,9 +3846,7 @@ describe_pii_entities_detection_job(Client, Input, Options)
 -spec describe_resource_policy(map(), describe_resource_policy_request()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
@@ -3536,9 +3854,7 @@ describe_resource_policy(Client, Input)
 -spec describe_resource_policy(map(), describe_resource_policy_request(), proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_resource_policy_errors(), tuple()}.
 describe_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
@@ -3550,10 +3866,7 @@ describe_resource_policy(Client, Input, Options)
 -spec describe_sentiment_detection_job(map(), describe_sentiment_detection_job_request()) ->
     {ok, describe_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_sentiment_detection_job_errors(), tuple()}.
 describe_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_sentiment_detection_job(Client, Input, []).
@@ -3561,10 +3874,7 @@ describe_sentiment_detection_job(Client, Input)
 -spec describe_sentiment_detection_job(map(), describe_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, describe_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_sentiment_detection_job_errors(), tuple()}.
 describe_sentiment_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSentimentDetectionJob">>, Input, Options).
@@ -3577,10 +3887,7 @@ describe_sentiment_detection_job(Client, Input, Options)
 -spec describe_targeted_sentiment_detection_job(map(), describe_targeted_sentiment_detection_job_request()) ->
     {ok, describe_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_targeted_sentiment_detection_job_errors(), tuple()}.
 describe_targeted_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_targeted_sentiment_detection_job(Client, Input, []).
@@ -3588,10 +3895,7 @@ describe_targeted_sentiment_detection_job(Client, Input)
 -spec describe_targeted_sentiment_detection_job(map(), describe_targeted_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, describe_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_targeted_sentiment_detection_job_errors(), tuple()}.
 describe_targeted_sentiment_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTargetedSentimentDetectionJob">>, Input, Options).
@@ -3603,10 +3907,7 @@ describe_targeted_sentiment_detection_job(Client, Input, Options)
 -spec describe_topics_detection_job(map(), describe_topics_detection_job_request()) ->
     {ok, describe_topics_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_topics_detection_job_errors(), tuple()}.
 describe_topics_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_topics_detection_job(Client, Input, []).
@@ -3614,10 +3915,7 @@ describe_topics_detection_job(Client, Input)
 -spec describe_topics_detection_job(map(), describe_topics_detection_job_request(), proplists:proplist()) ->
     {ok, describe_topics_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, describe_topics_detection_job_errors(), tuple()}.
 describe_topics_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTopicsDetectionJob">>, Input, Options).
@@ -3630,9 +3928,7 @@ describe_topics_detection_job(Client, Input, Options)
 -spec detect_dominant_language(map(), detect_dominant_language_request()) ->
     {ok, detect_dominant_language_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()}.
+    {error, detect_dominant_language_errors(), tuple()}.
 detect_dominant_language(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_dominant_language(Client, Input, []).
@@ -3640,9 +3936,7 @@ detect_dominant_language(Client, Input)
 -spec detect_dominant_language(map(), detect_dominant_language_request(), proplists:proplist()) ->
     {ok, detect_dominant_language_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()}.
+    {error, detect_dominant_language_errors(), tuple()}.
 detect_dominant_language(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectDominantLanguage">>, Input, Options).
@@ -3678,11 +3972,7 @@ detect_dominant_language(Client, Input, Options)
 -spec detect_entities(map(), detect_entities_request()) ->
     {ok, detect_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_entities_errors(), tuple()}.
 detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities(Client, Input, []).
@@ -3690,11 +3980,7 @@ detect_entities(Client, Input)
 -spec detect_entities(map(), detect_entities_request(), proplists:proplist()) ->
     {ok, detect_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_entities_errors(), tuple()}.
 detect_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectEntities">>, Input, Options).
@@ -3703,10 +3989,7 @@ detect_entities(Client, Input, Options)
 -spec detect_key_phrases(map(), detect_key_phrases_request()) ->
     {ok, detect_key_phrases_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_key_phrases_errors(), tuple()}.
 detect_key_phrases(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_key_phrases(Client, Input, []).
@@ -3714,10 +3997,7 @@ detect_key_phrases(Client, Input)
 -spec detect_key_phrases(map(), detect_key_phrases_request(), proplists:proplist()) ->
     {ok, detect_key_phrases_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_key_phrases_errors(), tuple()}.
 detect_key_phrases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectKeyPhrases">>, Input, Options).
@@ -3728,10 +4008,7 @@ detect_key_phrases(Client, Input, Options)
 -spec detect_pii_entities(map(), detect_pii_entities_request()) ->
     {ok, detect_pii_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_pii_entities_errors(), tuple()}.
 detect_pii_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_pii_entities(Client, Input, []).
@@ -3739,10 +4016,7 @@ detect_pii_entities(Client, Input)
 -spec detect_pii_entities(map(), detect_pii_entities_request(), proplists:proplist()) ->
     {ok, detect_pii_entities_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_pii_entities_errors(), tuple()}.
 detect_pii_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectPiiEntities">>, Input, Options).
@@ -3752,10 +4026,7 @@ detect_pii_entities(Client, Input, Options)
 -spec detect_sentiment(map(), detect_sentiment_request()) ->
     {ok, detect_sentiment_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_sentiment_errors(), tuple()}.
 detect_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_sentiment(Client, Input, []).
@@ -3763,10 +4034,7 @@ detect_sentiment(Client, Input)
 -spec detect_sentiment(map(), detect_sentiment_request(), proplists:proplist()) ->
     {ok, detect_sentiment_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_sentiment_errors(), tuple()}.
 detect_sentiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectSentiment">>, Input, Options).
@@ -3781,10 +4049,7 @@ detect_sentiment(Client, Input, Options)
 -spec detect_syntax(map(), detect_syntax_request()) ->
     {ok, detect_syntax_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_syntax_errors(), tuple()}.
 detect_syntax(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_syntax(Client, Input, []).
@@ -3792,10 +4057,7 @@ detect_syntax(Client, Input)
 -spec detect_syntax(map(), detect_syntax_request(), proplists:proplist()) ->
     {ok, detect_syntax_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_syntax_errors(), tuple()}.
 detect_syntax(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectSyntax">>, Input, Options).
@@ -3809,10 +4071,7 @@ detect_syntax(Client, Input, Options)
 -spec detect_targeted_sentiment(map(), detect_targeted_sentiment_request()) ->
     {ok, detect_targeted_sentiment_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_targeted_sentiment_errors(), tuple()}.
 detect_targeted_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_targeted_sentiment(Client, Input, []).
@@ -3820,10 +4079,7 @@ detect_targeted_sentiment(Client, Input)
 -spec detect_targeted_sentiment(map(), detect_targeted_sentiment_request(), proplists:proplist()) ->
     {ok, detect_targeted_sentiment_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_targeted_sentiment_errors(), tuple()}.
 detect_targeted_sentiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectTargetedSentiment">>, Input, Options).
@@ -3839,10 +4095,7 @@ detect_targeted_sentiment(Client, Input, Options)
 -spec detect_toxic_content(map(), detect_toxic_content_request()) ->
     {ok, detect_toxic_content_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_toxic_content_errors(), tuple()}.
 detect_toxic_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_toxic_content(Client, Input, []).
@@ -3850,10 +4103,7 @@ detect_toxic_content(Client, Input)
 -spec detect_toxic_content(map(), detect_toxic_content_request(), proplists:proplist()) ->
     {ok, detect_toxic_content_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, text_size_limit_exceeded_exception(), tuple()} |
-    {error, unsupported_language_exception(), tuple()}.
+    {error, detect_toxic_content_errors(), tuple()}.
 detect_toxic_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectToxicContent">>, Input, Options).
@@ -3874,15 +4124,7 @@ detect_toxic_content(Client, Input, Options)
 -spec import_model(map(), import_model_request()) ->
     {ok, import_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, import_model_errors(), tuple()}.
 import_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_model(Client, Input, []).
@@ -3890,15 +4132,7 @@ import_model(Client, Input)
 -spec import_model(map(), import_model_request(), proplists:proplist()) ->
     {ok, import_model_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, import_model_errors(), tuple()}.
 import_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportModel">>, Input, Options).
@@ -3912,11 +4146,7 @@ import_model(Client, Input, Options)
 -spec list_datasets(map(), list_datasets_request()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
@@ -3924,11 +4154,7 @@ list_datasets(Client, Input)
 -spec list_datasets(map(), list_datasets_request(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_datasets_errors(), tuple()}.
 list_datasets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasets">>, Input, Options).
@@ -3938,10 +4164,7 @@ list_datasets(Client, Input, Options)
 -spec list_document_classification_jobs(map(), list_document_classification_jobs_request()) ->
     {ok, list_document_classification_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_document_classification_jobs_errors(), tuple()}.
 list_document_classification_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_classification_jobs(Client, Input, []).
@@ -3949,10 +4172,7 @@ list_document_classification_jobs(Client, Input)
 -spec list_document_classification_jobs(map(), list_document_classification_jobs_request(), proplists:proplist()) ->
     {ok, list_document_classification_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_document_classification_jobs_errors(), tuple()}.
 list_document_classification_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDocumentClassificationJobs">>, Input, Options).
@@ -3962,9 +4182,7 @@ list_document_classification_jobs(Client, Input, Options)
 -spec list_document_classifier_summaries(map(), list_document_classifier_summaries_request()) ->
     {ok, list_document_classifier_summaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_document_classifier_summaries_errors(), tuple()}.
 list_document_classifier_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_classifier_summaries(Client, Input, []).
@@ -3972,9 +4190,7 @@ list_document_classifier_summaries(Client, Input)
 -spec list_document_classifier_summaries(map(), list_document_classifier_summaries_request(), proplists:proplist()) ->
     {ok, list_document_classifier_summaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_document_classifier_summaries_errors(), tuple()}.
 list_document_classifier_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDocumentClassifierSummaries">>, Input, Options).
@@ -3983,10 +4199,7 @@ list_document_classifier_summaries(Client, Input, Options)
 -spec list_document_classifiers(map(), list_document_classifiers_request()) ->
     {ok, list_document_classifiers_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_document_classifiers_errors(), tuple()}.
 list_document_classifiers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_classifiers(Client, Input, []).
@@ -3994,10 +4207,7 @@ list_document_classifiers(Client, Input)
 -spec list_document_classifiers(map(), list_document_classifiers_request(), proplists:proplist()) ->
     {ok, list_document_classifiers_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_document_classifiers_errors(), tuple()}.
 list_document_classifiers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDocumentClassifiers">>, Input, Options).
@@ -4007,10 +4217,7 @@ list_document_classifiers(Client, Input, Options)
 -spec list_dominant_language_detection_jobs(map(), list_dominant_language_detection_jobs_request()) ->
     {ok, list_dominant_language_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_dominant_language_detection_jobs_errors(), tuple()}.
 list_dominant_language_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dominant_language_detection_jobs(Client, Input, []).
@@ -4018,10 +4225,7 @@ list_dominant_language_detection_jobs(Client, Input)
 -spec list_dominant_language_detection_jobs(map(), list_dominant_language_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_dominant_language_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_dominant_language_detection_jobs_errors(), tuple()}.
 list_dominant_language_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDominantLanguageDetectionJobs">>, Input, Options).
@@ -4033,9 +4237,7 @@ list_dominant_language_detection_jobs(Client, Input, Options)
 -spec list_endpoints(map(), list_endpoints_request()) ->
     {ok, list_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_endpoints_errors(), tuple()}.
 list_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints(Client, Input, []).
@@ -4043,9 +4245,7 @@ list_endpoints(Client, Input)
 -spec list_endpoints(map(), list_endpoints_request(), proplists:proplist()) ->
     {ok, list_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_endpoints_errors(), tuple()}.
 list_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpoints">>, Input, Options).
@@ -4054,10 +4254,7 @@ list_endpoints(Client, Input, Options)
 -spec list_entities_detection_jobs(map(), list_entities_detection_jobs_request()) ->
     {ok, list_entities_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_entities_detection_jobs_errors(), tuple()}.
 list_entities_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entities_detection_jobs(Client, Input, []).
@@ -4065,10 +4262,7 @@ list_entities_detection_jobs(Client, Input)
 -spec list_entities_detection_jobs(map(), list_entities_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_entities_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_entities_detection_jobs_errors(), tuple()}.
 list_entities_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntitiesDetectionJobs">>, Input, Options).
@@ -4078,9 +4272,7 @@ list_entities_detection_jobs(Client, Input, Options)
 -spec list_entity_recognizer_summaries(map(), list_entity_recognizer_summaries_request()) ->
     {ok, list_entity_recognizer_summaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_entity_recognizer_summaries_errors(), tuple()}.
 list_entity_recognizer_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entity_recognizer_summaries(Client, Input, []).
@@ -4088,9 +4280,7 @@ list_entity_recognizer_summaries(Client, Input)
 -spec list_entity_recognizer_summaries(map(), list_entity_recognizer_summaries_request(), proplists:proplist()) ->
     {ok, list_entity_recognizer_summaries_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_entity_recognizer_summaries_errors(), tuple()}.
 list_entity_recognizer_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntityRecognizerSummaries">>, Input, Options).
@@ -4110,10 +4300,7 @@ list_entity_recognizer_summaries(Client, Input, Options)
 -spec list_entity_recognizers(map(), list_entity_recognizers_request()) ->
     {ok, list_entity_recognizers_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_entity_recognizers_errors(), tuple()}.
 list_entity_recognizers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entity_recognizers(Client, Input, []).
@@ -4121,10 +4308,7 @@ list_entity_recognizers(Client, Input)
 -spec list_entity_recognizers(map(), list_entity_recognizers_request(), proplists:proplist()) ->
     {ok, list_entity_recognizers_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_entity_recognizers_errors(), tuple()}.
 list_entity_recognizers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntityRecognizers">>, Input, Options).
@@ -4133,10 +4317,7 @@ list_entity_recognizers(Client, Input, Options)
 -spec list_events_detection_jobs(map(), list_events_detection_jobs_request()) ->
     {ok, list_events_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_events_detection_jobs_errors(), tuple()}.
 list_events_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_events_detection_jobs(Client, Input, []).
@@ -4144,10 +4325,7 @@ list_events_detection_jobs(Client, Input)
 -spec list_events_detection_jobs(map(), list_events_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_events_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_events_detection_jobs_errors(), tuple()}.
 list_events_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventsDetectionJobs">>, Input, Options).
@@ -4161,11 +4339,7 @@ list_events_detection_jobs(Client, Input, Options)
 -spec list_flywheel_iteration_history(map(), list_flywheel_iteration_history_request()) ->
     {ok, list_flywheel_iteration_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_flywheel_iteration_history_errors(), tuple()}.
 list_flywheel_iteration_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_flywheel_iteration_history(Client, Input, []).
@@ -4173,11 +4347,7 @@ list_flywheel_iteration_history(Client, Input)
 -spec list_flywheel_iteration_history(map(), list_flywheel_iteration_history_request(), proplists:proplist()) ->
     {ok, list_flywheel_iteration_history_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_flywheel_iteration_history_errors(), tuple()}.
 list_flywheel_iteration_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFlywheelIterationHistory">>, Input, Options).
@@ -4186,10 +4356,7 @@ list_flywheel_iteration_history(Client, Input, Options)
 -spec list_flywheels(map(), list_flywheels_request()) ->
     {ok, list_flywheels_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_flywheels_errors(), tuple()}.
 list_flywheels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_flywheels(Client, Input, []).
@@ -4197,10 +4364,7 @@ list_flywheels(Client, Input)
 -spec list_flywheels(map(), list_flywheels_request(), proplists:proplist()) ->
     {ok, list_flywheels_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_flywheels_errors(), tuple()}.
 list_flywheels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFlywheels">>, Input, Options).
@@ -4209,10 +4373,7 @@ list_flywheels(Client, Input, Options)
 -spec list_key_phrases_detection_jobs(map(), list_key_phrases_detection_jobs_request()) ->
     {ok, list_key_phrases_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_key_phrases_detection_jobs_errors(), tuple()}.
 list_key_phrases_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_key_phrases_detection_jobs(Client, Input, []).
@@ -4220,10 +4381,7 @@ list_key_phrases_detection_jobs(Client, Input)
 -spec list_key_phrases_detection_jobs(map(), list_key_phrases_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_key_phrases_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_key_phrases_detection_jobs_errors(), tuple()}.
 list_key_phrases_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeyPhrasesDetectionJobs">>, Input, Options).
@@ -4232,10 +4390,7 @@ list_key_phrases_detection_jobs(Client, Input, Options)
 -spec list_pii_entities_detection_jobs(map(), list_pii_entities_detection_jobs_request()) ->
     {ok, list_pii_entities_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_pii_entities_detection_jobs_errors(), tuple()}.
 list_pii_entities_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pii_entities_detection_jobs(Client, Input, []).
@@ -4243,10 +4398,7 @@ list_pii_entities_detection_jobs(Client, Input)
 -spec list_pii_entities_detection_jobs(map(), list_pii_entities_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_pii_entities_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_pii_entities_detection_jobs_errors(), tuple()}.
 list_pii_entities_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPiiEntitiesDetectionJobs">>, Input, Options).
@@ -4255,10 +4407,7 @@ list_pii_entities_detection_jobs(Client, Input, Options)
 -spec list_sentiment_detection_jobs(map(), list_sentiment_detection_jobs_request()) ->
     {ok, list_sentiment_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_sentiment_detection_jobs_errors(), tuple()}.
 list_sentiment_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sentiment_detection_jobs(Client, Input, []).
@@ -4266,10 +4415,7 @@ list_sentiment_detection_jobs(Client, Input)
 -spec list_sentiment_detection_jobs(map(), list_sentiment_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_sentiment_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_sentiment_detection_jobs_errors(), tuple()}.
 list_sentiment_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSentimentDetectionJobs">>, Input, Options).
@@ -4278,9 +4424,7 @@ list_sentiment_detection_jobs(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -4288,9 +4432,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -4300,10 +4442,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_targeted_sentiment_detection_jobs(map(), list_targeted_sentiment_detection_jobs_request()) ->
     {ok, list_targeted_sentiment_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_targeted_sentiment_detection_jobs_errors(), tuple()}.
 list_targeted_sentiment_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_targeted_sentiment_detection_jobs(Client, Input, []).
@@ -4311,10 +4450,7 @@ list_targeted_sentiment_detection_jobs(Client, Input)
 -spec list_targeted_sentiment_detection_jobs(map(), list_targeted_sentiment_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_targeted_sentiment_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_targeted_sentiment_detection_jobs_errors(), tuple()}.
 list_targeted_sentiment_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTargetedSentimentDetectionJobs">>, Input, Options).
@@ -4323,10 +4459,7 @@ list_targeted_sentiment_detection_jobs(Client, Input, Options)
 -spec list_topics_detection_jobs(map(), list_topics_detection_jobs_request()) ->
     {ok, list_topics_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_topics_detection_jobs_errors(), tuple()}.
 list_topics_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_topics_detection_jobs(Client, Input, []).
@@ -4334,10 +4467,7 @@ list_topics_detection_jobs(Client, Input)
 -spec list_topics_detection_jobs(map(), list_topics_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_topics_detection_jobs_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_filter_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_topics_detection_jobs_errors(), tuple()}.
 list_topics_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTopicsDetectionJobs">>, Input, Options).
@@ -4351,9 +4481,7 @@ list_topics_detection_jobs(Client, Input, Options)
 -spec put_resource_policy(map(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -4361,9 +4489,7 @@ put_resource_policy(Client, Input)
 -spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -4377,14 +4503,7 @@ put_resource_policy(Client, Input, Options)
 -spec start_document_classification_job(map(), start_document_classification_job_request()) ->
     {ok, start_document_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_document_classification_job_errors(), tuple()}.
 start_document_classification_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_document_classification_job(Client, Input, []).
@@ -4392,14 +4511,7 @@ start_document_classification_job(Client, Input)
 -spec start_document_classification_job(map(), start_document_classification_job_request(), proplists:proplist()) ->
     {ok, start_document_classification_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_document_classification_job_errors(), tuple()}.
 start_document_classification_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDocumentClassificationJob">>, Input, Options).
@@ -4413,12 +4525,7 @@ start_document_classification_job(Client, Input, Options)
 -spec start_dominant_language_detection_job(map(), start_dominant_language_detection_job_request()) ->
     {ok, start_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_dominant_language_detection_job_errors(), tuple()}.
 start_dominant_language_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_dominant_language_detection_job(Client, Input, []).
@@ -4426,12 +4533,7 @@ start_dominant_language_detection_job(Client, Input)
 -spec start_dominant_language_detection_job(map(), start_dominant_language_detection_job_request(), proplists:proplist()) ->
     {ok, start_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_dominant_language_detection_job_errors(), tuple()}.
 start_dominant_language_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDominantLanguageDetectionJob">>, Input, Options).
@@ -4451,14 +4553,7 @@ start_dominant_language_detection_job(Client, Input, Options)
 -spec start_entities_detection_job(map(), start_entities_detection_job_request()) ->
     {ok, start_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_entities_detection_job_errors(), tuple()}.
 start_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_entities_detection_job(Client, Input, []).
@@ -4466,14 +4561,7 @@ start_entities_detection_job(Client, Input)
 -spec start_entities_detection_job(map(), start_entities_detection_job_request(), proplists:proplist()) ->
     {ok, start_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_entities_detection_job_errors(), tuple()}.
 start_entities_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEntitiesDetectionJob">>, Input, Options).
@@ -4483,12 +4571,7 @@ start_entities_detection_job(Client, Input, Options)
 -spec start_events_detection_job(map(), start_events_detection_job_request()) ->
     {ok, start_events_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_events_detection_job_errors(), tuple()}.
 start_events_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_events_detection_job(Client, Input, []).
@@ -4496,12 +4579,7 @@ start_events_detection_job(Client, Input)
 -spec start_events_detection_job(map(), start_events_detection_job_request(), proplists:proplist()) ->
     {ok, start_events_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_events_detection_job_errors(), tuple()}.
 start_events_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEventsDetectionJob">>, Input, Options).
@@ -4516,11 +4594,7 @@ start_events_detection_job(Client, Input, Options)
 -spec start_flywheel_iteration(map(), start_flywheel_iteration_request()) ->
     {ok, start_flywheel_iteration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_flywheel_iteration_errors(), tuple()}.
 start_flywheel_iteration(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_flywheel_iteration(Client, Input, []).
@@ -4528,11 +4602,7 @@ start_flywheel_iteration(Client, Input)
 -spec start_flywheel_iteration(map(), start_flywheel_iteration_request(), proplists:proplist()) ->
     {ok, start_flywheel_iteration_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, start_flywheel_iteration_errors(), tuple()}.
 start_flywheel_iteration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFlywheelIteration">>, Input, Options).
@@ -4546,12 +4616,7 @@ start_flywheel_iteration(Client, Input, Options)
 -spec start_key_phrases_detection_job(map(), start_key_phrases_detection_job_request()) ->
     {ok, start_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_key_phrases_detection_job_errors(), tuple()}.
 start_key_phrases_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_key_phrases_detection_job(Client, Input, []).
@@ -4559,12 +4624,7 @@ start_key_phrases_detection_job(Client, Input)
 -spec start_key_phrases_detection_job(map(), start_key_phrases_detection_job_request(), proplists:proplist()) ->
     {ok, start_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_key_phrases_detection_job_errors(), tuple()}.
 start_key_phrases_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartKeyPhrasesDetectionJob">>, Input, Options).
@@ -4574,12 +4634,7 @@ start_key_phrases_detection_job(Client, Input, Options)
 -spec start_pii_entities_detection_job(map(), start_pii_entities_detection_job_request()) ->
     {ok, start_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_pii_entities_detection_job_errors(), tuple()}.
 start_pii_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_pii_entities_detection_job(Client, Input, []).
@@ -4587,12 +4642,7 @@ start_pii_entities_detection_job(Client, Input)
 -spec start_pii_entities_detection_job(map(), start_pii_entities_detection_job_request(), proplists:proplist()) ->
     {ok, start_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_pii_entities_detection_job_errors(), tuple()}.
 start_pii_entities_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPiiEntitiesDetectionJob">>, Input, Options).
@@ -4606,12 +4656,7 @@ start_pii_entities_detection_job(Client, Input, Options)
 -spec start_sentiment_detection_job(map(), start_sentiment_detection_job_request()) ->
     {ok, start_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_sentiment_detection_job_errors(), tuple()}.
 start_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_sentiment_detection_job(Client, Input, []).
@@ -4619,12 +4664,7 @@ start_sentiment_detection_job(Client, Input)
 -spec start_sentiment_detection_job(map(), start_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, start_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_sentiment_detection_job_errors(), tuple()}.
 start_sentiment_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSentimentDetectionJob">>, Input, Options).
@@ -4639,12 +4679,7 @@ start_sentiment_detection_job(Client, Input, Options)
 -spec start_targeted_sentiment_detection_job(map(), start_targeted_sentiment_detection_job_request()) ->
     {ok, start_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_targeted_sentiment_detection_job_errors(), tuple()}.
 start_targeted_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_targeted_sentiment_detection_job(Client, Input, []).
@@ -4652,12 +4687,7 @@ start_targeted_sentiment_detection_job(Client, Input)
 -spec start_targeted_sentiment_detection_job(map(), start_targeted_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, start_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_targeted_sentiment_detection_job_errors(), tuple()}.
 start_targeted_sentiment_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTargetedSentimentDetectionJob">>, Input, Options).
@@ -4669,12 +4699,7 @@ start_targeted_sentiment_detection_job(Client, Input, Options)
 -spec start_topics_detection_job(map(), start_topics_detection_job_request()) ->
     {ok, start_topics_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_topics_detection_job_errors(), tuple()}.
 start_topics_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_topics_detection_job(Client, Input, []).
@@ -4682,12 +4707,7 @@ start_topics_detection_job(Client, Input)
 -spec start_topics_detection_job(map(), start_topics_detection_job_request(), proplists:proplist()) ->
     {ok, start_topics_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, start_topics_detection_job_errors(), tuple()}.
 start_topics_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTopicsDetectionJob">>, Input, Options).
@@ -4714,9 +4734,7 @@ start_topics_detection_job(Client, Input, Options)
 -spec stop_dominant_language_detection_job(map(), stop_dominant_language_detection_job_request()) ->
     {ok, stop_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_dominant_language_detection_job_errors(), tuple()}.
 stop_dominant_language_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_dominant_language_detection_job(Client, Input, []).
@@ -4724,9 +4742,7 @@ stop_dominant_language_detection_job(Client, Input)
 -spec stop_dominant_language_detection_job(map(), stop_dominant_language_detection_job_request(), proplists:proplist()) ->
     {ok, stop_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_dominant_language_detection_job_errors(), tuple()}.
 stop_dominant_language_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDominantLanguageDetectionJob">>, Input, Options).
@@ -4753,9 +4769,7 @@ stop_dominant_language_detection_job(Client, Input, Options)
 -spec stop_entities_detection_job(map(), stop_entities_detection_job_request()) ->
     {ok, stop_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_entities_detection_job_errors(), tuple()}.
 stop_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_entities_detection_job(Client, Input, []).
@@ -4763,9 +4777,7 @@ stop_entities_detection_job(Client, Input)
 -spec stop_entities_detection_job(map(), stop_entities_detection_job_request(), proplists:proplist()) ->
     {ok, stop_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_entities_detection_job_errors(), tuple()}.
 stop_entities_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopEntitiesDetectionJob">>, Input, Options).
@@ -4774,9 +4786,7 @@ stop_entities_detection_job(Client, Input, Options)
 -spec stop_events_detection_job(map(), stop_events_detection_job_request()) ->
     {ok, stop_events_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_events_detection_job_errors(), tuple()}.
 stop_events_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_events_detection_job(Client, Input, []).
@@ -4784,9 +4794,7 @@ stop_events_detection_job(Client, Input)
 -spec stop_events_detection_job(map(), stop_events_detection_job_request(), proplists:proplist()) ->
     {ok, stop_events_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_events_detection_job_errors(), tuple()}.
 stop_events_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopEventsDetectionJob">>, Input, Options).
@@ -4813,9 +4821,7 @@ stop_events_detection_job(Client, Input, Options)
 -spec stop_key_phrases_detection_job(map(), stop_key_phrases_detection_job_request()) ->
     {ok, stop_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_key_phrases_detection_job_errors(), tuple()}.
 stop_key_phrases_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_key_phrases_detection_job(Client, Input, []).
@@ -4823,9 +4829,7 @@ stop_key_phrases_detection_job(Client, Input)
 -spec stop_key_phrases_detection_job(map(), stop_key_phrases_detection_job_request(), proplists:proplist()) ->
     {ok, stop_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_key_phrases_detection_job_errors(), tuple()}.
 stop_key_phrases_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopKeyPhrasesDetectionJob">>, Input, Options).
@@ -4834,9 +4838,7 @@ stop_key_phrases_detection_job(Client, Input, Options)
 -spec stop_pii_entities_detection_job(map(), stop_pii_entities_detection_job_request()) ->
     {ok, stop_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_pii_entities_detection_job_errors(), tuple()}.
 stop_pii_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pii_entities_detection_job(Client, Input, []).
@@ -4844,9 +4846,7 @@ stop_pii_entities_detection_job(Client, Input)
 -spec stop_pii_entities_detection_job(map(), stop_pii_entities_detection_job_request(), proplists:proplist()) ->
     {ok, stop_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_pii_entities_detection_job_errors(), tuple()}.
 stop_pii_entities_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopPiiEntitiesDetectionJob">>, Input, Options).
@@ -4873,9 +4873,7 @@ stop_pii_entities_detection_job(Client, Input, Options)
 -spec stop_sentiment_detection_job(map(), stop_sentiment_detection_job_request()) ->
     {ok, stop_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_sentiment_detection_job_errors(), tuple()}.
 stop_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_sentiment_detection_job(Client, Input, []).
@@ -4883,9 +4881,7 @@ stop_sentiment_detection_job(Client, Input)
 -spec stop_sentiment_detection_job(map(), stop_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, stop_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_sentiment_detection_job_errors(), tuple()}.
 stop_sentiment_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopSentimentDetectionJob">>, Input, Options).
@@ -4912,9 +4908,7 @@ stop_sentiment_detection_job(Client, Input, Options)
 -spec stop_targeted_sentiment_detection_job(map(), stop_targeted_sentiment_detection_job_request()) ->
     {ok, stop_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_targeted_sentiment_detection_job_errors(), tuple()}.
 stop_targeted_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_targeted_sentiment_detection_job(Client, Input, []).
@@ -4922,9 +4916,7 @@ stop_targeted_sentiment_detection_job(Client, Input)
 -spec stop_targeted_sentiment_detection_job(map(), stop_targeted_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, stop_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, job_not_found_exception(), tuple()}.
+    {error, stop_targeted_sentiment_detection_job_errors(), tuple()}.
 stop_targeted_sentiment_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTargetedSentimentDetectionJob">>, Input, Options).
@@ -4943,10 +4935,7 @@ stop_targeted_sentiment_detection_job(Client, Input, Options)
 -spec stop_training_document_classifier(map(), stop_training_document_classifier_request()) ->
     {ok, stop_training_document_classifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_training_document_classifier_errors(), tuple()}.
 stop_training_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_document_classifier(Client, Input, []).
@@ -4954,10 +4943,7 @@ stop_training_document_classifier(Client, Input)
 -spec stop_training_document_classifier(map(), stop_training_document_classifier_request(), proplists:proplist()) ->
     {ok, stop_training_document_classifier_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_training_document_classifier_errors(), tuple()}.
 stop_training_document_classifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTrainingDocumentClassifier">>, Input, Options).
@@ -4976,10 +4962,7 @@ stop_training_document_classifier(Client, Input, Options)
 -spec stop_training_entity_recognizer(map(), stop_training_entity_recognizer_request()) ->
     {ok, stop_training_entity_recognizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_training_entity_recognizer_errors(), tuple()}.
 stop_training_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_entity_recognizer(Client, Input, []).
@@ -4987,10 +4970,7 @@ stop_training_entity_recognizer(Client, Input)
 -spec stop_training_entity_recognizer(map(), stop_training_entity_recognizer_request(), proplists:proplist()) ->
     {ok, stop_training_entity_recognizer_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, stop_training_entity_recognizer_errors(), tuple()}.
 stop_training_entity_recognizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTrainingEntityRecognizer">>, Input, Options).
@@ -5005,11 +4985,7 @@ stop_training_entity_recognizer(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -5017,11 +4993,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -5030,11 +5002,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tag_keys_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -5042,11 +5010,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tag_keys_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -5058,13 +5022,7 @@ untag_resource(Client, Input, Options)
 -spec update_endpoint(map(), update_endpoint_request()) ->
     {ok, update_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_endpoint_errors(), tuple()}.
 update_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint(Client, Input, []).
@@ -5072,13 +5030,7 @@ update_endpoint(Client, Input)
 -spec update_endpoint(map(), update_endpoint_request(), proplists:proplist()) ->
     {ok, update_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, resource_in_use_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_endpoint_errors(), tuple()}.
 update_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpoint">>, Input, Options).
@@ -5087,11 +5039,7 @@ update_endpoint(Client, Input, Options)
 -spec update_flywheel(map(), update_flywheel_request()) ->
     {ok, update_flywheel_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flywheel_errors(), tuple()}.
 update_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_flywheel(Client, Input, []).
@@ -5099,11 +5047,7 @@ update_flywheel(Client, Input)
 -spec update_flywheel(map(), update_flywheel_request(), proplists:proplist()) ->
     {ok, update_flywheel_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, kms_key_validation_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_flywheel_errors(), tuple()}.
 update_flywheel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFlywheel">>, Input, Options).

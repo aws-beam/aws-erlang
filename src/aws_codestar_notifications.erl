@@ -96,15 +96,18 @@
 %% }
 -type create_notification_rule_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Arn">> := string(),
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_result() :: #{}
 -type untag_resource_result() :: #{}.
+
 
 %% Example:
 %% list_notification_rules_request() :: #{
@@ -114,15 +117,18 @@
 %% }
 -type list_notification_rules_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsubscribe_request() :: #{
 %%   <<"Arn">> := string(),
 %%   <<"TargetAddress">> := string()
 %% }
 -type unsubscribe_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_target_result() :: #{}
 -type delete_target_result() :: #{}.
+
 
 %% Example:
 %% list_event_types_filter() :: #{
@@ -131,11 +137,13 @@
 %% }
 -type list_event_types_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% configuration_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type configuration_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_targets_result() :: #{
@@ -144,20 +152,24 @@
 %% }
 -type list_targets_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_notification_rule_request() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type delete_notification_rule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 %% Example:
 %% update_notification_rule_result() :: #{}
 -type update_notification_rule_result() :: #{}.
+
 
 %% Example:
 %% target() :: #{
@@ -165,6 +177,7 @@
 %%   <<"TargetType">> => string()
 %% }
 -type target() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_type_summary() :: #{
@@ -175,17 +188,20 @@
 %% }
 -type event_type_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_notification_rule_result() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type delete_notification_rule_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% target_summary() :: #{
@@ -195,11 +211,13 @@
 %% }
 -type target_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_next_token_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type invalid_next_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delete_target_request() :: #{
@@ -208,6 +226,7 @@
 %% }
 -type delete_target_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_notification_rules_filter() :: #{
 %%   <<"Name">> => list(any()),
@@ -215,12 +234,14 @@
 %% }
 -type list_notification_rules_filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_event_types_result() :: #{
 %%   <<"EventTypes">> => list(event_type_summary()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_types_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_notification_rule_request() :: #{
@@ -235,11 +256,13 @@
 %% }
 -type create_notification_rule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% subscribe_result() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type subscribe_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_notification_rule_request() :: #{
@@ -252,11 +275,13 @@
 %% }
 -type update_notification_rule_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_result() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_targets_request() :: #{
@@ -266,11 +291,13 @@
 %% }
 -type list_targets_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% concurrent_modification_exception() :: #{
@@ -278,11 +305,13 @@
 %% }
 -type concurrent_modification_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsubscribe_result() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type unsubscribe_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -290,11 +319,13 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% subscribe_request() :: #{
@@ -304,17 +335,20 @@
 %% }
 -type subscribe_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_result() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type tag_resource_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_notification_rules_result() :: #{
@@ -323,17 +357,20 @@
 %% }
 -type list_notification_rules_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_already_exists_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_notification_rule_request() :: #{
 %%   <<"Arn">> := string()
 %% }
 -type describe_notification_rule_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_notification_rule_result() :: #{
@@ -351,12 +388,14 @@
 %% }
 -type describe_notification_rule_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% notification_rule_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string()
 %% }
 -type notification_rule_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_event_types_request() :: #{
@@ -366,12 +405,74 @@
 %% }
 -type list_event_types_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_targets_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Value">> => string()
 %% }
 -type list_targets_filter() :: #{binary() => any()}.
+
+-type create_notification_rule_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    configuration_exception().
+
+-type delete_notification_rule_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception().
+
+-type delete_target_errors() ::
+    validation_exception().
+
+-type describe_notification_rule_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_event_types_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_notification_rules_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type list_targets_errors() ::
+    validation_exception() | 
+    invalid_next_token_exception().
+
+-type subscribe_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    configuration_exception().
+
+-type tag_resource_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    resource_not_found_exception().
+
+-type unsubscribe_errors() ::
+    validation_exception().
+
+-type untag_resource_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    concurrent_modification_exception() | 
+    resource_not_found_exception().
+
+-type update_notification_rule_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    configuration_exception().
 
 %%====================================================================
 %% API
@@ -386,24 +487,14 @@
 -spec create_notification_rule(map(), create_notification_rule_request()) ->
     {ok, create_notification_rule_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, configuration_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_notification_rule_errors(), tuple()}.
 create_notification_rule(Client, Input) ->
     create_notification_rule(Client, Input, []).
 
 -spec create_notification_rule(map(), create_notification_rule_request(), proplists:proplist()) ->
     {ok, create_notification_rule_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, configuration_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_notification_rule_errors(), tuple()}.
 create_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createNotificationRule"],
@@ -430,18 +521,14 @@ create_notification_rule(Client, Input0, Options0) ->
 -spec delete_notification_rule(map(), delete_notification_rule_request()) ->
     {ok, delete_notification_rule_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_notification_rule_errors(), tuple()}.
 delete_notification_rule(Client, Input) ->
     delete_notification_rule(Client, Input, []).
 
 -spec delete_notification_rule(map(), delete_notification_rule_request(), proplists:proplist()) ->
     {ok, delete_notification_rule_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_notification_rule_errors(), tuple()}.
 delete_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteNotificationRule"],
@@ -468,14 +555,14 @@ delete_notification_rule(Client, Input0, Options0) ->
 -spec delete_target(map(), delete_target_request()) ->
     {ok, delete_target_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_target_errors(), tuple()}.
 delete_target(Client, Input) ->
     delete_target(Client, Input, []).
 
 -spec delete_target(map(), delete_target_request(), proplists:proplist()) ->
     {ok, delete_target_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_target_errors(), tuple()}.
 delete_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteTarget"],
@@ -502,16 +589,14 @@ delete_target(Client, Input0, Options0) ->
 -spec describe_notification_rule(map(), describe_notification_rule_request()) ->
     {ok, describe_notification_rule_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_notification_rule_errors(), tuple()}.
 describe_notification_rule(Client, Input) ->
     describe_notification_rule(Client, Input, []).
 
 -spec describe_notification_rule(map(), describe_notification_rule_request(), proplists:proplist()) ->
     {ok, describe_notification_rule_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_notification_rule_errors(), tuple()}.
 describe_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeNotificationRule"],
@@ -539,16 +624,14 @@ describe_notification_rule(Client, Input0, Options0) ->
 -spec list_event_types(map(), list_event_types_request()) ->
     {ok, list_event_types_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_event_types_errors(), tuple()}.
 list_event_types(Client, Input) ->
     list_event_types(Client, Input, []).
 
 -spec list_event_types(map(), list_event_types_request(), proplists:proplist()) ->
     {ok, list_event_types_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_event_types_errors(), tuple()}.
 list_event_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listEventTypes"],
@@ -576,16 +659,14 @@ list_event_types(Client, Input0, Options0) ->
 -spec list_notification_rules(map(), list_notification_rules_request()) ->
     {ok, list_notification_rules_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_notification_rules_errors(), tuple()}.
 list_notification_rules(Client, Input) ->
     list_notification_rules(Client, Input, []).
 
 -spec list_notification_rules(map(), list_notification_rules_request(), proplists:proplist()) ->
     {ok, list_notification_rules_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_notification_rules_errors(), tuple()}.
 list_notification_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listNotificationRules"],
@@ -612,16 +693,14 @@ list_notification_rules(Client, Input0, Options0) ->
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTagsForResource"],
@@ -649,16 +728,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 -spec list_targets(map(), list_targets_request()) ->
     {ok, list_targets_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_targets_errors(), tuple()}.
 list_targets(Client, Input) ->
     list_targets(Client, Input, []).
 
 -spec list_targets(map(), list_targets_request(), proplists:proplist()) ->
     {ok, list_targets_result(), tuple()} |
     {error, any()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_targets_errors(), tuple()}.
 list_targets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listTargets"],
@@ -689,18 +766,14 @@ list_targets(Client, Input0, Options0) ->
 -spec subscribe(map(), subscribe_request()) ->
     {ok, subscribe_result(), tuple()} |
     {error, any()} |
-    {error, configuration_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, subscribe_errors(), tuple()}.
 subscribe(Client, Input) ->
     subscribe(Client, Input, []).
 
 -spec subscribe(map(), subscribe_request(), proplists:proplist()) ->
     {ok, subscribe_result(), tuple()} |
     {error, any()} |
-    {error, configuration_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, subscribe_errors(), tuple()}.
 subscribe(Client, Input0, Options0) ->
     Method = post,
     Path = ["/subscribe"],
@@ -727,20 +800,14 @@ subscribe(Client, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tagResource"],
@@ -771,14 +838,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec unsubscribe(map(), unsubscribe_request()) ->
     {ok, unsubscribe_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, unsubscribe_errors(), tuple()}.
 unsubscribe(Client, Input) ->
     unsubscribe(Client, Input, []).
 
 -spec unsubscribe(map(), unsubscribe_request(), proplists:proplist()) ->
     {ok, unsubscribe_result(), tuple()} |
     {error, any()} |
-    {error, validation_exception(), tuple()}.
+    {error, unsubscribe_errors(), tuple()}.
 unsubscribe(Client, Input0, Options0) ->
     Method = post,
     Path = ["/unsubscribe"],
@@ -807,20 +874,14 @@ unsubscribe(Client, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input0, Options0) ->
     Method = post,
     Path = ["/untagResource/", aws_util:encode_uri(Arn), ""],
@@ -856,18 +917,14 @@ untag_resource(Client, Arn, Input0, Options0) ->
 -spec update_notification_rule(map(), update_notification_rule_request()) ->
     {ok, update_notification_rule_result(), tuple()} |
     {error, any()} |
-    {error, configuration_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_notification_rule_errors(), tuple()}.
 update_notification_rule(Client, Input) ->
     update_notification_rule(Client, Input, []).
 
 -spec update_notification_rule(map(), update_notification_rule_request(), proplists:proplist()) ->
     {ok, update_notification_rule_result(), tuple()} |
     {error, any()} |
-    {error, configuration_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_notification_rule_errors(), tuple()}.
 update_notification_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateNotificationRule"],

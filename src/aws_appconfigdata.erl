@@ -92,11 +92,13 @@
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_latest_configuration_request() :: #{
 %%   <<"ConfigurationToken">> := string()
 %% }
 -type get_latest_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_latest_configuration_response() :: #{
@@ -108,17 +110,20 @@
 %% }
 -type get_latest_configuration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% invalid_parameter_detail() :: #{
 %%   <<"Problem">> => string()
 %% }
 -type invalid_parameter_detail() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -127,6 +132,7 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_configuration_session_request() :: #{
@@ -137,17 +143,31 @@
 %% }
 -type start_configuration_session_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_configuration_session_response() :: #{
 %%   <<"InitialConfigurationToken">> => string()
 %% }
 -type start_configuration_session_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+-type get_latest_configuration_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception().
+
+-type start_configuration_session_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API
@@ -178,10 +198,7 @@
 -spec get_latest_configuration(map(), binary() | list()) ->
     {ok, get_latest_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_latest_configuration_errors(), tuple()}.
 get_latest_configuration(Client, ConfigurationToken)
   when is_map(Client) ->
     get_latest_configuration(Client, ConfigurationToken, #{}, #{}).
@@ -189,10 +206,7 @@ get_latest_configuration(Client, ConfigurationToken)
 -spec get_latest_configuration(map(), binary() | list(), map(), map()) ->
     {ok, get_latest_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_latest_configuration_errors(), tuple()}.
 get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, []).
@@ -200,10 +214,7 @@ get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap)
 -spec get_latest_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_latest_configuration_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_latest_configuration_errors(), tuple()}.
 get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration"],
@@ -256,20 +267,14 @@ get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, Optio
 -spec start_configuration_session(map(), start_configuration_session_request()) ->
     {ok, start_configuration_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_configuration_session_errors(), tuple()}.
 start_configuration_session(Client, Input) ->
     start_configuration_session(Client, Input, []).
 
 -spec start_configuration_session(map(), start_configuration_session_request(), proplists:proplist()) ->
     {ok, start_configuration_session_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, start_configuration_session_errors(), tuple()}.
 start_configuration_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationsessions"],

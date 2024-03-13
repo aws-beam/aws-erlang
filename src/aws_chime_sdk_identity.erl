@@ -96,6 +96,7 @@
 %% }
 -type list_app_instances_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% app_instance_bot_summary() :: #{
 %%   <<"AppInstanceBotArn">> => string(),
@@ -104,17 +105,21 @@
 %% }
 -type app_instance_bot_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_app_instance_user_expiration_settings_request() :: #{
 %%   <<"ExpirationSettings">> => expiration_settings()
 %% }
 -type put_app_instance_user_expiration_settings_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_app_instance_admin_request() :: #{}
 -type delete_app_instance_admin_request() :: #{}.
+
 %% Example:
 %% delete_app_instance_user_request() :: #{}
 -type delete_app_instance_user_request() :: #{}.
+
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -123,6 +128,7 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_instance_admins_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -130,12 +136,14 @@
 %% }
 -type list_app_instance_admins_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% endpoint_state() :: #{
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => list(any())
 %% }
 -type endpoint_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_instance_bots_request() :: #{
@@ -145,17 +153,20 @@
 %% }
 -type list_app_instance_bots_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_app_instance_response() :: #{
 %%   <<"AppInstanceArn">> => string()
 %% }
 -type create_app_instance_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_instance_response() :: #{
 %%   <<"AppInstanceArn">> => string()
 %% }
 -type update_app_instance_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% lex_configuration() :: #{
@@ -167,6 +178,7 @@
 %% }
 -type lex_configuration() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_instance_admins_response() :: #{
 %%   <<"AppInstanceAdmins">> => list(app_instance_admin_summary()()),
@@ -175,12 +187,14 @@
 %% }
 -type list_app_instance_admins_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_failure_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type service_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% identity() :: #{
@@ -189,6 +203,7 @@
 %% }
 -type identity() :: #{binary() => any()}.
 
+
 %% Example:
 %% forbidden_exception() :: #{
 %%   <<"Code">> => list(any()),
@@ -196,15 +211,18 @@
 %% }
 -type forbidden_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_client_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type unauthorized_client_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_app_instance_request() :: #{}
 -type describe_app_instance_request() :: #{}.
+
 
 %% Example:
 %% list_app_instances_request() :: #{
@@ -213,11 +231,13 @@
 %% }
 -type list_app_instances_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% configuration() :: #{
 %%   <<"Lex">> => lex_configuration()
 %% }
 -type configuration() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_app_instance_request() :: #{
@@ -226,6 +246,7 @@
 %% }
 -type update_app_instance_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttled_client_exception() :: #{
 %%   <<"Code">> => list(any()),
@@ -233,12 +254,14 @@
 %% }
 -type throttled_client_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% endpoint_attributes() :: #{
 %%   <<"DeviceToken">> => string(),
 %%   <<"VoipDeviceToken">> => string()
 %% }
 -type endpoint_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_instance_users_request() :: #{
@@ -248,12 +271,14 @@
 %% }
 -type list_app_instance_users_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% expiration_settings() :: #{
 %%   <<"ExpirationCriterion">> => list(any()),
 %%   <<"ExpirationDays">> => integer()
 %% }
 -type expiration_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -262,11 +287,13 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_app_instance_retention_settings_request() :: #{
 %%   <<"AppInstanceRetentionSettings">> := app_instance_retention_settings()
 %% }
 -type put_app_instance_retention_settings_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% register_app_instance_user_endpoint_request() :: #{
@@ -278,9 +305,11 @@
 %%   <<"Type">> := list(any())
 %% }
 -type register_app_instance_user_endpoint_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_app_instance_retention_settings_request() :: #{}
 -type get_app_instance_retention_settings_request() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
@@ -288,9 +317,11 @@
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_app_instance_bot_request() :: #{}
 -type delete_app_instance_bot_request() :: #{}.
+
 
 %% Example:
 %% put_app_instance_user_expiration_settings_response() :: #{
@@ -299,12 +330,14 @@
 %% }
 -type put_app_instance_user_expiration_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_instance_user_endpoint_response() :: #{
 %%   <<"AppInstanceUserArn">> => string(),
 %%   <<"EndpointId">> => string()
 %% }
 -type update_app_instance_user_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% tag() :: #{
@@ -313,11 +346,13 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_instance_user_response() :: #{
 %%   <<"AppInstanceUser">> => app_instance_user()
 %% }
 -type describe_app_instance_user_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_instance_bot_response() :: #{
@@ -325,17 +360,20 @@
 %% }
 -type describe_app_instance_bot_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_instance_response() :: #{
 %%   <<"AppInstance">> => app_instance()
 %% }
 -type describe_app_instance_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_instance_user_response() :: #{
 %%   <<"AppInstanceUserArn">> => string()
 %% }
 -type update_app_instance_user_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_app_instance_users_response() :: #{
@@ -345,12 +383,14 @@
 %% }
 -type list_app_instance_users_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_limit_exceeded_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_instance_summary() :: #{
@@ -360,12 +400,14 @@
 %% }
 -type app_instance_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_instance_user() :: #{
@@ -378,6 +420,7 @@
 %% }
 -type app_instance_user() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_instance_user_endpoints_response() :: #{
 %%   <<"AppInstanceUserEndpoints">> => list(app_instance_user_endpoint_summary()()),
@@ -385,11 +428,13 @@
 %% }
 -type list_app_instance_user_endpoints_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_instance_bot_response() :: #{
 %%   <<"AppInstanceBotArn">> => string()
 %% }
 -type update_app_instance_bot_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -397,11 +442,13 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% channel_retention_settings() :: #{
 %%   <<"RetentionDays">> => integer()
 %% }
 -type channel_retention_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_instance_user_endpoint() :: #{
@@ -418,12 +465,14 @@
 %% }
 -type app_instance_user_endpoint() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_instance_user_endpoint_summary() :: #{
@@ -436,12 +485,14 @@
 %% }
 -type app_instance_user_endpoint_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_app_instance_retention_settings_response() :: #{
 %%   <<"AppInstanceRetentionSettings">> => app_instance_retention_settings(),
 %%   <<"InitiateDeletionTimestamp">> => non_neg_integer()
 %% }
 -type get_app_instance_retention_settings_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_instance_admin() :: #{
@@ -451,6 +502,7 @@
 %% }
 -type app_instance_admin() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_instance_bots_response() :: #{
 %%   <<"AppInstanceArn">> => string(),
@@ -459,6 +511,7 @@
 %% }
 -type list_app_instance_bots_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_app_instance_user_request() :: #{
 %%   <<"Metadata">> := string(),
@@ -466,11 +519,13 @@
 %% }
 -type update_app_instance_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_instance_admin_response() :: #{
 %%   <<"AppInstanceAdmin">> => app_instance_admin()
 %% }
 -type describe_app_instance_admin_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_app_instance_request() :: #{
@@ -481,11 +536,13 @@
 %% }
 -type create_app_instance_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_app_instance_bot_response() :: #{
 %%   <<"AppInstanceBotArn">> => string()
 %% }
 -type create_app_instance_bot_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_instance_admin_summary() :: #{
@@ -493,11 +550,13 @@
 %% }
 -type app_instance_admin_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoked_by() :: #{
@@ -505,6 +564,7 @@
 %%   <<"TargetedMessages">> => list(any())
 %% }
 -type invoked_by() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_app_instance_bot_request() :: #{
@@ -517,12 +577,14 @@
 %% }
 -type create_app_instance_bot_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_app_instance_admin_response() :: #{
 %%   <<"AppInstanceAdmin">> => identity(),
 %%   <<"AppInstanceArn">> => string()
 %% }
 -type create_app_instance_admin_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_app_instance_retention_settings_response() :: #{
@@ -531,11 +593,13 @@
 %% }
 -type put_app_instance_retention_settings_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% app_instance_retention_settings() :: #{
 %%   <<"ChannelRetentionSettings">> => channel_retention_settings()
 %% }
 -type app_instance_retention_settings() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_app_instance_admin_request() :: #{
@@ -543,24 +607,30 @@
 %% }
 -type create_app_instance_admin_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_app_instance_admin_request() :: #{}
 -type describe_app_instance_admin_request() :: #{}.
+
 %% Example:
 %% describe_app_instance_user_endpoint_request() :: #{}
 -type describe_app_instance_user_endpoint_request() :: #{}.
+
 %% Example:
 %% deregister_app_instance_user_endpoint_request() :: #{}
 -type deregister_app_instance_user_endpoint_request() :: #{}.
+
 %% Example:
 %% delete_app_instance_request() :: #{}
 -type delete_app_instance_request() :: #{}.
+
 
 %% Example:
 %% app_instance_user_summary() :: #{
@@ -570,12 +640,14 @@
 %% }
 -type app_instance_user_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% register_app_instance_user_endpoint_response() :: #{
 %%   <<"AppInstanceUserArn">> => string(),
 %%   <<"EndpointId">> => string()
 %% }
 -type register_app_instance_user_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_app_instance_user_endpoint_request() :: #{
@@ -584,14 +656,17 @@
 %% }
 -type update_app_instance_user_endpoint_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_app_instance_user_endpoint_response() :: #{
 %%   <<"AppInstanceUserEndpoint">> => app_instance_user_endpoint()
 %% }
 -type describe_app_instance_user_endpoint_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_app_instance_user_request() :: #{}
 -type describe_app_instance_user_request() :: #{}.
+
 
 %% Example:
 %% update_app_instance_bot_request() :: #{
@@ -601,15 +676,18 @@
 %% }
 -type update_app_instance_bot_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_app_instance_user_endpoints_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_app_instance_user_endpoints_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_app_instance_bot_request() :: #{}
 -type describe_app_instance_bot_request() :: #{}.
+
 
 %% Example:
 %% create_app_instance_user_request() :: #{
@@ -623,6 +701,7 @@
 %% }
 -type create_app_instance_user_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% app_instance() :: #{
 %%   <<"AppInstanceArn">> => string(),
@@ -632,6 +711,7 @@
 %%   <<"Name">> => string()
 %% }
 -type app_instance() :: #{binary() => any()}.
+
 
 %% Example:
 %% app_instance_bot() :: #{
@@ -644,11 +724,280 @@
 %% }
 -type app_instance_bot() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_app_instance_user_response() :: #{
 %%   <<"AppInstanceUserArn">> => string()
 %% }
 -type create_app_instance_user_response() :: #{binary() => any()}.
+
+-type create_app_instance_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_app_instance_admin_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_app_instance_bot_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type create_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_app_instance_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_app_instance_admin_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_app_instance_bot_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type delete_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type deregister_app_instance_user_endpoint_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_app_instance_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_app_instance_admin_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_app_instance_bot_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type describe_app_instance_user_endpoint_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type get_app_instance_retention_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_app_instance_admins_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_app_instance_bots_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_app_instance_user_endpoints_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_app_instance_users_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_app_instances_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_app_instance_retention_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type put_app_instance_user_expiration_settings_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type register_app_instance_user_endpoint_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_app_instance_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_app_instance_bot_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_app_instance_user_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    resource_limit_exceeded_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
+
+-type update_app_instance_user_endpoint_errors() ::
+    bad_request_exception() | 
+    service_unavailable_exception() | 
+    conflict_exception() | 
+    throttled_client_exception() | 
+    unauthorized_client_exception() | 
+    forbidden_exception() | 
+    service_failure_exception().
 
 %%====================================================================
 %% API
@@ -665,28 +1014,14 @@
 -spec create_app_instance(map(), create_app_instance_request()) ->
     {ok, create_app_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_app_instance_errors(), tuple()}.
 create_app_instance(Client, Input) ->
     create_app_instance(Client, Input, []).
 
 -spec create_app_instance(map(), create_app_instance_request(), proplists:proplist()) ->
     {ok, create_app_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_app_instance_errors(), tuple()}.
 create_app_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances"],
@@ -726,28 +1061,14 @@ create_app_instance(Client, Input0, Options0) ->
 -spec create_app_instance_admin(map(), binary() | list(), create_app_instance_admin_request()) ->
     {ok, create_app_instance_admin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_app_instance_admin_errors(), tuple()}.
 create_app_instance_admin(Client, AppInstanceArn, Input) ->
     create_app_instance_admin(Client, AppInstanceArn, Input, []).
 
 -spec create_app_instance_admin(map(), binary() | list(), create_app_instance_admin_request(), proplists:proplist()) ->
     {ok, create_app_instance_admin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_app_instance_admin_errors(), tuple()}.
 create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
@@ -777,28 +1098,14 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
 -spec create_app_instance_bot(map(), create_app_instance_bot_request()) ->
     {ok, create_app_instance_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_app_instance_bot_errors(), tuple()}.
 create_app_instance_bot(Client, Input) ->
     create_app_instance_bot(Client, Input, []).
 
 -spec create_app_instance_bot(map(), create_app_instance_bot_request(), proplists:proplist()) ->
     {ok, create_app_instance_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_app_instance_bot_errors(), tuple()}.
 create_app_instance_bot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instance-bots"],
@@ -828,28 +1135,14 @@ create_app_instance_bot(Client, Input0, Options0) ->
 -spec create_app_instance_user(map(), create_app_instance_user_request()) ->
     {ok, create_app_instance_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_app_instance_user_errors(), tuple()}.
 create_app_instance_user(Client, Input) ->
     create_app_instance_user(Client, Input, []).
 
 -spec create_app_instance_user(map(), create_app_instance_user_request(), proplists:proplist()) ->
     {ok, create_app_instance_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, create_app_instance_user_errors(), tuple()}.
 create_app_instance_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instance-users"],
@@ -876,26 +1169,14 @@ create_app_instance_user(Client, Input0, Options0) ->
 -spec delete_app_instance(map(), binary() | list(), delete_app_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_app_instance_errors(), tuple()}.
 delete_app_instance(Client, AppInstanceArn, Input) ->
     delete_app_instance(Client, AppInstanceArn, Input, []).
 
 -spec delete_app_instance(map(), binary() | list(), delete_app_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_app_instance_errors(), tuple()}.
 delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
@@ -926,28 +1207,14 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 -spec delete_app_instance_admin(map(), binary() | list(), binary() | list(), delete_app_instance_admin_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_app_instance_admin_errors(), tuple()}.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
     delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input, []).
 
 -spec delete_app_instance_admin(map(), binary() | list(), binary() | list(), delete_app_instance_admin_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_app_instance_admin_errors(), tuple()}.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
@@ -974,28 +1241,14 @@ delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, O
 -spec delete_app_instance_bot(map(), binary() | list(), delete_app_instance_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_app_instance_bot_errors(), tuple()}.
 delete_app_instance_bot(Client, AppInstanceBotArn, Input) ->
     delete_app_instance_bot(Client, AppInstanceBotArn, Input, []).
 
 -spec delete_app_instance_bot(map(), binary() | list(), delete_app_instance_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_app_instance_bot_errors(), tuple()}.
 delete_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instance-bots/", aws_util:encode_uri(AppInstanceBotArn), ""],
@@ -1022,28 +1275,14 @@ delete_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
 -spec delete_app_instance_user(map(), binary() | list(), delete_app_instance_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_app_instance_user_errors(), tuple()}.
 delete_app_instance_user(Client, AppInstanceUserArn, Input) ->
     delete_app_instance_user(Client, AppInstanceUserArn, Input, []).
 
 -spec delete_app_instance_user(map(), binary() | list(), delete_app_instance_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, delete_app_instance_user_errors(), tuple()}.
 delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
@@ -1070,24 +1309,14 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 -spec deregister_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), deregister_app_instance_user_endpoint_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, deregister_app_instance_user_endpoint_errors(), tuple()}.
 deregister_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input) ->
     deregister_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input, []).
 
 -spec deregister_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), deregister_app_instance_user_endpoint_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, deregister_app_instance_user_endpoint_errors(), tuple()}.
 deregister_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
@@ -1114,12 +1343,7 @@ deregister_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, In
 -spec describe_app_instance(map(), binary() | list()) ->
     {ok, describe_app_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_errors(), tuple()}.
 describe_app_instance(Client, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance(Client, AppInstanceArn, #{}, #{}).
@@ -1127,12 +1351,7 @@ describe_app_instance(Client, AppInstanceArn)
 -spec describe_app_instance(map(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_errors(), tuple()}.
 describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, []).
@@ -1140,12 +1359,7 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap)
 -spec describe_app_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_errors(), tuple()}.
 describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
@@ -1166,12 +1380,7 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 -spec describe_app_instance_admin(map(), binary() | list(), binary() | list()) ->
     {ok, describe_app_instance_admin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_admin_errors(), tuple()}.
 describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, #{}, #{}).
@@ -1179,12 +1388,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn)
 -spec describe_app_instance_admin(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_admin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_admin_errors(), tuple()}.
 describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, []).
@@ -1192,12 +1396,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
 -spec describe_app_instance_admin(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_admin_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_admin_errors(), tuple()}.
 describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
@@ -1218,13 +1417,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
 -spec describe_app_instance_bot(map(), binary() | list()) ->
     {ok, describe_app_instance_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_bot_errors(), tuple()}.
 describe_app_instance_bot(Client, AppInstanceBotArn)
   when is_map(Client) ->
     describe_app_instance_bot(Client, AppInstanceBotArn, #{}, #{}).
@@ -1232,13 +1425,7 @@ describe_app_instance_bot(Client, AppInstanceBotArn)
 -spec describe_app_instance_bot(map(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_bot_errors(), tuple()}.
 describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap, []).
@@ -1246,13 +1433,7 @@ describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap)
 -spec describe_app_instance_bot(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_bot_errors(), tuple()}.
 describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-bots/", aws_util:encode_uri(AppInstanceBotArn), ""],
@@ -1273,12 +1454,7 @@ describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap, Optio
 -spec describe_app_instance_user(map(), binary() | list()) ->
     {ok, describe_app_instance_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_user_errors(), tuple()}.
 describe_app_instance_user(Client, AppInstanceUserArn)
   when is_map(Client) ->
     describe_app_instance_user(Client, AppInstanceUserArn, #{}, #{}).
@@ -1286,12 +1462,7 @@ describe_app_instance_user(Client, AppInstanceUserArn)
 -spec describe_app_instance_user(map(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_user_errors(), tuple()}.
 describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, []).
@@ -1299,12 +1470,7 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap)
 -spec describe_app_instance_user(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_user_errors(), tuple()}.
 describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
@@ -1325,12 +1491,7 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Opt
 -spec describe_app_instance_user_endpoint(map(), binary() | list(), binary() | list()) ->
     {ok, describe_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_user_endpoint_errors(), tuple()}.
 describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId)
   when is_map(Client) ->
     describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, #{}, #{}).
@@ -1338,12 +1499,7 @@ describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId)
 -spec describe_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_user_endpoint_errors(), tuple()}.
 describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, QueryMap, HeadersMap, []).
@@ -1351,12 +1507,7 @@ describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Quer
 -spec describe_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, describe_app_instance_user_endpoint_errors(), tuple()}.
 describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
@@ -1377,12 +1528,7 @@ describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Quer
 -spec get_app_instance_retention_settings(map(), binary() | list()) ->
     {ok, get_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_app_instance_retention_settings_errors(), tuple()}.
 get_app_instance_retention_settings(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, #{}, #{}).
@@ -1390,12 +1536,7 @@ get_app_instance_retention_settings(Client, AppInstanceArn)
 -spec get_app_instance_retention_settings(map(), binary() | list(), map(), map()) ->
     {ok, get_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_app_instance_retention_settings_errors(), tuple()}.
 get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, []).
@@ -1403,12 +1544,7 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
 -spec get_app_instance_retention_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, get_app_instance_retention_settings_errors(), tuple()}.
 get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
@@ -1429,13 +1565,7 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
 -spec list_app_instance_admins(map(), binary() | list()) ->
     {ok, list_app_instance_admins_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_admins_errors(), tuple()}.
 list_app_instance_admins(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_admins(Client, AppInstanceArn, #{}, #{}).
@@ -1443,13 +1573,7 @@ list_app_instance_admins(Client, AppInstanceArn)
 -spec list_app_instance_admins(map(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_admins_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_admins_errors(), tuple()}.
 list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, []).
@@ -1457,13 +1581,7 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap)
 -spec list_app_instance_admins(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_admins_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_admins_errors(), tuple()}.
 list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
@@ -1490,13 +1608,7 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 -spec list_app_instance_bots(map(), binary() | list()) ->
     {ok, list_app_instance_bots_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_bots_errors(), tuple()}.
 list_app_instance_bots(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_bots(Client, AppInstanceArn, #{}, #{}).
@@ -1504,13 +1616,7 @@ list_app_instance_bots(Client, AppInstanceArn)
 -spec list_app_instance_bots(map(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_bots_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_bots_errors(), tuple()}.
 list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap, []).
@@ -1518,13 +1624,7 @@ list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap)
 -spec list_app_instance_bots(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_bots_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_bots_errors(), tuple()}.
 list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-bots"],
@@ -1552,12 +1652,7 @@ list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 -spec list_app_instance_user_endpoints(map(), binary() | list()) ->
     {ok, list_app_instance_user_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_user_endpoints_errors(), tuple()}.
 list_app_instance_user_endpoints(Client, AppInstanceUserArn)
   when is_map(Client) ->
     list_app_instance_user_endpoints(Client, AppInstanceUserArn, #{}, #{}).
@@ -1565,12 +1660,7 @@ list_app_instance_user_endpoints(Client, AppInstanceUserArn)
 -spec list_app_instance_user_endpoints(map(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_user_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_user_endpoints_errors(), tuple()}.
 list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMap, []).
@@ -1578,12 +1668,7 @@ list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMa
 -spec list_app_instance_user_endpoints(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_user_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_user_endpoints_errors(), tuple()}.
 list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints"],
@@ -1610,12 +1695,7 @@ list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMa
 -spec list_app_instance_users(map(), binary() | list()) ->
     {ok, list_app_instance_users_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_users_errors(), tuple()}.
 list_app_instance_users(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_users(Client, AppInstanceArn, #{}, #{}).
@@ -1623,12 +1703,7 @@ list_app_instance_users(Client, AppInstanceArn)
 -spec list_app_instance_users(map(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_users_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_users_errors(), tuple()}.
 list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, []).
@@ -1636,12 +1711,7 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap)
 -spec list_app_instance_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_users_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instance_users_errors(), tuple()}.
 list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users"],
@@ -1669,12 +1739,7 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 -spec list_app_instances(map()) ->
     {ok, list_app_instances_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instances_errors(), tuple()}.
 list_app_instances(Client)
   when is_map(Client) ->
     list_app_instances(Client, #{}, #{}).
@@ -1682,12 +1747,7 @@ list_app_instances(Client)
 -spec list_app_instances(map(), map(), map()) ->
     {ok, list_app_instances_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instances_errors(), tuple()}.
 list_app_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instances(Client, QueryMap, HeadersMap, []).
@@ -1695,12 +1755,7 @@ list_app_instances(Client, QueryMap, HeadersMap)
 -spec list_app_instances(map(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instances_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_app_instances_errors(), tuple()}.
 list_app_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances"],
@@ -1726,12 +1781,7 @@ list_app_instances(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
@@ -1739,12 +1789,7 @@ list_tags_for_resource(Client, ResourceARN)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
@@ -1752,12 +1797,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
@@ -1784,24 +1824,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 -spec put_app_instance_retention_settings(map(), binary() | list(), put_app_instance_retention_settings_request()) ->
     {ok, put_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_app_instance_retention_settings_errors(), tuple()}.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
     put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
 
 -spec put_app_instance_retention_settings(map(), binary() | list(), put_app_instance_retention_settings_request(), proplists:proplist()) ->
     {ok, put_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_app_instance_retention_settings_errors(), tuple()}.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
@@ -1837,26 +1867,14 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
 -spec put_app_instance_user_expiration_settings(map(), binary() | list(), put_app_instance_user_expiration_settings_request()) ->
     {ok, put_app_instance_user_expiration_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_app_instance_user_expiration_settings_errors(), tuple()}.
 put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input) ->
     put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input, []).
 
 -spec put_app_instance_user_expiration_settings(map(), binary() | list(), put_app_instance_user_expiration_settings_request(), proplists:proplist()) ->
     {ok, put_app_instance_user_expiration_settings_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, put_app_instance_user_expiration_settings_errors(), tuple()}.
 put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/expiration-settings"],
@@ -1887,28 +1905,14 @@ put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input0, Op
 -spec register_app_instance_user_endpoint(map(), binary() | list(), register_app_instance_user_endpoint_request()) ->
     {ok, register_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, register_app_instance_user_endpoint_errors(), tuple()}.
 register_app_instance_user_endpoint(Client, AppInstanceUserArn, Input) ->
     register_app_instance_user_endpoint(Client, AppInstanceUserArn, Input, []).
 
 -spec register_app_instance_user_endpoint(map(), binary() | list(), register_app_instance_user_endpoint_request(), proplists:proplist()) ->
     {ok, register_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, register_app_instance_user_endpoint_errors(), tuple()}.
 register_app_instance_user_endpoint(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = post,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints"],
@@ -1936,26 +1940,14 @@ register_app_instance_user_endpoint(Client, AppInstanceUserArn, Input0, Options0
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
@@ -1983,24 +1975,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
@@ -2027,26 +2009,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_app_instance(map(), binary() | list(), update_app_instance_request()) ->
     {ok, update_app_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_app_instance_errors(), tuple()}.
 update_app_instance(Client, AppInstanceArn, Input) ->
     update_app_instance(Client, AppInstanceArn, Input, []).
 
 -spec update_app_instance(map(), binary() | list(), update_app_instance_request(), proplists:proplist()) ->
     {ok, update_app_instance_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_app_instance_errors(), tuple()}.
 update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
@@ -2073,28 +2043,14 @@ update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 -spec update_app_instance_bot(map(), binary() | list(), update_app_instance_bot_request()) ->
     {ok, update_app_instance_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_app_instance_bot_errors(), tuple()}.
 update_app_instance_bot(Client, AppInstanceBotArn, Input) ->
     update_app_instance_bot(Client, AppInstanceBotArn, Input, []).
 
 -spec update_app_instance_bot(map(), binary() | list(), update_app_instance_bot_request(), proplists:proplist()) ->
     {ok, update_app_instance_bot_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_app_instance_bot_errors(), tuple()}.
 update_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-bots/", aws_util:encode_uri(AppInstanceBotArn), ""],
@@ -2124,28 +2080,14 @@ update_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
 -spec update_app_instance_user(map(), binary() | list(), update_app_instance_user_request()) ->
     {ok, update_app_instance_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_app_instance_user_errors(), tuple()}.
 update_app_instance_user(Client, AppInstanceUserArn, Input) ->
     update_app_instance_user(Client, AppInstanceUserArn, Input, []).
 
 -spec update_app_instance_user(map(), binary() | list(), update_app_instance_user_request(), proplists:proplist()) ->
     {ok, update_app_instance_user_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, resource_limit_exceeded_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_app_instance_user_errors(), tuple()}.
 update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
@@ -2174,26 +2116,14 @@ update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 -spec update_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), update_app_instance_user_endpoint_request()) ->
     {ok, update_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_app_instance_user_endpoint_errors(), tuple()}.
 update_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input) ->
     update_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input, []).
 
 -spec update_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), update_app_instance_user_endpoint_request(), proplists:proplist()) ->
     {ok, update_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, forbidden_exception(), tuple()} |
-    {error, service_failure_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttled_client_exception(), tuple()} |
-    {error, unauthorized_client_exception(), tuple()}.
+    {error, update_app_instance_user_endpoint_errors(), tuple()}.
 update_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/endpoints/", aws_util:encode_uri(EndpointId), ""],

@@ -1340,6 +1340,468 @@
 %% }
 -type xks_proxy_configuration_type() :: #{binary() => any()}.
 
+-type cancel_key_deletion_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type connect_custom_key_store_errors() ::
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    cloud_hsm_cluster_not_active_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception().
+
+-type create_alias_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    already_exists_exception() | 
+    invalid_alias_name_exception().
+
+-type create_custom_key_store_errors() ::
+    incorrect_trust_anchor_exception() | 
+    xks_proxy_incorrect_authentication_credential_exception() | 
+    xks_proxy_invalid_configuration_exception() | 
+    xks_proxy_vpc_endpoint_service_invalid_configuration_exception() | 
+    limit_exceeded_exception() | 
+    cloud_hsm_cluster_in_use_exception() | 
+    kms_internal_exception() | 
+    cloud_hsm_cluster_not_active_exception() | 
+    xks_proxy_invalid_response_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception() | 
+    cloud_hsm_cluster_not_found_exception() | 
+    xks_proxy_uri_in_use_exception() | 
+    xks_proxy_uri_unreachable_exception() | 
+    xks_proxy_uri_endpoint_in_use_exception() | 
+    custom_key_store_name_in_use_exception() | 
+    xks_proxy_vpc_endpoint_service_not_found_exception() | 
+    xks_proxy_vpc_endpoint_service_in_use_exception().
+
+-type create_grant_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    disabled_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type create_key_errors() ::
+    custom_key_store_not_found_exception() | 
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    xks_key_invalid_configuration_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception() | 
+    xks_key_already_in_use_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    xks_key_not_found_exception() | 
+    unsupported_operation_exception() | 
+    tag_exception().
+
+-type decrypt_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    invalid_ciphertext_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception() | 
+    incorrect_key_exception().
+
+-type delete_alias_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception().
+
+-type delete_custom_key_store_errors() ::
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    custom_key_store_has_cm_ks_exception().
+
+-type delete_imported_key_material_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type describe_custom_key_stores_errors() ::
+    custom_key_store_not_found_exception() | 
+    kms_internal_exception() | 
+    invalid_marker_exception().
+
+-type describe_key_errors() ::
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type disable_key_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type disable_key_rotation_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type disconnect_custom_key_store_errors() ::
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception().
+
+-type enable_key_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type enable_key_rotation_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type encrypt_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_data_key_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_data_key_pair_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    unsupported_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_data_key_pair_without_plaintext_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    unsupported_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_data_key_without_plaintext_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_mac_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type generate_random_errors() ::
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type get_key_policy_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type get_key_rotation_status_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type get_parameters_for_import_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type get_public_key_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type import_key_material_errors() ::
+    incorrect_key_material_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    invalid_import_token_exception() | 
+    not_found_exception() | 
+    invalid_ciphertext_exception() | 
+    expired_import_token_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type list_aliases_errors() ::
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type list_grants_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    invalid_grant_id_exception().
+
+-type list_key_policies_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type list_keys_errors() ::
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    dependency_timeout_exception().
+
+-type list_resource_tags_errors() ::
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception().
+
+-type list_retirable_grants_errors() ::
+    kms_internal_exception() | 
+    invalid_marker_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type put_key_policy_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    unsupported_operation_exception().
+
+-type re_encrypt_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    invalid_ciphertext_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception() | 
+    incorrect_key_exception().
+
+-type replicate_key_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    disabled_exception() | 
+    malformed_policy_document_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    already_exists_exception() | 
+    unsupported_operation_exception() | 
+    tag_exception().
+
+-type retire_grant_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception() | 
+    invalid_grant_id_exception().
+
+-type revoke_grant_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_id_exception().
+
+-type schedule_key_deletion_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type sign_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type tag_resource_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    tag_exception().
+
+-type untag_resource_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    tag_exception().
+
+-type update_alias_errors() ::
+    kms_invalid_state_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception().
+
+-type update_custom_key_store_errors() ::
+    custom_key_store_not_found_exception() | 
+    xks_proxy_incorrect_authentication_credential_exception() | 
+    xks_proxy_invalid_configuration_exception() | 
+    xks_proxy_vpc_endpoint_service_invalid_configuration_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    kms_internal_exception() | 
+    cloud_hsm_cluster_not_active_exception() | 
+    xks_proxy_invalid_response_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception() | 
+    cloud_hsm_cluster_not_related_exception() | 
+    cloud_hsm_cluster_not_found_exception() | 
+    xks_proxy_uri_in_use_exception() | 
+    xks_proxy_uri_unreachable_exception() | 
+    xks_proxy_uri_endpoint_in_use_exception() | 
+    custom_key_store_name_in_use_exception() | 
+    xks_proxy_vpc_endpoint_service_not_found_exception() | 
+    xks_proxy_vpc_endpoint_service_in_use_exception().
+
+-type update_key_description_errors() ::
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    dependency_timeout_exception().
+
+-type update_primary_region_errors() ::
+    kms_invalid_state_exception() | 
+    disabled_exception() | 
+    kms_internal_exception() | 
+    not_found_exception() | 
+    invalid_arn_exception() | 
+    unsupported_operation_exception().
+
+-type verify_errors() ::
+    kms_invalid_state_exception() | 
+    kms_invalid_signature_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dependency_timeout_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
+
+-type verify_mac_errors() ::
+    kms_invalid_state_exception() | 
+    kms_invalid_mac_exception() | 
+    disabled_exception() | 
+    invalid_key_usage_exception() | 
+    kms_internal_exception() | 
+    key_unavailable_exception() | 
+    not_found_exception() | 
+    dry_run_operation_exception() | 
+    invalid_grant_token_exception().
 
 %%====================================================================
 %% API
@@ -1377,11 +1839,7 @@
 -spec cancel_key_deletion(map(), cancel_key_deletion_request()) ->
     {ok, cancel_key_deletion_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, cancel_key_deletion_errors(), tuple()}.
 cancel_key_deletion(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_key_deletion(Client, Input, []).
@@ -1389,11 +1847,7 @@ cancel_key_deletion(Client, Input)
 -spec cancel_key_deletion(map(), cancel_key_deletion_request(), proplists:proplist()) ->
     {ok, cancel_key_deletion_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, cancel_key_deletion_errors(), tuple()}.
 cancel_key_deletion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelKeyDeletion">>, Input, Options).
@@ -1533,11 +1987,7 @@ cancel_key_deletion(Client, Input, Options)
 -spec connect_custom_key_store(map(), connect_custom_key_store_request()) ->
     {ok, connect_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_cluster_invalid_configuration_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_active_exception(), tuple()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, connect_custom_key_store_errors(), tuple()}.
 connect_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     connect_custom_key_store(Client, Input, []).
@@ -1545,11 +1995,7 @@ connect_custom_key_store(Client, Input)
 -spec connect_custom_key_store(map(), connect_custom_key_store_request(), proplists:proplist()) ->
     {ok, connect_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_cluster_invalid_configuration_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_active_exception(), tuple()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, connect_custom_key_store_errors(), tuple()}.
 connect_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConnectCustomKeyStore">>, Input, Options).
@@ -1629,13 +2075,7 @@ connect_custom_key_store(Client, Input, Options)
 -spec create_alias(map(), create_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_alias_name_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
@@ -1643,13 +2083,7 @@ create_alias(Client, Input)
 -spec create_alias(map(), create_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_alias_name_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_alias_errors(), tuple()}.
 create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
@@ -1778,23 +2212,7 @@ create_alias(Client, Input, Options)
 -spec create_custom_key_store(map(), create_custom_key_store_request()) ->
     {ok, create_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_cluster_in_use_exception(), tuple()} |
-    {error, cloud_hsm_cluster_invalid_configuration_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_active_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_found_exception(), tuple()} |
-    {error, custom_key_store_name_in_use_exception(), tuple()} |
-    {error, incorrect_trust_anchor_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, xks_proxy_incorrect_authentication_credential_exception(), tuple()} |
-    {error, xks_proxy_invalid_configuration_exception(), tuple()} |
-    {error, xks_proxy_invalid_response_exception(), tuple()} |
-    {error, xks_proxy_uri_endpoint_in_use_exception(), tuple()} |
-    {error, xks_proxy_uri_in_use_exception(), tuple()} |
-    {error, xks_proxy_uri_unreachable_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_in_use_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_invalid_configuration_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_not_found_exception(), tuple()}.
+    {error, create_custom_key_store_errors(), tuple()}.
 create_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_key_store(Client, Input, []).
@@ -1802,23 +2220,7 @@ create_custom_key_store(Client, Input)
 -spec create_custom_key_store(map(), create_custom_key_store_request(), proplists:proplist()) ->
     {ok, create_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_cluster_in_use_exception(), tuple()} |
-    {error, cloud_hsm_cluster_invalid_configuration_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_active_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_found_exception(), tuple()} |
-    {error, custom_key_store_name_in_use_exception(), tuple()} |
-    {error, incorrect_trust_anchor_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, xks_proxy_incorrect_authentication_credential_exception(), tuple()} |
-    {error, xks_proxy_invalid_configuration_exception(), tuple()} |
-    {error, xks_proxy_invalid_response_exception(), tuple()} |
-    {error, xks_proxy_uri_endpoint_in_use_exception(), tuple()} |
-    {error, xks_proxy_uri_in_use_exception(), tuple()} |
-    {error, xks_proxy_uri_unreachable_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_in_use_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_invalid_configuration_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_not_found_exception(), tuple()}.
+    {error, create_custom_key_store_errors(), tuple()}.
 create_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomKeyStore">>, Input, Options).
@@ -1899,15 +2301,7 @@ create_custom_key_store(Client, Input, Options)
 -spec create_grant(map(), create_grant_request()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_grant_errors(), tuple()}.
 create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
@@ -1915,15 +2309,7 @@ create_grant(Client, Input)
 -spec create_grant(map(), create_grant_request(), proplists:proplist()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, create_grant_errors(), tuple()}.
 create_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGrant">>, Input, Options).
@@ -2185,19 +2571,7 @@ create_grant(Client, Input, Options)
 -spec create_key(map(), create_key_request()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_cluster_invalid_configuration_exception(), tuple()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, tag_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()} |
-    {error, xks_key_already_in_use_exception(), tuple()} |
-    {error, xks_key_invalid_configuration_exception(), tuple()} |
-    {error, xks_key_not_found_exception(), tuple()}.
+    {error, create_key_errors(), tuple()}.
 create_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key(Client, Input, []).
@@ -2205,19 +2579,7 @@ create_key(Client, Input)
 -spec create_key(map(), create_key_request(), proplists:proplist()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_cluster_invalid_configuration_exception(), tuple()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, tag_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()} |
-    {error, xks_key_already_in_use_exception(), tuple()} |
-    {error, xks_key_invalid_configuration_exception(), tuple()} |
-    {error, xks_key_not_found_exception(), tuple()}.
+    {error, create_key_errors(), tuple()}.
 create_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateKey">>, Input, Options).
@@ -2340,17 +2702,7 @@ create_key(Client, Input, Options)
 -spec decrypt(map(), decrypt_request()) ->
     {ok, decrypt_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, incorrect_key_exception(), tuple()} |
-    {error, invalid_ciphertext_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, decrypt_errors(), tuple()}.
 decrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrypt(Client, Input, []).
@@ -2358,17 +2710,7 @@ decrypt(Client, Input)
 -spec decrypt(map(), decrypt_request(), proplists:proplist()) ->
     {ok, decrypt_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, incorrect_key_exception(), tuple()} |
-    {error, invalid_ciphertext_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, decrypt_errors(), tuple()}.
 decrypt(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Decrypt">>, Input, Options).
@@ -2426,10 +2768,7 @@ decrypt(Client, Input, Options)
 -spec delete_alias(map(), delete_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
@@ -2437,10 +2776,7 @@ delete_alias(Client, Input)
 -spec delete_alias(map(), delete_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlias">>, Input, Options).
@@ -2526,10 +2862,7 @@ delete_alias(Client, Input, Options)
 -spec delete_custom_key_store(map(), delete_custom_key_store_request()) ->
     {ok, delete_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, custom_key_store_has_cm_ks_exception(), tuple()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, delete_custom_key_store_errors(), tuple()}.
 delete_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_key_store(Client, Input, []).
@@ -2537,10 +2870,7 @@ delete_custom_key_store(Client, Input)
 -spec delete_custom_key_store(map(), delete_custom_key_store_request(), proplists:proplist()) ->
     {ok, delete_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, custom_key_store_has_cm_ks_exception(), tuple()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, delete_custom_key_store_errors(), tuple()}.
 delete_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomKeyStore">>, Input, Options).
@@ -2586,12 +2916,7 @@ delete_custom_key_store(Client, Input, Options)
 -spec delete_imported_key_material(map(), delete_imported_key_material_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_imported_key_material_errors(), tuple()}.
 delete_imported_key_material(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_imported_key_material(Client, Input, []).
@@ -2599,12 +2924,7 @@ delete_imported_key_material(Client, Input)
 -spec delete_imported_key_material(map(), delete_imported_key_material_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, delete_imported_key_material_errors(), tuple()}.
 delete_imported_key_material(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImportedKeyMaterial">>, Input, Options).
@@ -2686,9 +3006,7 @@ delete_imported_key_material(Client, Input, Options)
 -spec describe_custom_key_stores(map(), describe_custom_key_stores_request()) ->
     {ok, describe_custom_key_stores_response(), tuple()} |
     {error, any()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, describe_custom_key_stores_errors(), tuple()}.
 describe_custom_key_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_key_stores(Client, Input, []).
@@ -2696,9 +3014,7 @@ describe_custom_key_stores(Client, Input)
 -spec describe_custom_key_stores(map(), describe_custom_key_stores_request(), proplists:proplist()) ->
     {ok, describe_custom_key_stores_response(), tuple()} |
     {error, any()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, describe_custom_key_stores_errors(), tuple()}.
 describe_custom_key_stores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomKeyStores">>, Input, Options).
@@ -2791,10 +3107,7 @@ describe_custom_key_stores(Client, Input, Options)
 -spec describe_key(map(), describe_key_request()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_key_errors(), tuple()}.
 describe_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_key(Client, Input, []).
@@ -2802,10 +3115,7 @@ describe_key(Client, Input)
 -spec describe_key(map(), describe_key_request(), proplists:proplist()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, describe_key_errors(), tuple()}.
 describe_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeKey">>, Input, Options).
@@ -2844,11 +3154,7 @@ describe_key(Client, Input, Options)
 -spec disable_key(map(), disable_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, disable_key_errors(), tuple()}.
 disable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_key(Client, Input, []).
@@ -2856,11 +3162,7 @@ disable_key(Client, Input)
 -spec disable_key(map(), disable_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, disable_key_errors(), tuple()}.
 disable_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableKey">>, Input, Options).
@@ -2926,13 +3228,7 @@ disable_key(Client, Input, Options)
 -spec disable_key_rotation(map(), disable_key_rotation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disable_key_rotation_errors(), tuple()}.
 disable_key_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_key_rotation(Client, Input, []).
@@ -2940,13 +3236,7 @@ disable_key_rotation(Client, Input)
 -spec disable_key_rotation(map(), disable_key_rotation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, disable_key_rotation_errors(), tuple()}.
 disable_key_rotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableKeyRotation">>, Input, Options).
@@ -3017,9 +3307,7 @@ disable_key_rotation(Client, Input, Options)
 -spec disconnect_custom_key_store(map(), disconnect_custom_key_store_request()) ->
     {ok, disconnect_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, disconnect_custom_key_store_errors(), tuple()}.
 disconnect_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     disconnect_custom_key_store(Client, Input, []).
@@ -3027,9 +3315,7 @@ disconnect_custom_key_store(Client, Input)
 -spec disconnect_custom_key_store(map(), disconnect_custom_key_store_request(), proplists:proplist()) ->
     {ok, disconnect_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, disconnect_custom_key_store_errors(), tuple()}.
 disconnect_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisconnectCustomKeyStore">>, Input, Options).
@@ -3061,12 +3347,7 @@ disconnect_custom_key_store(Client, Input, Options)
 -spec enable_key(map(), enable_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, enable_key_errors(), tuple()}.
 enable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_key(Client, Input, []).
@@ -3074,12 +3355,7 @@ enable_key(Client, Input)
 -spec enable_key(map(), enable_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, enable_key_errors(), tuple()}.
 enable_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableKey">>, Input, Options).
@@ -3162,13 +3438,7 @@ enable_key(Client, Input, Options)
 -spec enable_key_rotation(map(), enable_key_rotation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, enable_key_rotation_errors(), tuple()}.
 enable_key_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_key_rotation(Client, Input, []).
@@ -3176,13 +3446,7 @@ enable_key_rotation(Client, Input)
 -spec enable_key_rotation(map(), enable_key_rotation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, enable_key_rotation_errors(), tuple()}.
 enable_key_rotation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableKeyRotation">>, Input, Options).
@@ -3287,15 +3551,7 @@ enable_key_rotation(Client, Input, Options)
 -spec encrypt(map(), encrypt_request()) ->
     {ok, encrypt_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, encrypt_errors(), tuple()}.
 encrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     encrypt(Client, Input, []).
@@ -3303,15 +3559,7 @@ encrypt(Client, Input)
 -spec encrypt(map(), encrypt_request(), proplists:proplist()) ->
     {ok, encrypt_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, encrypt_errors(), tuple()}.
 encrypt(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Encrypt">>, Input, Options).
@@ -3455,15 +3703,7 @@ encrypt(Client, Input, Options)
 -spec generate_data_key(map(), generate_data_key_request()) ->
     {ok, generate_data_key_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, generate_data_key_errors(), tuple()}.
 generate_data_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key(Client, Input, []).
@@ -3471,15 +3711,7 @@ generate_data_key(Client, Input)
 -spec generate_data_key(map(), generate_data_key_request(), proplists:proplist()) ->
     {ok, generate_data_key_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, generate_data_key_errors(), tuple()}.
 generate_data_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataKey">>, Input, Options).
@@ -3614,16 +3846,7 @@ generate_data_key(Client, Input, Options)
 -spec generate_data_key_pair(map(), generate_data_key_pair_request()) ->
     {ok, generate_data_key_pair_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, generate_data_key_pair_errors(), tuple()}.
 generate_data_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_pair(Client, Input, []).
@@ -3631,16 +3854,7 @@ generate_data_key_pair(Client, Input)
 -spec generate_data_key_pair(map(), generate_data_key_pair_request(), proplists:proplist()) ->
     {ok, generate_data_key_pair_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, generate_data_key_pair_errors(), tuple()}.
 generate_data_key_pair(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataKeyPair">>, Input, Options).
@@ -3735,16 +3949,7 @@ generate_data_key_pair(Client, Input, Options)
 -spec generate_data_key_pair_without_plaintext(map(), generate_data_key_pair_without_plaintext_request()) ->
     {ok, generate_data_key_pair_without_plaintext_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, generate_data_key_pair_without_plaintext_errors(), tuple()}.
 generate_data_key_pair_without_plaintext(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_pair_without_plaintext(Client, Input, []).
@@ -3752,16 +3957,7 @@ generate_data_key_pair_without_plaintext(Client, Input)
 -spec generate_data_key_pair_without_plaintext(map(), generate_data_key_pair_without_plaintext_request(), proplists:proplist()) ->
     {ok, generate_data_key_pair_without_plaintext_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, generate_data_key_pair_without_plaintext_errors(), tuple()}.
 generate_data_key_pair_without_plaintext(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataKeyPairWithoutPlaintext">>, Input, Options).
@@ -3871,15 +4067,7 @@ generate_data_key_pair_without_plaintext(Client, Input, Options)
 -spec generate_data_key_without_plaintext(map(), generate_data_key_without_plaintext_request()) ->
     {ok, generate_data_key_without_plaintext_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, generate_data_key_without_plaintext_errors(), tuple()}.
 generate_data_key_without_plaintext(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_without_plaintext(Client, Input, []).
@@ -3887,15 +4075,7 @@ generate_data_key_without_plaintext(Client, Input)
 -spec generate_data_key_without_plaintext(map(), generate_data_key_without_plaintext_request(), proplists:proplist()) ->
     {ok, generate_data_key_without_plaintext_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, generate_data_key_without_plaintext_errors(), tuple()}.
 generate_data_key_without_plaintext(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateDataKeyWithoutPlaintext">>, Input, Options).
@@ -3955,14 +4135,7 @@ generate_data_key_without_plaintext(Client, Input, Options)
 -spec generate_mac(map(), generate_mac_request()) ->
     {ok, generate_mac_response(), tuple()} |
     {error, any()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, generate_mac_errors(), tuple()}.
 generate_mac(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_mac(Client, Input, []).
@@ -3970,14 +4143,7 @@ generate_mac(Client, Input)
 -spec generate_mac(map(), generate_mac_request(), proplists:proplist()) ->
     {ok, generate_mac_response(), tuple()} |
     {error, any()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, generate_mac_errors(), tuple()}.
 generate_mac(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateMac">>, Input, Options).
@@ -4031,11 +4197,7 @@ generate_mac(Client, Input, Options)
 -spec generate_random(map(), generate_random_request()) ->
     {ok, generate_random_response(), tuple()} |
     {error, any()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, generate_random_errors(), tuple()}.
 generate_random(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_random(Client, Input, []).
@@ -4043,11 +4205,7 @@ generate_random(Client, Input)
 -spec generate_random(map(), generate_random_request(), proplists:proplist()) ->
     {ok, generate_random_response(), tuple()} |
     {error, any()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, generate_random_errors(), tuple()}.
 generate_random(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateRandom">>, Input, Options).
@@ -4070,11 +4228,7 @@ generate_random(Client, Input, Options)
 -spec get_key_policy(map(), get_key_policy_request()) ->
     {ok, get_key_policy_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_key_policy_errors(), tuple()}.
 get_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_policy(Client, Input, []).
@@ -4082,11 +4236,7 @@ get_key_policy(Client, Input)
 -spec get_key_policy(map(), get_key_policy_request(), proplists:proplist()) ->
     {ok, get_key_policy_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, get_key_policy_errors(), tuple()}.
 get_key_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKeyPolicy">>, Input, Options).
@@ -4178,12 +4328,7 @@ get_key_policy(Client, Input, Options)
 -spec get_key_rotation_status(map(), get_key_rotation_status_request()) ->
     {ok, get_key_rotation_status_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_key_rotation_status_errors(), tuple()}.
 get_key_rotation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_rotation_status(Client, Input, []).
@@ -4191,12 +4336,7 @@ get_key_rotation_status(Client, Input)
 -spec get_key_rotation_status(map(), get_key_rotation_status_request(), proplists:proplist()) ->
     {ok, get_key_rotation_status_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_key_rotation_status_errors(), tuple()}.
 get_key_rotation_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKeyRotationStatus">>, Input, Options).
@@ -4304,12 +4444,7 @@ get_key_rotation_status(Client, Input, Options)
 -spec get_parameters_for_import(map(), get_parameters_for_import_request()) ->
     {ok, get_parameters_for_import_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_parameters_for_import_errors(), tuple()}.
 get_parameters_for_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_import(Client, Input, []).
@@ -4317,12 +4452,7 @@ get_parameters_for_import(Client, Input)
 -spec get_parameters_for_import(map(), get_parameters_for_import_request(), proplists:proplist()) ->
     {ok, get_parameters_for_import_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_parameters_for_import_errors(), tuple()}.
 get_parameters_for_import(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetParametersForImport">>, Input, Options).
@@ -4411,16 +4541,7 @@ get_parameters_for_import(Client, Input, Options)
 -spec get_public_key(map(), get_public_key_request()) ->
     {ok, get_public_key_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_public_key(Client, Input, []).
@@ -4428,16 +4549,7 @@ get_public_key(Client, Input)
 -spec get_public_key(map(), get_public_key_request(), proplists:proplist()) ->
     {ok, get_public_key_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, get_public_key_errors(), tuple()}.
 get_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPublicKey">>, Input, Options).
@@ -4595,16 +4707,7 @@ get_public_key(Client, Input, Options)
 -spec import_key_material(map(), import_key_material_request()) ->
     {ok, import_key_material_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, expired_import_token_exception(), tuple()} |
-    {error, incorrect_key_material_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_ciphertext_exception(), tuple()} |
-    {error, invalid_import_token_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, import_key_material_errors(), tuple()}.
 import_key_material(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key_material(Client, Input, []).
@@ -4612,16 +4715,7 @@ import_key_material(Client, Input)
 -spec import_key_material(map(), import_key_material_request(), proplists:proplist()) ->
     {ok, import_key_material_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, expired_import_token_exception(), tuple()} |
-    {error, incorrect_key_material_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_ciphertext_exception(), tuple()} |
-    {error, invalid_import_token_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, import_key_material_errors(), tuple()}.
 import_key_material(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportKeyMaterial">>, Input, Options).
@@ -4682,11 +4776,7 @@ import_key_material(Client, Input, Options)
 -spec list_aliases(map(), list_aliases_request()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
@@ -4694,11 +4784,7 @@ list_aliases(Client, Input)
 -spec list_aliases(map(), list_aliases_request(), proplists:proplist()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_aliases_errors(), tuple()}.
 list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
@@ -4753,13 +4839,7 @@ list_aliases(Client, Input, Options)
 -spec list_grants(map(), list_grants_request()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_id_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_grants_errors(), tuple()}.
 list_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_grants(Client, Input, []).
@@ -4767,13 +4847,7 @@ list_grants(Client, Input)
 -spec list_grants(map(), list_grants_request(), proplists:proplist()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_id_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_grants_errors(), tuple()}.
 list_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGrants">>, Input, Options).
@@ -4805,11 +4879,7 @@ list_grants(Client, Input, Options)
 -spec list_key_policies(map(), list_key_policies_request()) ->
     {ok, list_key_policies_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_key_policies_errors(), tuple()}.
 list_key_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_key_policies(Client, Input, []).
@@ -4817,11 +4887,7 @@ list_key_policies(Client, Input)
 -spec list_key_policies(map(), list_key_policies_request(), proplists:proplist()) ->
     {ok, list_key_policies_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_key_policies_errors(), tuple()}.
 list_key_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeyPolicies">>, Input, Options).
@@ -4852,9 +4918,7 @@ list_key_policies(Client, Input, Options)
 -spec list_keys(map(), list_keys_request()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_keys(Client, Input, []).
@@ -4862,9 +4926,7 @@ list_keys(Client, Input)
 -spec list_keys(map(), list_keys_request(), proplists:proplist()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()}.
+    {error, list_keys_errors(), tuple()}.
 list_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListKeys">>, Input, Options).
@@ -4902,10 +4964,7 @@ list_keys(Client, Input, Options)
 -spec list_resource_tags(map(), list_resource_tags_request()) ->
     {ok, list_resource_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_resource_tags_errors(), tuple()}.
 list_resource_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_tags(Client, Input, []).
@@ -4913,10 +4972,7 @@ list_resource_tags(Client, Input)
 -spec list_resource_tags(map(), list_resource_tags_request(), proplists:proplist()) ->
     {ok, list_resource_tags_response(), tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_resource_tags_errors(), tuple()}.
 list_resource_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceTags">>, Input, Options).
@@ -4982,11 +5038,7 @@ list_resource_tags(Client, Input, Options)
 -spec list_retirable_grants(map(), list_retirable_grants_request()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_retirable_grants_errors(), tuple()}.
 list_retirable_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_retirable_grants(Client, Input, []).
@@ -4994,11 +5046,7 @@ list_retirable_grants(Client, Input)
 -spec list_retirable_grants(map(), list_retirable_grants_request(), proplists:proplist()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_marker_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, list_retirable_grants_errors(), tuple()}.
 list_retirable_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRetirableGrants">>, Input, Options).
@@ -5033,14 +5081,7 @@ list_retirable_grants(Client, Input, Options)
 -spec put_key_policy(map(), put_key_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, put_key_policy_errors(), tuple()}.
 put_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_key_policy(Client, Input, []).
@@ -5048,14 +5089,7 @@ put_key_policy(Client, Input)
 -spec put_key_policy(map(), put_key_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, put_key_policy_errors(), tuple()}.
 put_key_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutKeyPolicy">>, Input, Options).
@@ -5188,17 +5222,7 @@ put_key_policy(Client, Input, Options)
 -spec re_encrypt(map(), re_encrypt_request()) ->
     {ok, re_encrypt_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, incorrect_key_exception(), tuple()} |
-    {error, invalid_ciphertext_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, re_encrypt_errors(), tuple()}.
 re_encrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     re_encrypt(Client, Input, []).
@@ -5206,17 +5230,7 @@ re_encrypt(Client, Input)
 -spec re_encrypt(map(), re_encrypt_request(), proplists:proplist()) ->
     {ok, re_encrypt_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, incorrect_key_exception(), tuple()} |
-    {error, invalid_ciphertext_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, re_encrypt_errors(), tuple()}.
 re_encrypt(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReEncrypt">>, Input, Options).
@@ -5354,16 +5368,7 @@ re_encrypt(Client, Input, Options)
 -spec replicate_key(map(), replicate_key_request()) ->
     {ok, replicate_key_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, replicate_key_errors(), tuple()}.
 replicate_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_key(Client, Input, []).
@@ -5371,16 +5376,7 @@ replicate_key(Client, Input)
 -spec replicate_key(map(), replicate_key_request(), proplists:proplist()) ->
     {ok, replicate_key_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, malformed_policy_document_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, replicate_key_errors(), tuple()}.
 replicate_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReplicateKey">>, Input, Options).
@@ -5440,14 +5436,7 @@ replicate_key(Client, Input, Options)
 -spec retire_grant(map(), retire_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_id_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, retire_grant_errors(), tuple()}.
 retire_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     retire_grant(Client, Input, []).
@@ -5455,14 +5444,7 @@ retire_grant(Client, Input)
 -spec retire_grant(map(), retire_grant_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_id_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, retire_grant_errors(), tuple()}.
 retire_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetireGrant">>, Input, Options).
@@ -5520,13 +5502,7 @@ retire_grant(Client, Input, Options)
 -spec revoke_grant(map(), revoke_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_id_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, revoke_grant_errors(), tuple()}.
 revoke_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_grant(Client, Input, []).
@@ -5534,13 +5510,7 @@ revoke_grant(Client, Input)
 -spec revoke_grant(map(), revoke_grant_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, invalid_grant_id_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, revoke_grant_errors(), tuple()}.
 revoke_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeGrant">>, Input, Options).
@@ -5641,11 +5611,7 @@ revoke_grant(Client, Input, Options)
 -spec schedule_key_deletion(map(), schedule_key_deletion_request()) ->
     {ok, schedule_key_deletion_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, schedule_key_deletion_errors(), tuple()}.
 schedule_key_deletion(Client, Input)
   when is_map(Client), is_map(Input) ->
     schedule_key_deletion(Client, Input, []).
@@ -5653,11 +5619,7 @@ schedule_key_deletion(Client, Input)
 -spec schedule_key_deletion(map(), schedule_key_deletion_request(), proplists:proplist()) ->
     {ok, schedule_key_deletion_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, schedule_key_deletion_errors(), tuple()}.
 schedule_key_deletion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ScheduleKeyDeletion">>, Input, Options).
@@ -5744,15 +5706,7 @@ schedule_key_deletion(Client, Input, Options)
 -spec sign(map(), sign_request()) ->
     {ok, sign_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, sign_errors(), tuple()}.
 sign(Client, Input)
   when is_map(Client), is_map(Input) ->
     sign(Client, Input, []).
@@ -5760,15 +5714,7 @@ sign(Client, Input)
 -spec sign(map(), sign_request(), proplists:proplist()) ->
     {ok, sign_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, sign_errors(), tuple()}.
 sign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Sign">>, Input, Options).
@@ -5841,12 +5787,7 @@ sign(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -5854,12 +5795,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -5919,11 +5855,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -5931,11 +5863,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, tag_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -6019,11 +5947,7 @@ untag_resource(Client, Input, Options)
 -spec update_alias(map(), update_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
@@ -6031,11 +5955,7 @@ update_alias(Client, Input)
 -spec update_alias(map(), update_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_alias_errors(), tuple()}.
 update_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAlias">>, Input, Options).
@@ -6165,23 +6085,7 @@ update_alias(Client, Input, Options)
 -spec update_custom_key_store(map(), update_custom_key_store_request()) ->
     {ok, update_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_cluster_invalid_configuration_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_active_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_found_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_related_exception(), tuple()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_name_in_use_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, xks_proxy_incorrect_authentication_credential_exception(), tuple()} |
-    {error, xks_proxy_invalid_configuration_exception(), tuple()} |
-    {error, xks_proxy_invalid_response_exception(), tuple()} |
-    {error, xks_proxy_uri_endpoint_in_use_exception(), tuple()} |
-    {error, xks_proxy_uri_in_use_exception(), tuple()} |
-    {error, xks_proxy_uri_unreachable_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_in_use_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_invalid_configuration_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_not_found_exception(), tuple()}.
+    {error, update_custom_key_store_errors(), tuple()}.
 update_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_key_store(Client, Input, []).
@@ -6189,23 +6093,7 @@ update_custom_key_store(Client, Input)
 -spec update_custom_key_store(map(), update_custom_key_store_request(), proplists:proplist()) ->
     {ok, update_custom_key_store_response(), tuple()} |
     {error, any()} |
-    {error, cloud_hsm_cluster_invalid_configuration_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_active_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_found_exception(), tuple()} |
-    {error, cloud_hsm_cluster_not_related_exception(), tuple()} |
-    {error, custom_key_store_invalid_state_exception(), tuple()} |
-    {error, custom_key_store_name_in_use_exception(), tuple()} |
-    {error, custom_key_store_not_found_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, xks_proxy_incorrect_authentication_credential_exception(), tuple()} |
-    {error, xks_proxy_invalid_configuration_exception(), tuple()} |
-    {error, xks_proxy_invalid_response_exception(), tuple()} |
-    {error, xks_proxy_uri_endpoint_in_use_exception(), tuple()} |
-    {error, xks_proxy_uri_in_use_exception(), tuple()} |
-    {error, xks_proxy_uri_unreachable_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_in_use_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_invalid_configuration_exception(), tuple()} |
-    {error, xks_proxy_vpc_endpoint_service_not_found_exception(), tuple()}.
+    {error, update_custom_key_store_errors(), tuple()}.
 update_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomKeyStore">>, Input, Options).
@@ -6239,11 +6127,7 @@ update_custom_key_store(Client, Input, Options)
 -spec update_key_description(map(), update_key_description_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_key_description_errors(), tuple()}.
 update_key_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_key_description(Client, Input, []).
@@ -6251,11 +6135,7 @@ update_key_description(Client, Input)
 -spec update_key_description(map(), update_key_description_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, update_key_description_errors(), tuple()}.
 update_key_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateKeyDescription">>, Input, Options).
@@ -6369,12 +6249,7 @@ update_key_description(Client, Input, Options)
 -spec update_primary_region(map(), update_primary_region_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_primary_region_errors(), tuple()}.
 update_primary_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_primary_region(Client, Input, []).
@@ -6382,12 +6257,7 @@ update_primary_region(Client, Input)
 -spec update_primary_region(map(), update_primary_region_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, disabled_exception(), tuple()} |
-    {error, invalid_arn_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, unsupported_operation_exception(), tuple()}.
+    {error, update_primary_region_errors(), tuple()}.
 update_primary_region(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePrimaryRegion">>, Input, Options).
@@ -6466,16 +6336,7 @@ update_primary_region(Client, Input, Options)
 -spec verify(map(), verify_request()) ->
     {ok, verify_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_signature_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, verify_errors(), tuple()}.
 verify(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify(Client, Input, []).
@@ -6483,16 +6344,7 @@ verify(Client, Input)
 -spec verify(map(), verify_request(), proplists:proplist()) ->
     {ok, verify_response(), tuple()} |
     {error, any()} |
-    {error, dependency_timeout_exception(), tuple()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_signature_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, verify_errors(), tuple()}.
 verify(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Verify">>, Input, Options).
@@ -6542,15 +6394,7 @@ verify(Client, Input, Options)
 -spec verify_mac(map(), verify_mac_request()) ->
     {ok, verify_mac_response(), tuple()} |
     {error, any()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_mac_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, verify_mac_errors(), tuple()}.
 verify_mac(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_mac(Client, Input, []).
@@ -6558,15 +6402,7 @@ verify_mac(Client, Input)
 -spec verify_mac(map(), verify_mac_request(), proplists:proplist()) ->
     {ok, verify_mac_response(), tuple()} |
     {error, any()} |
-    {error, disabled_exception(), tuple()} |
-    {error, dry_run_operation_exception(), tuple()} |
-    {error, invalid_grant_token_exception(), tuple()} |
-    {error, invalid_key_usage_exception(), tuple()} |
-    {error, key_unavailable_exception(), tuple()} |
-    {error, kms_internal_exception(), tuple()} |
-    {error, kms_invalid_mac_exception(), tuple()} |
-    {error, kms_invalid_state_exception(), tuple()} |
-    {error, not_found_exception(), tuple()}.
+    {error, verify_mac_errors(), tuple()}.
 verify_mac(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifyMac">>, Input, Options).

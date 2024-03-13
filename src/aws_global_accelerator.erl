@@ -1293,6 +1293,352 @@
 %% }
 -type create_endpoint_group_request() :: #{binary() => any()}.
 
+-type add_custom_routing_endpoints_errors() ::
+    endpoint_group_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    conflict_exception() | 
+    internal_service_error_exception() | 
+    endpoint_already_exists_exception().
+
+-type add_endpoints_errors() ::
+    endpoint_group_not_found_exception() | 
+    limit_exceeded_exception() | 
+    transaction_in_progress_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception().
+
+-type advertise_byoip_cidr_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception() | 
+    incorrect_cidr_state_exception() | 
+    byoip_cidr_not_found_exception().
+
+-type allow_custom_routing_traffic_errors() ::
+    endpoint_group_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_service_error_exception().
+
+-type create_accelerator_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    internal_service_error_exception().
+
+-type create_cross_account_attachment_errors() ::
+    limit_exceeded_exception() | 
+    transaction_in_progress_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception().
+
+-type create_custom_routing_accelerator_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception().
+
+-type create_custom_routing_endpoint_group_errors() ::
+    listener_not_found_exception() | 
+    endpoint_group_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    invalid_port_range_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type create_custom_routing_listener_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    invalid_port_range_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type create_endpoint_group_errors() ::
+    listener_not_found_exception() | 
+    endpoint_group_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type create_listener_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    invalid_port_range_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type delete_accelerator_errors() ::
+    invalid_argument_exception() | 
+    associated_listener_found_exception() | 
+    accelerator_not_found_exception() | 
+    accelerator_not_disabled_exception() | 
+    internal_service_error_exception().
+
+-type delete_cross_account_attachment_errors() ::
+    transaction_in_progress_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception() | 
+    attachment_not_found_exception().
+
+-type delete_custom_routing_accelerator_errors() ::
+    invalid_argument_exception() | 
+    associated_listener_found_exception() | 
+    accelerator_not_found_exception() | 
+    accelerator_not_disabled_exception() | 
+    internal_service_error_exception().
+
+-type delete_custom_routing_endpoint_group_errors() ::
+    endpoint_group_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_service_error_exception().
+
+-type delete_custom_routing_listener_errors() ::
+    listener_not_found_exception() | 
+    invalid_argument_exception() | 
+    associated_endpoint_group_found_exception() | 
+    internal_service_error_exception().
+
+-type delete_endpoint_group_errors() ::
+    endpoint_group_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_service_error_exception().
+
+-type delete_listener_errors() ::
+    listener_not_found_exception() | 
+    invalid_argument_exception() | 
+    associated_endpoint_group_found_exception() | 
+    internal_service_error_exception().
+
+-type deny_custom_routing_traffic_errors() ::
+    endpoint_group_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_service_error_exception().
+
+-type deprovision_byoip_cidr_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception() | 
+    incorrect_cidr_state_exception() | 
+    byoip_cidr_not_found_exception().
+
+-type describe_accelerator_errors() ::
+    invalid_argument_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type describe_accelerator_attributes_errors() ::
+    invalid_argument_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type describe_cross_account_attachment_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception() | 
+    attachment_not_found_exception().
+
+-type describe_custom_routing_accelerator_errors() ::
+    invalid_argument_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type describe_custom_routing_accelerator_attributes_errors() ::
+    invalid_argument_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type describe_custom_routing_endpoint_group_errors() ::
+    endpoint_group_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_service_error_exception().
+
+-type describe_custom_routing_listener_errors() ::
+    listener_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_service_error_exception().
+
+-type describe_endpoint_group_errors() ::
+    endpoint_group_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_service_error_exception().
+
+-type describe_listener_errors() ::
+    listener_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_service_error_exception().
+
+-type list_accelerators_errors() ::
+    invalid_argument_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception().
+
+-type list_byoip_cidrs_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception().
+
+-type list_cross_account_attachments_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception().
+
+-type list_cross_account_resource_accounts_errors() ::
+    access_denied_exception() | 
+    internal_service_error_exception().
+
+-type list_cross_account_resources_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    invalid_next_token_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type list_custom_routing_accelerators_errors() ::
+    invalid_argument_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception().
+
+-type list_custom_routing_endpoint_groups_errors() ::
+    listener_not_found_exception() | 
+    invalid_argument_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception().
+
+-type list_custom_routing_listeners_errors() ::
+    invalid_argument_exception() | 
+    invalid_next_token_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type list_custom_routing_port_mappings_errors() ::
+    endpoint_group_not_found_exception() | 
+    invalid_argument_exception() | 
+    invalid_next_token_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type list_custom_routing_port_mappings_by_destination_errors() ::
+    invalid_argument_exception() | 
+    endpoint_not_found_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception().
+
+-type list_endpoint_groups_errors() ::
+    listener_not_found_exception() | 
+    invalid_argument_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception().
+
+-type list_listeners_errors() ::
+    invalid_argument_exception() | 
+    invalid_next_token_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type list_tags_for_resource_errors() ::
+    invalid_argument_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type provision_byoip_cidr_errors() ::
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception() | 
+    incorrect_cidr_state_exception().
+
+-type remove_custom_routing_endpoints_errors() ::
+    endpoint_group_not_found_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    endpoint_not_found_exception() | 
+    conflict_exception() | 
+    internal_service_error_exception().
+
+-type remove_endpoints_errors() ::
+    endpoint_group_not_found_exception() | 
+    transaction_in_progress_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception().
+
+-type tag_resource_errors() ::
+    invalid_argument_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type untag_resource_errors() ::
+    invalid_argument_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type update_accelerator_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type update_accelerator_attributes_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type update_cross_account_attachment_errors() ::
+    limit_exceeded_exception() | 
+    transaction_in_progress_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception() | 
+    attachment_not_found_exception().
+
+-type update_custom_routing_accelerator_errors() ::
+    invalid_argument_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type update_custom_routing_accelerator_attributes_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    accelerator_not_found_exception() | 
+    internal_service_error_exception().
+
+-type update_custom_routing_listener_errors() ::
+    listener_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    invalid_port_range_exception() | 
+    internal_service_error_exception().
+
+-type update_endpoint_group_errors() ::
+    endpoint_group_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception().
+
+-type update_listener_errors() ::
+    listener_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    invalid_port_range_exception() | 
+    internal_service_error_exception().
+
+-type withdraw_byoip_cidr_errors() ::
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    internal_service_error_exception() | 
+    incorrect_cidr_state_exception() | 
+    byoip_cidr_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1324,13 +1670,7 @@
 -spec add_custom_routing_endpoints(map(), add_custom_routing_endpoints_request()) ->
     {ok, add_custom_routing_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, endpoint_already_exists_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, add_custom_routing_endpoints_errors(), tuple()}.
 add_custom_routing_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_custom_routing_endpoints(Client, Input, []).
@@ -1338,13 +1678,7 @@ add_custom_routing_endpoints(Client, Input)
 -spec add_custom_routing_endpoints(map(), add_custom_routing_endpoints_request(), proplists:proplist()) ->
     {ok, add_custom_routing_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, endpoint_already_exists_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, add_custom_routing_endpoints_errors(), tuple()}.
 add_custom_routing_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCustomRoutingEndpoints">>, Input, Options).
@@ -1385,12 +1719,7 @@ add_custom_routing_endpoints(Client, Input, Options)
 -spec add_endpoints(map(), add_endpoints_request()) ->
     {ok, add_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, add_endpoints_errors(), tuple()}.
 add_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_endpoints(Client, Input, []).
@@ -1398,12 +1727,7 @@ add_endpoints(Client, Input)
 -spec add_endpoints(map(), add_endpoints_request(), proplists:proplist()) ->
     {ok, add_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, add_endpoints_errors(), tuple()}.
 add_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddEndpoints">>, Input, Options).
@@ -1427,11 +1751,7 @@ add_endpoints(Client, Input, Options)
 -spec advertise_byoip_cidr(map(), advertise_byoip_cidr_request()) ->
     {ok, advertise_byoip_cidr_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, byoip_cidr_not_found_exception(), tuple()} |
-    {error, incorrect_cidr_state_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, advertise_byoip_cidr_errors(), tuple()}.
 advertise_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     advertise_byoip_cidr(Client, Input, []).
@@ -1439,11 +1759,7 @@ advertise_byoip_cidr(Client, Input)
 -spec advertise_byoip_cidr(map(), advertise_byoip_cidr_request(), proplists:proplist()) ->
     {ok, advertise_byoip_cidr_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, byoip_cidr_not_found_exception(), tuple()} |
-    {error, incorrect_cidr_state_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, advertise_byoip_cidr_errors(), tuple()}.
 advertise_byoip_cidr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdvertiseByoipCidr">>, Input, Options).
@@ -1464,9 +1780,7 @@ advertise_byoip_cidr(Client, Input, Options)
 -spec allow_custom_routing_traffic(map(), allow_custom_routing_traffic_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, allow_custom_routing_traffic_errors(), tuple()}.
 allow_custom_routing_traffic(Client, Input)
   when is_map(Client), is_map(Input) ->
     allow_custom_routing_traffic(Client, Input, []).
@@ -1474,9 +1788,7 @@ allow_custom_routing_traffic(Client, Input)
 -spec allow_custom_routing_traffic(map(), allow_custom_routing_traffic_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, allow_custom_routing_traffic_errors(), tuple()}.
 allow_custom_routing_traffic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AllowCustomRoutingTraffic">>, Input, Options).
@@ -1496,9 +1808,7 @@ allow_custom_routing_traffic(Client, Input, Options)
 -spec create_accelerator(map(), create_accelerator_request()) ->
     {ok, create_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_accelerator_errors(), tuple()}.
 create_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_accelerator(Client, Input, []).
@@ -1506,9 +1816,7 @@ create_accelerator(Client, Input)
 -spec create_accelerator(map(), create_accelerator_request(), proplists:proplist()) ->
     {ok, create_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_accelerator_errors(), tuple()}.
 create_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccelerator">>, Input, Options).
@@ -1535,11 +1843,7 @@ create_accelerator(Client, Input, Options)
 -spec create_cross_account_attachment(map(), create_cross_account_attachment_request()) ->
     {ok, create_cross_account_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, create_cross_account_attachment_errors(), tuple()}.
 create_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cross_account_attachment(Client, Input, []).
@@ -1547,11 +1851,7 @@ create_cross_account_attachment(Client, Input)
 -spec create_cross_account_attachment(map(), create_cross_account_attachment_request(), proplists:proplist()) ->
     {ok, create_cross_account_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, create_cross_account_attachment_errors(), tuple()}.
 create_cross_account_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCrossAccountAttachment">>, Input, Options).
@@ -1579,10 +1879,7 @@ create_cross_account_attachment(Client, Input, Options)
 -spec create_custom_routing_accelerator(map(), create_custom_routing_accelerator_request()) ->
     {ok, create_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_custom_routing_accelerator_errors(), tuple()}.
 create_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_accelerator(Client, Input, []).
@@ -1590,10 +1887,7 @@ create_custom_routing_accelerator(Client, Input)
 -spec create_custom_routing_accelerator(map(), create_custom_routing_accelerator_request(), proplists:proplist()) ->
     {ok, create_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_custom_routing_accelerator_errors(), tuple()}.
 create_custom_routing_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomRoutingAccelerator">>, Input, Options).
@@ -1606,14 +1900,7 @@ create_custom_routing_accelerator(Client, Input, Options)
 -spec create_custom_routing_endpoint_group(map(), create_custom_routing_endpoint_group_request()) ->
     {ok, create_custom_routing_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_already_exists_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, create_custom_routing_endpoint_group_errors(), tuple()}.
 create_custom_routing_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_endpoint_group(Client, Input, []).
@@ -1621,14 +1908,7 @@ create_custom_routing_endpoint_group(Client, Input)
 -spec create_custom_routing_endpoint_group(map(), create_custom_routing_endpoint_group_request(), proplists:proplist()) ->
     {ok, create_custom_routing_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_already_exists_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, create_custom_routing_endpoint_group_errors(), tuple()}.
 create_custom_routing_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomRoutingEndpointGroup">>, Input, Options).
@@ -1641,11 +1921,7 @@ create_custom_routing_endpoint_group(Client, Input, Options)
 -spec create_custom_routing_listener(map(), create_custom_routing_listener_request()) ->
     {ok, create_custom_routing_listener_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_custom_routing_listener_errors(), tuple()}.
 create_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_listener(Client, Input, []).
@@ -1653,11 +1929,7 @@ create_custom_routing_listener(Client, Input)
 -spec create_custom_routing_listener(map(), create_custom_routing_listener_request(), proplists:proplist()) ->
     {ok, create_custom_routing_listener_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_custom_routing_listener_errors(), tuple()}.
 create_custom_routing_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomRoutingListener">>, Input, Options).
@@ -1677,13 +1949,7 @@ create_custom_routing_listener(Client, Input, Options)
 -spec create_endpoint_group(map(), create_endpoint_group_request()) ->
     {ok, create_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_already_exists_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, create_endpoint_group_errors(), tuple()}.
 create_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_group(Client, Input, []).
@@ -1691,13 +1957,7 @@ create_endpoint_group(Client, Input)
 -spec create_endpoint_group(map(), create_endpoint_group_request(), proplists:proplist()) ->
     {ok, create_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_already_exists_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, create_endpoint_group_errors(), tuple()}.
 create_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpointGroup">>, Input, Options).
@@ -1711,11 +1971,7 @@ create_endpoint_group(Client, Input, Options)
 -spec create_listener(map(), create_listener_request()) ->
     {ok, create_listener_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_listener_errors(), tuple()}.
 create_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_listener(Client, Input, []).
@@ -1723,11 +1979,7 @@ create_listener(Client, Input)
 -spec create_listener(map(), create_listener_request(), proplists:proplist()) ->
     {ok, create_listener_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, create_listener_errors(), tuple()}.
 create_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateListener">>, Input, Options).
@@ -1761,11 +2013,7 @@ create_listener(Client, Input, Options)
 -spec delete_accelerator(map(), delete_accelerator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, accelerator_not_disabled_exception(), tuple()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, associated_listener_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, delete_accelerator_errors(), tuple()}.
 delete_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_accelerator(Client, Input, []).
@@ -1773,11 +2021,7 @@ delete_accelerator(Client, Input)
 -spec delete_accelerator(map(), delete_accelerator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, accelerator_not_disabled_exception(), tuple()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, associated_listener_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, delete_accelerator_errors(), tuple()}.
 delete_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccelerator">>, Input, Options).
@@ -1810,11 +2054,7 @@ delete_accelerator(Client, Input, Options)
 -spec delete_cross_account_attachment(map(), delete_cross_account_attachment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, attachment_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, delete_cross_account_attachment_errors(), tuple()}.
 delete_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cross_account_attachment(Client, Input, []).
@@ -1822,11 +2062,7 @@ delete_cross_account_attachment(Client, Input)
 -spec delete_cross_account_attachment(map(), delete_cross_account_attachment_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, attachment_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, delete_cross_account_attachment_errors(), tuple()}.
 delete_cross_account_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCrossAccountAttachment">>, Input, Options).
@@ -1859,11 +2095,7 @@ delete_cross_account_attachment(Client, Input, Options)
 -spec delete_custom_routing_accelerator(map(), delete_custom_routing_accelerator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, accelerator_not_disabled_exception(), tuple()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, associated_listener_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, delete_custom_routing_accelerator_errors(), tuple()}.
 delete_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_accelerator(Client, Input, []).
@@ -1871,11 +2103,7 @@ delete_custom_routing_accelerator(Client, Input)
 -spec delete_custom_routing_accelerator(map(), delete_custom_routing_accelerator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, accelerator_not_disabled_exception(), tuple()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, associated_listener_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, delete_custom_routing_accelerator_errors(), tuple()}.
 delete_custom_routing_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomRoutingAccelerator">>, Input, Options).
@@ -1885,9 +2113,7 @@ delete_custom_routing_accelerator(Client, Input, Options)
 -spec delete_custom_routing_endpoint_group(map(), delete_custom_routing_endpoint_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, delete_custom_routing_endpoint_group_errors(), tuple()}.
 delete_custom_routing_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_endpoint_group(Client, Input, []).
@@ -1895,9 +2121,7 @@ delete_custom_routing_endpoint_group(Client, Input)
 -spec delete_custom_routing_endpoint_group(map(), delete_custom_routing_endpoint_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, delete_custom_routing_endpoint_group_errors(), tuple()}.
 delete_custom_routing_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomRoutingEndpointGroup">>, Input, Options).
@@ -1906,10 +2130,7 @@ delete_custom_routing_endpoint_group(Client, Input, Options)
 -spec delete_custom_routing_listener(map(), delete_custom_routing_listener_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, associated_endpoint_group_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, delete_custom_routing_listener_errors(), tuple()}.
 delete_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_listener(Client, Input, []).
@@ -1917,10 +2138,7 @@ delete_custom_routing_listener(Client, Input)
 -spec delete_custom_routing_listener(map(), delete_custom_routing_listener_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, associated_endpoint_group_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, delete_custom_routing_listener_errors(), tuple()}.
 delete_custom_routing_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomRoutingListener">>, Input, Options).
@@ -1929,9 +2147,7 @@ delete_custom_routing_listener(Client, Input, Options)
 -spec delete_endpoint_group(map(), delete_endpoint_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, delete_endpoint_group_errors(), tuple()}.
 delete_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_group(Client, Input, []).
@@ -1939,9 +2155,7 @@ delete_endpoint_group(Client, Input)
 -spec delete_endpoint_group(map(), delete_endpoint_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, delete_endpoint_group_errors(), tuple()}.
 delete_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpointGroup">>, Input, Options).
@@ -1950,10 +2164,7 @@ delete_endpoint_group(Client, Input, Options)
 -spec delete_listener(map(), delete_listener_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, associated_endpoint_group_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, delete_listener_errors(), tuple()}.
 delete_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_listener(Client, Input, []).
@@ -1961,10 +2172,7 @@ delete_listener(Client, Input)
 -spec delete_listener(map(), delete_listener_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, associated_endpoint_group_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, delete_listener_errors(), tuple()}.
 delete_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteListener">>, Input, Options).
@@ -1985,9 +2193,7 @@ delete_listener(Client, Input, Options)
 -spec deny_custom_routing_traffic(map(), deny_custom_routing_traffic_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, deny_custom_routing_traffic_errors(), tuple()}.
 deny_custom_routing_traffic(Client, Input)
   when is_map(Client), is_map(Input) ->
     deny_custom_routing_traffic(Client, Input, []).
@@ -1995,9 +2201,7 @@ deny_custom_routing_traffic(Client, Input)
 -spec deny_custom_routing_traffic(map(), deny_custom_routing_traffic_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, deny_custom_routing_traffic_errors(), tuple()}.
 deny_custom_routing_traffic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DenyCustomRoutingTraffic">>, Input, Options).
@@ -2021,11 +2225,7 @@ deny_custom_routing_traffic(Client, Input, Options)
 -spec deprovision_byoip_cidr(map(), deprovision_byoip_cidr_request()) ->
     {ok, deprovision_byoip_cidr_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, byoip_cidr_not_found_exception(), tuple()} |
-    {error, incorrect_cidr_state_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, deprovision_byoip_cidr_errors(), tuple()}.
 deprovision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_byoip_cidr(Client, Input, []).
@@ -2033,11 +2233,7 @@ deprovision_byoip_cidr(Client, Input)
 -spec deprovision_byoip_cidr(map(), deprovision_byoip_cidr_request(), proplists:proplist()) ->
     {ok, deprovision_byoip_cidr_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, byoip_cidr_not_found_exception(), tuple()} |
-    {error, incorrect_cidr_state_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, deprovision_byoip_cidr_errors(), tuple()}.
 deprovision_byoip_cidr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprovisionByoipCidr">>, Input, Options).
@@ -2046,9 +2242,7 @@ deprovision_byoip_cidr(Client, Input, Options)
 -spec describe_accelerator(map(), describe_accelerator_request()) ->
     {ok, describe_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_accelerator_errors(), tuple()}.
 describe_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_accelerator(Client, Input, []).
@@ -2056,9 +2250,7 @@ describe_accelerator(Client, Input)
 -spec describe_accelerator(map(), describe_accelerator_request(), proplists:proplist()) ->
     {ok, describe_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_accelerator_errors(), tuple()}.
 describe_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccelerator">>, Input, Options).
@@ -2067,9 +2259,7 @@ describe_accelerator(Client, Input, Options)
 -spec describe_accelerator_attributes(map(), describe_accelerator_attributes_request()) ->
     {ok, describe_accelerator_attributes_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_accelerator_attributes_errors(), tuple()}.
 describe_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_accelerator_attributes(Client, Input, []).
@@ -2077,9 +2267,7 @@ describe_accelerator_attributes(Client, Input)
 -spec describe_accelerator_attributes(map(), describe_accelerator_attributes_request(), proplists:proplist()) ->
     {ok, describe_accelerator_attributes_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_accelerator_attributes_errors(), tuple()}.
 describe_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAcceleratorAttributes">>, Input, Options).
@@ -2088,10 +2276,7 @@ describe_accelerator_attributes(Client, Input, Options)
 -spec describe_cross_account_attachment(map(), describe_cross_account_attachment_request()) ->
     {ok, describe_cross_account_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, attachment_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_cross_account_attachment_errors(), tuple()}.
 describe_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cross_account_attachment(Client, Input, []).
@@ -2099,10 +2284,7 @@ describe_cross_account_attachment(Client, Input)
 -spec describe_cross_account_attachment(map(), describe_cross_account_attachment_request(), proplists:proplist()) ->
     {ok, describe_cross_account_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, attachment_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_cross_account_attachment_errors(), tuple()}.
 describe_cross_account_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCrossAccountAttachment">>, Input, Options).
@@ -2111,9 +2293,7 @@ describe_cross_account_attachment(Client, Input, Options)
 -spec describe_custom_routing_accelerator(map(), describe_custom_routing_accelerator_request()) ->
     {ok, describe_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_custom_routing_accelerator_errors(), tuple()}.
 describe_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_accelerator(Client, Input, []).
@@ -2121,9 +2301,7 @@ describe_custom_routing_accelerator(Client, Input)
 -spec describe_custom_routing_accelerator(map(), describe_custom_routing_accelerator_request(), proplists:proplist()) ->
     {ok, describe_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_custom_routing_accelerator_errors(), tuple()}.
 describe_custom_routing_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomRoutingAccelerator">>, Input, Options).
@@ -2132,9 +2310,7 @@ describe_custom_routing_accelerator(Client, Input, Options)
 -spec describe_custom_routing_accelerator_attributes(map(), describe_custom_routing_accelerator_attributes_request()) ->
     {ok, describe_custom_routing_accelerator_attributes_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_custom_routing_accelerator_attributes_errors(), tuple()}.
 describe_custom_routing_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_accelerator_attributes(Client, Input, []).
@@ -2142,9 +2318,7 @@ describe_custom_routing_accelerator_attributes(Client, Input)
 -spec describe_custom_routing_accelerator_attributes(map(), describe_custom_routing_accelerator_attributes_request(), proplists:proplist()) ->
     {ok, describe_custom_routing_accelerator_attributes_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_custom_routing_accelerator_attributes_errors(), tuple()}.
 describe_custom_routing_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomRoutingAcceleratorAttributes">>, Input, Options).
@@ -2153,9 +2327,7 @@ describe_custom_routing_accelerator_attributes(Client, Input, Options)
 -spec describe_custom_routing_endpoint_group(map(), describe_custom_routing_endpoint_group_request()) ->
     {ok, describe_custom_routing_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_custom_routing_endpoint_group_errors(), tuple()}.
 describe_custom_routing_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_endpoint_group(Client, Input, []).
@@ -2163,9 +2335,7 @@ describe_custom_routing_endpoint_group(Client, Input)
 -spec describe_custom_routing_endpoint_group(map(), describe_custom_routing_endpoint_group_request(), proplists:proplist()) ->
     {ok, describe_custom_routing_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_custom_routing_endpoint_group_errors(), tuple()}.
 describe_custom_routing_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomRoutingEndpointGroup">>, Input, Options).
@@ -2174,9 +2344,7 @@ describe_custom_routing_endpoint_group(Client, Input, Options)
 -spec describe_custom_routing_listener(map(), describe_custom_routing_listener_request()) ->
     {ok, describe_custom_routing_listener_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, describe_custom_routing_listener_errors(), tuple()}.
 describe_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_listener(Client, Input, []).
@@ -2184,9 +2352,7 @@ describe_custom_routing_listener(Client, Input)
 -spec describe_custom_routing_listener(map(), describe_custom_routing_listener_request(), proplists:proplist()) ->
     {ok, describe_custom_routing_listener_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, describe_custom_routing_listener_errors(), tuple()}.
 describe_custom_routing_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomRoutingListener">>, Input, Options).
@@ -2195,9 +2361,7 @@ describe_custom_routing_listener(Client, Input, Options)
 -spec describe_endpoint_group(map(), describe_endpoint_group_request()) ->
     {ok, describe_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_endpoint_group_errors(), tuple()}.
 describe_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_group(Client, Input, []).
@@ -2205,9 +2369,7 @@ describe_endpoint_group(Client, Input)
 -spec describe_endpoint_group(map(), describe_endpoint_group_request(), proplists:proplist()) ->
     {ok, describe_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, describe_endpoint_group_errors(), tuple()}.
 describe_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpointGroup">>, Input, Options).
@@ -2216,9 +2378,7 @@ describe_endpoint_group(Client, Input, Options)
 -spec describe_listener(map(), describe_listener_request()) ->
     {ok, describe_listener_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, describe_listener_errors(), tuple()}.
 describe_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listener(Client, Input, []).
@@ -2226,9 +2386,7 @@ describe_listener(Client, Input)
 -spec describe_listener(map(), describe_listener_request(), proplists:proplist()) ->
     {ok, describe_listener_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, describe_listener_errors(), tuple()}.
 describe_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeListener">>, Input, Options).
@@ -2237,9 +2395,7 @@ describe_listener(Client, Input, Options)
 -spec list_accelerators(map(), list_accelerators_request()) ->
     {ok, list_accelerators_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_accelerators_errors(), tuple()}.
 list_accelerators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accelerators(Client, Input, []).
@@ -2247,9 +2403,7 @@ list_accelerators(Client, Input)
 -spec list_accelerators(map(), list_accelerators_request(), proplists:proplist()) ->
     {ok, list_accelerators_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_accelerators_errors(), tuple()}.
 list_accelerators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccelerators">>, Input, Options).
@@ -2262,10 +2416,7 @@ list_accelerators(Client, Input, Options)
 -spec list_byoip_cidrs(map(), list_byoip_cidrs_request()) ->
     {ok, list_byoip_cidrs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_byoip_cidrs_errors(), tuple()}.
 list_byoip_cidrs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_byoip_cidrs(Client, Input, []).
@@ -2273,10 +2424,7 @@ list_byoip_cidrs(Client, Input)
 -spec list_byoip_cidrs(map(), list_byoip_cidrs_request(), proplists:proplist()) ->
     {ok, list_byoip_cidrs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_byoip_cidrs_errors(), tuple()}.
 list_byoip_cidrs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListByoipCidrs">>, Input, Options).
@@ -2286,10 +2434,7 @@ list_byoip_cidrs(Client, Input, Options)
 -spec list_cross_account_attachments(map(), list_cross_account_attachments_request()) ->
     {ok, list_cross_account_attachments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_cross_account_attachments_errors(), tuple()}.
 list_cross_account_attachments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cross_account_attachments(Client, Input, []).
@@ -2297,10 +2442,7 @@ list_cross_account_attachments(Client, Input)
 -spec list_cross_account_attachments(map(), list_cross_account_attachments_request(), proplists:proplist()) ->
     {ok, list_cross_account_attachments_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_cross_account_attachments_errors(), tuple()}.
 list_cross_account_attachments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrossAccountAttachments">>, Input, Options).
@@ -2309,8 +2451,7 @@ list_cross_account_attachments(Client, Input, Options)
 -spec list_cross_account_resource_accounts(map(), list_cross_account_resource_accounts_request()) ->
     {ok, list_cross_account_resource_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()}.
+    {error, list_cross_account_resource_accounts_errors(), tuple()}.
 list_cross_account_resource_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cross_account_resource_accounts(Client, Input, []).
@@ -2318,8 +2459,7 @@ list_cross_account_resource_accounts(Client, Input)
 -spec list_cross_account_resource_accounts(map(), list_cross_account_resource_accounts_request(), proplists:proplist()) ->
     {ok, list_cross_account_resource_accounts_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()}.
+    {error, list_cross_account_resource_accounts_errors(), tuple()}.
 list_cross_account_resource_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrossAccountResourceAccounts">>, Input, Options).
@@ -2328,11 +2468,7 @@ list_cross_account_resource_accounts(Client, Input, Options)
 -spec list_cross_account_resources(map(), list_cross_account_resources_request()) ->
     {ok, list_cross_account_resources_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_cross_account_resources_errors(), tuple()}.
 list_cross_account_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cross_account_resources(Client, Input, []).
@@ -2340,11 +2476,7 @@ list_cross_account_resources(Client, Input)
 -spec list_cross_account_resources(map(), list_cross_account_resources_request(), proplists:proplist()) ->
     {ok, list_cross_account_resources_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_cross_account_resources_errors(), tuple()}.
 list_cross_account_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrossAccountResources">>, Input, Options).
@@ -2354,9 +2486,7 @@ list_cross_account_resources(Client, Input, Options)
 -spec list_custom_routing_accelerators(map(), list_custom_routing_accelerators_request()) ->
     {ok, list_custom_routing_accelerators_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_custom_routing_accelerators_errors(), tuple()}.
 list_custom_routing_accelerators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_accelerators(Client, Input, []).
@@ -2364,9 +2494,7 @@ list_custom_routing_accelerators(Client, Input)
 -spec list_custom_routing_accelerators(map(), list_custom_routing_accelerators_request(), proplists:proplist()) ->
     {ok, list_custom_routing_accelerators_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_custom_routing_accelerators_errors(), tuple()}.
 list_custom_routing_accelerators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingAccelerators">>, Input, Options).
@@ -2376,10 +2504,7 @@ list_custom_routing_accelerators(Client, Input, Options)
 -spec list_custom_routing_endpoint_groups(map(), list_custom_routing_endpoint_groups_request()) ->
     {ok, list_custom_routing_endpoint_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, list_custom_routing_endpoint_groups_errors(), tuple()}.
 list_custom_routing_endpoint_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_endpoint_groups(Client, Input, []).
@@ -2387,10 +2512,7 @@ list_custom_routing_endpoint_groups(Client, Input)
 -spec list_custom_routing_endpoint_groups(map(), list_custom_routing_endpoint_groups_request(), proplists:proplist()) ->
     {ok, list_custom_routing_endpoint_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, list_custom_routing_endpoint_groups_errors(), tuple()}.
 list_custom_routing_endpoint_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingEndpointGroups">>, Input, Options).
@@ -2399,10 +2521,7 @@ list_custom_routing_endpoint_groups(Client, Input, Options)
 -spec list_custom_routing_listeners(map(), list_custom_routing_listeners_request()) ->
     {ok, list_custom_routing_listeners_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_custom_routing_listeners_errors(), tuple()}.
 list_custom_routing_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_listeners(Client, Input, []).
@@ -2410,10 +2529,7 @@ list_custom_routing_listeners(Client, Input)
 -spec list_custom_routing_listeners(map(), list_custom_routing_listeners_request(), proplists:proplist()) ->
     {ok, list_custom_routing_listeners_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_custom_routing_listeners_errors(), tuple()}.
 list_custom_routing_listeners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingListeners">>, Input, Options).
@@ -2441,11 +2557,7 @@ list_custom_routing_listeners(Client, Input, Options)
 -spec list_custom_routing_port_mappings(map(), list_custom_routing_port_mappings_request()) ->
     {ok, list_custom_routing_port_mappings_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_custom_routing_port_mappings_errors(), tuple()}.
 list_custom_routing_port_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_port_mappings(Client, Input, []).
@@ -2453,11 +2565,7 @@ list_custom_routing_port_mappings(Client, Input)
 -spec list_custom_routing_port_mappings(map(), list_custom_routing_port_mappings_request(), proplists:proplist()) ->
     {ok, list_custom_routing_port_mappings_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_custom_routing_port_mappings_errors(), tuple()}.
 list_custom_routing_port_mappings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingPortMappings">>, Input, Options).
@@ -2474,10 +2582,7 @@ list_custom_routing_port_mappings(Client, Input, Options)
 -spec list_custom_routing_port_mappings_by_destination(map(), list_custom_routing_port_mappings_by_destination_request()) ->
     {ok, list_custom_routing_port_mappings_by_destination_response(), tuple()} |
     {error, any()} |
-    {error, endpoint_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_custom_routing_port_mappings_by_destination_errors(), tuple()}.
 list_custom_routing_port_mappings_by_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_port_mappings_by_destination(Client, Input, []).
@@ -2485,10 +2590,7 @@ list_custom_routing_port_mappings_by_destination(Client, Input)
 -spec list_custom_routing_port_mappings_by_destination(map(), list_custom_routing_port_mappings_by_destination_request(), proplists:proplist()) ->
     {ok, list_custom_routing_port_mappings_by_destination_response(), tuple()} |
     {error, any()} |
-    {error, endpoint_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_custom_routing_port_mappings_by_destination_errors(), tuple()}.
 list_custom_routing_port_mappings_by_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingPortMappingsByDestination">>, Input, Options).
@@ -2497,10 +2599,7 @@ list_custom_routing_port_mappings_by_destination(Client, Input, Options)
 -spec list_endpoint_groups(map(), list_endpoint_groups_request()) ->
     {ok, list_endpoint_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, list_endpoint_groups_errors(), tuple()}.
 list_endpoint_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoint_groups(Client, Input, []).
@@ -2508,10 +2607,7 @@ list_endpoint_groups(Client, Input)
 -spec list_endpoint_groups(map(), list_endpoint_groups_request(), proplists:proplist()) ->
     {ok, list_endpoint_groups_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, list_endpoint_groups_errors(), tuple()}.
 list_endpoint_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpointGroups">>, Input, Options).
@@ -2520,10 +2616,7 @@ list_endpoint_groups(Client, Input, Options)
 -spec list_listeners(map(), list_listeners_request()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_listeners_errors(), tuple()}.
 list_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_listeners(Client, Input, []).
@@ -2531,10 +2624,7 @@ list_listeners(Client, Input)
 -spec list_listeners(map(), list_listeners_request(), proplists:proplist()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()}.
+    {error, list_listeners_errors(), tuple()}.
 list_listeners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListListeners">>, Input, Options).
@@ -2548,9 +2638,7 @@ list_listeners(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2558,9 +2646,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2581,11 +2667,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec provision_byoip_cidr(map(), provision_byoip_cidr_request()) ->
     {ok, provision_byoip_cidr_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incorrect_cidr_state_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, provision_byoip_cidr_errors(), tuple()}.
 provision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_byoip_cidr(Client, Input, []).
@@ -2593,11 +2675,7 @@ provision_byoip_cidr(Client, Input)
 -spec provision_byoip_cidr(map(), provision_byoip_cidr_request(), proplists:proplist()) ->
     {ok, provision_byoip_cidr_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, incorrect_cidr_state_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, provision_byoip_cidr_errors(), tuple()}.
 provision_byoip_cidr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ProvisionByoipCidr">>, Input, Options).
@@ -2606,12 +2684,7 @@ provision_byoip_cidr(Client, Input, Options)
 -spec remove_custom_routing_endpoints(map(), remove_custom_routing_endpoints_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, endpoint_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, remove_custom_routing_endpoints_errors(), tuple()}.
 remove_custom_routing_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_custom_routing_endpoints(Client, Input, []).
@@ -2619,12 +2692,7 @@ remove_custom_routing_endpoints(Client, Input)
 -spec remove_custom_routing_endpoints(map(), remove_custom_routing_endpoints_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, endpoint_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, remove_custom_routing_endpoints_errors(), tuple()}.
 remove_custom_routing_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveCustomRoutingEndpoints">>, Input, Options).
@@ -2653,11 +2721,7 @@ remove_custom_routing_endpoints(Client, Input, Options)
 -spec remove_endpoints(map(), remove_endpoints_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, remove_endpoints_errors(), tuple()}.
 remove_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_endpoints(Client, Input, []).
@@ -2665,11 +2729,7 @@ remove_endpoints(Client, Input)
 -spec remove_endpoints(map(), remove_endpoints_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, remove_endpoints_errors(), tuple()}.
 remove_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveEndpoints">>, Input, Options).
@@ -2683,9 +2743,7 @@ remove_endpoints(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2693,9 +2751,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2714,9 +2770,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2724,9 +2778,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2758,10 +2810,7 @@ untag_resource(Client, Input, Options)
 -spec update_accelerator(map(), update_accelerator_request()) ->
     {ok, update_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, update_accelerator_errors(), tuple()}.
 update_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_accelerator(Client, Input, []).
@@ -2769,10 +2818,7 @@ update_accelerator(Client, Input)
 -spec update_accelerator(map(), update_accelerator_request(), proplists:proplist()) ->
     {ok, update_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, update_accelerator_errors(), tuple()}.
 update_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccelerator">>, Input, Options).
@@ -2781,10 +2827,7 @@ update_accelerator(Client, Input, Options)
 -spec update_accelerator_attributes(map(), update_accelerator_attributes_request()) ->
     {ok, update_accelerator_attributes_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, update_accelerator_attributes_errors(), tuple()}.
 update_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_accelerator_attributes(Client, Input, []).
@@ -2792,10 +2835,7 @@ update_accelerator_attributes(Client, Input)
 -spec update_accelerator_attributes(map(), update_accelerator_attributes_request(), proplists:proplist()) ->
     {ok, update_accelerator_attributes_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, update_accelerator_attributes_errors(), tuple()}.
 update_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAcceleratorAttributes">>, Input, Options).
@@ -2829,12 +2869,7 @@ update_accelerator_attributes(Client, Input, Options)
 -spec update_cross_account_attachment(map(), update_cross_account_attachment_request()) ->
     {ok, update_cross_account_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, attachment_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, update_cross_account_attachment_errors(), tuple()}.
 update_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cross_account_attachment(Client, Input, []).
@@ -2842,12 +2877,7 @@ update_cross_account_attachment(Client, Input)
 -spec update_cross_account_attachment(map(), update_cross_account_attachment_request(), proplists:proplist()) ->
     {ok, update_cross_account_attachment_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, attachment_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, transaction_in_progress_exception(), tuple()}.
+    {error, update_cross_account_attachment_errors(), tuple()}.
 update_cross_account_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCrossAccountAttachment">>, Input, Options).
@@ -2856,9 +2886,7 @@ update_cross_account_attachment(Client, Input, Options)
 -spec update_custom_routing_accelerator(map(), update_custom_routing_accelerator_request()) ->
     {ok, update_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, update_custom_routing_accelerator_errors(), tuple()}.
 update_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_routing_accelerator(Client, Input, []).
@@ -2866,9 +2894,7 @@ update_custom_routing_accelerator(Client, Input)
 -spec update_custom_routing_accelerator(map(), update_custom_routing_accelerator_request(), proplists:proplist()) ->
     {ok, update_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, update_custom_routing_accelerator_errors(), tuple()}.
 update_custom_routing_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomRoutingAccelerator">>, Input, Options).
@@ -2877,10 +2903,7 @@ update_custom_routing_accelerator(Client, Input, Options)
 -spec update_custom_routing_accelerator_attributes(map(), update_custom_routing_accelerator_attributes_request()) ->
     {ok, update_custom_routing_accelerator_attributes_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, update_custom_routing_accelerator_attributes_errors(), tuple()}.
 update_custom_routing_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_routing_accelerator_attributes(Client, Input, []).
@@ -2888,10 +2911,7 @@ update_custom_routing_accelerator_attributes(Client, Input)
 -spec update_custom_routing_accelerator_attributes(map(), update_custom_routing_accelerator_attributes_request(), proplists:proplist()) ->
     {ok, update_custom_routing_accelerator_attributes_response(), tuple()} |
     {error, any()} |
-    {error, accelerator_not_found_exception(), tuple()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, update_custom_routing_accelerator_attributes_errors(), tuple()}.
 update_custom_routing_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomRoutingAcceleratorAttributes">>, Input, Options).
@@ -2900,11 +2920,7 @@ update_custom_routing_accelerator_attributes(Client, Input, Options)
 -spec update_custom_routing_listener(map(), update_custom_routing_listener_request()) ->
     {ok, update_custom_routing_listener_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, update_custom_routing_listener_errors(), tuple()}.
 update_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_routing_listener(Client, Input, []).
@@ -2912,11 +2928,7 @@ update_custom_routing_listener(Client, Input)
 -spec update_custom_routing_listener(map(), update_custom_routing_listener_request(), proplists:proplist()) ->
     {ok, update_custom_routing_listener_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, update_custom_routing_listener_errors(), tuple()}.
 update_custom_routing_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomRoutingListener">>, Input, Options).
@@ -2927,11 +2939,7 @@ update_custom_routing_listener(Client, Input, Options)
 -spec update_endpoint_group(map(), update_endpoint_group_request()) ->
     {ok, update_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, update_endpoint_group_errors(), tuple()}.
 update_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_group(Client, Input, []).
@@ -2939,11 +2947,7 @@ update_endpoint_group(Client, Input)
 -spec update_endpoint_group(map(), update_endpoint_group_request(), proplists:proplist()) ->
     {ok, update_endpoint_group_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, endpoint_group_not_found_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()}.
+    {error, update_endpoint_group_errors(), tuple()}.
 update_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpointGroup">>, Input, Options).
@@ -2952,11 +2956,7 @@ update_endpoint_group(Client, Input, Options)
 -spec update_listener(map(), update_listener_request()) ->
     {ok, update_listener_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, update_listener_errors(), tuple()}.
 update_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_listener(Client, Input, []).
@@ -2964,11 +2964,7 @@ update_listener(Client, Input)
 -spec update_listener(map(), update_listener_request(), proplists:proplist()) ->
     {ok, update_listener_response(), tuple()} |
     {error, any()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()} |
-    {error, invalid_port_range_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()}.
+    {error, update_listener_errors(), tuple()}.
 update_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateListener">>, Input, Options).
@@ -2991,11 +2987,7 @@ update_listener(Client, Input, Options)
 -spec withdraw_byoip_cidr(map(), withdraw_byoip_cidr_request()) ->
     {ok, withdraw_byoip_cidr_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, byoip_cidr_not_found_exception(), tuple()} |
-    {error, incorrect_cidr_state_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, withdraw_byoip_cidr_errors(), tuple()}.
 withdraw_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     withdraw_byoip_cidr(Client, Input, []).
@@ -3003,11 +2995,7 @@ withdraw_byoip_cidr(Client, Input)
 -spec withdraw_byoip_cidr(map(), withdraw_byoip_cidr_request(), proplists:proplist()) ->
     {ok, withdraw_byoip_cidr_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, byoip_cidr_not_found_exception(), tuple()} |
-    {error, incorrect_cidr_state_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_argument_exception(), tuple()}.
+    {error, withdraw_byoip_cidr_errors(), tuple()}.
 withdraw_byoip_cidr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"WithdrawByoipCidr">>, Input, Options).

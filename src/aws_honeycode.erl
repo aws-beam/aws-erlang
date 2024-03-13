@@ -60,6 +60,7 @@
 %% }
 -type list_table_rows_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% delimited_text_import_options() :: #{
 %%   <<"dataCharacterEncoding">> => list(any()),
@@ -69,6 +70,7 @@
 %% }
 -type delimited_text_import_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_options() :: #{
 %%   <<"delimitedTextOptions">> => delimited_text_import_options(),
@@ -76,11 +78,13 @@
 %% }
 -type import_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% query_table_rows_result() :: #{
@@ -91,6 +95,7 @@
 %% }
 -type query_table_rows_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_table_data_import_job_result() :: #{
 %%   <<"errorCode">> => list(any()),
@@ -100,12 +105,14 @@
 %% }
 -type describe_table_data_import_job_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_row_data() :: #{
 %%   <<"batchItemId">> => string(),
 %%   <<"cellsToCreate">> => map()
 %% }
 -type create_row_data() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_table_rows_request() :: #{
@@ -115,6 +122,7 @@
 %% }
 -type list_table_rows_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% query_table_rows_request() :: #{
 %%   <<"filterFormula">> := filter(),
@@ -122,6 +130,7 @@
 %%   <<"nextToken">> => string()
 %% }
 -type query_table_rows_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% invoke_screen_automation_request() :: #{
@@ -131,21 +140,25 @@
 %% }
 -type invoke_screen_automation_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% column_metadata() :: #{
 %%   <<"format">> => list(any()),
 %%   <<"name">> => string()
 %% }
 -type column_metadata() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_result() :: #{}
 -type untag_resource_result() :: #{}.
+
 
 %% Example:
 %% automation_execution_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type automation_execution_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_row_data() :: #{
@@ -154,6 +167,7 @@
 %% }
 -type update_row_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% data_item() :: #{
 %%   <<"formattedValue">> => string(),
@@ -161,6 +175,7 @@
 %%   <<"rawValue">> => string()
 %% }
 -type data_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% cell() :: #{
@@ -172,6 +187,7 @@
 %% }
 -type cell() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_delete_table_rows_request() :: #{
 %%   <<"clientRequestToken">> => string(),
@@ -179,11 +195,13 @@
 %% }
 -type batch_delete_table_rows_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_timeout_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type request_timeout_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_data_import_job_metadata() :: #{
@@ -194,6 +212,7 @@
 %% }
 -type table_data_import_job_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% upsert_row_data() :: #{
 %%   <<"batchItemId">> => string(),
@@ -202,12 +221,14 @@
 %% }
 -type upsert_row_data() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_upsert_table_rows_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"rowsToUpsert">> := list(upsert_row_data()())
 %% }
 -type batch_upsert_table_rows_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_create_table_rows_request() :: #{
@@ -216,11 +237,13 @@
 %% }
 -type batch_create_table_rows_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_row() :: #{
@@ -228,6 +251,7 @@
 %%   <<"rowId">> => string()
 %% }
 -type table_row() :: #{binary() => any()}.
+
 
 %% Example:
 %% table_column() :: #{
@@ -237,12 +261,14 @@
 %% }
 -type table_column() :: #{binary() => any()}.
 
+
 %% Example:
 %% result_row() :: #{
 %%   <<"dataItems">> => list(data_item()()),
 %%   <<"rowId">> => string()
 %% }
 -type result_row() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_update_table_rows_request() :: #{
@@ -251,11 +277,13 @@
 %% }
 -type batch_update_table_rows_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_table_columns_result() :: #{
@@ -265,11 +293,13 @@
 %% }
 -type list_table_columns_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_job_submitter() :: #{
@@ -278,11 +308,13 @@
 %% }
 -type import_job_submitter() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% filter() :: #{
@@ -291,6 +323,7 @@
 %% }
 -type filter() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_update_table_rows_result() :: #{
 %%   <<"failedBatchItems">> => list(failed_batch_item()()),
@@ -298,11 +331,13 @@
 %% }
 -type batch_update_table_rows_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% automation_execution_timeout_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type automation_execution_timeout_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% upsert_rows_result() :: #{
@@ -311,11 +346,13 @@
 %% }
 -type upsert_rows_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_table_columns_request() :: #{
 %%   <<"nextToken">> => string()
 %% }
 -type list_table_columns_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% failed_batch_item() :: #{
@@ -324,17 +361,20 @@
 %% }
 -type failed_batch_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_result() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_screen_data_request() :: #{
@@ -347,6 +387,7 @@
 %% }
 -type get_screen_data_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_table_data_import_job_request() :: #{
 %%   <<"clientRequestToken">> := string(),
@@ -356,20 +397,24 @@
 %% }
 -type start_table_data_import_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% destination_options() :: #{
 %%   <<"columnMap">> => map()
 %% }
 -type destination_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 %% Example:
 %% describe_table_data_import_job_request() :: #{}
 -type describe_table_data_import_job_request() :: #{}.
+
 
 %% Example:
 %% result_set() :: #{
@@ -378,11 +423,13 @@
 %% }
 -type result_set() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tables_result() :: #{
@@ -391,15 +438,18 @@
 %%   <<"workbookCursor">> => float()
 %% }
 -type list_tables_result() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% invoke_screen_automation_result() :: #{
 %%   <<"workbookCursor">> => float()
 %% }
 -type invoke_screen_automation_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_upsert_table_rows_result() :: #{
@@ -409,11 +459,13 @@
 %% }
 -type batch_upsert_table_rows_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_table_data_import_job_result() :: #{
@@ -422,6 +474,7 @@
 %% }
 -type start_table_data_import_job_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_screen_data_result() :: #{
 %%   <<"nextToken">> => string(),
@@ -429,9 +482,11 @@
 %%   <<"workbookCursor">> => float()
 %% }
 -type get_screen_data_result() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_result() :: #{}
 -type tag_resource_result() :: #{}.
+
 
 %% Example:
 %% variable_value() :: #{
@@ -439,11 +494,13 @@
 %% }
 -type variable_value() :: #{binary() => any()}.
 
+
 %% Example:
 %% import_data_source() :: #{
 %%   <<"dataSourceConfig">> => import_data_source_config()
 %% }
 -type import_data_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_data_source_config() :: #{
@@ -451,11 +508,13 @@
 %% }
 -type import_data_source_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% source_data_column_properties() :: #{
 %%   <<"columnIndex">> => integer()
 %% }
 -type source_data_column_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_create_table_rows_result() :: #{
@@ -465,12 +524,14 @@
 %% }
 -type batch_create_table_rows_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% table() :: #{
 %%   <<"tableId">> => string(),
 %%   <<"tableName">> => string()
 %% }
 -type table() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_delete_table_rows_result() :: #{
@@ -479,6 +540,7 @@
 %% }
 -type batch_delete_table_rows_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% cell_input() :: #{
 %%   <<"fact">> => string(),
@@ -486,12 +548,154 @@
 %% }
 -type cell_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tables_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_tables_request() :: #{binary() => any()}.
+
+-type batch_create_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type batch_delete_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type batch_update_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type batch_upsert_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type describe_table_data_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type get_screen_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type invoke_screen_automation_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    automation_execution_timeout_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception() | 
+    automation_execution_exception().
+
+-type list_table_columns_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type list_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type list_tables_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type query_table_rows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type start_table_data_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    request_timeout_exception().
 
 %%====================================================================
 %% API
@@ -515,28 +719,14 @@
 -spec batch_create_table_rows(map(), binary() | list(), binary() | list(), batch_create_table_rows_request()) ->
     {ok, batch_create_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_table_rows_errors(), tuple()}.
 batch_create_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_create_table_rows(Client, TableId, WorkbookId, Input, []).
 
 -spec batch_create_table_rows(map(), binary() | list(), binary() | list(), batch_create_table_rows_request(), proplists:proplist()) ->
     {ok, batch_create_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_table_rows_errors(), tuple()}.
 batch_create_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchcreate"],
@@ -568,26 +758,14 @@ batch_create_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 -spec batch_delete_table_rows(map(), binary() | list(), binary() | list(), batch_delete_table_rows_request()) ->
     {ok, batch_delete_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_table_rows_errors(), tuple()}.
 batch_delete_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_delete_table_rows(Client, TableId, WorkbookId, Input, []).
 
 -spec batch_delete_table_rows(map(), binary() | list(), binary() | list(), batch_delete_table_rows_request(), proplists:proplist()) ->
     {ok, batch_delete_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_delete_table_rows_errors(), tuple()}.
 batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchdelete"],
@@ -625,26 +803,14 @@ batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 -spec batch_update_table_rows(map(), binary() | list(), binary() | list(), batch_update_table_rows_request()) ->
     {ok, batch_update_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_table_rows_errors(), tuple()}.
 batch_update_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_update_table_rows(Client, TableId, WorkbookId, Input, []).
 
 -spec batch_update_table_rows(map(), binary() | list(), binary() | list(), batch_update_table_rows_request(), proplists:proplist()) ->
     {ok, batch_update_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_update_table_rows_errors(), tuple()}.
 batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchupdate"],
@@ -690,28 +856,14 @@ batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 -spec batch_upsert_table_rows(map(), binary() | list(), binary() | list(), batch_upsert_table_rows_request()) ->
     {ok, batch_upsert_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_upsert_table_rows_errors(), tuple()}.
 batch_upsert_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_upsert_table_rows(Client, TableId, WorkbookId, Input, []).
 
 -spec batch_upsert_table_rows(map(), binary() | list(), binary() | list(), batch_upsert_table_rows_request(), proplists:proplist()) ->
     {ok, batch_upsert_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_upsert_table_rows_errors(), tuple()}.
 batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchupsert"],
@@ -740,13 +892,7 @@ batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 -spec describe_table_data_import_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_table_data_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_table_data_import_job_errors(), tuple()}.
 describe_table_data_import_job(Client, JobId, TableId, WorkbookId)
   when is_map(Client) ->
     describe_table_data_import_job(Client, JobId, TableId, WorkbookId, #{}, #{}).
@@ -754,13 +900,7 @@ describe_table_data_import_job(Client, JobId, TableId, WorkbookId)
 -spec describe_table_data_import_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_table_data_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_table_data_import_job_errors(), tuple()}.
 describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, []).
@@ -768,13 +908,7 @@ describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, Hea
 -spec describe_table_data_import_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_table_data_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_table_data_import_job_errors(), tuple()}.
 describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/import/", aws_util:encode_uri(JobId), ""],
@@ -801,26 +935,14 @@ describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, Hea
 -spec get_screen_data(map(), get_screen_data_request()) ->
     {ok, get_screen_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_screen_data_errors(), tuple()}.
 get_screen_data(Client, Input) ->
     get_screen_data(Client, Input, []).
 
 -spec get_screen_data(map(), get_screen_data_request(), proplists:proplist()) ->
     {ok, get_screen_data_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_screen_data_errors(), tuple()}.
 get_screen_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/screendata"],
@@ -854,32 +976,14 @@ get_screen_data(Client, Input0, Options0) ->
 -spec invoke_screen_automation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), invoke_screen_automation_request()) ->
     {ok, invoke_screen_automation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, automation_execution_exception(), tuple()} |
-    {error, automation_execution_timeout_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, invoke_screen_automation_errors(), tuple()}.
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input) ->
     invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input, []).
 
 -spec invoke_screen_automation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), invoke_screen_automation_request(), proplists:proplist()) ->
     {ok, invoke_screen_automation_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, automation_execution_exception(), tuple()} |
-    {error, automation_execution_timeout_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, invoke_screen_automation_errors(), tuple()}.
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/apps/", aws_util:encode_uri(AppId), "/screens/", aws_util:encode_uri(ScreenId), "/automations/", aws_util:encode_uri(ScreenAutomationId), ""],
@@ -908,13 +1012,7 @@ invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId
 -spec list_table_columns(map(), binary() | list(), binary() | list()) ->
     {ok, list_table_columns_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_table_columns_errors(), tuple()}.
 list_table_columns(Client, TableId, WorkbookId)
   when is_map(Client) ->
     list_table_columns(Client, TableId, WorkbookId, #{}, #{}).
@@ -922,13 +1020,7 @@ list_table_columns(Client, TableId, WorkbookId)
 -spec list_table_columns(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_table_columns_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_table_columns_errors(), tuple()}.
 list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, []).
@@ -936,13 +1028,7 @@ list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap)
 -spec list_table_columns(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_table_columns_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_table_columns_errors(), tuple()}.
 list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/columns"],
@@ -969,26 +1055,14 @@ list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, Options0)
 -spec list_table_rows(map(), binary() | list(), binary() | list(), list_table_rows_request()) ->
     {ok, list_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_table_rows_errors(), tuple()}.
 list_table_rows(Client, TableId, WorkbookId, Input) ->
     list_table_rows(Client, TableId, WorkbookId, Input, []).
 
 -spec list_table_rows(map(), binary() | list(), binary() | list(), list_table_rows_request(), proplists:proplist()) ->
     {ok, list_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_table_rows_errors(), tuple()}.
 list_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/list"],
@@ -1017,13 +1091,7 @@ list_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 -spec list_tables(map(), binary() | list()) ->
     {ok, list_tables_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, WorkbookId)
   when is_map(Client) ->
     list_tables(Client, WorkbookId, #{}, #{}).
@@ -1031,13 +1099,7 @@ list_tables(Client, WorkbookId)
 -spec list_tables(map(), binary() | list(), map(), map()) ->
     {ok, list_tables_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tables(Client, WorkbookId, QueryMap, HeadersMap, []).
@@ -1045,13 +1107,7 @@ list_tables(Client, WorkbookId, QueryMap, HeadersMap)
 -spec list_tables(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tables_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tables_errors(), tuple()}.
 list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables"],
@@ -1078,13 +1134,7 @@ list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1092,13 +1142,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -1106,13 +1150,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1135,26 +1173,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec query_table_rows(map(), binary() | list(), binary() | list(), query_table_rows_request()) ->
     {ok, query_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, query_table_rows_errors(), tuple()}.
 query_table_rows(Client, TableId, WorkbookId, Input) ->
     query_table_rows(Client, TableId, WorkbookId, Input, []).
 
 -spec query_table_rows(map(), binary() | list(), binary() | list(), query_table_rows_request(), proplists:proplist()) ->
     {ok, query_table_rows_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, query_table_rows_errors(), tuple()}.
 query_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/query"],
@@ -1188,28 +1214,14 @@ query_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 -spec start_table_data_import_job(map(), binary() | list(), binary() | list(), start_table_data_import_job_request()) ->
     {ok, start_table_data_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_table_data_import_job_errors(), tuple()}.
 start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input) ->
     start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input, []).
 
 -spec start_table_data_import_job(map(), binary() | list(), binary() | list(), start_table_data_import_job_request(), proplists:proplist()) ->
     {ok, start_table_data_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_table_data_import_job_errors(), tuple()}.
 start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(DestinationTableId), "/import"],
@@ -1240,26 +1252,14 @@ start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input0, Opti
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1291,26 +1291,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, request_timeout_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],

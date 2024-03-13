@@ -23,6 +23,7 @@
 %% }
 -type checksum() :: #{binary() => any()}.
 
+
 %% Example:
 %% definition() :: #{
 %%   <<"Checksum">> => checksum(),
@@ -31,6 +32,7 @@
 %%   <<"State">> => list(any())
 %% }
 -type definition() :: #{binary() => any()}.
+
 
 %% Example:
 %% deployment_model() :: #{
@@ -45,6 +47,7 @@
 %% }
 -type deployment_model() :: #{binary() => any()}.
 
+
 %% Example:
 %% deployment_result() :: #{
 %%   <<"DeploymentEndTime">> => non_neg_integer(),
@@ -56,6 +59,7 @@
 %% }
 -type deployment_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% edge_deployment() :: #{
 %%   <<"Definitions">> => list(definition()()),
@@ -64,6 +68,7 @@
 %%   <<"Type">> => list(any())
 %% }
 -type edge_deployment() :: #{binary() => any()}.
+
 
 %% Example:
 %% edge_metric() :: #{
@@ -74,6 +79,7 @@
 %% }
 -type edge_metric() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_deployments_request() :: #{
 %%   <<"DeviceFleetName">> := string(),
@@ -81,11 +87,13 @@
 %% }
 -type get_deployments_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_deployments_result() :: #{
 %%   <<"Deployments">> => list(edge_deployment()())
 %% }
 -type get_deployments_result() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_device_registration_request() :: #{
@@ -94,6 +102,7 @@
 %% }
 -type get_device_registration_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_device_registration_result() :: #{
 %%   <<"CacheTTL">> => string(),
@@ -101,11 +110,13 @@
 %% }
 -type get_device_registration_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% model() :: #{
@@ -116,6 +127,7 @@
 %%   <<"ModelVersion">> => string()
 %% }
 -type model() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_heartbeat_request() :: #{
@@ -128,6 +140,15 @@
 %% }
 -type send_heartbeat_request() :: #{binary() => any()}.
 
+-type get_deployments_errors() ::
+    internal_service_exception().
+
+-type get_device_registration_errors() ::
+    internal_service_exception().
+
+-type send_heartbeat_errors() ::
+    internal_service_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -136,14 +157,14 @@
 -spec get_deployments(map(), get_deployments_request()) ->
     {ok, get_deployments_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, get_deployments_errors(), tuple()}.
 get_deployments(Client, Input) ->
     get_deployments(Client, Input, []).
 
 -spec get_deployments(map(), get_deployments_request(), proplists:proplist()) ->
     {ok, get_deployments_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, get_deployments_errors(), tuple()}.
 get_deployments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetDeployments"],
@@ -170,14 +191,14 @@ get_deployments(Client, Input0, Options0) ->
 -spec get_device_registration(map(), get_device_registration_request()) ->
     {ok, get_device_registration_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, get_device_registration_errors(), tuple()}.
 get_device_registration(Client, Input) ->
     get_device_registration(Client, Input, []).
 
 -spec get_device_registration(map(), get_device_registration_request(), proplists:proplist()) ->
     {ok, get_device_registration_result(), tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, get_device_registration_errors(), tuple()}.
 get_device_registration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetDeviceRegistration"],
@@ -205,14 +226,14 @@ get_device_registration(Client, Input0, Options0) ->
 -spec send_heartbeat(map(), send_heartbeat_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, send_heartbeat_errors(), tuple()}.
 send_heartbeat(Client, Input) ->
     send_heartbeat(Client, Input, []).
 
 -spec send_heartbeat(map(), send_heartbeat_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_service_exception(), tuple()}.
+    {error, send_heartbeat_errors(), tuple()}.
 send_heartbeat(Client, Input0, Options0) ->
     Method = post,
     Path = ["/SendHeartbeat"],

@@ -33,6 +33,7 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% alternate_contact() :: #{
 %%   <<"AlternateContactType">> => string(),
@@ -43,11 +44,13 @@
 %% }
 -type alternate_contact() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_information() :: #{
@@ -66,12 +69,14 @@
 %% }
 -type contact_information() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_alternate_contact_request() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"AlternateContactType">> := string()
 %% }
 -type delete_alternate_contact_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% disable_region_request() :: #{
@@ -80,12 +85,14 @@
 %% }
 -type disable_region_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% enable_region_request() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"RegionName">> := string()
 %% }
 -type enable_region_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_alternate_contact_request() :: #{
@@ -94,11 +101,13 @@
 %% }
 -type get_alternate_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_alternate_contact_response() :: #{
 %%   <<"AlternateContact">> => alternate_contact()
 %% }
 -type get_alternate_contact_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_contact_information_request() :: #{
@@ -106,11 +115,13 @@
 %% }
 -type get_contact_information_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_contact_information_response() :: #{
 %%   <<"ContactInformation">> => contact_information()
 %% }
 -type get_contact_information_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_region_opt_status_request() :: #{
@@ -119,6 +130,7 @@
 %% }
 -type get_region_opt_status_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_region_opt_status_response() :: #{
 %%   <<"RegionName">> => string(),
@@ -126,11 +138,13 @@
 %% }
 -type get_region_opt_status_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_regions_request() :: #{
@@ -141,12 +155,14 @@
 %% }
 -type list_regions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_regions_response() :: #{
 %%   <<"NextToken">> => [string()],
 %%   <<"Regions">> => list(region()())
 %% }
 -type list_regions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_alternate_contact_request() :: #{
@@ -159,12 +175,14 @@
 %% }
 -type put_alternate_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_contact_information_request() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"ContactInformation">> := contact_information()
 %% }
 -type put_contact_information_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% region() :: #{
@@ -173,17 +191,20 @@
 %% }
 -type region() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -193,12 +214,72 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => string(),
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+-type delete_alternate_contact_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type disable_region_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type enable_region_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_alternate_contact_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_contact_information_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_region_opt_status_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_regions_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_alternate_contact_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_contact_information_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -221,22 +302,14 @@
 -spec delete_alternate_contact(map(), delete_alternate_contact_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_alternate_contact_errors(), tuple()}.
 delete_alternate_contact(Client, Input) ->
     delete_alternate_contact(Client, Input, []).
 
 -spec delete_alternate_contact(map(), delete_alternate_contact_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_alternate_contact_errors(), tuple()}.
 delete_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteAlternateContact"],
@@ -263,22 +336,14 @@ delete_alternate_contact(Client, Input0, Options0) ->
 -spec disable_region(map(), disable_region_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_region_errors(), tuple()}.
 disable_region(Client, Input) ->
     disable_region(Client, Input, []).
 
 -spec disable_region(map(), disable_region_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, disable_region_errors(), tuple()}.
 disable_region(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disableRegion"],
@@ -305,22 +370,14 @@ disable_region(Client, Input0, Options0) ->
 -spec enable_region(map(), enable_region_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_region_errors(), tuple()}.
 enable_region(Client, Input) ->
     enable_region(Client, Input, []).
 
 -spec enable_region(map(), enable_region_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, enable_region_errors(), tuple()}.
 enable_region(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enableRegion"],
@@ -360,22 +417,14 @@ enable_region(Client, Input0, Options0) ->
 -spec get_alternate_contact(map(), get_alternate_contact_request()) ->
     {ok, get_alternate_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_alternate_contact_errors(), tuple()}.
 get_alternate_contact(Client, Input) ->
     get_alternate_contact(Client, Input, []).
 
 -spec get_alternate_contact(map(), get_alternate_contact_request(), proplists:proplist()) ->
     {ok, get_alternate_contact_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_alternate_contact_errors(), tuple()}.
 get_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getAlternateContact"],
@@ -408,22 +457,14 @@ get_alternate_contact(Client, Input0, Options0) ->
 -spec get_contact_information(map(), get_contact_information_request()) ->
     {ok, get_contact_information_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_contact_information_errors(), tuple()}.
 get_contact_information(Client, Input) ->
     get_contact_information(Client, Input, []).
 
 -spec get_contact_information(map(), get_contact_information_request(), proplists:proplist()) ->
     {ok, get_contact_information_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_contact_information_errors(), tuple()}.
 get_contact_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getContactInformation"],
@@ -450,20 +491,14 @@ get_contact_information(Client, Input0, Options0) ->
 -spec get_region_opt_status(map(), get_region_opt_status_request()) ->
     {ok, get_region_opt_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_region_opt_status_errors(), tuple()}.
 get_region_opt_status(Client, Input) ->
     get_region_opt_status(Client, Input, []).
 
 -spec get_region_opt_status(map(), get_region_opt_status_request(), proplists:proplist()) ->
     {ok, get_region_opt_status_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_region_opt_status_errors(), tuple()}.
 get_region_opt_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getRegionOptStatus"],
@@ -495,20 +530,14 @@ get_region_opt_status(Client, Input0, Options0) ->
 -spec list_regions(map(), list_regions_request()) ->
     {ok, list_regions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_regions_errors(), tuple()}.
 list_regions(Client, Input) ->
     list_regions(Client, Input, []).
 
 -spec list_regions(map(), list_regions_request(), proplists:proplist()) ->
     {ok, list_regions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_regions_errors(), tuple()}.
 list_regions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listRegions"],
@@ -548,20 +577,14 @@ list_regions(Client, Input0, Options0) ->
 -spec put_alternate_contact(map(), put_alternate_contact_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_alternate_contact_errors(), tuple()}.
 put_alternate_contact(Client, Input) ->
     put_alternate_contact(Client, Input, []).
 
 -spec put_alternate_contact(map(), put_alternate_contact_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_alternate_contact_errors(), tuple()}.
 put_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putAlternateContact"],
@@ -594,20 +617,14 @@ put_alternate_contact(Client, Input0, Options0) ->
 -spec put_contact_information(map(), put_contact_information_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_contact_information_errors(), tuple()}.
 put_contact_information(Client, Input) ->
     put_contact_information(Client, Input, []).
 
 -spec put_contact_information(map(), put_contact_information_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_contact_information_errors(), tuple()}.
 put_contact_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putContactInformation"],

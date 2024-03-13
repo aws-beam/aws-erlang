@@ -53,20 +53,24 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_thing_shadow_request() :: #{
 %%   <<"shadowName">> => string()
 %% }
 -type delete_thing_shadow_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_thing_shadow_response() :: #{
 %%   <<"payload">> => binary()
 %% }
 -type delete_thing_shadow_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_retained_message_request() :: #{}
 -type get_retained_message_request() :: #{}.
+
 
 %% Example:
 %% get_retained_message_response() :: #{
@@ -78,11 +82,13 @@
 %% }
 -type get_retained_message_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_thing_shadow_request() :: #{
 %%   <<"shadowName">> => string()
 %% }
 -type get_thing_shadow_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_thing_shadow_response() :: #{
@@ -90,11 +96,13 @@
 %% }
 -type get_thing_shadow_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_failure_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -102,12 +110,14 @@
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_named_shadows_for_thing_request() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"pageSize">> => integer()
 %% }
 -type list_named_shadows_for_thing_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_named_shadows_for_thing_response() :: #{
@@ -117,12 +127,14 @@
 %% }
 -type list_named_shadows_for_thing_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_retained_messages_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_retained_messages_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_retained_messages_response() :: #{
@@ -131,11 +143,13 @@
 %% }
 -type list_retained_messages_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% method_not_allowed_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type method_not_allowed_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% publish_request() :: #{
@@ -151,17 +165,20 @@
 %% }
 -type publish_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% request_entity_too_large_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type request_entity_too_large_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% retained_message_summary() :: #{
@@ -172,11 +189,13 @@
 %% }
 -type retained_message_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% throttling_exception() :: #{
@@ -184,17 +203,20 @@
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% unsupported_document_encoding_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type unsupported_document_encoding_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_thing_shadow_request() :: #{
@@ -203,11 +225,76 @@
 %% }
 -type update_thing_shadow_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_thing_shadow_response() :: #{
 %%   <<"payload">> => binary()
 %% }
 -type update_thing_shadow_response() :: #{binary() => any()}.
+
+-type delete_thing_shadow_errors() ::
+    unsupported_document_encoding_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    method_not_allowed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type get_retained_message_errors() ::
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    method_not_allowed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type get_thing_shadow_errors() ::
+    unsupported_document_encoding_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    method_not_allowed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_named_shadows_for_thing_errors() ::
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    method_not_allowed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_retained_messages_errors() ::
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    method_not_allowed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type publish_errors() ::
+    unauthorized_exception() | 
+    throttling_exception() | 
+    method_not_allowed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type update_thing_shadow_errors() ::
+    unsupported_document_encoding_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    request_entity_too_large_exception() | 
+    method_not_allowed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -225,28 +312,14 @@
 -spec delete_thing_shadow(map(), binary() | list(), delete_thing_shadow_request()) ->
     {ok, delete_thing_shadow_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_document_encoding_exception(), tuple()}.
+    {error, delete_thing_shadow_errors(), tuple()}.
 delete_thing_shadow(Client, ThingName, Input) ->
     delete_thing_shadow(Client, ThingName, Input, []).
 
 -spec delete_thing_shadow(map(), binary() | list(), delete_thing_shadow_request(), proplists:proplist()) ->
     {ok, delete_thing_shadow_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_document_encoding_exception(), tuple()}.
+    {error, delete_thing_shadow_errors(), tuple()}.
 delete_thing_shadow(Client, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
@@ -289,13 +362,7 @@ delete_thing_shadow(Client, ThingName, Input0, Options0) ->
 -spec get_retained_message(map(), binary() | list()) ->
     {ok, get_retained_message_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_retained_message_errors(), tuple()}.
 get_retained_message(Client, Topic)
   when is_map(Client) ->
     get_retained_message(Client, Topic, #{}, #{}).
@@ -303,13 +370,7 @@ get_retained_message(Client, Topic)
 -spec get_retained_message(map(), binary() | list(), map(), map()) ->
     {ok, get_retained_message_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_retained_message_errors(), tuple()}.
 get_retained_message(Client, Topic, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_retained_message(Client, Topic, QueryMap, HeadersMap, []).
@@ -317,13 +378,7 @@ get_retained_message(Client, Topic, QueryMap, HeadersMap)
 -spec get_retained_message(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_retained_message_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, get_retained_message_errors(), tuple()}.
 get_retained_message(Client, Topic, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/retainedMessage/", aws_util:encode_uri(Topic), ""],
@@ -353,14 +408,7 @@ get_retained_message(Client, Topic, QueryMap, HeadersMap, Options0)
 -spec get_thing_shadow(map(), binary() | list()) ->
     {ok, get_thing_shadow_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_document_encoding_exception(), tuple()}.
+    {error, get_thing_shadow_errors(), tuple()}.
 get_thing_shadow(Client, ThingName)
   when is_map(Client) ->
     get_thing_shadow(Client, ThingName, #{}, #{}).
@@ -368,14 +416,7 @@ get_thing_shadow(Client, ThingName)
 -spec get_thing_shadow(map(), binary() | list(), map(), map()) ->
     {ok, get_thing_shadow_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_document_encoding_exception(), tuple()}.
+    {error, get_thing_shadow_errors(), tuple()}.
 get_thing_shadow(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, []).
@@ -383,14 +424,7 @@ get_thing_shadow(Client, ThingName, QueryMap, HeadersMap)
 -spec get_thing_shadow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_thing_shadow_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_document_encoding_exception(), tuple()}.
+    {error, get_thing_shadow_errors(), tuple()}.
 get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
@@ -419,13 +453,7 @@ get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, Options0)
 -spec list_named_shadows_for_thing(map(), binary() | list()) ->
     {ok, list_named_shadows_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_named_shadows_for_thing_errors(), tuple()}.
 list_named_shadows_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_named_shadows_for_thing(Client, ThingName, #{}, #{}).
@@ -433,13 +461,7 @@ list_named_shadows_for_thing(Client, ThingName)
 -spec list_named_shadows_for_thing(map(), binary() | list(), map(), map()) ->
     {ok, list_named_shadows_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_named_shadows_for_thing_errors(), tuple()}.
 list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
@@ -447,13 +469,7 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap)
 -spec list_named_shadows_for_thing(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_named_shadows_for_thing_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_named_shadows_for_thing_errors(), tuple()}.
 list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/things/shadow/ListNamedShadowsForThing/", aws_util:encode_uri(ThingName), ""],
@@ -499,12 +515,7 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 -spec list_retained_messages(map()) ->
     {ok, list_retained_messages_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_retained_messages_errors(), tuple()}.
 list_retained_messages(Client)
   when is_map(Client) ->
     list_retained_messages(Client, #{}, #{}).
@@ -512,12 +523,7 @@ list_retained_messages(Client)
 -spec list_retained_messages(map(), map(), map()) ->
     {ok, list_retained_messages_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_retained_messages_errors(), tuple()}.
 list_retained_messages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_retained_messages(Client, QueryMap, HeadersMap, []).
@@ -525,12 +531,7 @@ list_retained_messages(Client, QueryMap, HeadersMap)
 -spec list_retained_messages(map(), map(), map(), proplists:proplist()) ->
     {ok, list_retained_messages_response(), tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, list_retained_messages_errors(), tuple()}.
 list_retained_messages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/retainedMessage"],
@@ -569,22 +570,14 @@ list_retained_messages(Client, QueryMap, HeadersMap, Options0)
 -spec publish(map(), binary() | list(), publish_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, publish_errors(), tuple()}.
 publish(Client, Topic, Input) ->
     publish(Client, Topic, Input, []).
 
 -spec publish(map(), binary() | list(), publish_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()}.
+    {error, publish_errors(), tuple()}.
 publish(Client, Topic, Input0, Options0) ->
     Method = post,
     Path = ["/topics/", aws_util:encode_uri(Topic), ""],
@@ -629,30 +622,14 @@ publish(Client, Topic, Input0, Options0) ->
 -spec update_thing_shadow(map(), binary() | list(), update_thing_shadow_request()) ->
     {ok, update_thing_shadow_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, request_entity_too_large_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_document_encoding_exception(), tuple()}.
+    {error, update_thing_shadow_errors(), tuple()}.
 update_thing_shadow(Client, ThingName, Input) ->
     update_thing_shadow(Client, ThingName, Input, []).
 
 -spec update_thing_shadow(map(), binary() | list(), update_thing_shadow_request(), proplists:proplist()) ->
     {ok, update_thing_shadow_response(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_failure_exception(), tuple()} |
-    {error, invalid_request_exception(), tuple()} |
-    {error, method_not_allowed_exception(), tuple()} |
-    {error, request_entity_too_large_exception(), tuple()} |
-    {error, service_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, unauthorized_exception(), tuple()} |
-    {error, unsupported_document_encoding_exception(), tuple()}.
+    {error, update_thing_shadow_errors(), tuple()}.
 update_thing_shadow(Client, ThingName, Input0, Options0) ->
     Method = post,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],

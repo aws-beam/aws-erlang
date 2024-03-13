@@ -1453,6 +1453,270 @@
 %% }
 -type put_targets_response() :: #{binary() => any()}.
 
+-type activate_event_source_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    operation_disabled_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type cancel_replay_errors() ::
+    illegal_status_exception() | 
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type create_api_destination_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type create_archive_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    invalid_event_pattern_exception().
+
+-type create_connection_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    internal_exception().
+
+-type create_event_bus_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    operation_disabled_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type create_partner_event_source_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    operation_disabled_exception().
+
+-type deactivate_event_source_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    operation_disabled_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception().
+
+-type deauthorize_connection_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type delete_api_destination_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type delete_archive_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type delete_connection_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type delete_event_bus_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception().
+
+-type delete_partner_event_source_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    operation_disabled_exception().
+
+-type delete_rule_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    managed_rule_exception() | 
+    resource_not_found_exception().
+
+-type describe_api_destination_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_archive_errors() ::
+    resource_already_exists_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_connection_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_event_bus_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_event_source_errors() ::
+    internal_exception() | 
+    operation_disabled_exception() | 
+    resource_not_found_exception().
+
+-type describe_partner_event_source_errors() ::
+    internal_exception() | 
+    operation_disabled_exception() | 
+    resource_not_found_exception().
+
+-type describe_replay_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type describe_rule_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type disable_rule_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    managed_rule_exception() | 
+    resource_not_found_exception().
+
+-type enable_rule_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    managed_rule_exception() | 
+    resource_not_found_exception().
+
+-type list_api_destinations_errors() ::
+    internal_exception().
+
+-type list_archives_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_connections_errors() ::
+    internal_exception().
+
+-type list_event_buses_errors() ::
+    internal_exception().
+
+-type list_event_sources_errors() ::
+    internal_exception() | 
+    operation_disabled_exception().
+
+-type list_partner_event_source_accounts_errors() ::
+    internal_exception() | 
+    operation_disabled_exception() | 
+    resource_not_found_exception().
+
+-type list_partner_event_sources_errors() ::
+    internal_exception() | 
+    operation_disabled_exception().
+
+-type list_replays_errors() ::
+    internal_exception().
+
+-type list_rule_names_by_target_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_rules_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type list_targets_by_rule_errors() ::
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type put_events_errors() ::
+    internal_exception().
+
+-type put_partner_events_errors() ::
+    internal_exception() | 
+    operation_disabled_exception().
+
+-type put_permission_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    operation_disabled_exception() | 
+    resource_not_found_exception() | 
+    policy_length_exceeded_exception().
+
+-type put_rule_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    managed_rule_exception() | 
+    resource_not_found_exception() | 
+    invalid_event_pattern_exception().
+
+-type put_targets_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    managed_rule_exception() | 
+    resource_not_found_exception().
+
+-type remove_permission_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    operation_disabled_exception() | 
+    resource_not_found_exception().
+
+-type remove_targets_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    managed_rule_exception() | 
+    resource_not_found_exception().
+
+-type start_replay_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    invalid_event_pattern_exception().
+
+-type tag_resource_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    managed_rule_exception() | 
+    resource_not_found_exception().
+
+-type test_event_pattern_errors() ::
+    internal_exception() | 
+    invalid_event_pattern_exception().
+
+-type untag_resource_errors() ::
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    managed_rule_exception() | 
+    resource_not_found_exception().
+
+-type update_api_destination_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
+
+-type update_archive_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    invalid_event_pattern_exception().
+
+-type update_connection_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    internal_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1465,11 +1729,7 @@
 -spec activate_event_source(map(), activate_event_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, activate_event_source_errors(), tuple()}.
 activate_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_event_source(Client, Input, []).
@@ -1477,11 +1737,7 @@ activate_event_source(Client, Input)
 -spec activate_event_source(map(), activate_event_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, activate_event_source_errors(), tuple()}.
 activate_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateEventSource">>, Input, Options).
@@ -1490,10 +1746,7 @@ activate_event_source(Client, Input, Options)
 -spec cancel_replay(map(), cancel_replay_request()) ->
     {ok, cancel_replay_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, illegal_status_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, cancel_replay_errors(), tuple()}.
 cancel_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_replay(Client, Input, []).
@@ -1501,10 +1754,7 @@ cancel_replay(Client, Input)
 -spec cancel_replay(map(), cancel_replay_request(), proplists:proplist()) ->
     {ok, cancel_replay_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, illegal_status_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, cancel_replay_errors(), tuple()}.
 cancel_replay(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelReplay">>, Input, Options).
@@ -1515,10 +1765,7 @@ cancel_replay(Client, Input, Options)
 -spec create_api_destination(map(), create_api_destination_request()) ->
     {ok, create_api_destination_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_api_destination_errors(), tuple()}.
 create_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_api_destination(Client, Input, []).
@@ -1526,10 +1773,7 @@ create_api_destination(Client, Input)
 -spec create_api_destination(map(), create_api_destination_request(), proplists:proplist()) ->
     {ok, create_api_destination_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_api_destination_errors(), tuple()}.
 create_api_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApiDestination">>, Input, Options).
@@ -1547,12 +1791,7 @@ create_api_destination(Client, Input, Options)
 -spec create_archive(map(), create_archive_request()) ->
     {ok, create_archive_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_archive_errors(), tuple()}.
 create_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_archive(Client, Input, []).
@@ -1560,12 +1799,7 @@ create_archive(Client, Input)
 -spec create_archive(map(), create_archive_request(), proplists:proplist()) ->
     {ok, create_archive_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_archive_errors(), tuple()}.
 create_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateArchive">>, Input, Options).
@@ -1577,9 +1811,7 @@ create_archive(Client, Input, Options)
 -spec create_connection(map(), create_connection_request()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
@@ -1587,9 +1819,7 @@ create_connection(Client, Input)
 -spec create_connection(map(), create_connection_request(), proplists:proplist()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_connection_errors(), tuple()}.
 create_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnection">>, Input, Options).
@@ -1603,13 +1833,7 @@ create_connection(Client, Input, Options)
 -spec create_event_bus(map(), create_event_bus_request()) ->
     {ok, create_event_bus_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_event_bus_errors(), tuple()}.
 create_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_bus(Client, Input, []).
@@ -1617,13 +1841,7 @@ create_event_bus(Client, Input)
 -spec create_event_bus(map(), create_event_bus_request(), proplists:proplist()) ->
     {ok, create_event_bus_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, create_event_bus_errors(), tuple()}.
 create_event_bus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventBus">>, Input, Options).
@@ -1665,11 +1883,7 @@ create_event_bus(Client, Input, Options)
 -spec create_partner_event_source(map(), create_partner_event_source_request()) ->
     {ok, create_partner_event_source_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_partner_event_source_errors(), tuple()}.
 create_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partner_event_source(Client, Input, []).
@@ -1677,11 +1891,7 @@ create_partner_event_source(Client, Input)
 -spec create_partner_event_source(map(), create_partner_event_source_request(), proplists:proplist()) ->
     {ok, create_partner_event_source_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()}.
+    {error, create_partner_event_source_errors(), tuple()}.
 create_partner_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePartnerEventSource">>, Input, Options).
@@ -1701,11 +1911,7 @@ create_partner_event_source(Client, Input, Options)
 -spec deactivate_event_source(map(), deactivate_event_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deactivate_event_source_errors(), tuple()}.
 deactivate_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_event_source(Client, Input, []).
@@ -1713,11 +1919,7 @@ deactivate_event_source(Client, Input)
 -spec deactivate_event_source(map(), deactivate_event_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_state_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deactivate_event_source_errors(), tuple()}.
 deactivate_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateEventSource">>, Input, Options).
@@ -1730,9 +1932,7 @@ deactivate_event_source(Client, Input, Options)
 -spec deauthorize_connection(map(), deauthorize_connection_request()) ->
     {ok, deauthorize_connection_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deauthorize_connection_errors(), tuple()}.
 deauthorize_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     deauthorize_connection(Client, Input, []).
@@ -1740,9 +1940,7 @@ deauthorize_connection(Client, Input)
 -spec deauthorize_connection(map(), deauthorize_connection_request(), proplists:proplist()) ->
     {ok, deauthorize_connection_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, deauthorize_connection_errors(), tuple()}.
 deauthorize_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeauthorizeConnection">>, Input, Options).
@@ -1751,9 +1949,7 @@ deauthorize_connection(Client, Input, Options)
 -spec delete_api_destination(map(), delete_api_destination_request()) ->
     {ok, delete_api_destination_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_api_destination_errors(), tuple()}.
 delete_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_api_destination(Client, Input, []).
@@ -1761,9 +1957,7 @@ delete_api_destination(Client, Input)
 -spec delete_api_destination(map(), delete_api_destination_request(), proplists:proplist()) ->
     {ok, delete_api_destination_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_api_destination_errors(), tuple()}.
 delete_api_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApiDestination">>, Input, Options).
@@ -1772,9 +1966,7 @@ delete_api_destination(Client, Input, Options)
 -spec delete_archive(map(), delete_archive_request()) ->
     {ok, delete_archive_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_archive_errors(), tuple()}.
 delete_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_archive(Client, Input, []).
@@ -1782,9 +1974,7 @@ delete_archive(Client, Input)
 -spec delete_archive(map(), delete_archive_request(), proplists:proplist()) ->
     {ok, delete_archive_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_archive_errors(), tuple()}.
 delete_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteArchive">>, Input, Options).
@@ -1793,9 +1983,7 @@ delete_archive(Client, Input, Options)
 -spec delete_connection(map(), delete_connection_request()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
@@ -1803,9 +1991,7 @@ delete_connection(Client, Input)
 -spec delete_connection(map(), delete_connection_request(), proplists:proplist()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
@@ -1818,8 +2004,7 @@ delete_connection(Client, Input, Options)
 -spec delete_event_bus(map(), delete_event_bus_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, delete_event_bus_errors(), tuple()}.
 delete_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_bus(Client, Input, []).
@@ -1827,8 +2012,7 @@ delete_event_bus(Client, Input)
 -spec delete_event_bus(map(), delete_event_bus_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()}.
+    {error, delete_event_bus_errors(), tuple()}.
 delete_event_bus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventBus">>, Input, Options).
@@ -1845,9 +2029,7 @@ delete_event_bus(Client, Input, Options)
 -spec delete_partner_event_source(map(), delete_partner_event_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()}.
+    {error, delete_partner_event_source_errors(), tuple()}.
 delete_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partner_event_source(Client, Input, []).
@@ -1855,9 +2037,7 @@ delete_partner_event_source(Client, Input)
 -spec delete_partner_event_source(map(), delete_partner_event_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()}.
+    {error, delete_partner_event_source_errors(), tuple()}.
 delete_partner_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartnerEventSource">>, Input, Options).
@@ -1888,10 +2068,7 @@ delete_partner_event_source(Client, Input, Options)
 -spec delete_rule(map(), delete_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
@@ -1899,10 +2076,7 @@ delete_rule(Client, Input)
 -spec delete_rule(map(), delete_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
@@ -1911,8 +2085,7 @@ delete_rule(Client, Input, Options)
 -spec describe_api_destination(map(), describe_api_destination_request()) ->
     {ok, describe_api_destination_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_api_destination_errors(), tuple()}.
 describe_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_api_destination(Client, Input, []).
@@ -1920,8 +2093,7 @@ describe_api_destination(Client, Input)
 -spec describe_api_destination(map(), describe_api_destination_request(), proplists:proplist()) ->
     {ok, describe_api_destination_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_api_destination_errors(), tuple()}.
 describe_api_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApiDestination">>, Input, Options).
@@ -1930,9 +2102,7 @@ describe_api_destination(Client, Input, Options)
 -spec describe_archive(map(), describe_archive_request()) ->
     {ok, describe_archive_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_archive_errors(), tuple()}.
 describe_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_archive(Client, Input, []).
@@ -1940,9 +2110,7 @@ describe_archive(Client, Input)
 -spec describe_archive(map(), describe_archive_request(), proplists:proplist()) ->
     {ok, describe_archive_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_archive_errors(), tuple()}.
 describe_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeArchive">>, Input, Options).
@@ -1951,8 +2119,7 @@ describe_archive(Client, Input, Options)
 -spec describe_connection(map(), describe_connection_request()) ->
     {ok, describe_connection_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_connection_errors(), tuple()}.
 describe_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection(Client, Input, []).
@@ -1960,8 +2127,7 @@ describe_connection(Client, Input)
 -spec describe_connection(map(), describe_connection_request(), proplists:proplist()) ->
     {ok, describe_connection_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_connection_errors(), tuple()}.
 describe_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnection">>, Input, Options).
@@ -1985,8 +2151,7 @@ describe_connection(Client, Input, Options)
 -spec describe_event_bus(map(), describe_event_bus_request()) ->
     {ok, describe_event_bus_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_event_bus_errors(), tuple()}.
 describe_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_bus(Client, Input, []).
@@ -1994,8 +2159,7 @@ describe_event_bus(Client, Input)
 -spec describe_event_bus(map(), describe_event_bus_request(), proplists:proplist()) ->
     {ok, describe_event_bus_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_event_bus_errors(), tuple()}.
 describe_event_bus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventBus">>, Input, Options).
@@ -2006,9 +2170,7 @@ describe_event_bus(Client, Input, Options)
 -spec describe_event_source(map(), describe_event_source_request()) ->
     {ok, describe_event_source_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_event_source_errors(), tuple()}.
 describe_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_source(Client, Input, []).
@@ -2016,9 +2178,7 @@ describe_event_source(Client, Input)
 -spec describe_event_source(map(), describe_event_source_request(), proplists:proplist()) ->
     {ok, describe_event_source_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_event_source_errors(), tuple()}.
 describe_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventSource">>, Input, Options).
@@ -2035,9 +2195,7 @@ describe_event_source(Client, Input, Options)
 -spec describe_partner_event_source(map(), describe_partner_event_source_request()) ->
     {ok, describe_partner_event_source_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_partner_event_source_errors(), tuple()}.
 describe_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_partner_event_source(Client, Input, []).
@@ -2045,9 +2203,7 @@ describe_partner_event_source(Client, Input)
 -spec describe_partner_event_source(map(), describe_partner_event_source_request(), proplists:proplist()) ->
     {ok, describe_partner_event_source_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_partner_event_source_errors(), tuple()}.
 describe_partner_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePartnerEventSource">>, Input, Options).
@@ -2071,8 +2227,7 @@ describe_partner_event_source(Client, Input, Options)
 -spec describe_replay(map(), describe_replay_request()) ->
     {ok, describe_replay_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_replay_errors(), tuple()}.
 describe_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replay(Client, Input, []).
@@ -2080,8 +2235,7 @@ describe_replay(Client, Input)
 -spec describe_replay(map(), describe_replay_request(), proplists:proplist()) ->
     {ok, describe_replay_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_replay_errors(), tuple()}.
 describe_replay(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplay">>, Input, Options).
@@ -2095,8 +2249,7 @@ describe_replay(Client, Input, Options)
 -spec describe_rule(map(), describe_rule_request()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_rule_errors(), tuple()}.
 describe_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule(Client, Input, []).
@@ -2104,8 +2257,7 @@ describe_rule(Client, Input)
 -spec describe_rule(map(), describe_rule_request(), proplists:proplist()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, describe_rule_errors(), tuple()}.
 describe_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRule">>, Input, Options).
@@ -2121,10 +2273,7 @@ describe_rule(Client, Input, Options)
 -spec disable_rule(map(), disable_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_rule_errors(), tuple()}.
 disable_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_rule(Client, Input, []).
@@ -2132,10 +2281,7 @@ disable_rule(Client, Input)
 -spec disable_rule(map(), disable_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, disable_rule_errors(), tuple()}.
 disable_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableRule">>, Input, Options).
@@ -2150,10 +2296,7 @@ disable_rule(Client, Input, Options)
 -spec enable_rule(map(), enable_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_rule_errors(), tuple()}.
 enable_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_rule(Client, Input, []).
@@ -2161,10 +2304,7 @@ enable_rule(Client, Input)
 -spec enable_rule(map(), enable_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, enable_rule_errors(), tuple()}.
 enable_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableRule">>, Input, Options).
@@ -2174,7 +2314,7 @@ enable_rule(Client, Input, Options)
 -spec list_api_destinations(map(), list_api_destinations_request()) ->
     {ok, list_api_destinations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_api_destinations_errors(), tuple()}.
 list_api_destinations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_api_destinations(Client, Input, []).
@@ -2182,7 +2322,7 @@ list_api_destinations(Client, Input)
 -spec list_api_destinations(map(), list_api_destinations_request(), proplists:proplist()) ->
     {ok, list_api_destinations_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_api_destinations_errors(), tuple()}.
 list_api_destinations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApiDestinations">>, Input, Options).
@@ -2194,8 +2334,7 @@ list_api_destinations(Client, Input, Options)
 -spec list_archives(map(), list_archives_request()) ->
     {ok, list_archives_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_archives_errors(), tuple()}.
 list_archives(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_archives(Client, Input, []).
@@ -2203,8 +2342,7 @@ list_archives(Client, Input)
 -spec list_archives(map(), list_archives_request(), proplists:proplist()) ->
     {ok, list_archives_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_archives_errors(), tuple()}.
 list_archives(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListArchives">>, Input, Options).
@@ -2213,7 +2351,7 @@ list_archives(Client, Input, Options)
 -spec list_connections(map(), list_connections_request()) ->
     {ok, list_connections_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_connections_errors(), tuple()}.
 list_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_connections(Client, Input, []).
@@ -2221,7 +2359,7 @@ list_connections(Client, Input)
 -spec list_connections(map(), list_connections_request(), proplists:proplist()) ->
     {ok, list_connections_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_connections_errors(), tuple()}.
 list_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConnections">>, Input, Options).
@@ -2232,7 +2370,7 @@ list_connections(Client, Input, Options)
 -spec list_event_buses(map(), list_event_buses_request()) ->
     {ok, list_event_buses_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_event_buses_errors(), tuple()}.
 list_event_buses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_buses(Client, Input, []).
@@ -2240,7 +2378,7 @@ list_event_buses(Client, Input)
 -spec list_event_buses(map(), list_event_buses_request(), proplists:proplist()) ->
     {ok, list_event_buses_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_event_buses_errors(), tuple()}.
 list_event_buses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventBuses">>, Input, Options).
@@ -2254,8 +2392,7 @@ list_event_buses(Client, Input, Options)
 -spec list_event_sources(map(), list_event_sources_request()) ->
     {ok, list_event_sources_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()}.
+    {error, list_event_sources_errors(), tuple()}.
 list_event_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_sources(Client, Input, []).
@@ -2263,8 +2400,7 @@ list_event_sources(Client, Input)
 -spec list_event_sources(map(), list_event_sources_request(), proplists:proplist()) ->
     {ok, list_event_sources_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()}.
+    {error, list_event_sources_errors(), tuple()}.
 list_event_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventSources">>, Input, Options).
@@ -2278,9 +2414,7 @@ list_event_sources(Client, Input, Options)
 -spec list_partner_event_source_accounts(map(), list_partner_event_source_accounts_request()) ->
     {ok, list_partner_event_source_accounts_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_partner_event_source_accounts_errors(), tuple()}.
 list_partner_event_source_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partner_event_source_accounts(Client, Input, []).
@@ -2288,9 +2422,7 @@ list_partner_event_source_accounts(Client, Input)
 -spec list_partner_event_source_accounts(map(), list_partner_event_source_accounts_request(), proplists:proplist()) ->
     {ok, list_partner_event_source_accounts_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_partner_event_source_accounts_errors(), tuple()}.
 list_partner_event_source_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPartnerEventSourceAccounts">>, Input, Options).
@@ -2303,8 +2435,7 @@ list_partner_event_source_accounts(Client, Input, Options)
 -spec list_partner_event_sources(map(), list_partner_event_sources_request()) ->
     {ok, list_partner_event_sources_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()}.
+    {error, list_partner_event_sources_errors(), tuple()}.
 list_partner_event_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partner_event_sources(Client, Input, []).
@@ -2312,8 +2443,7 @@ list_partner_event_sources(Client, Input)
 -spec list_partner_event_sources(map(), list_partner_event_sources_request(), proplists:proplist()) ->
     {ok, list_partner_event_sources_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()}.
+    {error, list_partner_event_sources_errors(), tuple()}.
 list_partner_event_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPartnerEventSources">>, Input, Options).
@@ -2325,7 +2455,7 @@ list_partner_event_sources(Client, Input, Options)
 -spec list_replays(map(), list_replays_request()) ->
     {ok, list_replays_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_replays_errors(), tuple()}.
 list_replays(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_replays(Client, Input, []).
@@ -2333,7 +2463,7 @@ list_replays(Client, Input)
 -spec list_replays(map(), list_replays_request(), proplists:proplist()) ->
     {ok, list_replays_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, list_replays_errors(), tuple()}.
 list_replays(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReplays">>, Input, Options).
@@ -2345,8 +2475,7 @@ list_replays(Client, Input, Options)
 -spec list_rule_names_by_target(map(), list_rule_names_by_target_request()) ->
     {ok, list_rule_names_by_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_rule_names_by_target_errors(), tuple()}.
 list_rule_names_by_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_names_by_target(Client, Input, []).
@@ -2354,8 +2483,7 @@ list_rule_names_by_target(Client, Input)
 -spec list_rule_names_by_target(map(), list_rule_names_by_target_request(), proplists:proplist()) ->
     {ok, list_rule_names_by_target_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_rule_names_by_target_errors(), tuple()}.
 list_rule_names_by_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleNamesByTarget">>, Input, Options).
@@ -2372,8 +2500,7 @@ list_rule_names_by_target(Client, Input, Options)
 -spec list_rules(map(), list_rules_request()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules(Client, Input, []).
@@ -2381,8 +2508,7 @@ list_rules(Client, Input)
 -spec list_rules(map(), list_rules_request(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_rules_errors(), tuple()}.
 list_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRules">>, Input, Options).
@@ -2394,8 +2520,7 @@ list_rules(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2403,8 +2528,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2413,8 +2537,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec list_targets_by_rule(map(), list_targets_by_rule_request()) ->
     {ok, list_targets_by_rule_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_targets_by_rule_errors(), tuple()}.
 list_targets_by_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_targets_by_rule(Client, Input, []).
@@ -2422,8 +2545,7 @@ list_targets_by_rule(Client, Input)
 -spec list_targets_by_rule(map(), list_targets_by_rule_request(), proplists:proplist()) ->
     {ok, list_targets_by_rule_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_targets_by_rule_errors(), tuple()}.
 list_targets_by_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTargetsByRule">>, Input, Options).
@@ -2433,7 +2555,7 @@ list_targets_by_rule(Client, Input, Options)
 -spec put_events(map(), put_events_request()) ->
     {ok, put_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, put_events_errors(), tuple()}.
 put_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_events(Client, Input, []).
@@ -2441,7 +2563,7 @@ put_events(Client, Input)
 -spec put_events(map(), put_events_request(), proplists:proplist()) ->
     {ok, put_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()}.
+    {error, put_events_errors(), tuple()}.
 put_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEvents">>, Input, Options).
@@ -2454,8 +2576,7 @@ put_events(Client, Input, Options)
 -spec put_partner_events(map(), put_partner_events_request()) ->
     {ok, put_partner_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()}.
+    {error, put_partner_events_errors(), tuple()}.
 put_partner_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_partner_events(Client, Input, []).
@@ -2463,8 +2584,7 @@ put_partner_events(Client, Input)
 -spec put_partner_events(map(), put_partner_events_request(), proplists:proplist()) ->
     {ok, put_partner_events_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()}.
+    {error, put_partner_events_errors(), tuple()}.
 put_partner_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPartnerEvents">>, Input, Options).
@@ -2508,11 +2628,7 @@ put_partner_events(Client, Input, Options)
 -spec put_permission(map(), put_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, policy_length_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_permission_errors(), tuple()}.
 put_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permission(Client, Input, []).
@@ -2520,11 +2636,7 @@ put_permission(Client, Input)
 -spec put_permission(map(), put_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, policy_length_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_permission_errors(), tuple()}.
 put_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermission">>, Input, Options).
@@ -2620,12 +2732,7 @@ put_permission(Client, Input, Options)
 -spec put_rule(map(), put_rule_request()) ->
     {ok, put_rule_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_rule_errors(), tuple()}.
 put_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_rule(Client, Input, []).
@@ -2633,12 +2740,7 @@ put_rule(Client, Input)
 -spec put_rule(map(), put_rule_request(), proplists:proplist()) ->
     {ok, put_rule_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_rule_errors(), tuple()}.
 put_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRule">>, Input, Options).
@@ -2815,11 +2917,7 @@ put_rule(Client, Input, Options)
 -spec put_targets(map(), put_targets_request()) ->
     {ok, put_targets_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_targets_errors(), tuple()}.
 put_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_targets(Client, Input, []).
@@ -2827,11 +2925,7 @@ put_targets(Client, Input)
 -spec put_targets(map(), put_targets_request(), proplists:proplist()) ->
     {ok, put_targets_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, put_targets_errors(), tuple()}.
 put_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutTargets">>, Input, Options).
@@ -2848,10 +2942,7 @@ put_targets(Client, Input, Options)
 -spec remove_permission(map(), remove_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
@@ -2859,10 +2950,7 @@ remove_permission(Client, Input)
 -spec remove_permission(map(), remove_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, operation_disabled_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemovePermission">>, Input, Options).
@@ -2886,10 +2974,7 @@ remove_permission(Client, Input, Options)
 -spec remove_targets(map(), remove_targets_request()) ->
     {ok, remove_targets_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, remove_targets_errors(), tuple()}.
 remove_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_targets(Client, Input, []).
@@ -2897,10 +2982,7 @@ remove_targets(Client, Input)
 -spec remove_targets(map(), remove_targets_request(), proplists:proplist()) ->
     {ok, remove_targets_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, remove_targets_errors(), tuple()}.
 remove_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTargets">>, Input, Options).
@@ -2925,11 +3007,7 @@ remove_targets(Client, Input, Options)
 -spec start_replay(map(), start_replay_request()) ->
     {ok, start_replay_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_replay_errors(), tuple()}.
 start_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replay(Client, Input, []).
@@ -2937,11 +3015,7 @@ start_replay(Client, Input)
 -spec start_replay(map(), start_replay_request(), proplists:proplist()) ->
     {ok, start_replay_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_already_exists_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, start_replay_errors(), tuple()}.
 start_replay(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReplay">>, Input, Options).
@@ -2972,10 +3046,7 @@ start_replay(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2983,10 +3054,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3003,8 +3071,7 @@ tag_resource(Client, Input, Options)
 -spec test_event_pattern(map(), test_event_pattern_request()) ->
     {ok, test_event_pattern_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()}.
+    {error, test_event_pattern_errors(), tuple()}.
 test_event_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_event_pattern(Client, Input, []).
@@ -3012,8 +3079,7 @@ test_event_pattern(Client, Input)
 -spec test_event_pattern(map(), test_event_pattern_request(), proplists:proplist()) ->
     {ok, test_event_pattern_response(), tuple()} |
     {error, any()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()}.
+    {error, test_event_pattern_errors(), tuple()}.
 test_event_pattern(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestEventPattern">>, Input, Options).
@@ -3025,10 +3091,7 @@ test_event_pattern(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3036,10 +3099,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, managed_rule_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3048,10 +3108,7 @@ untag_resource(Client, Input, Options)
 -spec update_api_destination(map(), update_api_destination_request()) ->
     {ok, update_api_destination_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_api_destination_errors(), tuple()}.
 update_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_api_destination(Client, Input, []).
@@ -3059,10 +3116,7 @@ update_api_destination(Client, Input)
 -spec update_api_destination(map(), update_api_destination_request(), proplists:proplist()) ->
     {ok, update_api_destination_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_api_destination_errors(), tuple()}.
 update_api_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApiDestination">>, Input, Options).
@@ -3071,11 +3125,7 @@ update_api_destination(Client, Input, Options)
 -spec update_archive(map(), update_archive_request()) ->
     {ok, update_archive_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_archive_errors(), tuple()}.
 update_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_archive(Client, Input, []).
@@ -3083,11 +3133,7 @@ update_archive(Client, Input)
 -spec update_archive(map(), update_archive_request(), proplists:proplist()) ->
     {ok, update_archive_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, invalid_event_pattern_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_archive_errors(), tuple()}.
 update_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateArchive">>, Input, Options).
@@ -3096,10 +3142,7 @@ update_archive(Client, Input, Options)
 -spec update_connection(map(), update_connection_request()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_connection_errors(), tuple()}.
 update_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connection(Client, Input, []).
@@ -3107,10 +3150,7 @@ update_connection(Client, Input)
 -spec update_connection(map(), update_connection_request(), proplists:proplist()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, internal_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, update_connection_errors(), tuple()}.
 update_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnection">>, Input, Options).

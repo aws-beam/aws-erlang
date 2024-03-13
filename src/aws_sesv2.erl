@@ -239,9 +239,11 @@
 %% Example:
 %% create_custom_verification_email_template_response() :: #{}
 -type create_custom_verification_email_template_response() :: #{}.
+
 %% Example:
 %% put_configuration_set_tracking_options_response() :: #{}
 -type put_configuration_set_tracking_options_response() :: #{}.
+
 
 %% Example:
 %% tracking_options() :: #{
@@ -249,11 +251,13 @@
 %% }
 -type tracking_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_import_job_response() :: #{
 %%   <<"JobId">> => string()
 %% }
 -type create_import_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_email_identity_response() :: #{
@@ -270,6 +274,7 @@
 %% }
 -type get_email_identity_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% dkim_signing_attributes() :: #{
 %%   <<"DomainSigningPrivateKey">> => string(),
@@ -278,23 +283,29 @@
 %% }
 -type dkim_signing_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% dashboard_options() :: #{
 %%   <<"EngagementMetrics">> => list(any())
 %% }
 -type dashboard_options() :: #{binary() => any()}.
+
 %% Example:
 %% put_email_identity_dkim_attributes_response() :: #{}
 -type put_email_identity_dkim_attributes_response() :: #{}.
+
 %% Example:
 %% delete_configuration_set_response() :: #{}
 -type delete_configuration_set_response() :: #{}.
+
 %% Example:
 %% put_account_suppression_attributes_response() :: #{}
 -type put_account_suppression_attributes_response() :: #{}.
+
 %% Example:
 %% update_email_identity_policy_response() :: #{}
 -type update_email_identity_policy_response() :: #{}.
+
 
 %% Example:
 %% list_deliverability_test_reports_request() :: #{
@@ -302,9 +313,11 @@
 %%   <<"PageSize">> => integer()
 %% }
 -type list_deliverability_test_reports_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_suppressed_destination_request() :: #{}
 -type get_suppressed_destination_request() :: #{}.
+
 
 %% Example:
 %% list_export_jobs_request() :: #{
@@ -315,12 +328,14 @@
 %% }
 -type list_export_jobs_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"Tags">> := list(tag()())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_import_job_request() :: #{
@@ -329,17 +344,20 @@
 %% }
 -type create_import_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% suppression_attributes() :: #{
 %%   <<"SuppressedReasons">> => list(list(any())())
 %% }
 -type suppression_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_account_sending_attributes_request() :: #{
 %%   <<"SendingEnabled">> => boolean()
 %% }
 -type put_account_sending_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_account_response() :: #{
@@ -353,12 +371,15 @@
 %%   <<"VdmAttributes">> => vdm_attributes()
 %% }
 -type get_account_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_request() :: #{}
 -type delete_contact_request() :: #{}.
+
 %% Example:
 %% get_deliverability_test_report_request() :: #{}
 -type get_deliverability_test_report_request() :: #{}.
+
 
 %% Example:
 %% get_contact_list_response() :: #{
@@ -371,6 +392,7 @@
 %% }
 -type get_contact_list_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% volume_statistics() :: #{
 %%   <<"InboxRawCount">> => float(),
@@ -379,9 +401,11 @@
 %%   <<"SpamRawCount">> => float()
 %% }
 -type volume_statistics() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_list_response() :: #{}
 -type delete_contact_list_response() :: #{}.
+
 
 %% Example:
 %% list_email_identities_response() :: #{
@@ -390,20 +414,25 @@
 %% }
 -type list_email_identities_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_email_template_request() :: #{
 %%   <<"TemplateContent">> := email_template_content()
 %% }
 -type update_email_template_request() :: #{binary() => any()}.
+
 %% Example:
 %% create_dedicated_ip_pool_response() :: #{}
 -type create_dedicated_ip_pool_response() :: #{}.
+
 %% Example:
 %% put_configuration_set_reputation_options_response() :: #{}
 -type put_configuration_set_reputation_options_response() :: #{}.
+
 %% Example:
 %% cancel_export_job_response() :: #{}
 -type cancel_export_job_response() :: #{}.
+
 
 %% Example:
 %% create_email_identity_policy_request() :: #{
@@ -411,21 +440,25 @@
 %% }
 -type create_email_identity_policy_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contacts_filter() :: #{
 %%   <<"FilteredStatus">> => list(any()),
 %%   <<"TopicFilter">> => topic_filter()
 %% }
 -type list_contacts_filter() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% put_email_identity_feedback_attributes_request() :: #{
 %%   <<"EmailForwardingEnabled">> => boolean()
 %% }
 -type put_email_identity_feedback_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% isp_placement() :: #{
@@ -434,12 +467,14 @@
 %% }
 -type isp_placement() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_details() :: #{
 %%   <<"Bounce">> => bounce(),
 %%   <<"Complaint">> => complaint()
 %% }
 -type event_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_template_content() :: #{
@@ -449,12 +484,14 @@
 %% }
 -type email_template_content() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contact_lists_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer()
 %% }
 -type list_contact_lists_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact_list_destination() :: #{
@@ -463,11 +500,13 @@
 %% }
 -type contact_list_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_configuration_set_vdm_options_request() :: #{
 %%   <<"VdmOptions">> => vdm_options()
 %% }
 -type put_configuration_set_vdm_options_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_deliverability_test_reports_response() :: #{
@@ -476,12 +515,14 @@
 %% }
 -type list_deliverability_test_reports_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% kinesis_firehose_destination() :: #{
 %%   <<"DeliveryStreamArn">> => string(),
 %%   <<"IamRoleArn">> => string()
 %% }
 -type kinesis_firehose_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% vdm_options() :: #{
@@ -490,17 +531,21 @@
 %% }
 -type vdm_options() :: #{binary() => any()}.
 
+
 %% Example:
 %% already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type already_exists_exception() :: #{binary() => any()}.
+
 %% Example:
 %% put_account_dedicated_ip_warmup_attributes_response() :: #{}
 -type put_account_dedicated_ip_warmup_attributes_response() :: #{}.
+
 %% Example:
 %% update_contact_list_response() :: #{}
 -type update_contact_list_response() :: #{}.
+
 
 %% Example:
 %% verification_info() :: #{
@@ -511,11 +556,13 @@
 %% }
 -type verification_info() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_export_job_response() :: #{
 %%   <<"JobId">> => string()
 %% }
 -type create_export_job_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% message_insights_data_source() :: #{
@@ -527,6 +574,7 @@
 %% }
 -type message_insights_data_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% suppressed_destination_summary() :: #{
 %%   <<"EmailAddress">> => string(),
@@ -534,9 +582,11 @@
 %%   <<"Reason">> => list(any())
 %% }
 -type suppressed_destination_summary() :: #{binary() => any()}.
+
 %% Example:
 %% delete_email_identity_policy_response() :: #{}
 -type delete_email_identity_policy_response() :: #{}.
+
 
 %% Example:
 %% send_quota() :: #{
@@ -545,6 +595,7 @@
 %%   <<"SentLast24Hours">> => float()
 %% }
 -type send_quota() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_custom_verification_email_template_response() :: #{
@@ -556,6 +607,7 @@
 %%   <<"TemplateSubject">> => string()
 %% }
 -type get_custom_verification_email_template_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% dkim_attributes() :: #{
@@ -569,17 +621,20 @@
 %% }
 -type dkim_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_email_identity_policies_response() :: #{
 %%   <<"Policies">> => map()
 %% }
 -type get_email_identity_policies_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_dedicated_ip_pool_scaling_attributes_request() :: #{
 %%   <<"ScalingMode">> := list(any())
 %% }
 -type put_dedicated_ip_pool_scaling_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_email_identity_response() :: #{
@@ -589,6 +644,7 @@
 %% }
 -type create_email_identity_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_email_templates_request() :: #{
 %%   <<"NextToken">> => string(),
@@ -596,11 +652,13 @@
 %% }
 -type list_email_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_render_email_template_request() :: #{
 %%   <<"TemplateData">> := string()
 %% }
 -type test_render_email_template_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% sending_paused_exception() :: #{
@@ -608,12 +666,14 @@
 %% }
 -type sending_paused_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_deliverability_dashboard_option_request() :: #{
 %%   <<"DashboardEnabled">> := boolean(),
 %%   <<"SubscribedDomains">> => list(domain_deliverability_tracking_option()())
 %% }
 -type put_deliverability_dashboard_option_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_account_details_request() :: #{
@@ -626,23 +686,28 @@
 %% }
 -type put_account_details_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_bulk_email_response() :: #{
 %%   <<"BulkEmailEntryResults">> => list(bulk_email_entry_result()())
 %% }
 -type send_bulk_email_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_custom_verification_email_template_request() :: #{}
 -type get_custom_verification_email_template_request() :: #{}.
+
 %% Example:
 %% put_configuration_set_delivery_options_response() :: #{}
 -type put_configuration_set_delivery_options_response() :: #{}.
+
 
 %% Example:
 %% account_suspended_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type account_suspended_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% email_content() :: #{
@@ -651,6 +716,7 @@
 %%   <<"Template">> => template()
 %% }
 -type email_content() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_deliverability_dashboard_options_response() :: #{
@@ -661,18 +727,23 @@
 %%   <<"SubscriptionExpiryDate">> => non_neg_integer()
 %% }
 -type get_deliverability_dashboard_options_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_domain_deliverability_campaign_request() :: #{}
 -type get_domain_deliverability_campaign_request() :: #{}.
+
 %% Example:
 %% delete_configuration_set_event_destination_response() :: #{}
 -type delete_configuration_set_event_destination_response() :: #{}.
+
 %% Example:
 %% put_account_vdm_attributes_response() :: #{}
 -type put_account_vdm_attributes_response() :: #{}.
+
 %% Example:
 %% delete_email_identity_request() :: #{}
 -type delete_email_identity_request() :: #{}.
+
 
 %% Example:
 %% s_o_a_record() :: #{
@@ -682,11 +753,13 @@
 %% }
 -type s_o_a_record() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_service_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type internal_service_error_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% cloud_watch_dimension_configuration() :: #{
@@ -695,9 +768,11 @@
 %%   <<"DimensionValueSource">> => list(any())
 %% }
 -type cloud_watch_dimension_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_verification_email_template_response() :: #{}
 -type delete_custom_verification_email_template_response() :: #{}.
+
 
 %% Example:
 %% put_suppressed_destination_request() :: #{
@@ -706,6 +781,7 @@
 %% }
 -type put_suppressed_destination_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
@@ -713,11 +789,13 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_deliverability_test_report_response() :: #{
@@ -725,6 +803,7 @@
 %%   <<"ReportId">> => string()
 %% }
 -type create_deliverability_test_report_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% event_destination_definition() :: #{
@@ -737,6 +816,7 @@
 %% }
 -type event_destination_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_suppressed_destinations_response() :: #{
 %%   <<"NextToken">> => string(),
@@ -744,15 +824,18 @@
 %% }
 -type list_suppressed_destinations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domain_deliverability_campaigns_response() :: #{
 %%   <<"DomainDeliverabilityCampaigns">> => list(domain_deliverability_campaign()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_domain_deliverability_campaigns_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configuration_set_request() :: #{}
 -type delete_configuration_set_request() :: #{}.
+
 
 %% Example:
 %% put_account_suppression_attributes_request() :: #{
@@ -760,11 +843,13 @@
 %% }
 -type put_account_suppression_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_email_response() :: #{
 %%   <<"MessageId">> => string()
 %% }
 -type send_email_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_suppressed_destinations_request() :: #{
@@ -775,18 +860,22 @@
 %%   <<"StartDate">> => non_neg_integer()
 %% }
 -type list_suppressed_destinations_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_dedicated_ip_pool_request() :: #{}
 -type delete_dedicated_ip_pool_request() :: #{}.
+
 %% Example:
 %% delete_email_template_request() :: #{}
 -type delete_email_template_request() :: #{}.
+
 
 %% Example:
 %% cloud_watch_destination() :: #{
 %%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration()())
 %% }
 -type cloud_watch_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% blacklist_entry() :: #{
@@ -796,17 +885,20 @@
 %% }
 -type blacklist_entry() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_configuration_set_suppression_options_request() :: #{
 %%   <<"SuppressedReasons">> => list(list(any())())
 %% }
 -type put_configuration_set_suppression_options_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% mail_from_domain_not_verified_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type mail_from_domain_not_verified_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% overall_volume() :: #{
@@ -815,9 +907,11 @@
 %%   <<"VolumeStatistics">> => volume_statistics()
 %% }
 -type overall_volume() :: #{binary() => any()}.
+
 %% Example:
 %% get_dedicated_ip_pool_request() :: #{}
 -type get_dedicated_ip_pool_request() :: #{}.
+
 
 %% Example:
 %% domain_isp_placement() :: #{
@@ -829,15 +923,18 @@
 %% }
 -type domain_isp_placement() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_email_template_request() :: #{
 %%   <<"TemplateContent">> := email_template_content(),
 %%   <<"TemplateName">> := string()
 %% }
 -type create_email_template_request() :: #{binary() => any()}.
+
 %% Example:
 %% create_contact_response() :: #{}
 -type create_contact_response() :: #{}.
+
 
 %% Example:
 %% dedicated_ip() :: #{
@@ -847,9 +944,11 @@
 %%   <<"WarmupStatus">> => list(any())
 %% }
 -type dedicated_ip() :: #{binary() => any()}.
+
 %% Example:
 %% create_email_identity_policy_response() :: #{}
 -type create_email_identity_policy_response() :: #{}.
+
 
 %% Example:
 %% email_insights() :: #{
@@ -859,14 +958,17 @@
 %% }
 -type email_insights() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_blacklist_reports_request() :: #{
 %%   <<"BlacklistItemNames">> := list(string()())
 %% }
 -type get_blacklist_reports_request() :: #{binary() => any()}.
+
 %% Example:
 %% put_email_identity_configuration_set_attributes_response() :: #{}
 -type put_email_identity_configuration_set_attributes_response() :: #{}.
+
 
 %% Example:
 %% message_insights_filters() :: #{
@@ -879,6 +981,7 @@
 %% }
 -type message_insights_filters() :: #{binary() => any()}.
 
+
 %% Example:
 %% mail_from_attributes() :: #{
 %%   <<"BehaviorOnMxFailure">> => list(any()),
@@ -886,9 +989,11 @@
 %%   <<"MailFromDomainStatus">> => list(any())
 %% }
 -type mail_from_attributes() :: #{binary() => any()}.
+
 %% Example:
 %% create_configuration_set_response() :: #{}
 -type create_configuration_set_response() :: #{}.
+
 
 %% Example:
 %% list_custom_verification_email_templates_request() :: #{
@@ -897,15 +1002,18 @@
 %% }
 -type list_custom_verification_email_templates_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% reputation_options() :: #{
 %%   <<"LastFreshStart">> => non_neg_integer(),
 %%   <<"ReputationMetricsEnabled">> => boolean()
 %% }
 -type reputation_options() :: #{binary() => any()}.
+
 %% Example:
 %% put_deliverability_dashboard_option_response() :: #{}
 -type put_deliverability_dashboard_option_response() :: #{}.
+
 
 %% Example:
 %% list_import_jobs_request() :: #{
@@ -914,9 +1022,11 @@
 %%   <<"PageSize">> => integer()
 %% }
 -type list_import_jobs_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_suppressed_destination_response() :: #{}
 -type delete_suppressed_destination_response() :: #{}.
+
 
 %% Example:
 %% create_email_identity_request() :: #{
@@ -927,24 +1037,29 @@
 %% }
 -type create_email_identity_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% inbox_placement_tracking_option() :: #{
 %%   <<"Global">> => boolean(),
 %%   <<"TrackedIsps">> => list(string()())
 %% }
 -type inbox_placement_tracking_option() :: #{binary() => any()}.
+
 %% Example:
 %% put_configuration_set_suppression_options_response() :: #{}
 -type put_configuration_set_suppression_options_response() :: #{}.
+
 
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 %% Example:
 %% get_export_job_request() :: #{}
 -type get_export_job_request() :: #{}.
+
 
 %% Example:
 %% message_header() :: #{
@@ -952,6 +1067,7 @@
 %%   <<"Value">> => string()
 %% }
 -type message_header() :: #{binary() => any()}.
+
 
 %% Example:
 %% batch_get_metric_data_query() :: #{
@@ -963,12 +1079,15 @@
 %%   <<"StartDate">> => non_neg_integer()
 %% }
 -type batch_get_metric_data_query() :: #{binary() => any()}.
+
 %% Example:
 %% get_message_insights_request() :: #{}
 -type get_message_insights_request() :: #{}.
+
 %% Example:
 %% delete_suppressed_destination_request() :: #{}
 -type delete_suppressed_destination_request() :: #{}.
+
 
 %% Example:
 %% export_data_source() :: #{
@@ -976,6 +1095,7 @@
 %%   <<"MetricsDataSource">> => metrics_data_source()
 %% }
 -type export_data_source() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_data_error() :: #{
@@ -985,12 +1105,14 @@
 %% }
 -type metric_data_error() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_export_job_response() :: #{
@@ -1006,6 +1128,7 @@
 %% }
 -type get_export_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_destination() :: #{
 %%   <<"CloudWatchDestination">> => cloud_watch_destination(),
@@ -1017,9 +1140,11 @@
 %%   <<"SnsDestination">> => sns_destination()
 %% }
 -type event_destination() :: #{binary() => any()}.
+
 %% Example:
 %% update_contact_response() :: #{}
 -type update_contact_response() :: #{}.
+
 
 %% Example:
 %% guardian_attributes() :: #{
@@ -1027,11 +1152,13 @@
 %% }
 -type guardian_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_configuration_set_event_destination_request() :: #{
 %%   <<"EventDestination">> := event_destination_definition()
 %% }
 -type update_configuration_set_event_destination_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% message_tag() :: #{
@@ -1039,6 +1166,7 @@
 %%   <<"Value">> => string()
 %% }
 -type message_tag() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_domain_deliverability_campaigns_request() :: #{
@@ -1049,17 +1177,21 @@
 %% }
 -type list_domain_deliverability_campaigns_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% suppression_list_destination() :: #{
 %%   <<"SuppressionListImportAction">> => list(any())
 %% }
 -type suppression_list_destination() :: #{binary() => any()}.
+
 %% Example:
 %% get_configuration_set_event_destinations_request() :: #{}
 -type get_configuration_set_event_destinations_request() :: #{}.
+
 %% Example:
 %% put_configuration_set_vdm_options_response() :: #{}
 -type put_configuration_set_vdm_options_response() :: #{}.
+
 
 %% Example:
 %% get_domain_statistics_report_request() :: #{
@@ -1067,6 +1199,7 @@
 %%   <<"StartDate">> := non_neg_integer()
 %% }
 -type get_domain_statistics_report_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% recommendation() :: #{
@@ -1080,23 +1213,28 @@
 %% }
 -type recommendation() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_account_dedicated_ip_warmup_attributes_request() :: #{
 %%   <<"AutoWarmupEnabled">> => boolean()
 %% }
 -type put_account_dedicated_ip_warmup_attributes_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_import_job_request() :: #{}
 -type get_import_job_request() :: #{}.
+
 %% Example:
 %% put_dedicated_ip_in_pool_response() :: #{}
 -type put_dedicated_ip_in_pool_response() :: #{}.
+
 
 %% Example:
 %% invalid_next_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_next_token_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% topic() :: #{
@@ -1106,9 +1244,11 @@
 %%   <<"TopicName">> => string()
 %% }
 -type topic() :: #{binary() => any()}.
+
 %% Example:
 %% delete_email_template_response() :: #{}
 -type delete_email_template_response() :: #{}.
+
 
 %% Example:
 %% account_details() :: #{
@@ -1121,17 +1261,20 @@
 %% }
 -type account_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_custom_verification_email_response() :: #{
 %%   <<"MessageId">> => string()
 %% }
 -type send_custom_verification_email_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% placement_statistics() :: #{
@@ -1143,6 +1286,7 @@
 %% }
 -type placement_statistics() :: #{binary() => any()}.
 
+
 %% Example:
 %% identity_info() :: #{
 %%   <<"IdentityName">> => string(),
@@ -1151,6 +1295,7 @@
 %%   <<"VerificationStatus">> => list(any())
 %% }
 -type identity_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% metrics_data_source() :: #{
@@ -1162,12 +1307,14 @@
 %% }
 -type metrics_data_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_management_options() :: #{
 %%   <<"ContactListName">> => string(),
 %%   <<"TopicName">> => string()
 %% }
 -type list_management_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_custom_verification_email_template_request() :: #{
@@ -1180,17 +1327,20 @@
 %% }
 -type create_custom_verification_email_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_metric_data_request() :: #{
 %%   <<"Queries">> := list(batch_get_metric_data_query()())
 %% }
 -type batch_get_metric_data_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => list(tag()())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_configuration_sets_response() :: #{
@@ -1199,12 +1349,14 @@
 %% }
 -type list_configuration_sets_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_dedicated_ip_pools_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer()
 %% }
 -type list_dedicated_ip_pools_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_custom_verification_email_template_request() :: #{
@@ -1216,11 +1368,13 @@
 %% }
 -type update_custom_verification_email_template_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_configuration_set_event_destinations_response() :: #{
 %%   <<"EventDestinations">> => list(event_destination()())
 %% }
 -type get_configuration_set_event_destinations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_domain_deliverability_campaign_response() :: #{
@@ -1228,12 +1382,14 @@
 %% }
 -type get_domain_deliverability_campaign_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_configuration_sets_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer()
 %% }
 -type list_configuration_sets_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% bounce() :: #{
@@ -1243,6 +1399,7 @@
 %% }
 -type bounce() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_dedicated_ips_request() :: #{
 %%   <<"NextToken">> => string(),
@@ -1251,17 +1408,20 @@
 %% }
 -type get_dedicated_ips_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% raw_message() :: #{
 %%   <<"Data">> => binary()
 %% }
 -type raw_message() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_dedicated_ip_in_pool_request() :: #{
 %%   <<"DestinationPoolName">> := string()
 %% }
 -type put_dedicated_ip_in_pool_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_message_insights_response() :: #{
@@ -1273,6 +1433,7 @@
 %% }
 -type get_message_insights_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_custom_verification_email_templates_response() :: #{
 %%   <<"CustomVerificationEmailTemplates">> => list(custom_verification_email_template_metadata()()),
@@ -1280,29 +1441,35 @@
 %% }
 -type list_custom_verification_email_templates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_email_identity_dkim_attributes_request() :: #{
 %%   <<"SigningEnabled">> => boolean()
 %% }
 -type put_email_identity_dkim_attributes_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_verification_email_template_request() :: #{}
 -type delete_custom_verification_email_template_request() :: #{}.
+
 
 %% Example:
 %% dashboard_attributes() :: #{
 %%   <<"EngagementMetrics">> => list(any())
 %% }
 -type dashboard_attributes() :: #{binary() => any()}.
+
 %% Example:
 %% put_configuration_set_sending_options_response() :: #{}
 -type put_configuration_set_sending_options_response() :: #{}.
+
 
 %% Example:
 %% replacement_email_content() :: #{
 %%   <<"ReplacementTemplate">> => replacement_template()
 %% }
 -type replacement_email_content() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_contact_list_request() :: #{
@@ -1312,6 +1479,7 @@
 %%   <<"Topics">> => list(topic()())
 %% }
 -type create_contact_list_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% contact() :: #{
@@ -1323,6 +1491,7 @@
 %% }
 -type contact() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_job_summary() :: #{
 %%   <<"CompletedTimestamp">> => non_neg_integer(),
@@ -1333,11 +1502,13 @@
 %% }
 -type export_job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_suppressed_destination_response() :: #{
 %%   <<"SuppressedDestination">> => suppressed_destination()
 %% }
 -type get_suppressed_destination_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% vdm_attributes() :: #{
@@ -1347,12 +1518,14 @@
 %% }
 -type vdm_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% export_statistics() :: #{
 %%   <<"ExportedRecordsCount">> => integer(),
 %%   <<"ProcessedRecordsCount">> => integer()
 %% }
 -type export_statistics() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_bulk_email_request() :: #{
@@ -1367,9 +1540,11 @@
 %%   <<"ReplyToAddresses">> => list(string()())
 %% }
 -type send_bulk_email_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_dedicated_ip_pool_response() :: #{}
 -type delete_dedicated_ip_pool_response() :: #{}.
+
 
 %% Example:
 %% suppressed_destination() :: #{
@@ -1380,6 +1555,7 @@
 %% }
 -type suppressed_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% insights_event() :: #{
 %%   <<"Details">> => event_details(),
@@ -1388,6 +1564,7 @@
 %% }
 -type insights_event() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_export_job_request() :: #{
 %%   <<"ExportDataSource">> := export_data_source(),
@@ -1395,11 +1572,13 @@
 %% }
 -type create_export_job_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_configuration_set_tracking_options_request() :: #{
 %%   <<"CustomRedirectDomain">> => string()
 %% }
 -type put_configuration_set_tracking_options_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_dedicated_ip_pool_request() :: #{
@@ -1409,6 +1588,7 @@
 %% }
 -type create_dedicated_ip_pool_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% send_custom_verification_email_request() :: #{
 %%   <<"ConfigurationSetName">> => string(),
@@ -1417,11 +1597,13 @@
 %% }
 -type send_custom_verification_email_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_dedicated_ip_response() :: #{
 %%   <<"DedicatedIp">> => dedicated_ip()
 %% }
 -type get_dedicated_ip_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_email_identity_dkim_signing_attributes_request() :: #{
@@ -1430,6 +1612,7 @@
 %% }
 -type put_email_identity_dkim_signing_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_import_jobs_response() :: #{
 %%   <<"ImportJobs">> => list(import_job_summary()()),
@@ -1437,27 +1620,34 @@
 %% }
 -type list_import_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch_get_metric_data_response() :: #{
 %%   <<"Errors">> => list(metric_data_error()()),
 %%   <<"Results">> => list(metric_data_result()())
 %% }
 -type batch_get_metric_data_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_custom_verification_email_template_response() :: #{}
 -type update_custom_verification_email_template_response() :: #{}.
+
 %% Example:
 %% delete_configuration_set_event_destination_request() :: #{}
 -type delete_configuration_set_event_destination_request() :: #{}.
+
 %% Example:
 %% put_dedicated_ip_pool_scaling_attributes_response() :: #{}
 -type put_dedicated_ip_pool_scaling_attributes_response() :: #{}.
+
 %% Example:
 %% get_contact_request() :: #{}
 -type get_contact_request() :: #{}.
+
 %% Example:
 %% create_configuration_set_event_destination_response() :: #{}
 -type create_configuration_set_event_destination_response() :: #{}.
+
 
 %% Example:
 %% import_destination() :: #{
@@ -1465,6 +1655,7 @@
 %%   <<"SuppressionListDestination">> => suppression_list_destination()
 %% }
 -type import_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_contacts_request() :: #{
@@ -1474,14 +1665,17 @@
 %% }
 -type list_contacts_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% bulk_email_content() :: #{
 %%   <<"Template">> => template()
 %% }
 -type bulk_email_content() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_response() :: #{}
 -type delete_contact_response() :: #{}.
+
 
 %% Example:
 %% put_configuration_set_delivery_options_request() :: #{
@@ -1490,6 +1684,7 @@
 %% }
 -type put_configuration_set_delivery_options_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_email_identity_mail_from_attributes_request() :: #{
 %%   <<"BehaviorOnMxFailure">> => list(any()),
@@ -1497,15 +1692,18 @@
 %% }
 -type put_email_identity_mail_from_attributes_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% dedicated_ip_pool() :: #{
 %%   <<"PoolName">> => string(),
 %%   <<"ScalingMode">> => list(any())
 %% }
 -type dedicated_ip_pool() :: #{binary() => any()}.
+
 %% Example:
 %% delete_email_identity_response() :: #{}
 -type delete_email_identity_response() :: #{}.
+
 
 %% Example:
 %% get_import_job_response() :: #{
@@ -1521,6 +1719,7 @@
 %% }
 -type get_import_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_deliverability_test_report_request() :: #{
 %%   <<"Content">> := email_content(),
@@ -1530,6 +1729,7 @@
 %% }
 -type create_deliverability_test_report_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_preference() :: #{
 %%   <<"SubscriptionStatus">> => list(any()),
@@ -1537,21 +1737,25 @@
 %% }
 -type topic_preference() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contacts_response() :: #{
 %%   <<"Contacts">> => list(contact()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contacts_response() :: #{binary() => any()}.
+
 %% Example:
 %% create_contact_list_response() :: #{}
 -type create_contact_list_response() :: #{}.
+
 
 %% Example:
 %% suppression_options() :: #{
 %%   <<"SuppressedReasons">> => list(list(any())())
 %% }
 -type suppression_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% daily_volume() :: #{
@@ -1560,9 +1764,11 @@
 %%   <<"VolumeStatistics">> => volume_statistics()
 %% }
 -type daily_volume() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% import_job_summary() :: #{
@@ -1575,20 +1781,24 @@
 %% }
 -type import_job_summary() :: #{binary() => any()}.
 
+
 %% Example:
 %% sending_options() :: #{
 %%   <<"SendingEnabled">> => boolean()
 %% }
 -type sending_options() :: #{binary() => any()}.
+
 %% Example:
 %% delete_email_identity_policy_request() :: #{}
 -type delete_email_identity_policy_request() :: #{}.
+
 
 %% Example:
 %% concurrent_modification_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type concurrent_modification_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_email_templates_response() :: #{
@@ -1597,11 +1807,13 @@
 %% }
 -type list_email_templates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_blacklist_reports_response() :: #{
 %%   <<"BlacklistReport">> => map()
 %% }
 -type get_blacklist_reports_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_contact_request() :: #{
@@ -1611,21 +1823,25 @@
 %% }
 -type update_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_email_identity_dkim_signing_attributes_response() :: #{
 %%   <<"DkimStatus">> => list(any()),
 %%   <<"DkimTokens">> => list(string()())
 %% }
 -type put_email_identity_dkim_signing_attributes_response() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_export_job_request() :: #{}
 -type cancel_export_job_request() :: #{}.
+
 
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination() :: #{
@@ -1635,15 +1851,18 @@
 %% }
 -type destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% body() :: #{
 %%   <<"Html">> => content(),
 %%   <<"Text">> => content()
 %% }
 -type body() :: #{binary() => any()}.
+
 %% Example:
 %% get_deliverability_dashboard_options_request() :: #{}
 -type get_deliverability_dashboard_options_request() :: #{}.
+
 
 %% Example:
 %% get_domain_statistics_report_response() :: #{
@@ -1651,18 +1870,22 @@
 %%   <<"OverallVolume">> => overall_volume()
 %% }
 -type get_domain_statistics_report_response() :: #{binary() => any()}.
+
 %% Example:
 %% put_account_sending_attributes_response() :: #{}
 -type put_account_sending_attributes_response() :: #{}.
+
 %% Example:
 %% get_email_identity_policies_request() :: #{}
 -type get_email_identity_policies_request() :: #{}.
+
 
 %% Example:
 %% message_rejected() :: #{
 %%   <<"message">> => string()
 %% }
 -type message_rejected() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_contact_request() :: #{
@@ -1673,6 +1896,7 @@
 %% }
 -type create_contact_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% contact_list() :: #{
 %%   <<"ContactListName">> => string(),
@@ -1680,11 +1904,13 @@
 %% }
 -type contact_list() :: #{binary() => any()}.
 
+
 %% Example:
 %% guardian_options() :: #{
 %%   <<"OptimizedSharedDelivery">> => list(any())
 %% }
 -type guardian_options() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_dedicated_ip_pools_response() :: #{
@@ -1692,12 +1918,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_dedicated_ip_pools_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_configuration_set_request() :: #{}
 -type get_configuration_set_request() :: #{}.
+
 %% Example:
 %% put_email_identity_mail_from_attributes_response() :: #{}
 -type put_email_identity_mail_from_attributes_response() :: #{}.
+
 
 %% Example:
 %% create_configuration_set_event_destination_request() :: #{
@@ -1706,6 +1935,7 @@
 %% }
 -type create_configuration_set_event_destination_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% domain_deliverability_tracking_option() :: #{
 %%   <<"Domain">> => string(),
@@ -1713,9 +1943,11 @@
 %%   <<"SubscriptionStartDate">> => non_neg_integer()
 %% }
 -type domain_deliverability_tracking_option() :: #{binary() => any()}.
+
 %% Example:
 %% delete_contact_list_request() :: #{}
 -type delete_contact_list_request() :: #{}.
+
 
 %% Example:
 %% put_configuration_set_sending_options_request() :: #{
@@ -1723,11 +1955,13 @@
 %% }
 -type put_configuration_set_sending_options_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_dedicated_ip_pool_response() :: #{
 %%   <<"DedicatedIpPool">> => dedicated_ip_pool()
 %% }
 -type get_dedicated_ip_pool_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% bulk_email_entry_result() :: #{
@@ -1737,11 +1971,13 @@
 %% }
 -type bulk_email_entry_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% delivery_options() :: #{
@@ -1749,15 +1985,18 @@
 %%   <<"TlsPolicy">> => list(any())
 %% }
 -type delivery_options() :: #{binary() => any()}.
+
 %% Example:
 %% update_configuration_set_event_destination_response() :: #{}
 -type update_configuration_set_event_destination_response() :: #{}.
+
 
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_email_template_response() :: #{
@@ -1766,6 +2005,7 @@
 %% }
 -type get_email_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% content() :: #{
 %%   <<"Charset">> => string(),
@@ -1773,23 +2013,28 @@
 %% }
 -type content() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_email_identity_policy_request() :: #{
 %%   <<"Policy">> := string()
 %% }
 -type update_email_identity_policy_request() :: #{binary() => any()}.
+
 %% Example:
 %% put_suppressed_destination_response() :: #{}
 -type put_suppressed_destination_response() :: #{}.
+
 %% Example:
 %% get_email_template_request() :: #{}
 -type get_email_template_request() :: #{}.
+
 
 %% Example:
 %% put_account_vdm_attributes_request() :: #{
 %%   <<"VdmAttributes">> := vdm_attributes()
 %% }
 -type put_account_vdm_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_configuration_set_response() :: #{
@@ -1803,9 +2048,11 @@
 %%   <<"VdmOptions">> => vdm_options()
 %% }
 -type get_configuration_set_response() :: #{binary() => any()}.
+
 %% Example:
 %% update_email_template_response() :: #{}
 -type update_email_template_response() :: #{}.
+
 
 %% Example:
 %% suppressed_destination_attributes() :: #{
@@ -1813,6 +2060,7 @@
 %%   <<"MessageId">> => string()
 %% }
 -type suppressed_destination_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% template() :: #{
@@ -1822,6 +2070,7 @@
 %%   <<"TemplateName">> => string()
 %% }
 -type template() :: #{binary() => any()}.
+
 
 %% Example:
 %% send_email_request() :: #{
@@ -1837,12 +2086,15 @@
 %%   <<"ReplyToAddresses">> => list(string()())
 %% }
 -type send_email_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_contact_list_request() :: #{}
 -type get_contact_list_request() :: #{}.
+
 %% Example:
 %% put_account_details_response() :: #{}
 -type put_account_details_response() :: #{}.
+
 
 %% Example:
 %% review_details() :: #{
@@ -1850,9 +2102,11 @@
 %%   <<"Status">> => list(any())
 %% }
 -type review_details() :: #{binary() => any()}.
+
 %% Example:
 %% put_dedicated_ip_warmup_attributes_response() :: #{}
 -type put_dedicated_ip_warmup_attributes_response() :: #{}.
+
 
 %% Example:
 %% list_export_jobs_response() :: #{
@@ -1861,12 +2115,14 @@
 %% }
 -type list_export_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% failure_info() :: #{
 %%   <<"ErrorMessage">> => string(),
 %%   <<"FailedRecordsS3Url">> => string()
 %% }
 -type failure_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% import_data_source() :: #{
@@ -1875,11 +2131,13 @@
 %% }
 -type import_data_source() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_dedicated_ip_warmup_attributes_request() :: #{
 %%   <<"WarmupPercentage">> := integer()
 %% }
 -type put_dedicated_ip_warmup_attributes_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% domain_deliverability_campaign() :: #{
@@ -1900,11 +2158,13 @@
 %% }
 -type domain_deliverability_campaign() :: #{binary() => any()}.
 
+
 %% Example:
 %% replacement_template() :: #{
 %%   <<"ReplacementTemplateData">> => string()
 %% }
 -type replacement_template() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_recommendations_response() :: #{
@@ -1913,17 +2173,21 @@
 %% }
 -type list_recommendations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_email_identity_configuration_set_attributes_request() :: #{
 %%   <<"ConfigurationSetName">> => string()
 %% }
 -type put_email_identity_configuration_set_attributes_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_account_request() :: #{}
 -type get_account_request() :: #{}.
+
 %% Example:
 %% get_dedicated_ip_request() :: #{}
 -type get_dedicated_ip_request() :: #{}.
+
 
 %% Example:
 %% export_destination() :: #{
@@ -1931,6 +2195,7 @@
 %%   <<"S3Url">> => string()
 %% }
 -type export_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_contact_response() :: #{
@@ -1945,12 +2210,14 @@
 %% }
 -type get_contact_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_email_identities_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer()
 %% }
 -type list_email_identities_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% complaint() :: #{
@@ -1959,11 +2226,13 @@
 %% }
 -type complaint() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_configuration_set_reputation_options_request() :: #{
 %%   <<"ReputationMetricsEnabled">> => boolean()
 %% }
 -type put_configuration_set_reputation_options_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% bulk_email_entry() :: #{
@@ -1972,6 +2241,7 @@
 %%   <<"ReplacementTags">> => list(message_tag()())
 %% }
 -type bulk_email_entry() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_configuration_set_request() :: #{
@@ -1986,12 +2256,14 @@
 %% }
 -type create_configuration_set_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% email_template_metadata() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"TemplateName">> => string()
 %% }
 -type email_template_metadata() :: #{binary() => any()}.
+
 
 %% Example:
 %% export_metric() :: #{
@@ -2000,20 +2272,24 @@
 %% }
 -type export_metric() :: #{binary() => any()}.
 
+
 %% Example:
 %% sns_destination() :: #{
 %%   <<"TopicArn">> => string()
 %% }
 -type sns_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% test_render_email_template_response() :: #{
 %%   <<"RenderedTemplate">> => string()
 %% }
 -type test_render_email_template_response() :: #{binary() => any()}.
+
 %% Example:
 %% create_email_template_response() :: #{}
 -type create_email_template_response() :: #{}.
+
 
 %% Example:
 %% update_contact_list_request() :: #{
@@ -2021,6 +2297,7 @@
 %%   <<"Topics">> => list(topic()())
 %% }
 -type update_contact_list_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% metric_data_result() :: #{
@@ -2030,14 +2307,17 @@
 %% }
 -type metric_data_result() :: #{binary() => any()}.
 
+
 %% Example:
 %% pinpoint_destination() :: #{
 %%   <<"ApplicationArn">> => string()
 %% }
 -type pinpoint_destination() :: #{binary() => any()}.
+
 %% Example:
 %% put_email_identity_feedback_attributes_response() :: #{}
 -type put_email_identity_feedback_attributes_response() :: #{}.
+
 
 %% Example:
 %% deliverability_test_report() :: #{
@@ -2050,6 +2330,7 @@
 %% }
 -type deliverability_test_report() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_deliverability_test_report_response() :: #{
 %%   <<"DeliverabilityTestReport">> => deliverability_test_report(),
@@ -2060,6 +2341,7 @@
 %% }
 -type get_deliverability_test_report_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_recommendations_request() :: #{
 %%   <<"Filter">> => map(),
@@ -2067,6 +2349,7 @@
 %%   <<"PageSize">> => integer()
 %% }
 -type list_recommendations_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% custom_verification_email_template_metadata() :: #{
@@ -2078,15 +2361,18 @@
 %% }
 -type custom_verification_email_template_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% topic_filter() :: #{
 %%   <<"TopicName">> => string(),
 %%   <<"UseDefaultIfPreferenceUnavailable">> => boolean()
 %% }
 -type topic_filter() :: #{binary() => any()}.
+
 %% Example:
 %% get_email_identity_request() :: #{}
 -type get_email_identity_request() :: #{}.
+
 
 %% Example:
 %% get_dedicated_ips_response() :: #{
@@ -2095,12 +2381,14 @@
 %% }
 -type get_dedicated_ips_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_contact_lists_response() :: #{
 %%   <<"ContactLists">> => list(contact_list()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_lists_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% message() :: #{
@@ -2109,6 +2397,502 @@
 %%   <<"Subject">> => content()
 %% }
 -type message() :: #{binary() => any()}.
+
+-type batch_get_metric_data_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    internal_service_error_exception().
+
+-type cancel_export_job_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_configuration_set_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_configuration_set_event_destination_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_contact_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_contact_list_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_custom_verification_email_template_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_dedicated_ip_pool_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_deliverability_test_report_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    message_rejected() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    mail_from_domain_not_verified_exception() | 
+    too_many_requests_exception() | 
+    account_suspended_exception() | 
+    sending_paused_exception().
+
+-type create_email_identity_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_email_identity_policy_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_email_template_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_export_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type create_import_job_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    too_many_requests_exception().
+
+-type delete_configuration_set_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_configuration_set_event_destination_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_contact_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_contact_list_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_custom_verification_email_template_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_dedicated_ip_pool_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_email_identity_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_email_identity_policy_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_email_template_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_suppressed_destination_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_account_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type get_blacklist_reports_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_configuration_set_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_configuration_set_event_destinations_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_contact_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_contact_list_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_custom_verification_email_template_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_dedicated_ip_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_dedicated_ip_pool_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_dedicated_ips_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_deliverability_dashboard_options_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    too_many_requests_exception().
+
+-type get_deliverability_test_report_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_domain_deliverability_campaign_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_domain_statistics_report_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_email_identity_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_email_identity_policies_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_email_template_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_export_job_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_import_job_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_message_insights_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_suppressed_destination_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_configuration_sets_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_contact_lists_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_contacts_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_custom_verification_email_templates_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_dedicated_ip_pools_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_deliverability_test_reports_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_domain_deliverability_campaigns_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_email_identities_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_email_templates_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_export_jobs_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_import_jobs_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_recommendations_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_suppressed_destinations_errors() ::
+    bad_request_exception() | 
+    invalid_next_token_exception() | 
+    too_many_requests_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_account_dedicated_ip_warmup_attributes_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type put_account_details_errors() ::
+    bad_request_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type put_account_sending_attributes_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type put_account_suppression_attributes_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type put_account_vdm_attributes_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type put_configuration_set_delivery_options_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_configuration_set_reputation_options_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_configuration_set_sending_options_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_configuration_set_suppression_options_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_configuration_set_tracking_options_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_configuration_set_vdm_options_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_dedicated_ip_in_pool_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_dedicated_ip_pool_scaling_attributes_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_dedicated_ip_warmup_attributes_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_deliverability_dashboard_option_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type put_email_identity_configuration_set_attributes_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_email_identity_dkim_attributes_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_email_identity_dkim_signing_attributes_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_email_identity_feedback_attributes_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_email_identity_mail_from_attributes_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type put_suppressed_destination_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type send_bulk_email_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    message_rejected() | 
+    not_found_exception() | 
+    mail_from_domain_not_verified_exception() | 
+    too_many_requests_exception() | 
+    account_suspended_exception() | 
+    sending_paused_exception().
+
+-type send_custom_verification_email_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    message_rejected() | 
+    not_found_exception() | 
+    mail_from_domain_not_verified_exception() | 
+    too_many_requests_exception() | 
+    sending_paused_exception().
+
+-type send_email_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    message_rejected() | 
+    not_found_exception() | 
+    mail_from_domain_not_verified_exception() | 
+    too_many_requests_exception() | 
+    account_suspended_exception() | 
+    sending_paused_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type test_render_email_template_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_configuration_set_event_destination_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_contact_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_contact_list_errors() ::
+    bad_request_exception() | 
+    concurrent_modification_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_custom_verification_email_template_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_email_identity_policy_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_email_template_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
 
 %%====================================================================
 %% API
@@ -2122,20 +2906,14 @@
 -spec batch_get_metric_data(map(), batch_get_metric_data_request()) ->
     {ok, batch_get_metric_data_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, batch_get_metric_data_errors(), tuple()}.
 batch_get_metric_data(Client, Input) ->
     batch_get_metric_data(Client, Input, []).
 
 -spec batch_get_metric_data(map(), batch_get_metric_data_request(), proplists:proplist()) ->
     {ok, batch_get_metric_data_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, batch_get_metric_data_errors(), tuple()}.
 batch_get_metric_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/metrics/batch"],
@@ -2162,18 +2940,14 @@ batch_get_metric_data(Client, Input0, Options0) ->
 -spec cancel_export_job(map(), binary() | list(), cancel_export_job_request()) ->
     {ok, cancel_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, cancel_export_job_errors(), tuple()}.
 cancel_export_job(Client, JobId, Input) ->
     cancel_export_job(Client, JobId, Input, []).
 
 -spec cancel_export_job(map(), binary() | list(), cancel_export_job_request(), proplists:proplist()) ->
     {ok, cancel_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, cancel_export_job_errors(), tuple()}.
 cancel_export_job(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/export-jobs/", aws_util:encode_uri(JobId), "/cancel"],
@@ -2209,24 +2983,14 @@ cancel_export_job(Client, JobId, Input0, Options0) ->
 -spec create_configuration_set(map(), create_configuration_set_request()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_configuration_set_errors(), tuple()}.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
 
 -spec create_configuration_set(map(), create_configuration_set_request(), proplists:proplist()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_configuration_set_errors(), tuple()}.
 create_configuration_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/configuration-sets"],
@@ -2264,22 +3028,14 @@ create_configuration_set(Client, Input0, Options0) ->
 -spec create_configuration_set_event_destination(map(), binary() | list(), create_configuration_set_event_destination_request()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_configuration_set_event_destination_errors(), tuple()}.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input) ->
     create_configuration_set_event_destination(Client, ConfigurationSetName, Input, []).
 
 -spec create_configuration_set_event_destination(map(), binary() | list(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_configuration_set_event_destination_errors(), tuple()}.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
@@ -2308,20 +3064,14 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input0,
 -spec create_contact(map(), binary() | list(), create_contact_request()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_contact_errors(), tuple()}.
 create_contact(Client, ContactListName, Input) ->
     create_contact(Client, ContactListName, Input, []).
 
 -spec create_contact(map(), binary() | list(), create_contact_request(), proplists:proplist()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_contact_errors(), tuple()}.
 create_contact(Client, ContactListName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts"],
@@ -2348,20 +3098,14 @@ create_contact(Client, ContactListName, Input0, Options0) ->
 -spec create_contact_list(map(), create_contact_list_request()) ->
     {ok, create_contact_list_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_contact_list_errors(), tuple()}.
 create_contact_list(Client, Input) ->
     create_contact_list(Client, Input, []).
 
 -spec create_contact_list(map(), create_contact_list_request(), proplists:proplist()) ->
     {ok, create_contact_list_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_contact_list_errors(), tuple()}.
 create_contact_list(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/contact-lists"],
@@ -2396,22 +3140,14 @@ create_contact_list(Client, Input0, Options0) ->
 -spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request()) ->
     {ok, create_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_custom_verification_email_template_errors(), tuple()}.
 create_custom_verification_email_template(Client, Input) ->
     create_custom_verification_email_template(Client, Input, []).
 
 -spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, create_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_custom_verification_email_template_errors(), tuple()}.
 create_custom_verification_email_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/custom-verification-email-templates"],
@@ -2445,22 +3181,14 @@ create_custom_verification_email_template(Client, Input0, Options0) ->
 -spec create_dedicated_ip_pool(map(), create_dedicated_ip_pool_request()) ->
     {ok, create_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_dedicated_ip_pool_errors(), tuple()}.
 create_dedicated_ip_pool(Client, Input) ->
     create_dedicated_ip_pool(Client, Input, []).
 
 -spec create_dedicated_ip_pool(map(), create_dedicated_ip_pool_request(), proplists:proplist()) ->
     {ok, create_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_dedicated_ip_pool_errors(), tuple()}.
 create_dedicated_ip_pool(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/dedicated-ip-pools"],
@@ -2499,30 +3227,14 @@ create_dedicated_ip_pool(Client, Input0, Options0) ->
 -spec create_deliverability_test_report(map(), create_deliverability_test_report_request()) ->
     {ok, create_deliverability_test_report_response(), tuple()} |
     {error, any()} |
-    {error, account_suspended_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, sending_paused_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_deliverability_test_report_errors(), tuple()}.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
 
 -spec create_deliverability_test_report(map(), create_deliverability_test_report_request(), proplists:proplist()) ->
     {ok, create_deliverability_test_report_response(), tuple()} |
     {error, any()} |
-    {error, account_suspended_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, sending_paused_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_deliverability_test_report_errors(), tuple()}.
 create_deliverability_test_report(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/deliverability-dashboard/test"],
@@ -2599,24 +3311,14 @@ create_deliverability_test_report(Client, Input0, Options0) ->
 -spec create_email_identity(map(), create_email_identity_request()) ->
     {ok, create_email_identity_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_email_identity_errors(), tuple()}.
 create_email_identity(Client, Input) ->
     create_email_identity(Client, Input, []).
 
 -spec create_email_identity(map(), create_email_identity_request(), proplists:proplist()) ->
     {ok, create_email_identity_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_email_identity_errors(), tuple()}.
 create_email_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/identities"],
@@ -2659,22 +3361,14 @@ create_email_identity(Client, Input0, Options0) ->
 -spec create_email_identity_policy(map(), binary() | list(), binary() | list(), create_email_identity_policy_request()) ->
     {ok, create_email_identity_policy_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_email_identity_policy_errors(), tuple()}.
 create_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
     create_email_identity_policy(Client, EmailIdentity, PolicyName, Input, []).
 
 -spec create_email_identity_policy(map(), binary() | list(), binary() | list(), create_email_identity_policy_request(), proplists:proplist()) ->
     {ok, create_email_identity_policy_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_email_identity_policy_errors(), tuple()}.
 create_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies/", aws_util:encode_uri(PolicyName), ""],
@@ -2709,20 +3403,14 @@ create_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 -spec create_email_template(map(), create_email_template_request()) ->
     {ok, create_email_template_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_email_template_errors(), tuple()}.
 create_email_template(Client, Input) ->
     create_email_template(Client, Input, []).
 
 -spec create_email_template(map(), create_email_template_request(), proplists:proplist()) ->
     {ok, create_email_template_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_email_template_errors(), tuple()}.
 create_email_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/templates"],
@@ -2751,20 +3439,14 @@ create_email_template(Client, Input0, Options0) ->
 -spec create_export_job(map(), create_export_job_request()) ->
     {ok, create_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_export_job_errors(), tuple()}.
 create_export_job(Client, Input) ->
     create_export_job(Client, Input, []).
 
 -spec create_export_job(map(), create_export_job_request(), proplists:proplist()) ->
     {ok, create_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_export_job_errors(), tuple()}.
 create_export_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/export-jobs"],
@@ -2791,18 +3473,14 @@ create_export_job(Client, Input0, Options0) ->
 -spec create_import_job(map(), create_import_job_request()) ->
     {ok, create_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_import_job_errors(), tuple()}.
 create_import_job(Client, Input) ->
     create_import_job(Client, Input, []).
 
 -spec create_import_job(map(), create_import_job_request(), proplists:proplist()) ->
     {ok, create_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, create_import_job_errors(), tuple()}.
 create_import_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/import-jobs"],
@@ -2837,20 +3515,14 @@ create_import_job(Client, Input0, Options0) ->
 -spec delete_configuration_set(map(), binary() | list(), delete_configuration_set_request()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_configuration_set_errors(), tuple()}.
 delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
 
 -spec delete_configuration_set(map(), binary() | list(), delete_configuration_set_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_configuration_set_errors(), tuple()}.
 delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
@@ -2885,18 +3557,14 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
 -spec delete_configuration_set_event_destination(map(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_configuration_set_event_destination_errors(), tuple()}.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 
 -spec delete_configuration_set_event_destination(map(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_configuration_set_event_destination_errors(), tuple()}.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
@@ -2923,18 +3591,14 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 -spec delete_contact(map(), binary() | list(), binary() | list(), delete_contact_request()) ->
     {ok, delete_contact_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_contact_errors(), tuple()}.
 delete_contact(Client, ContactListName, EmailAddress, Input) ->
     delete_contact(Client, ContactListName, EmailAddress, Input, []).
 
 -spec delete_contact(map(), binary() | list(), binary() | list(), delete_contact_request(), proplists:proplist()) ->
     {ok, delete_contact_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_contact_errors(), tuple()}.
 delete_contact(Client, ContactListName, EmailAddress, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/", aws_util:encode_uri(EmailAddress), ""],
@@ -2961,20 +3625,14 @@ delete_contact(Client, ContactListName, EmailAddress, Input0, Options0) ->
 -spec delete_contact_list(map(), binary() | list(), delete_contact_list_request()) ->
     {ok, delete_contact_list_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_contact_list_errors(), tuple()}.
 delete_contact_list(Client, ContactListName, Input) ->
     delete_contact_list(Client, ContactListName, Input, []).
 
 -spec delete_contact_list(map(), binary() | list(), delete_contact_list_request(), proplists:proplist()) ->
     {ok, delete_contact_list_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_contact_list_errors(), tuple()}.
 delete_contact_list(Client, ContactListName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), ""],
@@ -3009,18 +3667,14 @@ delete_contact_list(Client, ContactListName, Input0, Options0) ->
 -spec delete_custom_verification_email_template(map(), binary() | list(), delete_custom_verification_email_template_request()) ->
     {ok, delete_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_custom_verification_email_template_errors(), tuple()}.
 delete_custom_verification_email_template(Client, TemplateName, Input) ->
     delete_custom_verification_email_template(Client, TemplateName, Input, []).
 
 -spec delete_custom_verification_email_template(map(), binary() | list(), delete_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, delete_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_custom_verification_email_template_errors(), tuple()}.
 delete_custom_verification_email_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/custom-verification-email-templates/", aws_util:encode_uri(TemplateName), ""],
@@ -3047,20 +3701,14 @@ delete_custom_verification_email_template(Client, TemplateName, Input0, Options0
 -spec delete_dedicated_ip_pool(map(), binary() | list(), delete_dedicated_ip_pool_request()) ->
     {ok, delete_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_dedicated_ip_pool_errors(), tuple()}.
 delete_dedicated_ip_pool(Client, PoolName, Input) ->
     delete_dedicated_ip_pool(Client, PoolName, Input, []).
 
 -spec delete_dedicated_ip_pool(map(), binary() | list(), delete_dedicated_ip_pool_request(), proplists:proplist()) ->
     {ok, delete_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_dedicated_ip_pool_errors(), tuple()}.
 delete_dedicated_ip_pool(Client, PoolName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), ""],
@@ -3090,20 +3738,14 @@ delete_dedicated_ip_pool(Client, PoolName, Input0, Options0) ->
 -spec delete_email_identity(map(), binary() | list(), delete_email_identity_request()) ->
     {ok, delete_email_identity_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_identity_errors(), tuple()}.
 delete_email_identity(Client, EmailIdentity, Input) ->
     delete_email_identity(Client, EmailIdentity, Input, []).
 
 -spec delete_email_identity(map(), binary() | list(), delete_email_identity_request(), proplists:proplist()) ->
     {ok, delete_email_identity_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_identity_errors(), tuple()}.
 delete_email_identity(Client, EmailIdentity, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
@@ -3149,18 +3791,14 @@ delete_email_identity(Client, EmailIdentity, Input0, Options0) ->
 -spec delete_email_identity_policy(map(), binary() | list(), binary() | list(), delete_email_identity_policy_request()) ->
     {ok, delete_email_identity_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_identity_policy_errors(), tuple()}.
 delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
     delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input, []).
 
 -spec delete_email_identity_policy(map(), binary() | list(), binary() | list(), delete_email_identity_policy_request(), proplists:proplist()) ->
     {ok, delete_email_identity_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_identity_policy_errors(), tuple()}.
 delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies/", aws_util:encode_uri(PolicyName), ""],
@@ -3189,18 +3827,14 @@ delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 -spec delete_email_template(map(), binary() | list(), delete_email_template_request()) ->
     {ok, delete_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_template_errors(), tuple()}.
 delete_email_template(Client, TemplateName, Input) ->
     delete_email_template(Client, TemplateName, Input, []).
 
 -spec delete_email_template(map(), binary() | list(), delete_email_template_request(), proplists:proplist()) ->
     {ok, delete_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_email_template_errors(), tuple()}.
 delete_email_template(Client, TemplateName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
@@ -3227,18 +3861,14 @@ delete_email_template(Client, TemplateName, Input0, Options0) ->
 -spec delete_suppressed_destination(map(), binary() | list(), delete_suppressed_destination_request()) ->
     {ok, delete_suppressed_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_suppressed_destination_errors(), tuple()}.
 delete_suppressed_destination(Client, EmailAddress, Input) ->
     delete_suppressed_destination(Client, EmailAddress, Input, []).
 
 -spec delete_suppressed_destination(map(), binary() | list(), delete_suppressed_destination_request(), proplists:proplist()) ->
     {ok, delete_suppressed_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, delete_suppressed_destination_errors(), tuple()}.
 delete_suppressed_destination(Client, EmailAddress, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/suppression/addresses/", aws_util:encode_uri(EmailAddress), ""],
@@ -3267,8 +3897,7 @@ delete_suppressed_destination(Client, EmailAddress, Input0, Options0) ->
 -spec get_account(map()) ->
     {ok, get_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_account_errors(), tuple()}.
 get_account(Client)
   when is_map(Client) ->
     get_account(Client, #{}, #{}).
@@ -3276,8 +3905,7 @@ get_account(Client)
 -spec get_account(map(), map(), map()) ->
     {ok, get_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_account_errors(), tuple()}.
 get_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account(Client, QueryMap, HeadersMap, []).
@@ -3285,8 +3913,7 @@ get_account(Client, QueryMap, HeadersMap)
 -spec get_account(map(), map(), map(), proplists:proplist()) ->
     {ok, get_account_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_account_errors(), tuple()}.
 get_account(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/account"],
@@ -3308,9 +3935,7 @@ get_account(Client, QueryMap, HeadersMap, Options0)
 -spec get_blacklist_reports(map(), binary() | list()) ->
     {ok, get_blacklist_reports_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_blacklist_reports_errors(), tuple()}.
 get_blacklist_reports(Client, BlacklistItemNames)
   when is_map(Client) ->
     get_blacklist_reports(Client, BlacklistItemNames, #{}, #{}).
@@ -3318,9 +3943,7 @@ get_blacklist_reports(Client, BlacklistItemNames)
 -spec get_blacklist_reports(map(), binary() | list(), map(), map()) ->
     {ok, get_blacklist_reports_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_blacklist_reports_errors(), tuple()}.
 get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, []).
@@ -3328,9 +3951,7 @@ get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap)
 -spec get_blacklist_reports(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_blacklist_reports_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_blacklist_reports_errors(), tuple()}.
 get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/blacklist-report"],
@@ -3367,9 +3988,7 @@ get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options0
 -spec get_configuration_set(map(), binary() | list()) ->
     {ok, get_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_configuration_set_errors(), tuple()}.
 get_configuration_set(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set(Client, ConfigurationSetName, #{}, #{}).
@@ -3377,9 +3996,7 @@ get_configuration_set(Client, ConfigurationSetName)
 -spec get_configuration_set(map(), binary() | list(), map(), map()) ->
     {ok, get_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_configuration_set_errors(), tuple()}.
 get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
@@ -3387,9 +4004,7 @@ get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap)
 -spec get_configuration_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configuration_set_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_configuration_set_errors(), tuple()}.
 get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
@@ -3420,9 +4035,7 @@ get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, Option
 -spec get_configuration_set_event_destinations(map(), binary() | list()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_configuration_set_event_destinations_errors(), tuple()}.
 get_configuration_set_event_destinations(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, #{}, #{}).
@@ -3430,9 +4043,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName)
 -spec get_configuration_set_event_destinations(map(), binary() | list(), map(), map()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_configuration_set_event_destinations_errors(), tuple()}.
 get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
@@ -3440,9 +4051,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
 -spec get_configuration_set_event_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_configuration_set_event_destinations_errors(), tuple()}.
 get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
@@ -3463,9 +4072,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
 -spec get_contact(map(), binary() | list(), binary() | list()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_contact_errors(), tuple()}.
 get_contact(Client, ContactListName, EmailAddress)
   when is_map(Client) ->
     get_contact(Client, ContactListName, EmailAddress, #{}, #{}).
@@ -3473,9 +4080,7 @@ get_contact(Client, ContactListName, EmailAddress)
 -spec get_contact(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_contact_errors(), tuple()}.
 get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap, []).
@@ -3483,9 +4088,7 @@ get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap)
 -spec get_contact(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_contact_errors(), tuple()}.
 get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/", aws_util:encode_uri(EmailAddress), ""],
@@ -3509,9 +4112,7 @@ get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap, Options
 -spec get_contact_list(map(), binary() | list()) ->
     {ok, get_contact_list_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_contact_list_errors(), tuple()}.
 get_contact_list(Client, ContactListName)
   when is_map(Client) ->
     get_contact_list(Client, ContactListName, #{}, #{}).
@@ -3519,9 +4120,7 @@ get_contact_list(Client, ContactListName)
 -spec get_contact_list(map(), binary() | list(), map(), map()) ->
     {ok, get_contact_list_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_contact_list_errors(), tuple()}.
 get_contact_list(Client, ContactListName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_contact_list(Client, ContactListName, QueryMap, HeadersMap, []).
@@ -3529,9 +4128,7 @@ get_contact_list(Client, ContactListName, QueryMap, HeadersMap)
 -spec get_contact_list(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_contact_list_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_contact_list_errors(), tuple()}.
 get_contact_list(Client, ContactListName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), ""],
@@ -3562,9 +4159,7 @@ get_contact_list(Client, ContactListName, QueryMap, HeadersMap, Options0)
 -spec get_custom_verification_email_template(map(), binary() | list()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_custom_verification_email_template_errors(), tuple()}.
 get_custom_verification_email_template(Client, TemplateName)
   when is_map(Client) ->
     get_custom_verification_email_template(Client, TemplateName, #{}, #{}).
@@ -3572,9 +4167,7 @@ get_custom_verification_email_template(Client, TemplateName)
 -spec get_custom_verification_email_template(map(), binary() | list(), map(), map()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_custom_verification_email_template_errors(), tuple()}.
 get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -3582,9 +4175,7 @@ get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMa
 -spec get_custom_verification_email_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_custom_verification_email_template_errors(), tuple()}.
 get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/custom-verification-email-templates/", aws_util:encode_uri(TemplateName), ""],
@@ -3609,9 +4200,7 @@ get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMa
 -spec get_dedicated_ip(map(), binary() | list()) ->
     {ok, get_dedicated_ip_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_dedicated_ip_errors(), tuple()}.
 get_dedicated_ip(Client, Ip)
   when is_map(Client) ->
     get_dedicated_ip(Client, Ip, #{}, #{}).
@@ -3619,9 +4208,7 @@ get_dedicated_ip(Client, Ip)
 -spec get_dedicated_ip(map(), binary() | list(), map(), map()) ->
     {ok, get_dedicated_ip_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_dedicated_ip_errors(), tuple()}.
 get_dedicated_ip(Client, Ip, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, []).
@@ -3629,9 +4216,7 @@ get_dedicated_ip(Client, Ip, QueryMap, HeadersMap)
 -spec get_dedicated_ip(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dedicated_ip_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_dedicated_ip_errors(), tuple()}.
 get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), ""],
@@ -3652,9 +4237,7 @@ get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, Options0)
 -spec get_dedicated_ip_pool(map(), binary() | list()) ->
     {ok, get_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_dedicated_ip_pool_errors(), tuple()}.
 get_dedicated_ip_pool(Client, PoolName)
   when is_map(Client) ->
     get_dedicated_ip_pool(Client, PoolName, #{}, #{}).
@@ -3662,9 +4245,7 @@ get_dedicated_ip_pool(Client, PoolName)
 -spec get_dedicated_ip_pool(map(), binary() | list(), map(), map()) ->
     {ok, get_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_dedicated_ip_pool_errors(), tuple()}.
 get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap, []).
@@ -3672,9 +4253,7 @@ get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap)
 -spec get_dedicated_ip_pool(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_dedicated_ip_pool_errors(), tuple()}.
 get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), ""],
@@ -3697,9 +4276,7 @@ get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap, Options0)
 -spec get_dedicated_ips(map()) ->
     {ok, get_dedicated_ips_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_dedicated_ips_errors(), tuple()}.
 get_dedicated_ips(Client)
   when is_map(Client) ->
     get_dedicated_ips(Client, #{}, #{}).
@@ -3707,9 +4284,7 @@ get_dedicated_ips(Client)
 -spec get_dedicated_ips(map(), map(), map()) ->
     {ok, get_dedicated_ips_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_dedicated_ips_errors(), tuple()}.
 get_dedicated_ips(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dedicated_ips(Client, QueryMap, HeadersMap, []).
@@ -3717,9 +4292,7 @@ get_dedicated_ips(Client, QueryMap, HeadersMap)
 -spec get_dedicated_ips(map(), map(), map(), proplists:proplist()) ->
     {ok, get_dedicated_ips_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_dedicated_ips_errors(), tuple()}.
 get_dedicated_ips(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/dedicated-ips"],
@@ -3761,9 +4334,7 @@ get_dedicated_ips(Client, QueryMap, HeadersMap, Options0)
 -spec get_deliverability_dashboard_options(map()) ->
     {ok, get_deliverability_dashboard_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_deliverability_dashboard_options_errors(), tuple()}.
 get_deliverability_dashboard_options(Client)
   when is_map(Client) ->
     get_deliverability_dashboard_options(Client, #{}, #{}).
@@ -3771,9 +4342,7 @@ get_deliverability_dashboard_options(Client)
 -spec get_deliverability_dashboard_options(map(), map(), map()) ->
     {ok, get_deliverability_dashboard_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_deliverability_dashboard_options_errors(), tuple()}.
 get_deliverability_dashboard_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, []).
@@ -3781,9 +4350,7 @@ get_deliverability_dashboard_options(Client, QueryMap, HeadersMap)
 -spec get_deliverability_dashboard_options(map(), map(), map(), proplists:proplist()) ->
     {ok, get_deliverability_dashboard_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_deliverability_dashboard_options_errors(), tuple()}.
 get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard"],
@@ -3804,9 +4371,7 @@ get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, Options0)
 -spec get_deliverability_test_report(map(), binary() | list()) ->
     {ok, get_deliverability_test_report_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_deliverability_test_report_errors(), tuple()}.
 get_deliverability_test_report(Client, ReportId)
   when is_map(Client) ->
     get_deliverability_test_report(Client, ReportId, #{}, #{}).
@@ -3814,9 +4379,7 @@ get_deliverability_test_report(Client, ReportId)
 -spec get_deliverability_test_report(map(), binary() | list(), map(), map()) ->
     {ok, get_deliverability_test_report_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_deliverability_test_report_errors(), tuple()}.
 get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, []).
@@ -3824,9 +4387,7 @@ get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap)
 -spec get_deliverability_test_report(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_deliverability_test_report_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_deliverability_test_report_errors(), tuple()}.
 get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/test-reports/", aws_util:encode_uri(ReportId), ""],
@@ -3851,9 +4412,7 @@ get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, Options0)
 -spec get_domain_deliverability_campaign(map(), binary() | list()) ->
     {ok, get_domain_deliverability_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_domain_deliverability_campaign_errors(), tuple()}.
 get_domain_deliverability_campaign(Client, CampaignId)
   when is_map(Client) ->
     get_domain_deliverability_campaign(Client, CampaignId, #{}, #{}).
@@ -3861,9 +4420,7 @@ get_domain_deliverability_campaign(Client, CampaignId)
 -spec get_domain_deliverability_campaign(map(), binary() | list(), map(), map()) ->
     {ok, get_domain_deliverability_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_domain_deliverability_campaign_errors(), tuple()}.
 get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, []).
@@ -3871,9 +4428,7 @@ get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap)
 -spec get_domain_deliverability_campaign(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_deliverability_campaign_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_domain_deliverability_campaign_errors(), tuple()}.
 get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/campaigns/", aws_util:encode_uri(CampaignId), ""],
@@ -3896,9 +4451,7 @@ get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, Opt
 -spec get_domain_statistics_report(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_domain_statistics_report_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_domain_statistics_report_errors(), tuple()}.
 get_domain_statistics_report(Client, Domain, EndDate, StartDate)
   when is_map(Client) ->
     get_domain_statistics_report(Client, Domain, EndDate, StartDate, #{}, #{}).
@@ -3906,9 +4459,7 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate)
 -spec get_domain_statistics_report(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_domain_statistics_report_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_domain_statistics_report_errors(), tuple()}.
 get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap, []).
@@ -3916,9 +4467,7 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
 -spec get_domain_statistics_report(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_statistics_report_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_domain_statistics_report_errors(), tuple()}.
 get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/statistics-report/", aws_util:encode_uri(Domain), ""],
@@ -3948,9 +4497,7 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
 -spec get_email_identity(map(), binary() | list()) ->
     {ok, get_email_identity_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_identity_errors(), tuple()}.
 get_email_identity(Client, EmailIdentity)
   when is_map(Client) ->
     get_email_identity(Client, EmailIdentity, #{}, #{}).
@@ -3958,9 +4505,7 @@ get_email_identity(Client, EmailIdentity)
 -spec get_email_identity(map(), binary() | list(), map(), map()) ->
     {ok, get_email_identity_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_identity_errors(), tuple()}.
 get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, []).
@@ -3968,9 +4513,7 @@ get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap)
 -spec get_email_identity(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_identity_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_identity_errors(), tuple()}.
 get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
@@ -4010,9 +4553,7 @@ get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, Options0)
 -spec get_email_identity_policies(map(), binary() | list()) ->
     {ok, get_email_identity_policies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_identity_policies_errors(), tuple()}.
 get_email_identity_policies(Client, EmailIdentity)
   when is_map(Client) ->
     get_email_identity_policies(Client, EmailIdentity, #{}, #{}).
@@ -4020,9 +4561,7 @@ get_email_identity_policies(Client, EmailIdentity)
 -spec get_email_identity_policies(map(), binary() | list(), map(), map()) ->
     {ok, get_email_identity_policies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_identity_policies_errors(), tuple()}.
 get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap, []).
@@ -4030,9 +4569,7 @@ get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap)
 -spec get_email_identity_policies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_identity_policies_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_identity_policies_errors(), tuple()}.
 get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies"],
@@ -4057,9 +4594,7 @@ get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap, Options
 -spec get_email_template(map(), binary() | list()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_template_errors(), tuple()}.
 get_email_template(Client, TemplateName)
   when is_map(Client) ->
     get_email_template(Client, TemplateName, #{}, #{}).
@@ -4067,9 +4602,7 @@ get_email_template(Client, TemplateName)
 -spec get_email_template(map(), binary() | list(), map(), map()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_template_errors(), tuple()}.
 get_email_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_template(Client, TemplateName, QueryMap, HeadersMap, []).
@@ -4077,9 +4610,7 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap)
 -spec get_email_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_email_template_errors(), tuple()}.
 get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
@@ -4100,9 +4631,7 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 -spec get_export_job(map(), binary() | list()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_export_job_errors(), tuple()}.
 get_export_job(Client, JobId)
   when is_map(Client) ->
     get_export_job(Client, JobId, #{}, #{}).
@@ -4110,9 +4639,7 @@ get_export_job(Client, JobId)
 -spec get_export_job(map(), binary() | list(), map(), map()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_export_job_errors(), tuple()}.
 get_export_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -4120,9 +4647,7 @@ get_export_job(Client, JobId, QueryMap, HeadersMap)
 -spec get_export_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_export_job_errors(), tuple()}.
 get_export_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/export-jobs/", aws_util:encode_uri(JobId), ""],
@@ -4143,9 +4668,7 @@ get_export_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec get_import_job(map(), binary() | list()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, JobId)
   when is_map(Client) ->
     get_import_job(Client, JobId, #{}, #{}).
@@ -4153,9 +4676,7 @@ get_import_job(Client, JobId)
 -spec get_import_job(map(), binary() | list(), map(), map()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_job(Client, JobId, QueryMap, HeadersMap, []).
@@ -4163,9 +4684,7 @@ get_import_job(Client, JobId, QueryMap, HeadersMap)
 -spec get_import_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_import_job_errors(), tuple()}.
 get_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/import-jobs/", aws_util:encode_uri(JobId), ""],
@@ -4191,9 +4710,7 @@ get_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
 -spec get_message_insights(map(), binary() | list()) ->
     {ok, get_message_insights_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_message_insights_errors(), tuple()}.
 get_message_insights(Client, MessageId)
   when is_map(Client) ->
     get_message_insights(Client, MessageId, #{}, #{}).
@@ -4201,9 +4718,7 @@ get_message_insights(Client, MessageId)
 -spec get_message_insights(map(), binary() | list(), map(), map()) ->
     {ok, get_message_insights_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_message_insights_errors(), tuple()}.
 get_message_insights(Client, MessageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_message_insights(Client, MessageId, QueryMap, HeadersMap, []).
@@ -4211,9 +4726,7 @@ get_message_insights(Client, MessageId, QueryMap, HeadersMap)
 -spec get_message_insights(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_message_insights_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_message_insights_errors(), tuple()}.
 get_message_insights(Client, MessageId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/insights/", aws_util:encode_uri(MessageId), ""],
@@ -4236,9 +4749,7 @@ get_message_insights(Client, MessageId, QueryMap, HeadersMap, Options0)
 -spec get_suppressed_destination(map(), binary() | list()) ->
     {ok, get_suppressed_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_suppressed_destination_errors(), tuple()}.
 get_suppressed_destination(Client, EmailAddress)
   when is_map(Client) ->
     get_suppressed_destination(Client, EmailAddress, #{}, #{}).
@@ -4246,9 +4757,7 @@ get_suppressed_destination(Client, EmailAddress)
 -spec get_suppressed_destination(map(), binary() | list(), map(), map()) ->
     {ok, get_suppressed_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_suppressed_destination_errors(), tuple()}.
 get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap, []).
@@ -4256,9 +4765,7 @@ get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap)
 -spec get_suppressed_destination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_suppressed_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, get_suppressed_destination_errors(), tuple()}.
 get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/suppression/addresses/", aws_util:encode_uri(EmailAddress), ""],
@@ -4289,8 +4796,7 @@ get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap, Options0)
 -spec list_configuration_sets(map()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_configuration_sets_errors(), tuple()}.
 list_configuration_sets(Client)
   when is_map(Client) ->
     list_configuration_sets(Client, #{}, #{}).
@@ -4298,8 +4804,7 @@ list_configuration_sets(Client)
 -spec list_configuration_sets(map(), map(), map()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_configuration_sets_errors(), tuple()}.
 list_configuration_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_sets(Client, QueryMap, HeadersMap, []).
@@ -4307,8 +4812,7 @@ list_configuration_sets(Client, QueryMap, HeadersMap)
 -spec list_configuration_sets(map(), map(), map(), proplists:proplist()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_configuration_sets_errors(), tuple()}.
 list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/configuration-sets"],
@@ -4334,8 +4838,7 @@ list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
 -spec list_contact_lists(map()) ->
     {ok, list_contact_lists_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_contact_lists_errors(), tuple()}.
 list_contact_lists(Client)
   when is_map(Client) ->
     list_contact_lists(Client, #{}, #{}).
@@ -4343,8 +4846,7 @@ list_contact_lists(Client)
 -spec list_contact_lists(map(), map(), map()) ->
     {ok, list_contact_lists_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_contact_lists_errors(), tuple()}.
 list_contact_lists(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_lists(Client, QueryMap, HeadersMap, []).
@@ -4352,8 +4854,7 @@ list_contact_lists(Client, QueryMap, HeadersMap)
 -spec list_contact_lists(map(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_lists_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_contact_lists_errors(), tuple()}.
 list_contact_lists(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/contact-lists"],
@@ -4379,9 +4880,7 @@ list_contact_lists(Client, QueryMap, HeadersMap, Options0)
 -spec list_contacts(map(), binary() | list()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_contacts_errors(), tuple()}.
 list_contacts(Client, ContactListName)
   when is_map(Client) ->
     list_contacts(Client, ContactListName, #{}, #{}).
@@ -4389,9 +4888,7 @@ list_contacts(Client, ContactListName)
 -spec list_contacts(map(), binary() | list(), map(), map()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_contacts_errors(), tuple()}.
 list_contacts(Client, ContactListName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contacts(Client, ContactListName, QueryMap, HeadersMap, []).
@@ -4399,9 +4896,7 @@ list_contacts(Client, ContactListName, QueryMap, HeadersMap)
 -spec list_contacts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_contacts_errors(), tuple()}.
 list_contacts(Client, ContactListName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts"],
@@ -4437,8 +4932,7 @@ list_contacts(Client, ContactListName, QueryMap, HeadersMap, Options0)
 -spec list_custom_verification_email_templates(map()) ->
     {ok, list_custom_verification_email_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_custom_verification_email_templates_errors(), tuple()}.
 list_custom_verification_email_templates(Client)
   when is_map(Client) ->
     list_custom_verification_email_templates(Client, #{}, #{}).
@@ -4446,8 +4940,7 @@ list_custom_verification_email_templates(Client)
 -spec list_custom_verification_email_templates(map(), map(), map()) ->
     {ok, list_custom_verification_email_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_custom_verification_email_templates_errors(), tuple()}.
 list_custom_verification_email_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_custom_verification_email_templates(Client, QueryMap, HeadersMap, []).
@@ -4455,8 +4948,7 @@ list_custom_verification_email_templates(Client, QueryMap, HeadersMap)
 -spec list_custom_verification_email_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_custom_verification_email_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_custom_verification_email_templates_errors(), tuple()}.
 list_custom_verification_email_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/custom-verification-email-templates"],
@@ -4484,8 +4976,7 @@ list_custom_verification_email_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_dedicated_ip_pools(map()) ->
     {ok, list_dedicated_ip_pools_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_dedicated_ip_pools_errors(), tuple()}.
 list_dedicated_ip_pools(Client)
   when is_map(Client) ->
     list_dedicated_ip_pools(Client, #{}, #{}).
@@ -4493,8 +4984,7 @@ list_dedicated_ip_pools(Client)
 -spec list_dedicated_ip_pools(map(), map(), map()) ->
     {ok, list_dedicated_ip_pools_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_dedicated_ip_pools_errors(), tuple()}.
 list_dedicated_ip_pools(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dedicated_ip_pools(Client, QueryMap, HeadersMap, []).
@@ -4502,8 +4992,7 @@ list_dedicated_ip_pools(Client, QueryMap, HeadersMap)
 -spec list_dedicated_ip_pools(map(), map(), map(), proplists:proplist()) ->
     {ok, list_dedicated_ip_pools_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_dedicated_ip_pools_errors(), tuple()}.
 list_dedicated_ip_pools(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/dedicated-ip-pools"],
@@ -4535,9 +5024,7 @@ list_dedicated_ip_pools(Client, QueryMap, HeadersMap, Options0)
 -spec list_deliverability_test_reports(map()) ->
     {ok, list_deliverability_test_reports_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_deliverability_test_reports_errors(), tuple()}.
 list_deliverability_test_reports(Client)
   when is_map(Client) ->
     list_deliverability_test_reports(Client, #{}, #{}).
@@ -4545,9 +5032,7 @@ list_deliverability_test_reports(Client)
 -spec list_deliverability_test_reports(map(), map(), map()) ->
     {ok, list_deliverability_test_reports_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_deliverability_test_reports_errors(), tuple()}.
 list_deliverability_test_reports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deliverability_test_reports(Client, QueryMap, HeadersMap, []).
@@ -4555,9 +5040,7 @@ list_deliverability_test_reports(Client, QueryMap, HeadersMap)
 -spec list_deliverability_test_reports(map(), map(), map(), proplists:proplist()) ->
     {ok, list_deliverability_test_reports_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_deliverability_test_reports_errors(), tuple()}.
 list_deliverability_test_reports(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/test-reports"],
@@ -4588,9 +5071,7 @@ list_deliverability_test_reports(Client, QueryMap, HeadersMap, Options0)
 -spec list_domain_deliverability_campaigns(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_domain_deliverability_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_domain_deliverability_campaigns_errors(), tuple()}.
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate)
   when is_map(Client) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, #{}, #{}).
@@ -4598,9 +5079,7 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
 -spec list_domain_deliverability_campaigns(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_domain_deliverability_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_domain_deliverability_campaigns_errors(), tuple()}.
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap, []).
@@ -4608,9 +5087,7 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
 -spec list_domain_deliverability_campaigns(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_deliverability_campaigns_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_domain_deliverability_campaigns_errors(), tuple()}.
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/deliverability-dashboard/domains/", aws_util:encode_uri(SubscribedDomain), "/campaigns"],
@@ -4646,8 +5123,7 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
 -spec list_email_identities(map()) ->
     {ok, list_email_identities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_email_identities_errors(), tuple()}.
 list_email_identities(Client)
   when is_map(Client) ->
     list_email_identities(Client, #{}, #{}).
@@ -4655,8 +5131,7 @@ list_email_identities(Client)
 -spec list_email_identities(map(), map(), map()) ->
     {ok, list_email_identities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_email_identities_errors(), tuple()}.
 list_email_identities(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_email_identities(Client, QueryMap, HeadersMap, []).
@@ -4664,8 +5139,7 @@ list_email_identities(Client, QueryMap, HeadersMap)
 -spec list_email_identities(map(), map(), map(), proplists:proplist()) ->
     {ok, list_email_identities_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_email_identities_errors(), tuple()}.
 list_email_identities(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/identities"],
@@ -4695,8 +5169,7 @@ list_email_identities(Client, QueryMap, HeadersMap, Options0)
 -spec list_email_templates(map()) ->
     {ok, list_email_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_email_templates_errors(), tuple()}.
 list_email_templates(Client)
   when is_map(Client) ->
     list_email_templates(Client, #{}, #{}).
@@ -4704,8 +5177,7 @@ list_email_templates(Client)
 -spec list_email_templates(map(), map(), map()) ->
     {ok, list_email_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_email_templates_errors(), tuple()}.
 list_email_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_email_templates(Client, QueryMap, HeadersMap, []).
@@ -4713,8 +5185,7 @@ list_email_templates(Client, QueryMap, HeadersMap)
 -spec list_email_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_email_templates_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_email_templates_errors(), tuple()}.
 list_email_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/templates"],
@@ -4740,16 +5211,14 @@ list_email_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_export_jobs(map(), list_export_jobs_request()) ->
     {ok, list_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_export_jobs_errors(), tuple()}.
 list_export_jobs(Client, Input) ->
     list_export_jobs(Client, Input, []).
 
 -spec list_export_jobs(map(), list_export_jobs_request(), proplists:proplist()) ->
     {ok, list_export_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_export_jobs_errors(), tuple()}.
 list_export_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/list-export-jobs"],
@@ -4776,8 +5245,7 @@ list_export_jobs(Client, Input0, Options0) ->
 -spec list_import_jobs(map()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_import_jobs_errors(), tuple()}.
 list_import_jobs(Client)
   when is_map(Client) ->
     list_import_jobs(Client, #{}, #{}).
@@ -4785,8 +5253,7 @@ list_import_jobs(Client)
 -spec list_import_jobs(map(), map(), map()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_import_jobs_errors(), tuple()}.
 list_import_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_import_jobs(Client, QueryMap, HeadersMap, []).
@@ -4794,8 +5261,7 @@ list_import_jobs(Client, QueryMap, HeadersMap)
 -spec list_import_jobs(map(), map(), map(), proplists:proplist()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_import_jobs_errors(), tuple()}.
 list_import_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/import-jobs"],
@@ -4824,18 +5290,14 @@ list_import_jobs(Client, QueryMap, HeadersMap, Options0)
 -spec list_recommendations(map(), list_recommendations_request()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input) ->
     list_recommendations(Client, Input, []).
 
 -spec list_recommendations(map(), list_recommendations_request(), proplists:proplist()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/vdm/recommendations"],
@@ -4864,9 +5326,7 @@ list_recommendations(Client, Input0, Options0) ->
 -spec list_suppressed_destinations(map()) ->
     {ok, list_suppressed_destinations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_suppressed_destinations_errors(), tuple()}.
 list_suppressed_destinations(Client)
   when is_map(Client) ->
     list_suppressed_destinations(Client, #{}, #{}).
@@ -4874,9 +5334,7 @@ list_suppressed_destinations(Client)
 -spec list_suppressed_destinations(map(), map(), map()) ->
     {ok, list_suppressed_destinations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_suppressed_destinations_errors(), tuple()}.
 list_suppressed_destinations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suppressed_destinations(Client, QueryMap, HeadersMap, []).
@@ -4884,9 +5342,7 @@ list_suppressed_destinations(Client, QueryMap, HeadersMap)
 -spec list_suppressed_destinations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_suppressed_destinations_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, invalid_next_token_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_suppressed_destinations_errors(), tuple()}.
 list_suppressed_destinations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/suppression/addresses"],
@@ -4924,9 +5380,7 @@ list_suppressed_destinations(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -4934,9 +5388,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -4944,9 +5396,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/tags"],
@@ -4972,16 +5422,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec put_account_dedicated_ip_warmup_attributes(map(), put_account_dedicated_ip_warmup_attributes_request()) ->
     {ok, put_account_dedicated_ip_warmup_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_dedicated_ip_warmup_attributes_errors(), tuple()}.
 put_account_dedicated_ip_warmup_attributes(Client, Input) ->
     put_account_dedicated_ip_warmup_attributes(Client, Input, []).
 
 -spec put_account_dedicated_ip_warmup_attributes(map(), put_account_dedicated_ip_warmup_attributes_request(), proplists:proplist()) ->
     {ok, put_account_dedicated_ip_warmup_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_dedicated_ip_warmup_attributes_errors(), tuple()}.
 put_account_dedicated_ip_warmup_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/dedicated-ips/warmup"],
@@ -5008,18 +5456,14 @@ put_account_dedicated_ip_warmup_attributes(Client, Input0, Options0) ->
 -spec put_account_details(map(), put_account_details_request()) ->
     {ok, put_account_details_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_details_errors(), tuple()}.
 put_account_details(Client, Input) ->
     put_account_details(Client, Input, []).
 
 -spec put_account_details(map(), put_account_details_request(), proplists:proplist()) ->
     {ok, put_account_details_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_details_errors(), tuple()}.
 put_account_details(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/account/details"],
@@ -5046,16 +5490,14 @@ put_account_details(Client, Input0, Options0) ->
 -spec put_account_sending_attributes(map(), put_account_sending_attributes_request()) ->
     {ok, put_account_sending_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_sending_attributes_errors(), tuple()}.
 put_account_sending_attributes(Client, Input) ->
     put_account_sending_attributes(Client, Input, []).
 
 -spec put_account_sending_attributes(map(), put_account_sending_attributes_request(), proplists:proplist()) ->
     {ok, put_account_sending_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_sending_attributes_errors(), tuple()}.
 put_account_sending_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/sending"],
@@ -5082,16 +5524,14 @@ put_account_sending_attributes(Client, Input0, Options0) ->
 -spec put_account_suppression_attributes(map(), put_account_suppression_attributes_request()) ->
     {ok, put_account_suppression_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_suppression_attributes_errors(), tuple()}.
 put_account_suppression_attributes(Client, Input) ->
     put_account_suppression_attributes(Client, Input, []).
 
 -spec put_account_suppression_attributes(map(), put_account_suppression_attributes_request(), proplists:proplist()) ->
     {ok, put_account_suppression_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_suppression_attributes_errors(), tuple()}.
 put_account_suppression_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/suppression"],
@@ -5120,16 +5560,14 @@ put_account_suppression_attributes(Client, Input0, Options0) ->
 -spec put_account_vdm_attributes(map(), put_account_vdm_attributes_request()) ->
     {ok, put_account_vdm_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_vdm_attributes_errors(), tuple()}.
 put_account_vdm_attributes(Client, Input) ->
     put_account_vdm_attributes(Client, Input, []).
 
 -spec put_account_vdm_attributes(map(), put_account_vdm_attributes_request(), proplists:proplist()) ->
     {ok, put_account_vdm_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_account_vdm_attributes_errors(), tuple()}.
 put_account_vdm_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/vdm"],
@@ -5160,18 +5598,14 @@ put_account_vdm_attributes(Client, Input0, Options0) ->
 -spec put_configuration_set_delivery_options(map(), binary() | list(), put_configuration_set_delivery_options_request()) ->
     {ok, put_configuration_set_delivery_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_delivery_options_errors(), tuple()}.
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_delivery_options(Client, ConfigurationSetName, Input, []).
 
 -spec put_configuration_set_delivery_options(map(), binary() | list(), put_configuration_set_delivery_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_delivery_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_delivery_options_errors(), tuple()}.
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/delivery-options"],
@@ -5200,18 +5634,14 @@ put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Opt
 -spec put_configuration_set_reputation_options(map(), binary() | list(), put_configuration_set_reputation_options_request()) ->
     {ok, put_configuration_set_reputation_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_reputation_options_errors(), tuple()}.
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_reputation_options(Client, ConfigurationSetName, Input, []).
 
 -spec put_configuration_set_reputation_options(map(), binary() | list(), put_configuration_set_reputation_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_reputation_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_reputation_options_errors(), tuple()}.
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/reputation-options"],
@@ -5240,18 +5670,14 @@ put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, O
 -spec put_configuration_set_sending_options(map(), binary() | list(), put_configuration_set_sending_options_request()) ->
     {ok, put_configuration_set_sending_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_sending_options_errors(), tuple()}.
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_sending_options(Client, ConfigurationSetName, Input, []).
 
 -spec put_configuration_set_sending_options(map(), binary() | list(), put_configuration_set_sending_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_sending_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_sending_options_errors(), tuple()}.
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/sending"],
@@ -5279,18 +5705,14 @@ put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Opti
 -spec put_configuration_set_suppression_options(map(), binary() | list(), put_configuration_set_suppression_options_request()) ->
     {ok, put_configuration_set_suppression_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_suppression_options_errors(), tuple()}.
 put_configuration_set_suppression_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_suppression_options(Client, ConfigurationSetName, Input, []).
 
 -spec put_configuration_set_suppression_options(map(), binary() | list(), put_configuration_set_suppression_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_suppression_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_suppression_options_errors(), tuple()}.
 put_configuration_set_suppression_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/suppression-options"],
@@ -5319,18 +5741,14 @@ put_configuration_set_suppression_options(Client, ConfigurationSetName, Input0, 
 -spec put_configuration_set_tracking_options(map(), binary() | list(), put_configuration_set_tracking_options_request()) ->
     {ok, put_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_tracking_options_errors(), tuple()}.
 put_configuration_set_tracking_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_tracking_options(Client, ConfigurationSetName, Input, []).
 
 -spec put_configuration_set_tracking_options(map(), binary() | list(), put_configuration_set_tracking_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_tracking_options_errors(), tuple()}.
 put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/tracking-options"],
@@ -5360,18 +5778,14 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Opt
 -spec put_configuration_set_vdm_options(map(), binary() | list(), put_configuration_set_vdm_options_request()) ->
     {ok, put_configuration_set_vdm_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_vdm_options_errors(), tuple()}.
 put_configuration_set_vdm_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_vdm_options(Client, ConfigurationSetName, Input, []).
 
 -spec put_configuration_set_vdm_options(map(), binary() | list(), put_configuration_set_vdm_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_vdm_options_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_configuration_set_vdm_options_errors(), tuple()}.
 put_configuration_set_vdm_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/vdm-options"],
@@ -5405,18 +5819,14 @@ put_configuration_set_vdm_options(Client, ConfigurationSetName, Input0, Options0
 -spec put_dedicated_ip_in_pool(map(), binary() | list(), put_dedicated_ip_in_pool_request()) ->
     {ok, put_dedicated_ip_in_pool_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_dedicated_ip_in_pool_errors(), tuple()}.
 put_dedicated_ip_in_pool(Client, Ip, Input) ->
     put_dedicated_ip_in_pool(Client, Ip, Input, []).
 
 -spec put_dedicated_ip_in_pool(map(), binary() | list(), put_dedicated_ip_in_pool_request(), proplists:proplist()) ->
     {ok, put_dedicated_ip_in_pool_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_dedicated_ip_in_pool_errors(), tuple()}.
 put_dedicated_ip_in_pool(Client, Ip, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), "/pool"],
@@ -5445,20 +5855,14 @@ put_dedicated_ip_in_pool(Client, Ip, Input0, Options0) ->
 -spec put_dedicated_ip_pool_scaling_attributes(map(), binary() | list(), put_dedicated_ip_pool_scaling_attributes_request()) ->
     {ok, put_dedicated_ip_pool_scaling_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_dedicated_ip_pool_scaling_attributes_errors(), tuple()}.
 put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input) ->
     put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input, []).
 
 -spec put_dedicated_ip_pool_scaling_attributes(map(), binary() | list(), put_dedicated_ip_pool_scaling_attributes_request(), proplists:proplist()) ->
     {ok, put_dedicated_ip_pool_scaling_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_dedicated_ip_pool_scaling_attributes_errors(), tuple()}.
 put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), "/scaling"],
@@ -5485,18 +5889,14 @@ put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input0, Options0) ->
 -spec put_dedicated_ip_warmup_attributes(map(), binary() | list(), put_dedicated_ip_warmup_attributes_request()) ->
     {ok, put_dedicated_ip_warmup_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_dedicated_ip_warmup_attributes_errors(), tuple()}.
 put_dedicated_ip_warmup_attributes(Client, Ip, Input) ->
     put_dedicated_ip_warmup_attributes(Client, Ip, Input, []).
 
 -spec put_dedicated_ip_warmup_attributes(map(), binary() | list(), put_dedicated_ip_warmup_attributes_request(), proplists:proplist()) ->
     {ok, put_dedicated_ip_warmup_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_dedicated_ip_warmup_attributes_errors(), tuple()}.
 put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), "/warmup"],
@@ -5536,22 +5936,14 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options0) ->
 -spec put_deliverability_dashboard_option(map(), put_deliverability_dashboard_option_request()) ->
     {ok, put_deliverability_dashboard_option_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_deliverability_dashboard_option_errors(), tuple()}.
 put_deliverability_dashboard_option(Client, Input) ->
     put_deliverability_dashboard_option(Client, Input, []).
 
 -spec put_deliverability_dashboard_option(map(), put_deliverability_dashboard_option_request(), proplists:proplist()) ->
     {ok, put_deliverability_dashboard_option_response(), tuple()} |
     {error, any()} |
-    {error, already_exists_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_deliverability_dashboard_option_errors(), tuple()}.
 put_deliverability_dashboard_option(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/deliverability-dashboard"],
@@ -5578,18 +5970,14 @@ put_deliverability_dashboard_option(Client, Input0, Options0) ->
 -spec put_email_identity_configuration_set_attributes(map(), binary() | list(), put_email_identity_configuration_set_attributes_request()) ->
     {ok, put_email_identity_configuration_set_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_configuration_set_attributes_errors(), tuple()}.
 put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input, []).
 
 -spec put_email_identity_configuration_set_attributes(map(), binary() | list(), put_email_identity_configuration_set_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_configuration_set_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_configuration_set_attributes_errors(), tuple()}.
 put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/configuration-set"],
@@ -5616,18 +6004,14 @@ put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input0, O
 -spec put_email_identity_dkim_attributes(map(), binary() | list(), put_email_identity_dkim_attributes_request()) ->
     {ok, put_email_identity_dkim_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_dkim_attributes_errors(), tuple()}.
 put_email_identity_dkim_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_dkim_attributes(Client, EmailIdentity, Input, []).
 
 -spec put_email_identity_dkim_attributes(map(), binary() | list(), put_email_identity_dkim_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_dkim_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_dkim_attributes_errors(), tuple()}.
 put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim"],
@@ -5672,18 +6056,14 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options0) ->
 -spec put_email_identity_dkim_signing_attributes(map(), binary() | list(), put_email_identity_dkim_signing_attributes_request()) ->
     {ok, put_email_identity_dkim_signing_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_dkim_signing_attributes_errors(), tuple()}.
 put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input, []).
 
 -spec put_email_identity_dkim_signing_attributes(map(), binary() | list(), put_email_identity_dkim_signing_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_dkim_signing_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_dkim_signing_attributes_errors(), tuple()}.
 put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim/signing"],
@@ -5728,18 +6108,14 @@ put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Option
 -spec put_email_identity_feedback_attributes(map(), binary() | list(), put_email_identity_feedback_attributes_request()) ->
     {ok, put_email_identity_feedback_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_feedback_attributes_errors(), tuple()}.
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_feedback_attributes(Client, EmailIdentity, Input, []).
 
 -spec put_email_identity_feedback_attributes(map(), binary() | list(), put_email_identity_feedback_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_feedback_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_feedback_attributes_errors(), tuple()}.
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/feedback"],
@@ -5768,18 +6144,14 @@ put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options0) 
 -spec put_email_identity_mail_from_attributes(map(), binary() | list(), put_email_identity_mail_from_attributes_request()) ->
     {ok, put_email_identity_mail_from_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_mail_from_attributes_errors(), tuple()}.
 put_email_identity_mail_from_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_mail_from_attributes(Client, EmailIdentity, Input, []).
 
 -spec put_email_identity_mail_from_attributes(map(), binary() | list(), put_email_identity_mail_from_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_mail_from_attributes_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_email_identity_mail_from_attributes_errors(), tuple()}.
 put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/mail-from"],
@@ -5806,16 +6178,14 @@ put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options0)
 -spec put_suppressed_destination(map(), put_suppressed_destination_request()) ->
     {ok, put_suppressed_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_suppressed_destination_errors(), tuple()}.
 put_suppressed_destination(Client, Input) ->
     put_suppressed_destination(Client, Input, []).
 
 -spec put_suppressed_destination(map(), put_suppressed_destination_request(), proplists:proplist()) ->
     {ok, put_suppressed_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, put_suppressed_destination_errors(), tuple()}.
 put_suppressed_destination(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/suppression/addresses"],
@@ -5842,28 +6212,14 @@ put_suppressed_destination(Client, Input0, Options0) ->
 -spec send_bulk_email(map(), send_bulk_email_request()) ->
     {ok, send_bulk_email_response(), tuple()} |
     {error, any()} |
-    {error, account_suspended_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, sending_paused_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_bulk_email_errors(), tuple()}.
 send_bulk_email(Client, Input) ->
     send_bulk_email(Client, Input, []).
 
 -spec send_bulk_email(map(), send_bulk_email_request(), proplists:proplist()) ->
     {ok, send_bulk_email_response(), tuple()} |
     {error, any()} |
-    {error, account_suspended_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, sending_paused_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_bulk_email_errors(), tuple()}.
 send_bulk_email(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/outbound-bulk-emails"],
@@ -5908,26 +6264,14 @@ send_bulk_email(Client, Input0, Options0) ->
 -spec send_custom_verification_email(map(), send_custom_verification_email_request()) ->
     {ok, send_custom_verification_email_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, sending_paused_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_custom_verification_email_errors(), tuple()}.
 send_custom_verification_email(Client, Input) ->
     send_custom_verification_email(Client, Input, []).
 
 -spec send_custom_verification_email(map(), send_custom_verification_email_request(), proplists:proplist()) ->
     {ok, send_custom_verification_email_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, sending_paused_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_custom_verification_email_errors(), tuple()}.
 send_custom_verification_email(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/outbound-custom-verification-emails"],
@@ -5975,28 +6319,14 @@ send_custom_verification_email(Client, Input0, Options0) ->
 -spec send_email(map(), send_email_request()) ->
     {ok, send_email_response(), tuple()} |
     {error, any()} |
-    {error, account_suspended_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, sending_paused_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_email_errors(), tuple()}.
 send_email(Client, Input) ->
     send_email(Client, Input, []).
 
 -spec send_email(map(), send_email_request(), proplists:proplist()) ->
     {ok, send_email_response(), tuple()} |
     {error, any()} |
-    {error, account_suspended_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, limit_exceeded_exception(), tuple()} |
-    {error, mail_from_domain_not_verified_exception(), tuple()} |
-    {error, message_rejected(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, sending_paused_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, send_email_errors(), tuple()}.
 send_email(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/outbound-emails"],
@@ -6037,20 +6367,14 @@ send_email(Client, Input0, Options0) ->
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/tags"],
@@ -6081,18 +6405,14 @@ tag_resource(Client, Input0, Options0) ->
 -spec test_render_email_template(map(), binary() | list(), test_render_email_template_request()) ->
     {ok, test_render_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, test_render_email_template_errors(), tuple()}.
 test_render_email_template(Client, TemplateName, Input) ->
     test_render_email_template(Client, TemplateName, Input, []).
 
 -spec test_render_email_template(map(), binary() | list(), test_render_email_template_request(), proplists:proplist()) ->
     {ok, test_render_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, test_render_email_template_errors(), tuple()}.
 test_render_email_template(Client, TemplateName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), "/render"],
@@ -6119,20 +6439,14 @@ test_render_email_template(Client, TemplateName, Input0, Options0) ->
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/tags"],
@@ -6170,18 +6484,14 @@ untag_resource(Client, Input0, Options0) ->
 -spec update_configuration_set_event_destination(map(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_configuration_set_event_destination_errors(), tuple()}.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 
 -spec update_configuration_set_event_destination(map(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_configuration_set_event_destination_errors(), tuple()}.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
@@ -6212,20 +6522,14 @@ update_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 -spec update_contact(map(), binary() | list(), binary() | list(), update_contact_request()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_contact_errors(), tuple()}.
 update_contact(Client, ContactListName, EmailAddress, Input) ->
     update_contact(Client, ContactListName, EmailAddress, Input, []).
 
 -spec update_contact(map(), binary() | list(), binary() | list(), update_contact_request(), proplists:proplist()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_contact_errors(), tuple()}.
 update_contact(Client, ContactListName, EmailAddress, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), "/contacts/", aws_util:encode_uri(EmailAddress), ""],
@@ -6254,20 +6558,14 @@ update_contact(Client, ContactListName, EmailAddress, Input0, Options0) ->
 -spec update_contact_list(map(), binary() | list(), update_contact_list_request()) ->
     {ok, update_contact_list_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_contact_list_errors(), tuple()}.
 update_contact_list(Client, ContactListName, Input) ->
     update_contact_list(Client, ContactListName, Input, []).
 
 -spec update_contact_list(map(), binary() | list(), update_contact_list_request(), proplists:proplist()) ->
     {ok, update_contact_list_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, concurrent_modification_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_contact_list_errors(), tuple()}.
 update_contact_list(Client, ContactListName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/contact-lists/", aws_util:encode_uri(ContactListName), ""],
@@ -6302,18 +6600,14 @@ update_contact_list(Client, ContactListName, Input0, Options0) ->
 -spec update_custom_verification_email_template(map(), binary() | list(), update_custom_verification_email_template_request()) ->
     {ok, update_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_custom_verification_email_template_errors(), tuple()}.
 update_custom_verification_email_template(Client, TemplateName, Input) ->
     update_custom_verification_email_template(Client, TemplateName, Input, []).
 
 -spec update_custom_verification_email_template(map(), binary() | list(), update_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, update_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_custom_verification_email_template_errors(), tuple()}.
 update_custom_verification_email_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/custom-verification-email-templates/", aws_util:encode_uri(TemplateName), ""],
@@ -6359,18 +6653,14 @@ update_custom_verification_email_template(Client, TemplateName, Input0, Options0
 -spec update_email_identity_policy(map(), binary() | list(), binary() | list(), update_email_identity_policy_request()) ->
     {ok, update_email_identity_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_email_identity_policy_errors(), tuple()}.
 update_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
     update_email_identity_policy(Client, EmailIdentity, PolicyName, Input, []).
 
 -spec update_email_identity_policy(map(), binary() | list(), binary() | list(), update_email_identity_policy_request(), proplists:proplist()) ->
     {ok, update_email_identity_policy_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_email_identity_policy_errors(), tuple()}.
 update_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/identities/", aws_util:encode_uri(EmailIdentity), "/policies/", aws_util:encode_uri(PolicyName), ""],
@@ -6405,18 +6695,14 @@ update_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 -spec update_email_template(map(), binary() | list(), update_email_template_request()) ->
     {ok, update_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_email_template_errors(), tuple()}.
 update_email_template(Client, TemplateName, Input) ->
     update_email_template(Client, TemplateName, Input, []).
 
 -spec update_email_template(map(), binary() | list(), update_email_template_request(), proplists:proplist()) ->
     {ok, update_email_template_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, not_found_exception(), tuple()} |
-    {error, too_many_requests_exception(), tuple()}.
+    {error, update_email_template_errors(), tuple()}.
 update_email_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],

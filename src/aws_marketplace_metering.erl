@@ -270,6 +270,45 @@
 %% }
 -type usage_record_result() :: #{binary() => any()}.
 
+-type batch_meter_usage_errors() ::
+    timestamp_out_of_bounds_exception() | 
+    throttling_exception() | 
+    invalid_usage_dimension_exception() | 
+    invalid_usage_allocations_exception() | 
+    invalid_tag_exception() | 
+    invalid_product_code_exception() | 
+    invalid_customer_identifier_exception() | 
+    internal_service_error_exception() | 
+    disabled_api_exception().
+
+-type meter_usage_errors() ::
+    timestamp_out_of_bounds_exception() | 
+    throttling_exception() | 
+    invalid_usage_dimension_exception() | 
+    invalid_usage_allocations_exception() | 
+    invalid_tag_exception() | 
+    invalid_product_code_exception() | 
+    invalid_endpoint_region_exception() | 
+    internal_service_error_exception() | 
+    duplicate_request_exception() | 
+    customer_not_entitled_exception().
+
+-type register_usage_errors() ::
+    throttling_exception() | 
+    platform_not_supported_exception() | 
+    invalid_region_exception() | 
+    invalid_public_key_version_exception() | 
+    invalid_product_code_exception() | 
+    internal_service_error_exception() | 
+    disabled_api_exception() | 
+    customer_not_entitled_exception().
+
+-type resolve_customer_errors() ::
+    throttling_exception() | 
+    invalid_token_exception() | 
+    internal_service_error_exception() | 
+    expired_token_exception() | 
+    disabled_api_exception().
 
 %%====================================================================
 %% API
@@ -315,15 +354,7 @@
 -spec batch_meter_usage(map(), batch_meter_usage_request()) ->
     {ok, batch_meter_usage_result(), tuple()} |
     {error, any()} |
-    {error, disabled_api_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_customer_identifier_exception(), tuple()} |
-    {error, invalid_product_code_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, invalid_usage_allocations_exception(), tuple()} |
-    {error, invalid_usage_dimension_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, timestamp_out_of_bounds_exception(), tuple()}.
+    {error, batch_meter_usage_errors(), tuple()}.
 batch_meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_meter_usage(Client, Input, []).
@@ -331,15 +362,7 @@ batch_meter_usage(Client, Input)
 -spec batch_meter_usage(map(), batch_meter_usage_request(), proplists:proplist()) ->
     {ok, batch_meter_usage_result(), tuple()} |
     {error, any()} |
-    {error, disabled_api_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_customer_identifier_exception(), tuple()} |
-    {error, invalid_product_code_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, invalid_usage_allocations_exception(), tuple()} |
-    {error, invalid_usage_dimension_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, timestamp_out_of_bounds_exception(), tuple()}.
+    {error, batch_meter_usage_errors(), tuple()}.
 batch_meter_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchMeterUsage">>, Input, Options).
@@ -365,16 +388,7 @@ batch_meter_usage(Client, Input, Options)
 -spec meter_usage(map(), meter_usage_request()) ->
     {ok, meter_usage_result(), tuple()} |
     {error, any()} |
-    {error, customer_not_entitled_exception(), tuple()} |
-    {error, duplicate_request_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_endpoint_region_exception(), tuple()} |
-    {error, invalid_product_code_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, invalid_usage_allocations_exception(), tuple()} |
-    {error, invalid_usage_dimension_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, timestamp_out_of_bounds_exception(), tuple()}.
+    {error, meter_usage_errors(), tuple()}.
 meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     meter_usage(Client, Input, []).
@@ -382,16 +396,7 @@ meter_usage(Client, Input)
 -spec meter_usage(map(), meter_usage_request(), proplists:proplist()) ->
     {ok, meter_usage_result(), tuple()} |
     {error, any()} |
-    {error, customer_not_entitled_exception(), tuple()} |
-    {error, duplicate_request_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_endpoint_region_exception(), tuple()} |
-    {error, invalid_product_code_exception(), tuple()} |
-    {error, invalid_tag_exception(), tuple()} |
-    {error, invalid_usage_allocations_exception(), tuple()} |
-    {error, invalid_usage_dimension_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, timestamp_out_of_bounds_exception(), tuple()}.
+    {error, meter_usage_errors(), tuple()}.
 meter_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MeterUsage">>, Input, Options).
@@ -449,14 +454,7 @@ meter_usage(Client, Input, Options)
 -spec register_usage(map(), register_usage_request()) ->
     {ok, register_usage_result(), tuple()} |
     {error, any()} |
-    {error, customer_not_entitled_exception(), tuple()} |
-    {error, disabled_api_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_product_code_exception(), tuple()} |
-    {error, invalid_public_key_version_exception(), tuple()} |
-    {error, invalid_region_exception(), tuple()} |
-    {error, platform_not_supported_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, register_usage_errors(), tuple()}.
 register_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_usage(Client, Input, []).
@@ -464,14 +462,7 @@ register_usage(Client, Input)
 -spec register_usage(map(), register_usage_request(), proplists:proplist()) ->
     {ok, register_usage_result(), tuple()} |
     {error, any()} |
-    {error, customer_not_entitled_exception(), tuple()} |
-    {error, disabled_api_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_product_code_exception(), tuple()} |
-    {error, invalid_public_key_version_exception(), tuple()} |
-    {error, invalid_region_exception(), tuple()} |
-    {error, platform_not_supported_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, register_usage_errors(), tuple()}.
 register_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterUsage">>, Input, Options).
@@ -502,11 +493,7 @@ register_usage(Client, Input, Options)
 -spec resolve_customer(map(), resolve_customer_request()) ->
     {ok, resolve_customer_result(), tuple()} |
     {error, any()} |
-    {error, disabled_api_exception(), tuple()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, resolve_customer_errors(), tuple()}.
 resolve_customer(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_customer(Client, Input, []).
@@ -514,11 +501,7 @@ resolve_customer(Client, Input)
 -spec resolve_customer(map(), resolve_customer_request(), proplists:proplist()) ->
     {ok, resolve_customer_result(), tuple()} |
     {error, any()} |
-    {error, disabled_api_exception(), tuple()} |
-    {error, expired_token_exception(), tuple()} |
-    {error, internal_service_error_exception(), tuple()} |
-    {error, invalid_token_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, resolve_customer_errors(), tuple()}.
 resolve_customer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResolveCustomer">>, Input, Options).

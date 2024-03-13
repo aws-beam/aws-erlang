@@ -176,11 +176,13 @@
 %% }
 -type profile() :: #{binary() => any()}.
 
+
 %% Example:
 %% integration_config() :: #{
 %%   <<"AppflowIntegration">> => appflow_integration()
 %% }
 -type integration_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_profile_object_type_item() :: #{
@@ -192,6 +194,7 @@
 %% }
 -type list_profile_object_type_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% auto_merging() :: #{
 %%   <<"ConflictResolution">> => conflict_resolution(),
@@ -200,6 +203,7 @@
 %%   <<"MinAllowedConfidenceScoreForMerging">> => float()
 %% }
 -type auto_merging() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_calculated_attribute_definition_response() :: #{
@@ -214,9 +218,11 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_calculated_attribute_definition_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_domain_request() :: #{}
 -type get_domain_request() :: #{}.
+
 
 %% Example:
 %% put_profile_object_type_response() :: #{
@@ -235,17 +241,20 @@
 %% }
 -type put_profile_object_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_domain_response() :: #{
 %%   <<"Message">> => string()
 %% }
 -type delete_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_profile_object_response() :: #{
 %%   <<"ProfileObjectUniqueKey">> => string()
 %% }
 -type put_profile_object_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_schedule() :: #{
@@ -254,11 +263,13 @@
 %% }
 -type job_schedule() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_integration_response() :: #{
 %%   <<"Message">> => string()
 %% }
 -type delete_integration_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% task() :: #{
@@ -269,6 +280,7 @@
 %%   <<"TaskType">> => list(any())
 %% }
 -type task() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_domain_request() :: #{
@@ -281,11 +293,13 @@
 %% }
 -type update_domain_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% scheduled_trigger_properties() :: #{
@@ -299,6 +313,7 @@
 %% }
 -type scheduled_trigger_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% range() :: #{
 %%   <<"Unit">> => list(any()),
@@ -306,11 +321,13 @@
 %% }
 -type range() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_profile_key_response() :: #{
 %%   <<"Message">> => string()
 %% }
 -type delete_profile_key_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_profile_object_type_template_item() :: #{
@@ -320,6 +337,7 @@
 %% }
 -type list_profile_object_type_template_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% attribute_details() :: #{
 %%   <<"Attributes">> => list(attribute_item()()),
@@ -327,11 +345,13 @@
 %% }
 -type attribute_details() :: #{binary() => any()}.
 
+
 %% Example:
 %% detect_profile_object_type_response() :: #{
 %%   <<"DetectedProfileObjectTypes">> => list(detected_profile_object_type()())
 %% }
 -type detect_profile_object_type_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_identity_resolution_jobs_request() :: #{
@@ -339,6 +359,7 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_identity_resolution_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% job_stats() :: #{
@@ -348,11 +369,13 @@
 %% }
 -type job_stats() :: #{binary() => any()}.
 
+
 %% Example:
 %% marketo_source_properties() :: #{
 %%   <<"Object">> => string()
 %% }
 -type marketo_source_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_profile_object_type_response() :: #{
@@ -371,14 +394,17 @@
 %% }
 -type get_profile_object_type_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% attribute_item() :: #{
 %%   <<"Name">> => string()
 %% }
 -type attribute_item() :: #{binary() => any()}.
+
 %% Example:
 %% get_calculated_attribute_for_profile_request() :: #{}
 -type get_calculated_attribute_for_profile_request() :: #{}.
+
 
 %% Example:
 %% conflict_resolution() :: #{
@@ -387,14 +413,17 @@
 %% }
 -type conflict_resolution() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_profile_request() :: #{
 %%   <<"ProfileId">> := string()
 %% }
 -type delete_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
 
 %% Example:
 %% domain_stats() :: #{
@@ -404,9 +433,11 @@
 %%   <<"TotalSize">> => float()
 %% }
 -type domain_stats() :: #{binary() => any()}.
+
 %% Example:
 %% delete_workflow_request() :: #{}
 -type delete_workflow_request() :: #{}.
+
 
 %% Example:
 %% list_account_integrations_request() :: #{
@@ -417,12 +448,14 @@
 %% }
 -type list_account_integrations_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_filter() :: #{
 %%   <<"KeyName">> => string(),
 %%   <<"Values">> => list(string()())
 %% }
 -type object_filter() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_source_properties() :: #{
@@ -431,12 +464,14 @@
 %% }
 -type s3_source_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% found_by_key_value() :: #{
 %%   <<"KeyName">> => string(),
 %%   <<"Values">> => list(string()())
 %% }
 -type found_by_key_value() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_domain_response() :: #{
@@ -452,20 +487,24 @@
 %% }
 -type update_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% merge_profiles_response() :: #{
 %%   <<"Message">> => string()
 %% }
 -type merge_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_profile_response() :: #{
 %%   <<"Message">> => string()
 %% }
 -type delete_profile_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_identity_resolution_job_request() :: #{}
 -type get_identity_resolution_job_request() :: #{}.
+
 
 %% Example:
 %% appflow_integration_workflow_step() :: #{
@@ -480,17 +519,20 @@
 %% }
 -type appflow_integration_workflow_step() :: #{binary() => any()}.
 
+
 %% Example:
 %% detect_profile_object_type_request() :: #{
 %%   <<"Objects">> := list(string()())
 %% }
 -type detect_profile_object_type_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% exporting_location() :: #{
 %%   <<"S3Exporting">> => s3_exporting_location()
 %% }
 -type exporting_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_similar_profiles_response() :: #{
@@ -503,6 +545,7 @@
 %% }
 -type get_similar_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_integration_request() :: #{
 %%   <<"FlowDefinition">> => flow_definition(),
@@ -512,6 +555,7 @@
 %%   <<"Uri">> => string()
 %% }
 -type put_integration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% flow_definition() :: #{
@@ -524,12 +568,14 @@
 %% }
 -type flow_definition() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rule_based_matches_response() :: #{
 %%   <<"MatchIds">> => list(string()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_rule_based_matches_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% appflow_integration_workflow_attributes() :: #{
@@ -539,12 +585,14 @@
 %% }
 -type appflow_integration_workflow_attributes() :: #{binary() => any()}.
 
+
 %% Example:
 %% add_profile_key_response() :: #{
 %%   <<"KeyName">> => string(),
 %%   <<"Values">> => list(string()())
 %% }
 -type add_profile_key_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_identity_resolution_jobs_response() :: #{
@@ -553,17 +601,20 @@
 %% }
 -type list_identity_resolution_jobs_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string()())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% matching_rule() :: #{
 %%   <<"Rule">> => list(string()())
 %% }
 -type matching_rule() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_integration_response() :: #{
@@ -579,11 +630,13 @@
 %% }
 -type put_integration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% zendesk_source_properties() :: #{
 %%   <<"Object">> => string()
 %% }
 -type zendesk_source_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_integration_workflow_request() :: #{
@@ -594,6 +647,7 @@
 %%   <<"WorkflowType">> := list(any())
 %% }
 -type create_integration_workflow_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_identity_resolution_job_response() :: #{
@@ -611,6 +665,7 @@
 %% }
 -type get_identity_resolution_job_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_similar_profiles_request() :: #{
 %%   <<"MatchType">> := list(any()),
@@ -621,17 +676,21 @@
 %% }
 -type get_similar_profiles_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% trigger_properties() :: #{
 %%   <<"Scheduled">> => scheduled_trigger_properties()
 %% }
 -type trigger_properties() :: #{binary() => any()}.
+
 %% Example:
 %% get_calculated_attribute_definition_request() :: #{}
 -type get_calculated_attribute_definition_request() :: #{}.
+
 %% Example:
 %% get_workflow_request() :: #{}
 -type get_workflow_request() :: #{}.
+
 
 %% Example:
 %% create_calculated_attribute_definition_request() :: #{
@@ -644,6 +703,7 @@
 %% }
 -type create_calculated_attribute_definition_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_calculated_attribute_definition_item() :: #{
 %%   <<"CalculatedAttributeName">> => string(),
@@ -655,6 +715,7 @@
 %% }
 -type list_calculated_attribute_definition_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_integrations_request() :: #{
 %%   <<"IncludeHidden">> => boolean(),
@@ -662,15 +723,18 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_integrations_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_calculated_attribute_definition_response() :: #{}
 -type delete_calculated_attribute_definition_response() :: #{}.
+
 
 %% Example:
 %% workflow_step_item() :: #{
 %%   <<"AppflowIntegration">> => appflow_integration_workflow_step()
 %% }
 -type workflow_step_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% object_type_field() :: #{
@@ -680,6 +744,7 @@
 %% }
 -type object_type_field() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domain_item() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -688,6 +753,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type list_domain_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_address() :: #{
@@ -704,6 +770,7 @@
 %% }
 -type update_address() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_integration_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -718,14 +785,17 @@
 %% }
 -type get_integration_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_profile_object_response() :: #{
 %%   <<"Message">> => string()
 %% }
 -type delete_profile_object_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_domain_request() :: #{}
 -type delete_domain_request() :: #{}.
+
 
 %% Example:
 %% delete_profile_key_request() :: #{
@@ -735,11 +805,13 @@
 %% }
 -type delete_profile_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% workflow_attributes() :: #{
 %%   <<"AppflowIntegration">> => appflow_integration_workflow_attributes()
 %% }
 -type workflow_attributes() :: #{binary() => any()}.
+
 
 %% Example:
 %% match_item() :: #{
@@ -748,6 +820,7 @@
 %%   <<"ProfileIds">> => list(string()())
 %% }
 -type match_item() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_profile_request() :: #{
@@ -776,9 +849,11 @@
 %%   <<"ShippingAddress">> => address()
 %% }
 -type create_profile_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_workflow_response() :: #{}
 -type delete_workflow_response() :: #{}.
+
 
 %% Example:
 %% rule_based_matching_response() :: #{
@@ -792,6 +867,7 @@
 %%   <<"Status">> => list(any())
 %% }
 -type rule_based_matching_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_calculated_attribute_definition_response() :: #{
@@ -807,6 +883,7 @@
 %% }
 -type update_calculated_attribute_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% additional_search_key() :: #{
 %%   <<"KeyName">> => string(),
@@ -814,17 +891,20 @@
 %% }
 -type additional_search_key() :: #{binary() => any()}.
 
+
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_integration_request() :: #{
 %%   <<"Uri">> := string()
 %% }
 -type delete_integration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_domain_request() :: #{
@@ -836,6 +916,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_domain_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_profile_request() :: #{
@@ -866,6 +947,7 @@
 %% }
 -type update_profile_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_calculated_attribute_for_profile_response() :: #{
 %%   <<"CalculatedAttributeName">> => string(),
@@ -875,12 +957,14 @@
 %% }
 -type get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_rule_based_matches_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_rule_based_matches_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_event_streams_response() :: #{
@@ -889,12 +973,14 @@
 %% }
 -type list_event_streams_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_profile_objects_response() :: #{
 %%   <<"Items">> => list(list_profile_objects_item()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_profile_objects_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_workflows_item() :: #{
@@ -907,6 +993,7 @@
 %% }
 -type list_workflows_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% merge_profiles_request() :: #{
 %%   <<"FieldSourceProfileIds">> => field_source_profile_ids(),
@@ -914,6 +1001,7 @@
 %%   <<"ProfileIdsToBeMerged">> := list(string()())
 %% }
 -type merge_profiles_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% appflow_integration_workflow_metrics() :: #{
@@ -923,12 +1011,14 @@
 %% }
 -type appflow_integration_workflow_metrics() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_domains_response() :: #{
 %%   <<"Items">> => list(list_domain_item()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_domains_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_profile_object_type_template_response() :: #{
@@ -942,11 +1032,13 @@
 %% }
 -type get_profile_object_type_template_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_profile_response() :: #{
 %%   <<"ProfileId">> => string()
 %% }
 -type create_profile_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_matches_request() :: #{
@@ -955,12 +1047,14 @@
 %% }
 -type get_matches_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_profile_object_types_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_profile_object_types_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_workflows_request() :: #{
@@ -973,11 +1067,13 @@
 %% }
 -type list_workflows_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% exporting_config() :: #{
 %%   <<"S3Exporting">> => s3_exporting_config()
 %% }
 -type exporting_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% destination_summary() :: #{
@@ -986,6 +1082,7 @@
 %%   <<"Uri">> => string()
 %% }
 -type destination_summary() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_event_stream_response() :: #{
@@ -999,12 +1096,14 @@
 %% }
 -type get_event_stream_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% s3_exporting_location() :: #{
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3KeyName">> => string()
 %% }
 -type s3_exporting_location() :: #{binary() => any()}.
+
 
 %% Example:
 %% matching_response() :: #{
@@ -1015,6 +1114,7 @@
 %% }
 -type matching_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% conditions() :: #{
 %%   <<"ObjectCount">> => integer(),
@@ -1022,6 +1122,7 @@
 %%   <<"Threshold">> => threshold()
 %% }
 -type conditions() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_auto_merging_preview_request() :: #{
@@ -1031,11 +1132,13 @@
 %% }
 -type get_auto_merging_preview_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% source_connector_properties() :: #{
@@ -1047,11 +1150,13 @@
 %% }
 -type source_connector_properties() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_integration_request() :: #{
 %%   <<"Uri">> := string()
 %% }
 -type get_integration_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_calculated_attribute_definitions_request() :: #{
@@ -1060,11 +1165,13 @@
 %% }
 -type list_calculated_attribute_definitions_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% consolidation() :: #{
 %%   <<"MatchingAttributesList">> => list(list(string()())())
 %% }
 -type consolidation() :: #{binary() => any()}.
+
 
 %% Example:
 %% rule_based_matching_request() :: #{
@@ -1078,12 +1185,14 @@
 %% }
 -type rule_based_matching_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% object_type_key() :: #{
 %%   <<"FieldNames">> => list(string()()),
 %%   <<"StandardIdentifiers">> => list(list(any())())
 %% }
 -type object_type_key() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_matches_response() :: #{
@@ -1094,6 +1203,7 @@
 %% }
 -type get_matches_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_profile_objects_item() :: #{
 %%   <<"Object">> => string(),
@@ -1102,12 +1212,14 @@
 %% }
 -type list_profile_objects_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_calculated_attributes_for_profile_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_calculated_attributes_for_profile_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_domain_response() :: #{
@@ -1123,6 +1235,7 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_domain_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% field_source_profile_ids() :: #{
@@ -1150,6 +1263,7 @@
 %% }
 -type field_source_profile_ids() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_stream_destination_details() :: #{
 %%   <<"Message">> => string(),
@@ -1158,6 +1272,7 @@
 %%   <<"Uri">> => string()
 %% }
 -type event_stream_destination_details() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_profiles_request() :: #{
@@ -1169,9 +1284,11 @@
 %%   <<"Values">> := list(string()())
 %% }
 -type search_profiles_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_profile_object_type_request() :: #{}
 -type get_profile_object_type_request() :: #{}.
+
 
 %% Example:
 %% list_domains_request() :: #{
@@ -1179,9 +1296,11 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_domains_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_event_stream_request() :: #{}
 -type get_event_stream_request() :: #{}.
+
 
 %% Example:
 %% source_flow_config() :: #{
@@ -1192,11 +1311,13 @@
 %% }
 -type source_flow_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% salesforce_source_properties() :: #{
@@ -1205,6 +1326,7 @@
 %%   <<"Object">> => string()
 %% }
 -type salesforce_source_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_workflow_steps_response() :: #{
@@ -1215,6 +1337,7 @@
 %% }
 -type get_workflow_steps_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_calculated_attributes_for_profile_response() :: #{
 %%   <<"Items">> => list(list_calculated_attribute_for_profile_item()()),
@@ -1222,15 +1345,18 @@
 %% }
 -type list_calculated_attributes_for_profile_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% get_workflow_steps_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type get_workflow_steps_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_calculated_attribute_definition_request() :: #{}
 -type delete_calculated_attribute_definition_request() :: #{}.
+
 
 %% Example:
 %% get_auto_merging_preview_response() :: #{
@@ -1241,11 +1367,13 @@
 %% }
 -type get_auto_merging_preview_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% search_profiles_response() :: #{
@@ -1254,12 +1382,14 @@
 %% }
 -type search_profiles_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% create_integration_workflow_response() :: #{
 %%   <<"Message">> => string(),
 %%   <<"WorkflowId">> => string()
 %% }
 -type create_integration_workflow_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% update_calculated_attribute_definition_request() :: #{
@@ -1268,9 +1398,11 @@
 %%   <<"DisplayName">> => string()
 %% }
 -type update_calculated_attribute_definition_request() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% identity_resolution_job() :: #{
@@ -1284,9 +1416,11 @@
 %%   <<"Status">> => list(any())
 %% }
 -type identity_resolution_job() :: #{binary() => any()}.
+
 %% Example:
 %% delete_event_stream_response() :: #{}
 -type delete_event_stream_response() :: #{}.
+
 
 %% Example:
 %% attribute_types_selector() :: #{
@@ -1297,11 +1431,13 @@
 %% }
 -type attribute_types_selector() :: #{binary() => any()}.
 
+
 %% Example:
 %% update_profile_response() :: #{
 %%   <<"ProfileId">> => string()
 %% }
 -type update_profile_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% put_profile_object_type_request() :: #{
@@ -1317,15 +1453,18 @@
 %% }
 -type put_profile_object_type_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% batch() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type batch() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
 %% s3_exporting_config() :: #{
@@ -1334,11 +1473,13 @@
 %% }
 -type s3_exporting_config() :: #{binary() => any()}.
 
+
 %% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_domain_response() :: #{
@@ -1354,6 +1495,7 @@
 %% }
 -type create_domain_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_profile_objects_request() :: #{
 %%   <<"MaxResults">> => integer(),
@@ -1364,12 +1506,14 @@
 %% }
 -type list_profile_objects_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_profile_object_type_templates_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_profile_object_type_templates_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_event_stream_request() :: #{
@@ -1378,12 +1522,14 @@
 %% }
 -type create_event_stream_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% threshold() :: #{
 %%   <<"Operator">> => list(any()),
 %%   <<"Value">> => string()
 %% }
 -type threshold() :: #{binary() => any()}.
+
 
 %% Example:
 %% detected_profile_object_type() :: #{
@@ -1392,15 +1538,18 @@
 %%   <<"SourceLastUpdatedTimestampFormat">> => string()
 %% }
 -type detected_profile_object_type() :: #{binary() => any()}.
+
 %% Example:
 %% delete_profile_object_type_request() :: #{}
 -type delete_profile_object_type_request() :: #{}.
+
 
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% connector_operator() :: #{
@@ -1412,15 +1561,18 @@
 %% }
 -type connector_operator() :: #{binary() => any()}.
 
+
 %% Example:
 %% put_profile_object_request() :: #{
 %%   <<"Object">> := string(),
 %%   <<"ObjectTypeName">> := string()
 %% }
 -type put_profile_object_request() :: #{binary() => any()}.
+
 %% Example:
 %% delete_event_stream_request() :: #{}
 -type delete_event_stream_request() :: #{}.
+
 
 %% Example:
 %% appflow_integration() :: #{
@@ -1428,6 +1580,7 @@
 %%   <<"FlowDefinition">> => flow_definition()
 %% }
 -type appflow_integration() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_calculated_attribute_for_profile_item() :: #{
@@ -1438,12 +1591,14 @@
 %% }
 -type list_calculated_attribute_for_profile_item() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_event_streams_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_streams_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% address() :: #{
@@ -1460,6 +1615,7 @@
 %% }
 -type address() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_profile_object_request() :: #{
 %%   <<"ObjectTypeName">> := string(),
@@ -1468,12 +1624,14 @@
 %% }
 -type delete_profile_object_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_calculated_attribute_definitions_response() :: #{
 %%   <<"Items">> => list(list_calculated_attribute_definition_item()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_calculated_attribute_definitions_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_workflows_response() :: #{
@@ -1482,6 +1640,7 @@
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_profile_object_type_templates_response() :: #{
 %%   <<"Items">> => list(list_profile_object_type_template_item()()),
@@ -1489,11 +1648,13 @@
 %% }
 -type list_profile_object_type_templates_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_profile_object_type_response() :: #{
 %%   <<"Message">> => string()
 %% }
 -type delete_profile_object_type_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_account_integrations_response() :: #{
@@ -1502,11 +1663,13 @@
 %% }
 -type list_account_integrations_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_now_source_properties() :: #{
 %%   <<"Object">> => string()
 %% }
 -type service_now_source_properties() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_integration_item() :: #{
@@ -1521,9 +1684,11 @@
 %%   <<"WorkflowId">> => string()
 %% }
 -type list_integration_item() :: #{binary() => any()}.
+
 %% Example:
 %% get_profile_object_type_template_request() :: #{}
 -type get_profile_object_type_template_request() :: #{}.
+
 
 %% Example:
 %% workflow_metrics() :: #{
@@ -1531,11 +1696,13 @@
 %% }
 -type workflow_metrics() :: #{binary() => any()}.
 
+
 %% Example:
 %% incremental_pull_config() :: #{
 %%   <<"DatetimeTypeFieldName">> => string()
 %% }
 -type incremental_pull_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_event_stream_response() :: #{
@@ -1544,12 +1711,14 @@
 %% }
 -type create_event_stream_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% trigger_config() :: #{
 %%   <<"TriggerProperties">> => trigger_properties(),
 %%   <<"TriggerType">> => list(any())
 %% }
 -type trigger_config() :: #{binary() => any()}.
+
 
 %% Example:
 %% add_profile_key_request() :: #{
@@ -1559,6 +1728,7 @@
 %% }
 -type add_profile_key_request() :: #{binary() => any()}.
 
+
 %% Example:
 %% matching_request() :: #{
 %%   <<"AutoMerging">> => auto_merging(),
@@ -1567,6 +1737,7 @@
 %%   <<"JobSchedule">> => job_schedule()
 %% }
 -type matching_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_calculated_attribute_definition_response() :: #{
@@ -1582,6 +1753,7 @@
 %% }
 -type get_calculated_attribute_definition_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_profile_object_types_response() :: #{
 %%   <<"Items">> => list(list_profile_object_type_item()()),
@@ -1589,12 +1761,14 @@
 %% }
 -type list_profile_object_types_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_integrations_response() :: #{
 %%   <<"Items">> => list(list_integration_item()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_integrations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_workflow_response() :: #{
@@ -1609,6 +1783,7 @@
 %% }
 -type get_workflow_response() :: #{binary() => any()}.
 
+
 %% Example:
 %% event_stream_summary() :: #{
 %%   <<"DestinationSummary">> => destination_summary(),
@@ -1620,6 +1795,363 @@
 %%   <<"Tags">> => map()
 %% }
 -type event_stream_summary() :: #{binary() => any()}.
+
+-type add_profile_key_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_calculated_attribute_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_event_stream_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_integration_workflow_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_calculated_attribute_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_event_stream_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_integration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_profile_key_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_profile_object_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_workflow_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type detect_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_auto_merging_preview_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_calculated_attribute_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_calculated_attribute_for_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_event_stream_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_identity_resolution_job_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_integration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_matches_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_profile_object_type_template_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_similar_profiles_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_workflow_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_workflow_steps_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_account_integrations_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_calculated_attribute_definitions_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_calculated_attributes_for_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_domains_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_event_streams_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_identity_resolution_jobs_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_integrations_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_profile_object_type_templates_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_profile_object_types_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_profile_objects_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_rule_based_matches_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_workflows_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type merge_profiles_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_integration_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_profile_object_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type put_profile_object_type_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type search_profiles_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_calculated_attribute_definition_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_domain_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type update_profile_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1635,22 +2167,14 @@
 -spec add_profile_key(map(), binary() | list(), add_profile_key_request()) ->
     {ok, add_profile_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, add_profile_key_errors(), tuple()}.
 add_profile_key(Client, DomainName, Input) ->
     add_profile_key(Client, DomainName, Input, []).
 
 -spec add_profile_key(map(), binary() | list(), add_profile_key_request(), proplists:proplist()) ->
     {ok, add_profile_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, add_profile_key_errors(), tuple()}.
 add_profile_key(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys"],
@@ -1689,22 +2213,14 @@ add_profile_key(Client, DomainName, Input0, Options0) ->
 -spec create_calculated_attribute_definition(map(), binary() | list(), binary() | list(), create_calculated_attribute_definition_request()) ->
     {ok, create_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_calculated_attribute_definition_errors(), tuple()}.
 create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
 
 -spec create_calculated_attribute_definition(map(), binary() | list(), binary() | list(), create_calculated_attribute_definition_request(), proplists:proplist()) ->
     {ok, create_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_calculated_attribute_definition_errors(), tuple()}.
 create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -1754,22 +2270,14 @@ create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 -spec create_domain(map(), binary() | list(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, DomainName, Input) ->
     create_domain(Client, DomainName, Input, []).
 
 -spec create_domain(map(), binary() | list(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_domain_errors(), tuple()}.
 create_domain(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
@@ -1802,22 +2310,14 @@ create_domain(Client, DomainName, Input0, Options0) ->
 -spec create_event_stream(map(), binary() | list(), binary() | list(), create_event_stream_request()) ->
     {ok, create_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_event_stream_errors(), tuple()}.
 create_event_stream(Client, DomainName, EventStreamName, Input) ->
     create_event_stream(Client, DomainName, EventStreamName, Input, []).
 
 -spec create_event_stream(map(), binary() | list(), binary() | list(), create_event_stream_request(), proplists:proplist()) ->
     {ok, create_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_event_stream_errors(), tuple()}.
 create_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
@@ -1849,22 +2349,14 @@ create_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
 -spec create_integration_workflow(map(), binary() | list(), create_integration_workflow_request()) ->
     {ok, create_integration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_integration_workflow_errors(), tuple()}.
 create_integration_workflow(Client, DomainName, Input) ->
     create_integration_workflow(Client, DomainName, Input, []).
 
 -spec create_integration_workflow(map(), binary() | list(), create_integration_workflow_request(), proplists:proplist()) ->
     {ok, create_integration_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_integration_workflow_errors(), tuple()}.
 create_integration_workflow(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/integrations"],
@@ -1895,22 +2387,14 @@ create_integration_workflow(Client, DomainName, Input0, Options0) ->
 -spec create_profile(map(), binary() | list(), create_profile_request()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, DomainName, Input) ->
     create_profile(Client, DomainName, Input, []).
 
 -spec create_profile(map(), binary() | list(), create_profile_request(), proplists:proplist()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, create_profile_errors(), tuple()}.
 create_profile(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
@@ -1943,22 +2427,14 @@ create_profile(Client, DomainName, Input0, Options0) ->
 -spec delete_calculated_attribute_definition(map(), binary() | list(), binary() | list(), delete_calculated_attribute_definition_request()) ->
     {ok, delete_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_calculated_attribute_definition_errors(), tuple()}.
 delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
 
 -spec delete_calculated_attribute_definition(map(), binary() | list(), binary() | list(), delete_calculated_attribute_definition_request(), proplists:proplist()) ->
     {ok, delete_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_calculated_attribute_definition_errors(), tuple()}.
 delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -1987,22 +2463,14 @@ delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 -spec delete_domain(map(), binary() | list(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainName, Input) ->
     delete_domain(Client, DomainName, Input, []).
 
 -spec delete_domain(map(), binary() | list(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
@@ -2029,22 +2497,14 @@ delete_domain(Client, DomainName, Input0, Options0) ->
 -spec delete_event_stream(map(), binary() | list(), binary() | list(), delete_event_stream_request()) ->
     {ok, delete_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_event_stream_errors(), tuple()}.
 delete_event_stream(Client, DomainName, EventStreamName, Input) ->
     delete_event_stream(Client, DomainName, EventStreamName, Input, []).
 
 -spec delete_event_stream(map(), binary() | list(), binary() | list(), delete_event_stream_request(), proplists:proplist()) ->
     {ok, delete_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_event_stream_errors(), tuple()}.
 delete_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
@@ -2071,22 +2531,14 @@ delete_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
 -spec delete_integration(map(), binary() | list(), delete_integration_request()) ->
     {ok, delete_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_integration_errors(), tuple()}.
 delete_integration(Client, DomainName, Input) ->
     delete_integration(Client, DomainName, Input, []).
 
 -spec delete_integration(map(), binary() | list(), delete_integration_request(), proplists:proplist()) ->
     {ok, delete_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_integration_errors(), tuple()}.
 delete_integration(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations/delete"],
@@ -2114,22 +2566,14 @@ delete_integration(Client, DomainName, Input0, Options0) ->
 -spec delete_profile(map(), binary() | list(), delete_profile_request()) ->
     {ok, delete_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, DomainName, Input) ->
     delete_profile(Client, DomainName, Input, []).
 
 -spec delete_profile(map(), binary() | list(), delete_profile_request(), proplists:proplist()) ->
     {ok, delete_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/delete"],
@@ -2156,22 +2600,14 @@ delete_profile(Client, DomainName, Input0, Options0) ->
 -spec delete_profile_key(map(), binary() | list(), delete_profile_key_request()) ->
     {ok, delete_profile_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_profile_key_errors(), tuple()}.
 delete_profile_key(Client, DomainName, Input) ->
     delete_profile_key(Client, DomainName, Input, []).
 
 -spec delete_profile_key(map(), binary() | list(), delete_profile_key_request(), proplists:proplist()) ->
     {ok, delete_profile_key_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_profile_key_errors(), tuple()}.
 delete_profile_key(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys/delete"],
@@ -2199,22 +2635,14 @@ delete_profile_key(Client, DomainName, Input0, Options0) ->
 -spec delete_profile_object(map(), binary() | list(), delete_profile_object_request()) ->
     {ok, delete_profile_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_profile_object_errors(), tuple()}.
 delete_profile_object(Client, DomainName, Input) ->
     delete_profile_object(Client, DomainName, Input, []).
 
 -spec delete_profile_object(map(), binary() | list(), delete_profile_object_request(), proplists:proplist()) ->
     {ok, delete_profile_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_profile_object_errors(), tuple()}.
 delete_profile_object(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects/delete"],
@@ -2248,22 +2676,14 @@ delete_profile_object(Client, DomainName, Input0, Options0) ->
 -spec delete_profile_object_type(map(), binary() | list(), binary() | list(), delete_profile_object_type_request()) ->
     {ok, delete_profile_object_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_profile_object_type_errors(), tuple()}.
 delete_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
     delete_profile_object_type(Client, DomainName, ObjectTypeName, Input, []).
 
 -spec delete_profile_object_type(map(), binary() | list(), binary() | list(), delete_profile_object_type_request(), proplists:proplist()) ->
     {ok, delete_profile_object_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_profile_object_type_errors(), tuple()}.
 delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
@@ -2292,22 +2712,14 @@ delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0)
 -spec delete_workflow(map(), binary() | list(), binary() | list(), delete_workflow_request()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, DomainName, WorkflowId, Input) ->
     delete_workflow(Client, DomainName, WorkflowId, Input, []).
 
 -spec delete_workflow(map(), binary() | list(), binary() | list(), delete_workflow_request(), proplists:proplist()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, DomainName, WorkflowId, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), ""],
@@ -2335,22 +2747,14 @@ delete_workflow(Client, DomainName, WorkflowId, Input0, Options0) ->
 -spec detect_profile_object_type(map(), binary() | list(), detect_profile_object_type_request()) ->
     {ok, detect_profile_object_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_profile_object_type_errors(), tuple()}.
 detect_profile_object_type(Client, DomainName, Input) ->
     detect_profile_object_type(Client, DomainName, Input, []).
 
 -spec detect_profile_object_type(map(), binary() | list(), detect_profile_object_type_request(), proplists:proplist()) ->
     {ok, detect_profile_object_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, detect_profile_object_type_errors(), tuple()}.
 detect_profile_object_type(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/detect/object-types"],
@@ -2398,22 +2802,14 @@ detect_profile_object_type(Client, DomainName, Input0, Options0) ->
 -spec get_auto_merging_preview(map(), binary() | list(), get_auto_merging_preview_request()) ->
     {ok, get_auto_merging_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_auto_merging_preview_errors(), tuple()}.
 get_auto_merging_preview(Client, DomainName, Input) ->
     get_auto_merging_preview(Client, DomainName, Input, []).
 
 -spec get_auto_merging_preview(map(), binary() | list(), get_auto_merging_preview_request(), proplists:proplist()) ->
     {ok, get_auto_merging_preview_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_auto_merging_preview_errors(), tuple()}.
 get_auto_merging_preview(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs/auto-merging-preview"],
@@ -2441,11 +2837,7 @@ get_auto_merging_preview(Client, DomainName, Input0, Options0) ->
 -spec get_calculated_attribute_definition(map(), binary() | list(), binary() | list()) ->
     {ok, get_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_calculated_attribute_definition_errors(), tuple()}.
 get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName)
   when is_map(Client) ->
     get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, #{}, #{}).
@@ -2453,11 +2845,7 @@ get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName)
 -spec get_calculated_attribute_definition(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_calculated_attribute_definition_errors(), tuple()}.
 get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap, []).
@@ -2465,11 +2853,7 @@ get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName,
 -spec get_calculated_attribute_definition(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_calculated_attribute_definition_errors(), tuple()}.
 get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -2490,11 +2874,7 @@ get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName,
 -spec get_calculated_attribute_for_profile(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_calculated_attribute_for_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_calculated_attribute_for_profile_errors(), tuple()}.
 get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId)
   when is_map(Client) ->
     get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, #{}, #{}).
@@ -2502,11 +2882,7 @@ get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName
 -spec get_calculated_attribute_for_profile(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_calculated_attribute_for_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_calculated_attribute_for_profile_errors(), tuple()}.
 get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap, []).
@@ -2514,11 +2890,7 @@ get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName
 -spec get_calculated_attribute_for_profile(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_calculated_attribute_for_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_calculated_attribute_for_profile_errors(), tuple()}.
 get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile/", aws_util:encode_uri(ProfileId), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -2539,11 +2911,7 @@ get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName
 -spec get_domain(map(), binary() | list()) ->
     {ok, get_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, DomainName)
   when is_map(Client) ->
     get_domain(Client, DomainName, #{}, #{}).
@@ -2551,11 +2919,7 @@ get_domain(Client, DomainName)
 -spec get_domain(map(), binary() | list(), map(), map()) ->
     {ok, get_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2563,11 +2927,7 @@ get_domain(Client, DomainName, QueryMap, HeadersMap)
 -spec get_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_domain_errors(), tuple()}.
 get_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
@@ -2589,11 +2949,7 @@ get_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec get_event_stream(map(), binary() | list(), binary() | list()) ->
     {ok, get_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_event_stream_errors(), tuple()}.
 get_event_stream(Client, DomainName, EventStreamName)
   when is_map(Client) ->
     get_event_stream(Client, DomainName, EventStreamName, #{}, #{}).
@@ -2601,11 +2957,7 @@ get_event_stream(Client, DomainName, EventStreamName)
 -spec get_event_stream(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_event_stream_errors(), tuple()}.
 get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, []).
@@ -2613,11 +2965,7 @@ get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap)
 -spec get_event_stream(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_event_stream_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_event_stream_errors(), tuple()}.
 get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
@@ -2644,11 +2992,7 @@ get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, Opti
 -spec get_identity_resolution_job(map(), binary() | list(), binary() | list()) ->
     {ok, get_identity_resolution_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_identity_resolution_job_errors(), tuple()}.
 get_identity_resolution_job(Client, DomainName, JobId)
   when is_map(Client) ->
     get_identity_resolution_job(Client, DomainName, JobId, #{}, #{}).
@@ -2656,11 +3000,7 @@ get_identity_resolution_job(Client, DomainName, JobId)
 -spec get_identity_resolution_job(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_identity_resolution_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_identity_resolution_job_errors(), tuple()}.
 get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap, []).
@@ -2668,11 +3008,7 @@ get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap)
 -spec get_identity_resolution_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_identity_resolution_job_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_identity_resolution_job_errors(), tuple()}.
 get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs/", aws_util:encode_uri(JobId), ""],
@@ -2693,22 +3029,14 @@ get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap, Opt
 -spec get_integration(map(), binary() | list(), get_integration_request()) ->
     {ok, get_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_integration_errors(), tuple()}.
 get_integration(Client, DomainName, Input) ->
     get_integration(Client, DomainName, Input, []).
 
 -spec get_integration(map(), binary() | list(), get_integration_request(), proplists:proplist()) ->
     {ok, get_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_integration_errors(), tuple()}.
 get_integration(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
@@ -2784,11 +3112,7 @@ get_integration(Client, DomainName, Input0, Options0) ->
 -spec get_matches(map(), binary() | list()) ->
     {ok, get_matches_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_matches_errors(), tuple()}.
 get_matches(Client, DomainName)
   when is_map(Client) ->
     get_matches(Client, DomainName, #{}, #{}).
@@ -2796,11 +3120,7 @@ get_matches(Client, DomainName)
 -spec get_matches(map(), binary() | list(), map(), map()) ->
     {ok, get_matches_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_matches_errors(), tuple()}.
 get_matches(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_matches(Client, DomainName, QueryMap, HeadersMap, []).
@@ -2808,11 +3128,7 @@ get_matches(Client, DomainName, QueryMap, HeadersMap)
 -spec get_matches(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_matches_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_matches_errors(), tuple()}.
 get_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/matches"],
@@ -2838,11 +3154,7 @@ get_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec get_profile_object_type(map(), binary() | list(), binary() | list()) ->
     {ok, get_profile_object_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_profile_object_type_errors(), tuple()}.
 get_profile_object_type(Client, DomainName, ObjectTypeName)
   when is_map(Client) ->
     get_profile_object_type(Client, DomainName, ObjectTypeName, #{}, #{}).
@@ -2850,11 +3162,7 @@ get_profile_object_type(Client, DomainName, ObjectTypeName)
 -spec get_profile_object_type(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_profile_object_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_profile_object_type_errors(), tuple()}.
 get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, []).
@@ -2862,11 +3170,7 @@ get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap
 -spec get_profile_object_type(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_profile_object_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_profile_object_type_errors(), tuple()}.
 get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
@@ -2895,11 +3199,7 @@ get_profile_object_type(Client, DomainName, ObjectTypeName, QueryMap, HeadersMap
 -spec get_profile_object_type_template(map(), binary() | list()) ->
     {ok, get_profile_object_type_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_profile_object_type_template_errors(), tuple()}.
 get_profile_object_type_template(Client, TemplateId)
   when is_map(Client) ->
     get_profile_object_type_template(Client, TemplateId, #{}, #{}).
@@ -2907,11 +3207,7 @@ get_profile_object_type_template(Client, TemplateId)
 -spec get_profile_object_type_template(map(), binary() | list(), map(), map()) ->
     {ok, get_profile_object_type_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_profile_object_type_template_errors(), tuple()}.
 get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, []).
@@ -2919,11 +3215,7 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap)
 -spec get_profile_object_type_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_profile_object_type_template_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_profile_object_type_template_errors(), tuple()}.
 get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates/", aws_util:encode_uri(TemplateId), ""],
@@ -2950,22 +3242,14 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Optio
 -spec get_similar_profiles(map(), binary() | list(), get_similar_profiles_request()) ->
     {ok, get_similar_profiles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_similar_profiles_errors(), tuple()}.
 get_similar_profiles(Client, DomainName, Input) ->
     get_similar_profiles(Client, DomainName, Input, []).
 
 -spec get_similar_profiles(map(), binary() | list(), get_similar_profiles_request(), proplists:proplist()) ->
     {ok, get_similar_profiles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_similar_profiles_errors(), tuple()}.
 get_similar_profiles(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/matches"],
@@ -2994,11 +3278,7 @@ get_similar_profiles(Client, DomainName, Input0, Options0) ->
 -spec get_workflow(map(), binary() | list(), binary() | list()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, DomainName, WorkflowId)
   when is_map(Client) ->
     get_workflow(Client, DomainName, WorkflowId, #{}, #{}).
@@ -3006,11 +3286,7 @@ get_workflow(Client, DomainName, WorkflowId)
 -spec get_workflow(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap, []).
@@ -3018,11 +3294,7 @@ get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
 -spec get_workflow(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_workflow_errors(), tuple()}.
 get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), ""],
@@ -3043,11 +3315,7 @@ get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
 -spec get_workflow_steps(map(), binary() | list(), binary() | list()) ->
     {ok, get_workflow_steps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_workflow_steps_errors(), tuple()}.
 get_workflow_steps(Client, DomainName, WorkflowId)
   when is_map(Client) ->
     get_workflow_steps(Client, DomainName, WorkflowId, #{}, #{}).
@@ -3055,11 +3323,7 @@ get_workflow_steps(Client, DomainName, WorkflowId)
 -spec get_workflow_steps(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_workflow_steps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_workflow_steps_errors(), tuple()}.
 get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap, []).
@@ -3067,11 +3331,7 @@ get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
 -spec get_workflow_steps(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_steps_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_workflow_steps_errors(), tuple()}.
 get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), "/steps"],
@@ -3098,22 +3358,14 @@ get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options
 -spec list_account_integrations(map(), list_account_integrations_request()) ->
     {ok, list_account_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_account_integrations_errors(), tuple()}.
 list_account_integrations(Client, Input) ->
     list_account_integrations(Client, Input, []).
 
 -spec list_account_integrations(map(), list_account_integrations_request(), proplists:proplist()) ->
     {ok, list_account_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_account_integrations_errors(), tuple()}.
 list_account_integrations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/integrations"],
@@ -3143,11 +3395,7 @@ list_account_integrations(Client, Input0, Options0) ->
 -spec list_calculated_attribute_definitions(map(), binary() | list()) ->
     {ok, list_calculated_attribute_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_calculated_attribute_definitions_errors(), tuple()}.
 list_calculated_attribute_definitions(Client, DomainName)
   when is_map(Client) ->
     list_calculated_attribute_definitions(Client, DomainName, #{}, #{}).
@@ -3155,11 +3403,7 @@ list_calculated_attribute_definitions(Client, DomainName)
 -spec list_calculated_attribute_definitions(map(), binary() | list(), map(), map()) ->
     {ok, list_calculated_attribute_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_calculated_attribute_definitions_errors(), tuple()}.
 list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3167,11 +3411,7 @@ list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap)
 -spec list_calculated_attribute_definitions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_calculated_attribute_definitions_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_calculated_attribute_definitions_errors(), tuple()}.
 list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes"],
@@ -3197,11 +3437,7 @@ list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap, 
 -spec list_calculated_attributes_for_profile(map(), binary() | list(), binary() | list()) ->
     {ok, list_calculated_attributes_for_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_calculated_attributes_for_profile_errors(), tuple()}.
 list_calculated_attributes_for_profile(Client, DomainName, ProfileId)
   when is_map(Client) ->
     list_calculated_attributes_for_profile(Client, DomainName, ProfileId, #{}, #{}).
@@ -3209,11 +3445,7 @@ list_calculated_attributes_for_profile(Client, DomainName, ProfileId)
 -spec list_calculated_attributes_for_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_calculated_attributes_for_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_calculated_attributes_for_profile_errors(), tuple()}.
 list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap, []).
@@ -3221,11 +3453,7 @@ list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, 
 -spec list_calculated_attributes_for_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_calculated_attributes_for_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_calculated_attributes_for_profile_errors(), tuple()}.
 list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile/", aws_util:encode_uri(ProfileId), "/calculated-attributes"],
@@ -3252,11 +3480,7 @@ list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, 
 -spec list_domains(map()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client)
   when is_map(Client) ->
     list_domains(Client, #{}, #{}).
@@ -3264,11 +3488,7 @@ list_domains(Client)
 -spec list_domains(map(), map(), map()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domains(Client, QueryMap, HeadersMap, []).
@@ -3276,11 +3496,7 @@ list_domains(Client, QueryMap, HeadersMap)
 -spec list_domains(map(), map(), map(), proplists:proplist()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_domains_errors(), tuple()}.
 list_domains(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains"],
@@ -3306,11 +3522,7 @@ list_domains(Client, QueryMap, HeadersMap, Options0)
 -spec list_event_streams(map(), binary() | list()) ->
     {ok, list_event_streams_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_event_streams_errors(), tuple()}.
 list_event_streams(Client, DomainName)
   when is_map(Client) ->
     list_event_streams(Client, DomainName, #{}, #{}).
@@ -3318,11 +3530,7 @@ list_event_streams(Client, DomainName)
 -spec list_event_streams(map(), binary() | list(), map(), map()) ->
     {ok, list_event_streams_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_event_streams_errors(), tuple()}.
 list_event_streams(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_streams(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3330,11 +3538,7 @@ list_event_streams(Client, DomainName, QueryMap, HeadersMap)
 -spec list_event_streams(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_event_streams_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_event_streams_errors(), tuple()}.
 list_event_streams(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams"],
@@ -3363,11 +3567,7 @@ list_event_streams(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_identity_resolution_jobs(map(), binary() | list()) ->
     {ok, list_identity_resolution_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_identity_resolution_jobs_errors(), tuple()}.
 list_identity_resolution_jobs(Client, DomainName)
   when is_map(Client) ->
     list_identity_resolution_jobs(Client, DomainName, #{}, #{}).
@@ -3375,11 +3575,7 @@ list_identity_resolution_jobs(Client, DomainName)
 -spec list_identity_resolution_jobs(map(), binary() | list(), map(), map()) ->
     {ok, list_identity_resolution_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_identity_resolution_jobs_errors(), tuple()}.
 list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3387,11 +3583,7 @@ list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap)
 -spec list_identity_resolution_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_identity_resolution_jobs_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_identity_resolution_jobs_errors(), tuple()}.
 list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs"],
@@ -3417,11 +3609,7 @@ list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap, Options0
 -spec list_integrations(map(), binary() | list()) ->
     {ok, list_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_integrations_errors(), tuple()}.
 list_integrations(Client, DomainName)
   when is_map(Client) ->
     list_integrations(Client, DomainName, #{}, #{}).
@@ -3429,11 +3617,7 @@ list_integrations(Client, DomainName)
 -spec list_integrations(map(), binary() | list(), map(), map()) ->
     {ok, list_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_integrations_errors(), tuple()}.
 list_integrations(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_integrations(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3441,11 +3625,7 @@ list_integrations(Client, DomainName, QueryMap, HeadersMap)
 -spec list_integrations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_integrations_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_integrations_errors(), tuple()}.
 list_integrations(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
@@ -3472,11 +3652,7 @@ list_integrations(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_profile_object_type_templates(map()) ->
     {ok, list_profile_object_type_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_profile_object_type_templates_errors(), tuple()}.
 list_profile_object_type_templates(Client)
   when is_map(Client) ->
     list_profile_object_type_templates(Client, #{}, #{}).
@@ -3484,11 +3660,7 @@ list_profile_object_type_templates(Client)
 -spec list_profile_object_type_templates(map(), map(), map()) ->
     {ok, list_profile_object_type_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_profile_object_type_templates_errors(), tuple()}.
 list_profile_object_type_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_object_type_templates(Client, QueryMap, HeadersMap, []).
@@ -3496,11 +3668,7 @@ list_profile_object_type_templates(Client, QueryMap, HeadersMap)
 -spec list_profile_object_type_templates(map(), map(), map(), proplists:proplist()) ->
     {ok, list_profile_object_type_templates_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_profile_object_type_templates_errors(), tuple()}.
 list_profile_object_type_templates(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/templates"],
@@ -3526,11 +3694,7 @@ list_profile_object_type_templates(Client, QueryMap, HeadersMap, Options0)
 -spec list_profile_object_types(map(), binary() | list()) ->
     {ok, list_profile_object_types_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_profile_object_types_errors(), tuple()}.
 list_profile_object_types(Client, DomainName)
   when is_map(Client) ->
     list_profile_object_types(Client, DomainName, #{}, #{}).
@@ -3538,11 +3702,7 @@ list_profile_object_types(Client, DomainName)
 -spec list_profile_object_types(map(), binary() | list(), map(), map()) ->
     {ok, list_profile_object_types_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_profile_object_types_errors(), tuple()}.
 list_profile_object_types(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_object_types(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3550,11 +3710,7 @@ list_profile_object_types(Client, DomainName, QueryMap, HeadersMap)
 -spec list_profile_object_types(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_profile_object_types_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_profile_object_types_errors(), tuple()}.
 list_profile_object_types(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types"],
@@ -3581,22 +3737,14 @@ list_profile_object_types(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_profile_objects(map(), binary() | list(), list_profile_objects_request()) ->
     {ok, list_profile_objects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_profile_objects_errors(), tuple()}.
 list_profile_objects(Client, DomainName, Input) ->
     list_profile_objects(Client, DomainName, Input, []).
 
 -spec list_profile_objects(map(), binary() | list(), list_profile_objects_request(), proplists:proplist()) ->
     {ok, list_profile_objects_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_profile_objects_errors(), tuple()}.
 list_profile_objects(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects"],
@@ -3625,11 +3773,7 @@ list_profile_objects(Client, DomainName, Input0, Options0) ->
 -spec list_rule_based_matches(map(), binary() | list()) ->
     {ok, list_rule_based_matches_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_rule_based_matches_errors(), tuple()}.
 list_rule_based_matches(Client, DomainName)
   when is_map(Client) ->
     list_rule_based_matches(Client, DomainName, #{}, #{}).
@@ -3637,11 +3781,7 @@ list_rule_based_matches(Client, DomainName)
 -spec list_rule_based_matches(map(), binary() | list(), map(), map()) ->
     {ok, list_rule_based_matches_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_rule_based_matches_errors(), tuple()}.
 list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, []).
@@ -3649,11 +3789,7 @@ list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap)
 -spec list_rule_based_matches(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rule_based_matches_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_rule_based_matches_errors(), tuple()}.
 list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/ruleBasedMatches"],
@@ -3684,9 +3820,7 @@ list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -3694,9 +3828,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -3704,9 +3836,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -3727,22 +3857,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec list_workflows(map(), binary() | list(), list_workflows_request()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, DomainName, Input) ->
     list_workflows(Client, DomainName, Input, []).
 
 -spec list_workflows(map(), binary() | list(), list_workflows_request(), proplists:proplist()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows"],
@@ -3804,20 +3926,14 @@ list_workflows(Client, DomainName, Input0, Options0) ->
 -spec merge_profiles(map(), binary() | list(), merge_profiles_request()) ->
     {ok, merge_profiles_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, merge_profiles_errors(), tuple()}.
 merge_profiles(Client, DomainName, Input) ->
     merge_profiles(Client, DomainName, Input, []).
 
 -spec merge_profiles(map(), binary() | list(), merge_profiles_request(), proplists:proplist()) ->
     {ok, merge_profiles_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, merge_profiles_errors(), tuple()}.
 merge_profiles(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects/merge"],
@@ -3854,22 +3970,14 @@ merge_profiles(Client, DomainName, Input0, Options0) ->
 -spec put_integration(map(), binary() | list(), put_integration_request()) ->
     {ok, put_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_integration_errors(), tuple()}.
 put_integration(Client, DomainName, Input) ->
     put_integration(Client, DomainName, Input, []).
 
 -spec put_integration(map(), binary() | list(), put_integration_request(), proplists:proplist()) ->
     {ok, put_integration_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_integration_errors(), tuple()}.
 put_integration(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/integrations"],
@@ -3912,22 +4020,14 @@ put_integration(Client, DomainName, Input0, Options0) ->
 -spec put_profile_object(map(), binary() | list(), put_profile_object_request()) ->
     {ok, put_profile_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_profile_object_errors(), tuple()}.
 put_profile_object(Client, DomainName, Input) ->
     put_profile_object(Client, DomainName, Input, []).
 
 -spec put_profile_object(map(), binary() | list(), put_profile_object_request(), proplists:proplist()) ->
     {ok, put_profile_object_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_profile_object_errors(), tuple()}.
 put_profile_object(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects"],
@@ -3959,22 +4059,14 @@ put_profile_object(Client, DomainName, Input0, Options0) ->
 -spec put_profile_object_type(map(), binary() | list(), binary() | list(), put_profile_object_type_request()) ->
     {ok, put_profile_object_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_profile_object_type_errors(), tuple()}.
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
     put_profile_object_type(Client, DomainName, ObjectTypeName, Input, []).
 
 -spec put_profile_object_type(map(), binary() | list(), binary() | list(), put_profile_object_type_request(), proplists:proplist()) ->
     {ok, put_profile_object_type_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, put_profile_object_type_errors(), tuple()}.
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
@@ -4012,22 +4104,14 @@ put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
 -spec search_profiles(map(), binary() | list(), search_profiles_request()) ->
     {ok, search_profiles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_profiles_errors(), tuple()}.
 search_profiles(Client, DomainName, Input) ->
     search_profiles(Client, DomainName, Input, []).
 
 -spec search_profiles(map(), binary() | list(), search_profiles_request(), proplists:proplist()) ->
     {ok, search_profiles_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, search_profiles_errors(), tuple()}.
 search_profiles(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/search"],
@@ -4080,18 +4164,14 @@ search_profiles(Client, DomainName, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4123,18 +4203,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -4167,22 +4243,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec update_calculated_attribute_definition(map(), binary() | list(), binary() | list(), update_calculated_attribute_definition_request()) ->
     {ok, update_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_calculated_attribute_definition_errors(), tuple()}.
 update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
 
 -spec update_calculated_attribute_definition(map(), binary() | list(), binary() | list(), update_calculated_attribute_definition_request(), proplists:proplist()) ->
     {ok, update_calculated_attribute_definition_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_calculated_attribute_definition_errors(), tuple()}.
 update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
@@ -4231,22 +4299,14 @@ update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 -spec update_domain(map(), binary() | list(), update_domain_request()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, DomainName, Input) ->
     update_domain(Client, DomainName, Input, []).
 
 -spec update_domain(map(), binary() | list(), update_domain_request(), proplists:proplist()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_domain_errors(), tuple()}.
 update_domain(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
@@ -4282,22 +4342,14 @@ update_domain(Client, DomainName, Input0, Options0) ->
 -spec update_profile(map(), binary() | list(), update_profile_request()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, DomainName, Input) ->
     update_profile(Client, DomainName, Input, []).
 
 -spec update_profile(map(), binary() | list(), update_profile_request(), proplists:proplist()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, bad_request_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, update_profile_errors(), tuple()}.
 update_profile(Client, DomainName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],

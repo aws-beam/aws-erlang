@@ -195,6 +195,38 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+-type delete_report_definition_errors() ::
+    validation_exception() | 
+    internal_error_exception().
+
+-type describe_report_definitions_errors() ::
+    internal_error_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_error_exception().
+
+-type modify_report_definition_errors() ::
+    validation_exception() | 
+    internal_error_exception().
+
+-type put_report_definition_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    report_limit_reached_exception() | 
+    internal_error_exception() | 
+    duplicate_report_name_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_error_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_error_exception().
 
 %%====================================================================
 %% API
@@ -207,8 +239,7 @@
 -spec delete_report_definition(map(), delete_report_definition_request()) ->
     {ok, delete_report_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_report_definition_errors(), tuple()}.
 delete_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_report_definition(Client, Input, []).
@@ -216,8 +247,7 @@ delete_report_definition(Client, Input)
 -spec delete_report_definition(map(), delete_report_definition_request(), proplists:proplist()) ->
     {ok, delete_report_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_report_definition_errors(), tuple()}.
 delete_report_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReportDefinition">>, Input, Options).
@@ -227,7 +257,7 @@ delete_report_definition(Client, Input, Options)
 -spec describe_report_definitions(map(), describe_report_definitions_request()) ->
     {ok, describe_report_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()}.
+    {error, describe_report_definitions_errors(), tuple()}.
 describe_report_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_report_definitions(Client, Input, []).
@@ -235,7 +265,7 @@ describe_report_definitions(Client, Input)
 -spec describe_report_definitions(map(), describe_report_definitions_request(), proplists:proplist()) ->
     {ok, describe_report_definitions_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()}.
+    {error, describe_report_definitions_errors(), tuple()}.
 describe_report_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReportDefinitions">>, Input, Options).
@@ -244,9 +274,7 @@ describe_report_definitions(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -254,9 +282,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -265,8 +291,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec modify_report_definition(map(), modify_report_definition_request()) ->
     {ok, modify_report_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, modify_report_definition_errors(), tuple()}.
 modify_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_report_definition(Client, Input, []).
@@ -274,8 +299,7 @@ modify_report_definition(Client, Input)
 -spec modify_report_definition(map(), modify_report_definition_request(), proplists:proplist()) ->
     {ok, modify_report_definition_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, modify_report_definition_errors(), tuple()}.
 modify_report_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReportDefinition">>, Input, Options).
@@ -284,11 +308,7 @@ modify_report_definition(Client, Input, Options)
 -spec put_report_definition(map(), put_report_definition_request()) ->
     {ok, put_report_definition_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_report_name_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, report_limit_reached_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_report_definition_errors(), tuple()}.
 put_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_report_definition(Client, Input, []).
@@ -296,11 +316,7 @@ put_report_definition(Client, Input)
 -spec put_report_definition(map(), put_report_definition_request(), proplists:proplist()) ->
     {ok, put_report_definition_response(), tuple()} |
     {error, any()} |
-    {error, duplicate_report_name_exception(), tuple()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, report_limit_reached_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_report_definition_errors(), tuple()}.
 put_report_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutReportDefinition">>, Input, Options).
@@ -309,9 +325,7 @@ put_report_definition(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -319,9 +333,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -330,9 +342,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -340,9 +350,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, internal_error_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

@@ -497,6 +497,100 @@
 %% }
 -type execution_stats() :: #{binary() => any()}.
 
+-type cancel_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_endpoint_exception().
+
+-type create_scheduled_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    invalid_endpoint_exception().
+
+-type delete_scheduled_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type describe_endpoints_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception().
+
+-type describe_scheduled_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type execute_scheduled_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type list_scheduled_queries_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_endpoint_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type prepare_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    invalid_endpoint_exception().
+
+-type query_errors() ::
+    query_execution_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    invalid_endpoint_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
+-type update_scheduled_query_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
 
 %%====================================================================
 %% API
@@ -516,11 +610,7 @@
 -spec cancel_query(map(), cancel_query_request()) ->
     {ok, cancel_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_query_errors(), tuple()}.
 cancel_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_query(Client, Input, []).
@@ -528,11 +618,7 @@ cancel_query(Client, Input)
 -spec cancel_query(map(), cancel_query_request(), proplists:proplist()) ->
     {ok, cancel_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_query_errors(), tuple()}.
 cancel_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelQuery">>, Input, Options).
@@ -549,13 +635,7 @@ cancel_query(Client, Input, Options)
 -spec create_scheduled_query(map(), create_scheduled_query_request()) ->
     {ok, create_scheduled_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_scheduled_query_errors(), tuple()}.
 create_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scheduled_query(Client, Input, []).
@@ -563,13 +643,7 @@ create_scheduled_query(Client, Input)
 -spec create_scheduled_query(map(), create_scheduled_query_request(), proplists:proplist()) ->
     {ok, create_scheduled_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_scheduled_query_errors(), tuple()}.
 create_scheduled_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateScheduledQuery">>, Input, Options).
@@ -580,12 +654,7 @@ create_scheduled_query(Client, Input, Options)
 -spec delete_scheduled_query(map(), delete_scheduled_query_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scheduled_query_errors(), tuple()}.
 delete_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_query(Client, Input, []).
@@ -593,12 +662,7 @@ delete_scheduled_query(Client, Input)
 -spec delete_scheduled_query(map(), delete_scheduled_query_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_scheduled_query_errors(), tuple()}.
 delete_scheduled_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledQuery">>, Input, Options).
@@ -631,9 +695,7 @@ delete_scheduled_query(Client, Input, Options)
 -spec describe_endpoints(map(), describe_endpoints_request()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
@@ -641,9 +703,7 @@ describe_endpoints(Client, Input)
 -spec describe_endpoints(map(), describe_endpoints_request(), proplists:proplist()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpoints">>, Input, Options).
@@ -652,12 +712,7 @@ describe_endpoints(Client, Input, Options)
 -spec describe_scheduled_query(map(), describe_scheduled_query_request()) ->
     {ok, describe_scheduled_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scheduled_query_errors(), tuple()}.
 describe_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_query(Client, Input, []).
@@ -665,12 +720,7 @@ describe_scheduled_query(Client, Input)
 -spec describe_scheduled_query(map(), describe_scheduled_query_request(), proplists:proplist()) ->
     {ok, describe_scheduled_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_scheduled_query_errors(), tuple()}.
 describe_scheduled_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledQuery">>, Input, Options).
@@ -679,12 +729,7 @@ describe_scheduled_query(Client, Input, Options)
 -spec execute_scheduled_query(map(), execute_scheduled_query_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, execute_scheduled_query_errors(), tuple()}.
 execute_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_scheduled_query(Client, Input, []).
@@ -692,12 +737,7 @@ execute_scheduled_query(Client, Input)
 -spec execute_scheduled_query(map(), execute_scheduled_query_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, execute_scheduled_query_errors(), tuple()}.
 execute_scheduled_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteScheduledQuery">>, Input, Options).
@@ -709,11 +749,7 @@ execute_scheduled_query(Client, Input, Options)
 -spec list_scheduled_queries(map(), list_scheduled_queries_request()) ->
     {ok, list_scheduled_queries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scheduled_queries_errors(), tuple()}.
 list_scheduled_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_scheduled_queries(Client, Input, []).
@@ -721,11 +757,7 @@ list_scheduled_queries(Client, Input)
 -spec list_scheduled_queries(map(), list_scheduled_queries_request(), proplists:proplist()) ->
     {ok, list_scheduled_queries_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_scheduled_queries_errors(), tuple()}.
 list_scheduled_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListScheduledQueries">>, Input, Options).
@@ -734,10 +766,7 @@ list_scheduled_queries(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -745,10 +774,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -762,11 +788,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec prepare_query(map(), prepare_query_request()) ->
     {ok, prepare_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, prepare_query_errors(), tuple()}.
 prepare_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     prepare_query(Client, Input, []).
@@ -774,11 +796,7 @@ prepare_query(Client, Input)
 -spec prepare_query(map(), prepare_query_request(), proplists:proplist()) ->
     {ok, prepare_query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, prepare_query_errors(), tuple()}.
 prepare_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PrepareQuery">>, Input, Options).
@@ -822,13 +840,7 @@ prepare_query(Client, Input, Options)
 -spec query(map(), query_request()) ->
     {ok, query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, query_execution_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, query_errors(), tuple()}.
 query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
@@ -836,13 +848,7 @@ query(Client, Input)
 -spec query(map(), query_request(), proplists:proplist()) ->
     {ok, query_response(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, query_execution_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, query_errors(), tuple()}.
 query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Query">>, Input, Options).
@@ -856,11 +862,7 @@ query(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -868,11 +870,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -881,10 +879,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -892,10 +887,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -904,12 +896,7 @@ untag_resource(Client, Input, Options)
 -spec update_scheduled_query(map(), update_scheduled_query_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scheduled_query_errors(), tuple()}.
 update_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scheduled_query(Client, Input, []).
@@ -917,12 +904,7 @@ update_scheduled_query(Client, Input)
 -spec update_scheduled_query(map(), update_scheduled_query_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, invalid_endpoint_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_scheduled_query_errors(), tuple()}.
 update_scheduled_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateScheduledQuery">>, Input, Options).

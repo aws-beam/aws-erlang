@@ -834,6 +834,138 @@
 %% }
 -type listener_description() :: #{binary() => any()}.
 
+-type add_tags_errors() ::
+    too_many_tags_exception() | 
+    duplicate_tag_keys_exception() | 
+    access_point_not_found_exception().
+
+-type apply_security_groups_to_load_balancer_errors() ::
+    invalid_security_group_exception() | 
+    access_point_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type attach_load_balancer_to_subnets_errors() ::
+    invalid_subnet_exception() | 
+    access_point_not_found_exception() | 
+    subnet_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type configure_health_check_errors() ::
+    access_point_not_found_exception().
+
+-type create_app_cookie_stickiness_policy_errors() ::
+    too_many_policies_exception() | 
+    duplicate_policy_name_exception() | 
+    access_point_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type create_lb_cookie_stickiness_policy_errors() ::
+    too_many_policies_exception() | 
+    duplicate_policy_name_exception() | 
+    access_point_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type create_load_balancer_errors() ::
+    unsupported_protocol_exception() | 
+    too_many_tags_exception() | 
+    invalid_scheme_exception() | 
+    invalid_subnet_exception() | 
+    duplicate_tag_keys_exception() | 
+    too_many_access_points_exception() | 
+    invalid_security_group_exception() | 
+    operation_not_permitted_exception() | 
+    certificate_not_found_exception() | 
+    subnet_not_found_exception() | 
+    invalid_configuration_request_exception() | 
+    duplicate_access_point_name_exception().
+
+-type create_load_balancer_listeners_errors() ::
+    unsupported_protocol_exception() | 
+    access_point_not_found_exception() | 
+    certificate_not_found_exception() | 
+    duplicate_listener_exception() | 
+    invalid_configuration_request_exception().
+
+-type create_load_balancer_policy_errors() ::
+    too_many_policies_exception() | 
+    duplicate_policy_name_exception() | 
+    access_point_not_found_exception() | 
+    invalid_configuration_request_exception() | 
+    policy_type_not_found_exception().
+
+-type delete_load_balancer_listeners_errors() ::
+    access_point_not_found_exception().
+
+-type delete_load_balancer_policy_errors() ::
+    access_point_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type deregister_instances_from_load_balancer_errors() ::
+    access_point_not_found_exception() | 
+    invalid_end_point_exception().
+
+-type describe_instance_health_errors() ::
+    access_point_not_found_exception() | 
+    invalid_end_point_exception().
+
+-type describe_load_balancer_attributes_errors() ::
+    load_balancer_attribute_not_found_exception() | 
+    access_point_not_found_exception().
+
+-type describe_load_balancer_policies_errors() ::
+    access_point_not_found_exception() | 
+    policy_not_found_exception().
+
+-type describe_load_balancer_policy_types_errors() ::
+    policy_type_not_found_exception().
+
+-type describe_load_balancers_errors() ::
+    access_point_not_found_exception() | 
+    dependency_throttle_exception().
+
+-type describe_tags_errors() ::
+    access_point_not_found_exception().
+
+-type detach_load_balancer_from_subnets_errors() ::
+    access_point_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type disable_availability_zones_for_load_balancer_errors() ::
+    access_point_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type enable_availability_zones_for_load_balancer_errors() ::
+    access_point_not_found_exception().
+
+-type modify_load_balancer_attributes_errors() ::
+    load_balancer_attribute_not_found_exception() | 
+    access_point_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type register_instances_with_load_balancer_errors() ::
+    access_point_not_found_exception() | 
+    invalid_end_point_exception().
+
+-type remove_tags_errors() ::
+    access_point_not_found_exception().
+
+-type set_load_balancer_listener_ssl_certificate_errors() ::
+    unsupported_protocol_exception() | 
+    listener_not_found_exception() | 
+    access_point_not_found_exception() | 
+    certificate_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type set_load_balancer_policies_for_backend_server_errors() ::
+    access_point_not_found_exception() | 
+    policy_not_found_exception() | 
+    invalid_configuration_request_exception().
+
+-type set_load_balancer_policies_of_listener_errors() ::
+    listener_not_found_exception() | 
+    access_point_not_found_exception() | 
+    policy_not_found_exception() | 
+    invalid_configuration_request_exception().
 
 %%====================================================================
 %% API
@@ -853,9 +985,7 @@
 -spec add_tags(map(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -863,9 +993,7 @@ add_tags(Client, Input)
 -spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()}.
+    {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
@@ -882,9 +1010,7 @@ add_tags(Client, Input, Options)
 -spec apply_security_groups_to_load_balancer(map(), apply_security_groups_to_load_balancer_input()) ->
     {ok, apply_security_groups_to_load_balancer_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_security_group_exception(), tuple()}.
+    {error, apply_security_groups_to_load_balancer_errors(), tuple()}.
 apply_security_groups_to_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_security_groups_to_load_balancer(Client, Input, []).
@@ -892,9 +1018,7 @@ apply_security_groups_to_load_balancer(Client, Input)
 -spec apply_security_groups_to_load_balancer(map(), apply_security_groups_to_load_balancer_input(), proplists:proplist()) ->
     {ok, apply_security_groups_to_load_balancer_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_security_group_exception(), tuple()}.
+    {error, apply_security_groups_to_load_balancer_errors(), tuple()}.
 apply_security_groups_to_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplySecurityGroupsToLoadBalancer">>, Input, Options).
@@ -911,10 +1035,7 @@ apply_security_groups_to_load_balancer(Client, Input, Options)
 -spec attach_load_balancer_to_subnets(map(), attach_load_balancer_to_subnets_input()) ->
     {ok, attach_load_balancer_to_subnets_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, subnet_not_found_exception(), tuple()}.
+    {error, attach_load_balancer_to_subnets_errors(), tuple()}.
 attach_load_balancer_to_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_to_subnets(Client, Input, []).
@@ -922,10 +1043,7 @@ attach_load_balancer_to_subnets(Client, Input)
 -spec attach_load_balancer_to_subnets(map(), attach_load_balancer_to_subnets_input(), proplists:proplist()) ->
     {ok, attach_load_balancer_to_subnets_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, subnet_not_found_exception(), tuple()}.
+    {error, attach_load_balancer_to_subnets_errors(), tuple()}.
 attach_load_balancer_to_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancerToSubnets">>, Input, Options).
@@ -939,7 +1057,7 @@ attach_load_balancer_to_subnets(Client, Input, Options)
 -spec configure_health_check(map(), configure_health_check_input()) ->
     {ok, configure_health_check_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, configure_health_check_errors(), tuple()}.
 configure_health_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     configure_health_check(Client, Input, []).
@@ -947,7 +1065,7 @@ configure_health_check(Client, Input)
 -spec configure_health_check(map(), configure_health_check_input(), proplists:proplist()) ->
     {ok, configure_health_check_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, configure_health_check_errors(), tuple()}.
 configure_health_check(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfigureHealthCheck">>, Input, Options).
@@ -976,10 +1094,7 @@ configure_health_check(Client, Input, Options)
 -spec create_app_cookie_stickiness_policy(map(), create_app_cookie_stickiness_policy_input()) ->
     {ok, create_app_cookie_stickiness_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, duplicate_policy_name_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, too_many_policies_exception(), tuple()}.
+    {error, create_app_cookie_stickiness_policy_errors(), tuple()}.
 create_app_cookie_stickiness_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_cookie_stickiness_policy(Client, Input, []).
@@ -987,10 +1102,7 @@ create_app_cookie_stickiness_policy(Client, Input)
 -spec create_app_cookie_stickiness_policy(map(), create_app_cookie_stickiness_policy_input(), proplists:proplist()) ->
     {ok, create_app_cookie_stickiness_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, duplicate_policy_name_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, too_many_policies_exception(), tuple()}.
+    {error, create_app_cookie_stickiness_policy_errors(), tuple()}.
 create_app_cookie_stickiness_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAppCookieStickinessPolicy">>, Input, Options).
@@ -1020,10 +1132,7 @@ create_app_cookie_stickiness_policy(Client, Input, Options)
 -spec create_lb_cookie_stickiness_policy(map(), create_lb_cookie_stickiness_policy_input()) ->
     {ok, create_lb_cookie_stickiness_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, duplicate_policy_name_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, too_many_policies_exception(), tuple()}.
+    {error, create_lb_cookie_stickiness_policy_errors(), tuple()}.
 create_lb_cookie_stickiness_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_lb_cookie_stickiness_policy(Client, Input, []).
@@ -1031,10 +1140,7 @@ create_lb_cookie_stickiness_policy(Client, Input)
 -spec create_lb_cookie_stickiness_policy(map(), create_lb_cookie_stickiness_policy_input(), proplists:proplist()) ->
     {ok, create_lb_cookie_stickiness_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, duplicate_policy_name_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, too_many_policies_exception(), tuple()}.
+    {error, create_lb_cookie_stickiness_policy_errors(), tuple()}.
 create_lb_cookie_stickiness_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLBCookieStickinessPolicy">>, Input, Options).
@@ -1061,18 +1167,7 @@ create_lb_cookie_stickiness_policy(Client, Input, Options)
 -spec create_load_balancer(map(), create_access_point_input()) ->
     {ok, create_access_point_output(), tuple()} |
     {error, any()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, duplicate_access_point_name_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_scheme_exception(), tuple()} |
-    {error, invalid_security_group_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, subnet_not_found_exception(), tuple()} |
-    {error, too_many_access_points_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, create_load_balancer_errors(), tuple()}.
 create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
@@ -1080,18 +1175,7 @@ create_load_balancer(Client, Input)
 -spec create_load_balancer(map(), create_access_point_input(), proplists:proplist()) ->
     {ok, create_access_point_output(), tuple()} |
     {error, any()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, duplicate_access_point_name_exception(), tuple()} |
-    {error, duplicate_tag_keys_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, invalid_scheme_exception(), tuple()} |
-    {error, invalid_security_group_exception(), tuple()} |
-    {error, invalid_subnet_exception(), tuple()} |
-    {error, operation_not_permitted_exception(), tuple()} |
-    {error, subnet_not_found_exception(), tuple()} |
-    {error, too_many_access_points_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, create_load_balancer_errors(), tuple()}.
 create_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoadBalancer">>, Input, Options).
@@ -1108,11 +1192,7 @@ create_load_balancer(Client, Input, Options)
 -spec create_load_balancer_listeners(map(), create_load_balancer_listener_input()) ->
     {ok, create_load_balancer_listener_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, duplicate_listener_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, create_load_balancer_listeners_errors(), tuple()}.
 create_load_balancer_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer_listeners(Client, Input, []).
@@ -1120,11 +1200,7 @@ create_load_balancer_listeners(Client, Input)
 -spec create_load_balancer_listeners(map(), create_load_balancer_listener_input(), proplists:proplist()) ->
     {ok, create_load_balancer_listener_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, duplicate_listener_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, create_load_balancer_listeners_errors(), tuple()}.
 create_load_balancer_listeners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoadBalancerListeners">>, Input, Options).
@@ -1138,11 +1214,7 @@ create_load_balancer_listeners(Client, Input, Options)
 -spec create_load_balancer_policy(map(), create_load_balancer_policy_input()) ->
     {ok, create_load_balancer_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, duplicate_policy_name_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, policy_type_not_found_exception(), tuple()} |
-    {error, too_many_policies_exception(), tuple()}.
+    {error, create_load_balancer_policy_errors(), tuple()}.
 create_load_balancer_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer_policy(Client, Input, []).
@@ -1150,11 +1222,7 @@ create_load_balancer_policy(Client, Input)
 -spec create_load_balancer_policy(map(), create_load_balancer_policy_input(), proplists:proplist()) ->
     {ok, create_load_balancer_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, duplicate_policy_name_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, policy_type_not_found_exception(), tuple()} |
-    {error, too_many_policies_exception(), tuple()}.
+    {error, create_load_balancer_policy_errors(), tuple()}.
 create_load_balancer_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoadBalancerPolicy">>, Input, Options).
@@ -1188,7 +1256,7 @@ delete_load_balancer(Client, Input, Options)
 -spec delete_load_balancer_listeners(map(), delete_load_balancer_listener_input()) ->
     {ok, delete_load_balancer_listener_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, delete_load_balancer_listeners_errors(), tuple()}.
 delete_load_balancer_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer_listeners(Client, Input, []).
@@ -1196,7 +1264,7 @@ delete_load_balancer_listeners(Client, Input)
 -spec delete_load_balancer_listeners(map(), delete_load_balancer_listener_input(), proplists:proplist()) ->
     {ok, delete_load_balancer_listener_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, delete_load_balancer_listeners_errors(), tuple()}.
 delete_load_balancer_listeners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoadBalancerListeners">>, Input, Options).
@@ -1207,8 +1275,7 @@ delete_load_balancer_listeners(Client, Input, Options)
 -spec delete_load_balancer_policy(map(), delete_load_balancer_policy_input()) ->
     {ok, delete_load_balancer_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()}.
+    {error, delete_load_balancer_policy_errors(), tuple()}.
 delete_load_balancer_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer_policy(Client, Input, []).
@@ -1216,8 +1283,7 @@ delete_load_balancer_policy(Client, Input)
 -spec delete_load_balancer_policy(map(), delete_load_balancer_policy_input(), proplists:proplist()) ->
     {ok, delete_load_balancer_policy_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()}.
+    {error, delete_load_balancer_policy_errors(), tuple()}.
 delete_load_balancer_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoadBalancerPolicy">>, Input, Options).
@@ -1236,8 +1302,7 @@ delete_load_balancer_policy(Client, Input, Options)
 -spec deregister_instances_from_load_balancer(map(), deregister_end_points_input()) ->
     {ok, deregister_end_points_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_end_point_exception(), tuple()}.
+    {error, deregister_instances_from_load_balancer_errors(), tuple()}.
 deregister_instances_from_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instances_from_load_balancer(Client, Input, []).
@@ -1245,8 +1310,7 @@ deregister_instances_from_load_balancer(Client, Input)
 -spec deregister_instances_from_load_balancer(map(), deregister_end_points_input(), proplists:proplist()) ->
     {ok, deregister_end_points_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_end_point_exception(), tuple()}.
+    {error, deregister_instances_from_load_balancer_errors(), tuple()}.
 deregister_instances_from_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterInstancesFromLoadBalancer">>, Input, Options).
@@ -1282,8 +1346,7 @@ describe_account_limits(Client, Input, Options)
 -spec describe_instance_health(map(), describe_end_point_state_input()) ->
     {ok, describe_end_point_state_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_end_point_exception(), tuple()}.
+    {error, describe_instance_health_errors(), tuple()}.
 describe_instance_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_health(Client, Input, []).
@@ -1291,8 +1354,7 @@ describe_instance_health(Client, Input)
 -spec describe_instance_health(map(), describe_end_point_state_input(), proplists:proplist()) ->
     {ok, describe_end_point_state_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_end_point_exception(), tuple()}.
+    {error, describe_instance_health_errors(), tuple()}.
 describe_instance_health(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceHealth">>, Input, Options).
@@ -1301,8 +1363,7 @@ describe_instance_health(Client, Input, Options)
 -spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input()) ->
     {ok, describe_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, load_balancer_attribute_not_found_exception(), tuple()}.
+    {error, describe_load_balancer_attributes_errors(), tuple()}.
 describe_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_attributes(Client, Input, []).
@@ -1310,8 +1371,7 @@ describe_load_balancer_attributes(Client, Input)
 -spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input(), proplists:proplist()) ->
     {ok, describe_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, load_balancer_attribute_not_found_exception(), tuple()}.
+    {error, describe_load_balancer_attributes_errors(), tuple()}.
 describe_load_balancer_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancerAttributes">>, Input, Options).
@@ -1329,8 +1389,7 @@ describe_load_balancer_attributes(Client, Input, Options)
 -spec describe_load_balancer_policies(map(), describe_load_balancer_policies_input()) ->
     {ok, describe_load_balancer_policies_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, describe_load_balancer_policies_errors(), tuple()}.
 describe_load_balancer_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_policies(Client, Input, []).
@@ -1338,8 +1397,7 @@ describe_load_balancer_policies(Client, Input)
 -spec describe_load_balancer_policies(map(), describe_load_balancer_policies_input(), proplists:proplist()) ->
     {ok, describe_load_balancer_policies_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, describe_load_balancer_policies_errors(), tuple()}.
 describe_load_balancer_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancerPolicies">>, Input, Options).
@@ -1360,7 +1418,7 @@ describe_load_balancer_policies(Client, Input, Options)
 -spec describe_load_balancer_policy_types(map(), describe_load_balancer_policy_types_input()) ->
     {ok, describe_load_balancer_policy_types_output(), tuple()} |
     {error, any()} |
-    {error, policy_type_not_found_exception(), tuple()}.
+    {error, describe_load_balancer_policy_types_errors(), tuple()}.
 describe_load_balancer_policy_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_policy_types(Client, Input, []).
@@ -1368,7 +1426,7 @@ describe_load_balancer_policy_types(Client, Input)
 -spec describe_load_balancer_policy_types(map(), describe_load_balancer_policy_types_input(), proplists:proplist()) ->
     {ok, describe_load_balancer_policy_types_output(), tuple()} |
     {error, any()} |
-    {error, policy_type_not_found_exception(), tuple()}.
+    {error, describe_load_balancer_policy_types_errors(), tuple()}.
 describe_load_balancer_policy_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancerPolicyTypes">>, Input, Options).
@@ -1380,8 +1438,7 @@ describe_load_balancer_policy_types(Client, Input, Options)
 -spec describe_load_balancers(map(), describe_access_points_input()) ->
     {ok, describe_access_points_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, dependency_throttle_exception(), tuple()}.
+    {error, describe_load_balancers_errors(), tuple()}.
 describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
@@ -1389,8 +1446,7 @@ describe_load_balancers(Client, Input)
 -spec describe_load_balancers(map(), describe_access_points_input(), proplists:proplist()) ->
     {ok, describe_access_points_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, dependency_throttle_exception(), tuple()}.
+    {error, describe_load_balancers_errors(), tuple()}.
 describe_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancers">>, Input, Options).
@@ -1399,7 +1455,7 @@ describe_load_balancers(Client, Input, Options)
 -spec describe_tags(map(), describe_tags_input()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -1407,7 +1463,7 @@ describe_tags(Client, Input)
 -spec describe_tags(map(), describe_tags_input(), proplists:proplist()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, describe_tags_errors(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -1423,8 +1479,7 @@ describe_tags(Client, Input, Options)
 -spec detach_load_balancer_from_subnets(map(), detach_load_balancer_from_subnets_input()) ->
     {ok, detach_load_balancer_from_subnets_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()}.
+    {error, detach_load_balancer_from_subnets_errors(), tuple()}.
 detach_load_balancer_from_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_load_balancer_from_subnets(Client, Input, []).
@@ -1432,8 +1487,7 @@ detach_load_balancer_from_subnets(Client, Input)
 -spec detach_load_balancer_from_subnets(map(), detach_load_balancer_from_subnets_input(), proplists:proplist()) ->
     {ok, detach_load_balancer_from_subnets_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()}.
+    {error, detach_load_balancer_from_subnets_errors(), tuple()}.
 detach_load_balancer_from_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachLoadBalancerFromSubnets">>, Input, Options).
@@ -1459,8 +1513,7 @@ detach_load_balancer_from_subnets(Client, Input, Options)
 -spec disable_availability_zones_for_load_balancer(map(), remove_availability_zones_input()) ->
     {ok, remove_availability_zones_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()}.
+    {error, disable_availability_zones_for_load_balancer_errors(), tuple()}.
 disable_availability_zones_for_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_availability_zones_for_load_balancer(Client, Input, []).
@@ -1468,8 +1521,7 @@ disable_availability_zones_for_load_balancer(Client, Input)
 -spec disable_availability_zones_for_load_balancer(map(), remove_availability_zones_input(), proplists:proplist()) ->
     {ok, remove_availability_zones_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()}.
+    {error, disable_availability_zones_for_load_balancer_errors(), tuple()}.
 disable_availability_zones_for_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAvailabilityZonesForLoadBalancer">>, Input, Options).
@@ -1490,7 +1542,7 @@ disable_availability_zones_for_load_balancer(Client, Input, Options)
 -spec enable_availability_zones_for_load_balancer(map(), add_availability_zones_input()) ->
     {ok, add_availability_zones_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, enable_availability_zones_for_load_balancer_errors(), tuple()}.
 enable_availability_zones_for_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_availability_zones_for_load_balancer(Client, Input, []).
@@ -1498,7 +1550,7 @@ enable_availability_zones_for_load_balancer(Client, Input)
 -spec enable_availability_zones_for_load_balancer(map(), add_availability_zones_input(), proplists:proplist()) ->
     {ok, add_availability_zones_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, enable_availability_zones_for_load_balancer_errors(), tuple()}.
 enable_availability_zones_for_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAvailabilityZonesForLoadBalancer">>, Input, Options).
@@ -1529,9 +1581,7 @@ enable_availability_zones_for_load_balancer(Client, Input, Options)
 -spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input()) ->
     {ok, modify_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, load_balancer_attribute_not_found_exception(), tuple()}.
+    {error, modify_load_balancer_attributes_errors(), tuple()}.
 modify_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_load_balancer_attributes(Client, Input, []).
@@ -1539,9 +1589,7 @@ modify_load_balancer_attributes(Client, Input)
 -spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input(), proplists:proplist()) ->
     {ok, modify_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, load_balancer_attribute_not_found_exception(), tuple()}.
+    {error, modify_load_balancer_attributes_errors(), tuple()}.
 modify_load_balancer_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyLoadBalancerAttributes">>, Input, Options).
@@ -1576,8 +1624,7 @@ modify_load_balancer_attributes(Client, Input, Options)
 -spec register_instances_with_load_balancer(map(), register_end_points_input()) ->
     {ok, register_end_points_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_end_point_exception(), tuple()}.
+    {error, register_instances_with_load_balancer_errors(), tuple()}.
 register_instances_with_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instances_with_load_balancer(Client, Input, []).
@@ -1585,8 +1632,7 @@ register_instances_with_load_balancer(Client, Input)
 -spec register_instances_with_load_balancer(map(), register_end_points_input(), proplists:proplist()) ->
     {ok, register_end_points_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_end_point_exception(), tuple()}.
+    {error, register_instances_with_load_balancer_errors(), tuple()}.
 register_instances_with_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterInstancesWithLoadBalancer">>, Input, Options).
@@ -1595,7 +1641,7 @@ register_instances_with_load_balancer(Client, Input, Options)
 -spec remove_tags(map(), remove_tags_input()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
@@ -1603,7 +1649,7 @@ remove_tags(Client, Input)
 -spec remove_tags(map(), remove_tags_input(), proplists:proplist()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()}.
+    {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
@@ -1621,11 +1667,7 @@ remove_tags(Client, Input, Options)
 -spec set_load_balancer_listener_ssl_certificate(map(), set_load_balancer_listener_ssl_certificate_input()) ->
     {ok, set_load_balancer_listener_ssl_certificate_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, set_load_balancer_listener_ssl_certificate_errors(), tuple()}.
 set_load_balancer_listener_ssl_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_balancer_listener_ssl_certificate(Client, Input, []).
@@ -1633,11 +1675,7 @@ set_load_balancer_listener_ssl_certificate(Client, Input)
 -spec set_load_balancer_listener_ssl_certificate(map(), set_load_balancer_listener_ssl_certificate_input(), proplists:proplist()) ->
     {ok, set_load_balancer_listener_ssl_certificate_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, certificate_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, unsupported_protocol_exception(), tuple()}.
+    {error, set_load_balancer_listener_ssl_certificate_errors(), tuple()}.
 set_load_balancer_listener_ssl_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLoadBalancerListenerSSLCertificate">>, Input, Options).
@@ -1669,9 +1707,7 @@ set_load_balancer_listener_ssl_certificate(Client, Input, Options)
 -spec set_load_balancer_policies_for_backend_server(map(), set_load_balancer_policies_for_backend_server_input()) ->
     {ok, set_load_balancer_policies_for_backend_server_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, set_load_balancer_policies_for_backend_server_errors(), tuple()}.
 set_load_balancer_policies_for_backend_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_balancer_policies_for_backend_server(Client, Input, []).
@@ -1679,9 +1715,7 @@ set_load_balancer_policies_for_backend_server(Client, Input)
 -spec set_load_balancer_policies_for_backend_server(map(), set_load_balancer_policies_for_backend_server_input(), proplists:proplist()) ->
     {ok, set_load_balancer_policies_for_backend_server_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, set_load_balancer_policies_for_backend_server_errors(), tuple()}.
 set_load_balancer_policies_for_backend_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLoadBalancerPoliciesForBackendServer">>, Input, Options).
@@ -1704,10 +1738,7 @@ set_load_balancer_policies_for_backend_server(Client, Input, Options)
 -spec set_load_balancer_policies_of_listener(map(), set_load_balancer_policies_of_listener_input()) ->
     {ok, set_load_balancer_policies_of_listener_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, set_load_balancer_policies_of_listener_errors(), tuple()}.
 set_load_balancer_policies_of_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_balancer_policies_of_listener(Client, Input, []).
@@ -1715,10 +1746,7 @@ set_load_balancer_policies_of_listener(Client, Input)
 -spec set_load_balancer_policies_of_listener(map(), set_load_balancer_policies_of_listener_input(), proplists:proplist()) ->
     {ok, set_load_balancer_policies_of_listener_output(), tuple()} |
     {error, any()} |
-    {error, access_point_not_found_exception(), tuple()} |
-    {error, invalid_configuration_request_exception(), tuple()} |
-    {error, listener_not_found_exception(), tuple()} |
-    {error, policy_not_found_exception(), tuple()}.
+    {error, set_load_balancer_policies_of_listener_errors(), tuple()}.
 set_load_balancer_policies_of_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLoadBalancerPoliciesOfListener">>, Input, Options).

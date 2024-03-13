@@ -1958,6 +1958,517 @@
 %% }
 -type get_detector_version_result() :: #{binary() => any()}.
 
+-type batch_create_variable_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type batch_get_variable_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type cancel_batch_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type cancel_batch_prediction_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_batch_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_batch_prediction_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_detector_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type create_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type create_model_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type create_variable_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_batch_import_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_batch_prediction_job_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_detector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_detector_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_entity_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type delete_event_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_events_by_event_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_external_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_label_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_model_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_outcome_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_rule_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type delete_variable_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type describe_detector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_model_versions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_batch_import_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_batch_prediction_jobs_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_delete_events_by_event_type_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_detector_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_detectors_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_entity_types_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_event_prediction_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_unavailable_exception().
+
+-type get_event_prediction_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_event_types_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_external_models_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_kms_encryption_key_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_labels_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_list_elements_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_lists_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_model_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_models_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_outcomes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_rules_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_variables_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_event_predictions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type put_detector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type put_entity_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type put_event_type_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type put_external_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type put_kms_encryption_key_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_label_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type put_outcome_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type send_event_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception().
+
+-type update_detector_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_detector_version_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type update_detector_version_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_event_label_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_list_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_model_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_model_version_status_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_rule_metadata_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_rule_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_variable_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1967,10 +2478,7 @@
 -spec batch_create_variable(map(), batch_create_variable_request()) ->
     {ok, batch_create_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_variable_errors(), tuple()}.
 batch_create_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_create_variable(Client, Input, []).
@@ -1978,10 +2486,7 @@ batch_create_variable(Client, Input)
 -spec batch_create_variable(map(), batch_create_variable_request(), proplists:proplist()) ->
     {ok, batch_create_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_create_variable_errors(), tuple()}.
 batch_create_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCreateVariable">>, Input, Options).
@@ -1990,10 +2495,7 @@ batch_create_variable(Client, Input, Options)
 -spec batch_get_variable(map(), batch_get_variable_request()) ->
     {ok, batch_get_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_variable_errors(), tuple()}.
 batch_get_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_variable(Client, Input, []).
@@ -2001,10 +2503,7 @@ batch_get_variable(Client, Input)
 -spec batch_get_variable(map(), batch_get_variable_request(), proplists:proplist()) ->
     {ok, batch_get_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, batch_get_variable_errors(), tuple()}.
 batch_get_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetVariable">>, Input, Options).
@@ -2013,11 +2512,7 @@ batch_get_variable(Client, Input, Options)
 -spec cancel_batch_import_job(map(), cancel_batch_import_job_request()) ->
     {ok, cancel_batch_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_batch_import_job_errors(), tuple()}.
 cancel_batch_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_batch_import_job(Client, Input, []).
@@ -2025,11 +2520,7 @@ cancel_batch_import_job(Client, Input)
 -spec cancel_batch_import_job(map(), cancel_batch_import_job_request(), proplists:proplist()) ->
     {ok, cancel_batch_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_batch_import_job_errors(), tuple()}.
 cancel_batch_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelBatchImportJob">>, Input, Options).
@@ -2038,11 +2529,7 @@ cancel_batch_import_job(Client, Input, Options)
 -spec cancel_batch_prediction_job(map(), cancel_batch_prediction_job_request()) ->
     {ok, cancel_batch_prediction_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_batch_prediction_job_errors(), tuple()}.
 cancel_batch_prediction_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_batch_prediction_job(Client, Input, []).
@@ -2050,11 +2537,7 @@ cancel_batch_prediction_job(Client, Input)
 -spec cancel_batch_prediction_job(map(), cancel_batch_prediction_job_request(), proplists:proplist()) ->
     {ok, cancel_batch_prediction_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, cancel_batch_prediction_job_errors(), tuple()}.
 cancel_batch_prediction_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelBatchPredictionJob">>, Input, Options).
@@ -2063,11 +2546,7 @@ cancel_batch_prediction_job(Client, Input, Options)
 -spec create_batch_import_job(map(), create_batch_import_job_request()) ->
     {ok, create_batch_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_batch_import_job_errors(), tuple()}.
 create_batch_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_import_job(Client, Input, []).
@@ -2075,11 +2554,7 @@ create_batch_import_job(Client, Input)
 -spec create_batch_import_job(map(), create_batch_import_job_request(), proplists:proplist()) ->
     {ok, create_batch_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_batch_import_job_errors(), tuple()}.
 create_batch_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBatchImportJob">>, Input, Options).
@@ -2088,11 +2563,7 @@ create_batch_import_job(Client, Input, Options)
 -spec create_batch_prediction_job(map(), create_batch_prediction_job_request()) ->
     {ok, create_batch_prediction_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_batch_prediction_job_errors(), tuple()}.
 create_batch_prediction_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_prediction_job(Client, Input, []).
@@ -2100,11 +2571,7 @@ create_batch_prediction_job(Client, Input)
 -spec create_batch_prediction_job(map(), create_batch_prediction_job_request(), proplists:proplist()) ->
     {ok, create_batch_prediction_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_batch_prediction_job_errors(), tuple()}.
 create_batch_prediction_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBatchPredictionJob">>, Input, Options).
@@ -2115,11 +2582,7 @@ create_batch_prediction_job(Client, Input, Options)
 -spec create_detector_version(map(), create_detector_version_request()) ->
     {ok, create_detector_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_detector_version_errors(), tuple()}.
 create_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_detector_version(Client, Input, []).
@@ -2127,11 +2590,7 @@ create_detector_version(Client, Input)
 -spec create_detector_version(map(), create_detector_version_request(), proplists:proplist()) ->
     {ok, create_detector_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_detector_version_errors(), tuple()}.
 create_detector_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDetectorVersion">>, Input, Options).
@@ -2146,10 +2605,7 @@ create_detector_version(Client, Input, Options)
 -spec create_list(map(), create_list_request()) ->
     {ok, create_list_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_list_errors(), tuple()}.
 create_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_list(Client, Input, []).
@@ -2157,10 +2613,7 @@ create_list(Client, Input)
 -spec create_list(map(), create_list_request(), proplists:proplist()) ->
     {ok, create_list_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_list_errors(), tuple()}.
 create_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateList">>, Input, Options).
@@ -2169,10 +2622,7 @@ create_list(Client, Input, Options)
 -spec create_model(map(), create_model_request()) ->
     {ok, create_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
@@ -2180,10 +2630,7 @@ create_model(Client, Input)
 -spec create_model(map(), create_model_request(), proplists:proplist()) ->
     {ok, create_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_errors(), tuple()}.
 create_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModel">>, Input, Options).
@@ -2193,11 +2640,7 @@ create_model(Client, Input, Options)
 -spec create_model_version(map(), create_model_version_request()) ->
     {ok, create_model_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_version_errors(), tuple()}.
 create_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_version(Client, Input, []).
@@ -2205,11 +2648,7 @@ create_model_version(Client, Input)
 -spec create_model_version(map(), create_model_version_request(), proplists:proplist()) ->
     {ok, create_model_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_model_version_errors(), tuple()}.
 create_model_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelVersion">>, Input, Options).
@@ -2218,10 +2657,7 @@ create_model_version(Client, Input, Options)
 -spec create_rule(map(), create_rule_request()) ->
     {ok, create_rule_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
@@ -2229,10 +2665,7 @@ create_rule(Client, Input)
 -spec create_rule(map(), create_rule_request(), proplists:proplist()) ->
     {ok, create_rule_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_rule_errors(), tuple()}.
 create_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRule">>, Input, Options).
@@ -2241,10 +2674,7 @@ create_rule(Client, Input, Options)
 -spec create_variable(map(), create_variable_request()) ->
     {ok, create_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_variable_errors(), tuple()}.
 create_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_variable(Client, Input, []).
@@ -2252,10 +2682,7 @@ create_variable(Client, Input)
 -spec create_variable(map(), create_variable_request(), proplists:proplist()) ->
     {ok, create_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_variable_errors(), tuple()}.
 create_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVariable">>, Input, Options).
@@ -2266,10 +2693,7 @@ create_variable(Client, Input, Options)
 -spec delete_batch_import_job(map(), delete_batch_import_job_request()) ->
     {ok, delete_batch_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_batch_import_job_errors(), tuple()}.
 delete_batch_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_batch_import_job(Client, Input, []).
@@ -2277,10 +2701,7 @@ delete_batch_import_job(Client, Input)
 -spec delete_batch_import_job(map(), delete_batch_import_job_request(), proplists:proplist()) ->
     {ok, delete_batch_import_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_batch_import_job_errors(), tuple()}.
 delete_batch_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBatchImportJob">>, Input, Options).
@@ -2289,10 +2710,7 @@ delete_batch_import_job(Client, Input, Options)
 -spec delete_batch_prediction_job(map(), delete_batch_prediction_job_request()) ->
     {ok, delete_batch_prediction_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_batch_prediction_job_errors(), tuple()}.
 delete_batch_prediction_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_batch_prediction_job(Client, Input, []).
@@ -2300,10 +2718,7 @@ delete_batch_prediction_job(Client, Input)
 -spec delete_batch_prediction_job(map(), delete_batch_prediction_job_request(), proplists:proplist()) ->
     {ok, delete_batch_prediction_job_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_batch_prediction_job_errors(), tuple()}.
 delete_batch_prediction_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBatchPredictionJob">>, Input, Options).
@@ -2318,11 +2733,7 @@ delete_batch_prediction_job(Client, Input, Options)
 -spec delete_detector(map(), delete_detector_request()) ->
     {ok, delete_detector_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_detector_errors(), tuple()}.
 delete_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_detector(Client, Input, []).
@@ -2330,11 +2741,7 @@ delete_detector(Client, Input)
 -spec delete_detector(map(), delete_detector_request(), proplists:proplist()) ->
     {ok, delete_detector_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_detector_errors(), tuple()}.
 delete_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDetector">>, Input, Options).
@@ -2349,12 +2756,7 @@ delete_detector(Client, Input, Options)
 -spec delete_detector_version(map(), delete_detector_version_request()) ->
     {ok, delete_detector_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_detector_version_errors(), tuple()}.
 delete_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_detector_version(Client, Input, []).
@@ -2362,12 +2764,7 @@ delete_detector_version(Client, Input)
 -spec delete_detector_version(map(), delete_detector_version_request(), proplists:proplist()) ->
     {ok, delete_detector_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_detector_version_errors(), tuple()}.
 delete_detector_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDetectorVersion">>, Input, Options).
@@ -2382,11 +2779,7 @@ delete_detector_version(Client, Input, Options)
 -spec delete_entity_type(map(), delete_entity_type_request()) ->
     {ok, delete_entity_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_entity_type_errors(), tuple()}.
 delete_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_entity_type(Client, Input, []).
@@ -2394,11 +2787,7 @@ delete_entity_type(Client, Input)
 -spec delete_entity_type(map(), delete_entity_type_request(), proplists:proplist()) ->
     {ok, delete_entity_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_entity_type_errors(), tuple()}.
 delete_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEntityType">>, Input, Options).
@@ -2412,10 +2801,7 @@ delete_entity_type(Client, Input, Options)
 -spec delete_event(map(), delete_event_request()) ->
     {ok, delete_event_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_event_errors(), tuple()}.
 delete_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event(Client, Input, []).
@@ -2423,10 +2809,7 @@ delete_event(Client, Input)
 -spec delete_event(map(), delete_event_request(), proplists:proplist()) ->
     {ok, delete_event_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_event_errors(), tuple()}.
 delete_event(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEvent">>, Input, Options).
@@ -2440,11 +2823,7 @@ delete_event(Client, Input, Options)
 -spec delete_event_type(map(), delete_event_type_request()) ->
     {ok, delete_event_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_event_type_errors(), tuple()}.
 delete_event_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_type(Client, Input, []).
@@ -2452,11 +2831,7 @@ delete_event_type(Client, Input)
 -spec delete_event_type(map(), delete_event_type_request(), proplists:proplist()) ->
     {ok, delete_event_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_event_type_errors(), tuple()}.
 delete_event_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventType">>, Input, Options).
@@ -2465,12 +2840,7 @@ delete_event_type(Client, Input, Options)
 -spec delete_events_by_event_type(map(), delete_events_by_event_type_request()) ->
     {ok, delete_events_by_event_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_events_by_event_type_errors(), tuple()}.
 delete_events_by_event_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_events_by_event_type(Client, Input, []).
@@ -2478,12 +2848,7 @@ delete_events_by_event_type(Client, Input)
 -spec delete_events_by_event_type(map(), delete_events_by_event_type_request(), proplists:proplist()) ->
     {ok, delete_events_by_event_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_events_by_event_type_errors(), tuple()}.
 delete_events_by_event_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventsByEventType">>, Input, Options).
@@ -2496,11 +2861,7 @@ delete_events_by_event_type(Client, Input, Options)
 -spec delete_external_model(map(), delete_external_model_request()) ->
     {ok, delete_external_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_external_model_errors(), tuple()}.
 delete_external_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_external_model(Client, Input, []).
@@ -2508,11 +2869,7 @@ delete_external_model(Client, Input)
 -spec delete_external_model(map(), delete_external_model_request(), proplists:proplist()) ->
     {ok, delete_external_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_external_model_errors(), tuple()}.
 delete_external_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExternalModel">>, Input, Options).
@@ -2530,10 +2887,7 @@ delete_external_model(Client, Input, Options)
 -spec delete_label(map(), delete_label_request()) ->
     {ok, delete_label_result(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_label_errors(), tuple()}.
 delete_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_label(Client, Input, []).
@@ -2541,10 +2895,7 @@ delete_label(Client, Input)
 -spec delete_label(map(), delete_label_request(), proplists:proplist()) ->
     {ok, delete_label_result(), tuple()} |
     {error, any()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_label_errors(), tuple()}.
 delete_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLabel">>, Input, Options).
@@ -2557,11 +2908,7 @@ delete_label(Client, Input, Options)
 -spec delete_list(map(), delete_list_request()) ->
     {ok, delete_list_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_list_errors(), tuple()}.
 delete_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_list(Client, Input, []).
@@ -2569,11 +2916,7 @@ delete_list(Client, Input)
 -spec delete_list(map(), delete_list_request(), proplists:proplist()) ->
     {ok, delete_list_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_list_errors(), tuple()}.
 delete_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteList">>, Input, Options).
@@ -2588,11 +2931,7 @@ delete_list(Client, Input, Options)
 -spec delete_model(map(), delete_model_request()) ->
     {ok, delete_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_errors(), tuple()}.
 delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model(Client, Input, []).
@@ -2600,11 +2939,7 @@ delete_model(Client, Input)
 -spec delete_model(map(), delete_model_request(), proplists:proplist()) ->
     {ok, delete_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_errors(), tuple()}.
 delete_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModel">>, Input, Options).
@@ -2620,11 +2955,7 @@ delete_model(Client, Input, Options)
 -spec delete_model_version(map(), delete_model_version_request()) ->
     {ok, delete_model_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_version_errors(), tuple()}.
 delete_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_version(Client, Input, []).
@@ -2632,11 +2963,7 @@ delete_model_version(Client, Input)
 -spec delete_model_version(map(), delete_model_version_request(), proplists:proplist()) ->
     {ok, delete_model_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_model_version_errors(), tuple()}.
 delete_model_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelVersion">>, Input, Options).
@@ -2650,11 +2977,7 @@ delete_model_version(Client, Input, Options)
 -spec delete_outcome(map(), delete_outcome_request()) ->
     {ok, delete_outcome_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_outcome_errors(), tuple()}.
 delete_outcome(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_outcome(Client, Input, []).
@@ -2662,11 +2985,7 @@ delete_outcome(Client, Input)
 -spec delete_outcome(map(), delete_outcome_request(), proplists:proplist()) ->
     {ok, delete_outcome_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_outcome_errors(), tuple()}.
 delete_outcome(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOutcome">>, Input, Options).
@@ -2681,11 +3000,7 @@ delete_outcome(Client, Input, Options)
 -spec delete_rule(map(), delete_rule_request()) ->
     {ok, delete_rule_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
@@ -2693,11 +3008,7 @@ delete_rule(Client, Input)
 -spec delete_rule(map(), delete_rule_request(), proplists:proplist()) ->
     {ok, delete_rule_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
@@ -2716,11 +3027,7 @@ delete_rule(Client, Input, Options)
 -spec delete_variable(map(), delete_variable_request()) ->
     {ok, delete_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_variable_errors(), tuple()}.
 delete_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_variable(Client, Input, []).
@@ -2728,11 +3035,7 @@ delete_variable(Client, Input)
 -spec delete_variable(map(), delete_variable_request(), proplists:proplist()) ->
     {ok, delete_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_variable_errors(), tuple()}.
 delete_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVariable">>, Input, Options).
@@ -2741,11 +3044,7 @@ delete_variable(Client, Input, Options)
 -spec describe_detector(map(), describe_detector_request()) ->
     {ok, describe_detector_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_detector_errors(), tuple()}.
 describe_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_detector(Client, Input, []).
@@ -2753,11 +3052,7 @@ describe_detector(Client, Input)
 -spec describe_detector(map(), describe_detector_request(), proplists:proplist()) ->
     {ok, describe_detector_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_detector_errors(), tuple()}.
 describe_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDetector">>, Input, Options).
@@ -2769,11 +3064,7 @@ describe_detector(Client, Input, Options)
 -spec describe_model_versions(map(), describe_model_versions_request()) ->
     {ok, describe_model_versions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_versions_errors(), tuple()}.
 describe_model_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_versions(Client, Input, []).
@@ -2781,11 +3072,7 @@ describe_model_versions(Client, Input)
 -spec describe_model_versions(map(), describe_model_versions_request(), proplists:proplist()) ->
     {ok, describe_model_versions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_model_versions_errors(), tuple()}.
 describe_model_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelVersions">>, Input, Options).
@@ -2801,11 +3088,7 @@ describe_model_versions(Client, Input, Options)
 -spec get_batch_import_jobs(map(), get_batch_import_jobs_request()) ->
     {ok, get_batch_import_jobs_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_batch_import_jobs_errors(), tuple()}.
 get_batch_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_batch_import_jobs(Client, Input, []).
@@ -2813,11 +3096,7 @@ get_batch_import_jobs(Client, Input)
 -spec get_batch_import_jobs(map(), get_batch_import_jobs_request(), proplists:proplist()) ->
     {ok, get_batch_import_jobs_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_batch_import_jobs_errors(), tuple()}.
 get_batch_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBatchImportJobs">>, Input, Options).
@@ -2834,11 +3113,7 @@ get_batch_import_jobs(Client, Input, Options)
 -spec get_batch_prediction_jobs(map(), get_batch_prediction_jobs_request()) ->
     {ok, get_batch_prediction_jobs_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_batch_prediction_jobs_errors(), tuple()}.
 get_batch_prediction_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_batch_prediction_jobs(Client, Input, []).
@@ -2846,11 +3121,7 @@ get_batch_prediction_jobs(Client, Input)
 -spec get_batch_prediction_jobs(map(), get_batch_prediction_jobs_request(), proplists:proplist()) ->
     {ok, get_batch_prediction_jobs_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_batch_prediction_jobs_errors(), tuple()}.
 get_batch_prediction_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBatchPredictionJobs">>, Input, Options).
@@ -2859,11 +3130,7 @@ get_batch_prediction_jobs(Client, Input, Options)
 -spec get_delete_events_by_event_type_status(map(), get_delete_events_by_event_type_status_request()) ->
     {ok, get_delete_events_by_event_type_status_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delete_events_by_event_type_status_errors(), tuple()}.
 get_delete_events_by_event_type_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delete_events_by_event_type_status(Client, Input, []).
@@ -2871,11 +3138,7 @@ get_delete_events_by_event_type_status(Client, Input)
 -spec get_delete_events_by_event_type_status(map(), get_delete_events_by_event_type_status_request(), proplists:proplist()) ->
     {ok, get_delete_events_by_event_type_status_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_delete_events_by_event_type_status_errors(), tuple()}.
 get_delete_events_by_event_type_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeleteEventsByEventTypeStatus">>, Input, Options).
@@ -2884,11 +3147,7 @@ get_delete_events_by_event_type_status(Client, Input, Options)
 -spec get_detector_version(map(), get_detector_version_request()) ->
     {ok, get_detector_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_detector_version_errors(), tuple()}.
 get_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_detector_version(Client, Input, []).
@@ -2896,11 +3155,7 @@ get_detector_version(Client, Input)
 -spec get_detector_version(map(), get_detector_version_request(), proplists:proplist()) ->
     {ok, get_detector_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_detector_version_errors(), tuple()}.
 get_detector_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDetectorVersion">>, Input, Options).
@@ -2920,11 +3175,7 @@ get_detector_version(Client, Input, Options)
 -spec get_detectors(map(), get_detectors_request()) ->
     {ok, get_detectors_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_detectors_errors(), tuple()}.
 get_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_detectors(Client, Input, []).
@@ -2932,11 +3183,7 @@ get_detectors(Client, Input)
 -spec get_detectors(map(), get_detectors_request(), proplists:proplist()) ->
     {ok, get_detectors_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_detectors_errors(), tuple()}.
 get_detectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDetectors">>, Input, Options).
@@ -2956,11 +3203,7 @@ get_detectors(Client, Input, Options)
 -spec get_entity_types(map(), get_entity_types_request()) ->
     {ok, get_entity_types_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_entity_types_errors(), tuple()}.
 get_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entity_types(Client, Input, []).
@@ -2968,11 +3211,7 @@ get_entity_types(Client, Input)
 -spec get_entity_types(map(), get_entity_types_request(), proplists:proplist()) ->
     {ok, get_entity_types_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_entity_types_errors(), tuple()}.
 get_entity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEntityTypes">>, Input, Options).
@@ -2983,11 +3222,7 @@ get_entity_types(Client, Input, Options)
 -spec get_event(map(), get_event_request()) ->
     {ok, get_event_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_errors(), tuple()}.
 get_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event(Client, Input, []).
@@ -2995,11 +3230,7 @@ get_event(Client, Input)
 -spec get_event(map(), get_event_request(), proplists:proplist()) ->
     {ok, get_event_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_errors(), tuple()}.
 get_event(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEvent">>, Input, Options).
@@ -3011,13 +3242,7 @@ get_event(Client, Input, Options)
 -spec get_event_prediction(map(), get_event_prediction_request()) ->
     {ok, get_event_prediction_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_prediction_errors(), tuple()}.
 get_event_prediction(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_prediction(Client, Input, []).
@@ -3025,13 +3250,7 @@ get_event_prediction(Client, Input)
 -spec get_event_prediction(map(), get_event_prediction_request(), proplists:proplist()) ->
     {ok, get_event_prediction_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, resource_unavailable_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_prediction_errors(), tuple()}.
 get_event_prediction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventPrediction">>, Input, Options).
@@ -3043,11 +3262,7 @@ get_event_prediction(Client, Input, Options)
 -spec get_event_prediction_metadata(map(), get_event_prediction_metadata_request()) ->
     {ok, get_event_prediction_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_prediction_metadata_errors(), tuple()}.
 get_event_prediction_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_prediction_metadata(Client, Input, []).
@@ -3055,11 +3270,7 @@ get_event_prediction_metadata(Client, Input)
 -spec get_event_prediction_metadata(map(), get_event_prediction_metadata_request(), proplists:proplist()) ->
     {ok, get_event_prediction_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_prediction_metadata_errors(), tuple()}.
 get_event_prediction_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventPredictionMetadata">>, Input, Options).
@@ -3078,11 +3289,7 @@ get_event_prediction_metadata(Client, Input, Options)
 -spec get_event_types(map(), get_event_types_request()) ->
     {ok, get_event_types_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_types_errors(), tuple()}.
 get_event_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_types(Client, Input, []).
@@ -3090,11 +3297,7 @@ get_event_types(Client, Input)
 -spec get_event_types(map(), get_event_types_request(), proplists:proplist()) ->
     {ok, get_event_types_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_event_types_errors(), tuple()}.
 get_event_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventTypes">>, Input, Options).
@@ -3113,11 +3316,7 @@ get_event_types(Client, Input, Options)
 -spec get_external_models(map(), get_external_models_request()) ->
     {ok, get_external_models_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_external_models_errors(), tuple()}.
 get_external_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_external_models(Client, Input, []).
@@ -3125,11 +3324,7 @@ get_external_models(Client, Input)
 -spec get_external_models(map(), get_external_models_request(), proplists:proplist()) ->
     {ok, get_external_models_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_external_models_errors(), tuple()}.
 get_external_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExternalModels">>, Input, Options).
@@ -3139,10 +3334,7 @@ get_external_models(Client, Input, Options)
 -spec get_kms_encryption_key(map(), #{}) ->
     {ok, get_kms_encryption_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_kms_encryption_key_errors(), tuple()}.
 get_kms_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_kms_encryption_key(Client, Input, []).
@@ -3150,10 +3342,7 @@ get_kms_encryption_key(Client, Input)
 -spec get_kms_encryption_key(map(), #{}, proplists:proplist()) ->
     {ok, get_kms_encryption_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()}.
+    {error, get_kms_encryption_key_errors(), tuple()}.
 get_kms_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKMSEncryptionKey">>, Input, Options).
@@ -3172,11 +3361,7 @@ get_kms_encryption_key(Client, Input, Options)
 -spec get_labels(map(), get_labels_request()) ->
     {ok, get_labels_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_labels_errors(), tuple()}.
 get_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_labels(Client, Input, []).
@@ -3184,11 +3369,7 @@ get_labels(Client, Input)
 -spec get_labels(map(), get_labels_request(), proplists:proplist()) ->
     {ok, get_labels_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_labels_errors(), tuple()}.
 get_labels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLabels">>, Input, Options).
@@ -3198,11 +3379,7 @@ get_labels(Client, Input, Options)
 -spec get_list_elements(map(), get_list_elements_request()) ->
     {ok, get_list_elements_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_list_elements_errors(), tuple()}.
 get_list_elements(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_list_elements(Client, Input, []).
@@ -3210,11 +3387,7 @@ get_list_elements(Client, Input)
 -spec get_list_elements(map(), get_list_elements_request(), proplists:proplist()) ->
     {ok, get_list_elements_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_list_elements_errors(), tuple()}.
 get_list_elements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetListElements">>, Input, Options).
@@ -3225,11 +3398,7 @@ get_list_elements(Client, Input, Options)
 -spec get_lists_metadata(map(), get_lists_metadata_request()) ->
     {ok, get_lists_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_lists_metadata_errors(), tuple()}.
 get_lists_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lists_metadata(Client, Input, []).
@@ -3237,11 +3406,7 @@ get_lists_metadata(Client, Input)
 -spec get_lists_metadata(map(), get_lists_metadata_request(), proplists:proplist()) ->
     {ok, get_lists_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_lists_metadata_errors(), tuple()}.
 get_lists_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetListsMetadata">>, Input, Options).
@@ -3250,11 +3415,7 @@ get_lists_metadata(Client, Input, Options)
 -spec get_model_version(map(), get_model_version_request()) ->
     {ok, get_model_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_model_version_errors(), tuple()}.
 get_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_model_version(Client, Input, []).
@@ -3262,11 +3423,7 @@ get_model_version(Client, Input)
 -spec get_model_version(map(), get_model_version_request(), proplists:proplist()) ->
     {ok, get_model_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_model_version_errors(), tuple()}.
 get_model_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetModelVersion">>, Input, Options).
@@ -3290,11 +3447,7 @@ get_model_version(Client, Input, Options)
 -spec get_models(map(), get_models_request()) ->
     {ok, get_models_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_models_errors(), tuple()}.
 get_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_models(Client, Input, []).
@@ -3302,11 +3455,7 @@ get_models(Client, Input)
 -spec get_models(map(), get_models_request(), proplists:proplist()) ->
     {ok, get_models_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_models_errors(), tuple()}.
 get_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetModels">>, Input, Options).
@@ -3324,11 +3473,7 @@ get_models(Client, Input, Options)
 -spec get_outcomes(map(), get_outcomes_request()) ->
     {ok, get_outcomes_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_outcomes_errors(), tuple()}.
 get_outcomes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_outcomes(Client, Input, []).
@@ -3336,11 +3481,7 @@ get_outcomes(Client, Input)
 -spec get_outcomes(map(), get_outcomes_request(), proplists:proplist()) ->
     {ok, get_outcomes_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_outcomes_errors(), tuple()}.
 get_outcomes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOutcomes">>, Input, Options).
@@ -3360,11 +3501,7 @@ get_outcomes(Client, Input, Options)
 -spec get_rules(map(), get_rules_request()) ->
     {ok, get_rules_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_rules_errors(), tuple()}.
 get_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rules(Client, Input, []).
@@ -3372,11 +3509,7 @@ get_rules(Client, Input)
 -spec get_rules(map(), get_rules_request(), proplists:proplist()) ->
     {ok, get_rules_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_rules_errors(), tuple()}.
 get_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRules">>, Input, Options).
@@ -3394,11 +3527,7 @@ get_rules(Client, Input, Options)
 -spec get_variables(map(), get_variables_request()) ->
     {ok, get_variables_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_variables_errors(), tuple()}.
 get_variables(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_variables(Client, Input, []).
@@ -3406,11 +3535,7 @@ get_variables(Client, Input)
 -spec get_variables(map(), get_variables_request(), proplists:proplist()) ->
     {ok, get_variables_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, get_variables_errors(), tuple()}.
 get_variables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVariables">>, Input, Options).
@@ -3437,10 +3562,7 @@ get_variables(Client, Input, Options)
 -spec list_event_predictions(map(), list_event_predictions_request()) ->
     {ok, list_event_predictions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_event_predictions_errors(), tuple()}.
 list_event_predictions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_predictions(Client, Input, []).
@@ -3448,10 +3570,7 @@ list_event_predictions(Client, Input)
 -spec list_event_predictions(map(), list_event_predictions_request(), proplists:proplist()) ->
     {ok, list_event_predictions_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_event_predictions_errors(), tuple()}.
 list_event_predictions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventPredictions">>, Input, Options).
@@ -3465,10 +3584,7 @@ list_event_predictions(Client, Input, Options)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -3476,10 +3592,7 @@ list_tags_for_resource(Client, Input)
 -spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -3488,11 +3601,7 @@ list_tags_for_resource(Client, Input, Options)
 -spec put_detector(map(), put_detector_request()) ->
     {ok, put_detector_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_detector_errors(), tuple()}.
 put_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_detector(Client, Input, []).
@@ -3500,11 +3609,7 @@ put_detector(Client, Input)
 -spec put_detector(map(), put_detector_request(), proplists:proplist()) ->
     {ok, put_detector_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_detector_errors(), tuple()}.
 put_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDetector">>, Input, Options).
@@ -3518,11 +3623,7 @@ put_detector(Client, Input, Options)
 -spec put_entity_type(map(), put_entity_type_request()) ->
     {ok, put_entity_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_entity_type_errors(), tuple()}.
 put_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_entity_type(Client, Input, []).
@@ -3530,11 +3631,7 @@ put_entity_type(Client, Input)
 -spec put_entity_type(map(), put_entity_type_request(), proplists:proplist()) ->
     {ok, put_entity_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_entity_type_errors(), tuple()}.
 put_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEntityType">>, Input, Options).
@@ -3551,11 +3648,7 @@ put_entity_type(Client, Input, Options)
 -spec put_event_type(map(), put_event_type_request()) ->
     {ok, put_event_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_event_type_errors(), tuple()}.
 put_event_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_event_type(Client, Input, []).
@@ -3563,11 +3656,7 @@ put_event_type(Client, Input)
 -spec put_event_type(map(), put_event_type_request(), proplists:proplist()) ->
     {ok, put_event_type_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_event_type_errors(), tuple()}.
 put_event_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEventType">>, Input, Options).
@@ -3579,11 +3668,7 @@ put_event_type(Client, Input, Options)
 -spec put_external_model(map(), put_external_model_request()) ->
     {ok, put_external_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_external_model_errors(), tuple()}.
 put_external_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_external_model(Client, Input, []).
@@ -3591,11 +3676,7 @@ put_external_model(Client, Input)
 -spec put_external_model(map(), put_external_model_request(), proplists:proplist()) ->
     {ok, put_external_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_external_model_errors(), tuple()}.
 put_external_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutExternalModel">>, Input, Options).
@@ -3605,12 +3686,7 @@ put_external_model(Client, Input, Options)
 -spec put_kms_encryption_key(map(), put_kms_encryption_key_request()) ->
     {ok, put_kms_encryption_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_kms_encryption_key_errors(), tuple()}.
 put_kms_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_kms_encryption_key(Client, Input, []).
@@ -3618,12 +3694,7 @@ put_kms_encryption_key(Client, Input)
 -spec put_kms_encryption_key(map(), put_kms_encryption_key_request(), proplists:proplist()) ->
     {ok, put_kms_encryption_key_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_kms_encryption_key_errors(), tuple()}.
 put_kms_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutKMSEncryptionKey">>, Input, Options).
@@ -3636,11 +3707,7 @@ put_kms_encryption_key(Client, Input, Options)
 -spec put_label(map(), put_label_request()) ->
     {ok, put_label_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_label_errors(), tuple()}.
 put_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_label(Client, Input, []).
@@ -3648,11 +3715,7 @@ put_label(Client, Input)
 -spec put_label(map(), put_label_request(), proplists:proplist()) ->
     {ok, put_label_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_label_errors(), tuple()}.
 put_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLabel">>, Input, Options).
@@ -3661,11 +3724,7 @@ put_label(Client, Input, Options)
 -spec put_outcome(map(), put_outcome_request()) ->
     {ok, put_outcome_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_outcome_errors(), tuple()}.
 put_outcome(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_outcome(Client, Input, []).
@@ -3673,11 +3732,7 @@ put_outcome(Client, Input)
 -spec put_outcome(map(), put_outcome_request(), proplists:proplist()) ->
     {ok, put_outcome_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, put_outcome_errors(), tuple()}.
 put_outcome(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutOutcome">>, Input, Options).
@@ -3690,12 +3745,7 @@ put_outcome(Client, Input, Options)
 -spec send_event(map(), send_event_request()) ->
     {ok, send_event_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_event_errors(), tuple()}.
 send_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_event(Client, Input, []).
@@ -3703,12 +3753,7 @@ send_event(Client, Input)
 -spec send_event(map(), send_event_request(), proplists:proplist()) ->
     {ok, send_event_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, send_event_errors(), tuple()}.
 send_event(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendEvent">>, Input, Options).
@@ -3717,10 +3762,7 @@ send_event(Client, Input, Options)
 -spec tag_resource(map(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -3728,10 +3770,7 @@ tag_resource(Client, Input)
 -spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -3740,10 +3779,7 @@ tag_resource(Client, Input, Options)
 -spec untag_resource(map(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -3751,10 +3787,7 @@ untag_resource(Client, Input)
 -spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -3767,12 +3800,7 @@ untag_resource(Client, Input, Options)
 -spec update_detector_version(map(), update_detector_version_request()) ->
     {ok, update_detector_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_detector_version_errors(), tuple()}.
 update_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version(Client, Input, []).
@@ -3780,12 +3808,7 @@ update_detector_version(Client, Input)
 -spec update_detector_version(map(), update_detector_version_request(), proplists:proplist()) ->
     {ok, update_detector_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_detector_version_errors(), tuple()}.
 update_detector_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDetectorVersion">>, Input, Options).
@@ -3798,11 +3821,7 @@ update_detector_version(Client, Input, Options)
 -spec update_detector_version_metadata(map(), update_detector_version_metadata_request()) ->
     {ok, update_detector_version_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_detector_version_metadata_errors(), tuple()}.
 update_detector_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version_metadata(Client, Input, []).
@@ -3810,11 +3829,7 @@ update_detector_version_metadata(Client, Input)
 -spec update_detector_version_metadata(map(), update_detector_version_metadata_request(), proplists:proplist()) ->
     {ok, update_detector_version_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_detector_version_metadata_errors(), tuple()}.
 update_detector_version_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDetectorVersionMetadata">>, Input, Options).
@@ -3828,12 +3843,7 @@ update_detector_version_metadata(Client, Input, Options)
 -spec update_detector_version_status(map(), update_detector_version_status_request()) ->
     {ok, update_detector_version_status_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_detector_version_status_errors(), tuple()}.
 update_detector_version_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version_status(Client, Input, []).
@@ -3841,12 +3851,7 @@ update_detector_version_status(Client, Input)
 -spec update_detector_version_status(map(), update_detector_version_status_request(), proplists:proplist()) ->
     {ok, update_detector_version_status_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_detector_version_status_errors(), tuple()}.
 update_detector_version_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDetectorVersionStatus">>, Input, Options).
@@ -3855,12 +3860,7 @@ update_detector_version_status(Client, Input, Options)
 -spec update_event_label(map(), update_event_label_request()) ->
     {ok, update_event_label_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_event_label_errors(), tuple()}.
 update_event_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_event_label(Client, Input, []).
@@ -3868,12 +3868,7 @@ update_event_label(Client, Input)
 -spec update_event_label(map(), update_event_label_request(), proplists:proplist()) ->
     {ok, update_event_label_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_event_label_errors(), tuple()}.
 update_event_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEventLabel">>, Input, Options).
@@ -3883,12 +3878,7 @@ update_event_label(Client, Input, Options)
 -spec update_list(map(), update_list_request()) ->
     {ok, update_list_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_list_errors(), tuple()}.
 update_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_list(Client, Input, []).
@@ -3896,12 +3886,7 @@ update_list(Client, Input)
 -spec update_list(map(), update_list_request(), proplists:proplist()) ->
     {ok, update_list_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_list_errors(), tuple()}.
 update_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateList">>, Input, Options).
@@ -3910,12 +3895,7 @@ update_list(Client, Input, Options)
 -spec update_model(map(), update_model_request()) ->
     {ok, update_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_errors(), tuple()}.
 update_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model(Client, Input, []).
@@ -3923,12 +3903,7 @@ update_model(Client, Input)
 -spec update_model(map(), update_model_request(), proplists:proplist()) ->
     {ok, update_model_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_errors(), tuple()}.
 update_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModel">>, Input, Options).
@@ -3943,12 +3918,7 @@ update_model(Client, Input, Options)
 -spec update_model_version(map(), update_model_version_request()) ->
     {ok, update_model_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_version_errors(), tuple()}.
 update_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_version(Client, Input, []).
@@ -3956,12 +3926,7 @@ update_model_version(Client, Input)
 -spec update_model_version(map(), update_model_version_request(), proplists:proplist()) ->
     {ok, update_model_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_version_errors(), tuple()}.
 update_model_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModelVersion">>, Input, Options).
@@ -3978,12 +3943,7 @@ update_model_version(Client, Input, Options)
 -spec update_model_version_status(map(), update_model_version_status_request()) ->
     {ok, update_model_version_status_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_version_status_errors(), tuple()}.
 update_model_version_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_version_status(Client, Input, []).
@@ -3991,12 +3951,7 @@ update_model_version_status(Client, Input)
 -spec update_model_version_status(map(), update_model_version_status_request(), proplists:proplist()) ->
     {ok, update_model_version_status_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_model_version_status_errors(), tuple()}.
 update_model_version_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModelVersionStatus">>, Input, Options).
@@ -4007,12 +3962,7 @@ update_model_version_status(Client, Input, Options)
 -spec update_rule_metadata(map(), update_rule_metadata_request()) ->
     {ok, update_rule_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rule_metadata_errors(), tuple()}.
 update_rule_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_metadata(Client, Input, []).
@@ -4020,12 +3970,7 @@ update_rule_metadata(Client, Input)
 -spec update_rule_metadata(map(), update_rule_metadata_request(), proplists:proplist()) ->
     {ok, update_rule_metadata_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rule_metadata_errors(), tuple()}.
 update_rule_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleMetadata">>, Input, Options).
@@ -4037,12 +3982,7 @@ update_rule_metadata(Client, Input, Options)
 -spec update_rule_version(map(), update_rule_version_request()) ->
     {ok, update_rule_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rule_version_errors(), tuple()}.
 update_rule_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_version(Client, Input, []).
@@ -4050,12 +3990,7 @@ update_rule_version(Client, Input)
 -spec update_rule_version(map(), update_rule_version_request(), proplists:proplist()) ->
     {ok, update_rule_version_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_rule_version_errors(), tuple()}.
 update_rule_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleVersion">>, Input, Options).
@@ -4064,12 +3999,7 @@ update_rule_version(Client, Input, Options)
 -spec update_variable(map(), update_variable_request()) ->
     {ok, update_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_variable_errors(), tuple()}.
 update_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_variable(Client, Input, []).
@@ -4077,12 +4007,7 @@ update_variable(Client, Input)
 -spec update_variable(map(), update_variable_request(), proplists:proplist()) ->
     {ok, update_variable_result(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, throttling_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, update_variable_errors(), tuple()}.
 update_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVariable">>, Input, Options).

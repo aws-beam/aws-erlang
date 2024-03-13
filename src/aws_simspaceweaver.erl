@@ -78,6 +78,7 @@
 %% }
 -type start_app_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_simulation_output() :: #{
 %%   <<"Arn">> => string(),
@@ -86,6 +87,7 @@
 %% }
 -type start_simulation_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% simulation_clock() :: #{
 %%   <<"Status">> => string(),
@@ -93,12 +95,14 @@
 %% }
 -type simulation_clock() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_simulations_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Simulations">> => list(simulation_metadata()())
 %% }
 -type list_simulations_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% stop_app_input() :: #{
@@ -108,12 +112,14 @@
 %% }
 -type stop_app_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% simulation_app_endpoint_info() :: #{
 %%   <<"Address">> => string(),
 %%   <<"IngressPortMappings">> => list(simulation_app_port_mapping()())
 %% }
 -type simulation_app_endpoint_info() :: #{binary() => any()}.
+
 
 %% Example:
 %% simulation_app_metadata() :: #{
@@ -125,15 +131,18 @@
 %% }
 -type simulation_app_metadata() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_simulations_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_simulations_input() :: #{binary() => any()}.
+
 %% Example:
 %% stop_clock_output() :: #{}
 -type stop_clock_output() :: #{}.
+
 
 %% Example:
 %% domain() :: #{
@@ -142,11 +151,13 @@
 %% }
 -type domain() :: #{binary() => any()}.
 
+
 %% Example:
 %% start_clock_input() :: #{
 %%   <<"Simulation">> := string()
 %% }
 -type start_clock_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_tags_for_resource_output() :: #{
@@ -154,14 +165,17 @@
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% logging_configuration() :: #{
 %%   <<"Destinations">> => list(log_destination()())
 %% }
 -type logging_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% create_snapshot_output() :: #{}
 -type create_snapshot_output() :: #{}.
+
 
 %% Example:
 %% stop_clock_input() :: #{
@@ -169,11 +183,13 @@
 %% }
 -type stop_clock_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -181,20 +197,24 @@
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_simulation_output() :: #{}
 -type delete_simulation_output() :: #{}.
+
 
 %% Example:
 %% stop_simulation_input() :: #{
 %%   <<"Simulation">> := string()
 %% }
 -type stop_simulation_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% create_snapshot_input() :: #{
@@ -203,11 +223,13 @@
 %% }
 -type create_snapshot_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% log_destination() :: #{
 %%   <<"CloudWatchLogsLogGroup">> => cloud_watch_logs_log_group()
 %% }
 -type log_destination() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_output() :: #{
@@ -222,17 +244,20 @@
 %% }
 -type describe_app_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% cloud_watch_logs_log_group() :: #{
 %%   <<"LogGroupArn">> => string()
 %% }
 -type cloud_watch_logs_log_group() :: #{binary() => any()}.
 
+
 %% Example:
 %% describe_simulation_input() :: #{
 %%   <<"Simulation">> := string()
 %% }
 -type describe_simulation_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_location() :: #{
@@ -241,11 +266,13 @@
 %% }
 -type s3_location() :: #{binary() => any()}.
 
+
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% s3_destination() :: #{
@@ -254,15 +281,18 @@
 %% }
 -type s3_destination() :: #{binary() => any()}.
 
+
 %% Example:
 %% list_apps_output() :: #{
 %%   <<"Apps">> => list(simulation_app_metadata()()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_apps_output() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
+
 
 %% Example:
 %% launch_overrides() :: #{
@@ -270,17 +300,20 @@
 %% }
 -type launch_overrides() :: #{binary() => any()}.
 
+
 %% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_simulation_input() :: #{
@@ -295,11 +328,13 @@
 %% }
 -type start_simulation_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"TagKeys">> => list(string()())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% simulation_app_port_mapping() :: #{
@@ -308,32 +343,40 @@
 %% }
 -type simulation_app_port_mapping() :: #{binary() => any()}.
 
+
 %% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
+
 %% Example:
 %% stop_app_output() :: #{}
 -type stop_app_output() :: #{}.
+
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
 %% Example:
 %% delete_app_output() :: #{}
 -type delete_app_output() :: #{}.
+
 %% Example:
 %% stop_simulation_output() :: #{}
 -type stop_simulation_output() :: #{}.
+
 
 %% Example:
 %% delete_simulation_input() :: #{
 %%   <<"Simulation">> := string()
 %% }
 -type delete_simulation_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_app_input() :: #{
@@ -342,6 +385,7 @@
 %%   <<"Simulation">> := string()
 %% }
 -type describe_app_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_apps_input() :: #{
@@ -352,12 +396,14 @@
 %% }
 -type list_apps_input() :: #{binary() => any()}.
 
+
 %% Example:
 %% live_simulation_state() :: #{
 %%   <<"Clocks">> => list(simulation_clock()()),
 %%   <<"Domains">> => list(domain()())
 %% }
 -type live_simulation_state() :: #{binary() => any()}.
+
 
 %% Example:
 %% start_app_output() :: #{
@@ -366,15 +412,18 @@
 %%   <<"Simulation">> => string()
 %% }
 -type start_app_output() :: #{binary() => any()}.
+
 %% Example:
 %% start_clock_output() :: #{}
 -type start_clock_output() :: #{}.
+
 
 %% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_simulation_output() :: #{
@@ -396,6 +445,7 @@
 %% }
 -type describe_simulation_output() :: #{binary() => any()}.
 
+
 %% Example:
 %% delete_app_input() :: #{
 %%   <<"App">> := string(),
@@ -403,6 +453,7 @@
 %%   <<"Simulation">> := string()
 %% }
 -type delete_app_input() :: #{binary() => any()}.
+
 
 %% Example:
 %% simulation_metadata() :: #{
@@ -413,6 +464,105 @@
 %%   <<"TargetStatus">> => string()
 %% }
 -type simulation_metadata() :: #{binary() => any()}.
+
+-type create_snapshot_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_app_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_simulation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type describe_app_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_simulation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_apps_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_simulations_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type start_app_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type start_clock_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_simulation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type stop_app_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_clock_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_simulation_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type tag_resource_errors() ::
+    too_many_tags_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -464,22 +614,14 @@
 -spec create_snapshot(map(), create_snapshot_input()) ->
     {ok, create_snapshot_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input) ->
     create_snapshot(Client, Input, []).
 
 -spec create_snapshot(map(), create_snapshot_input(), proplists:proplist()) ->
     {ok, create_snapshot_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createsnapshot"],
@@ -506,22 +648,14 @@ create_snapshot(Client, Input0, Options0) ->
 -spec delete_app(map(), delete_app_input()) ->
     {ok, delete_app_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input) ->
     delete_app(Client, Input, []).
 
 -spec delete_app(map(), delete_app_input(), proplists:proplist()) ->
     {ok, delete_app_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deleteapp"],
@@ -556,22 +690,14 @@ delete_app(Client, Input0, Options0) ->
 -spec delete_simulation(map(), delete_simulation_input()) ->
     {ok, delete_simulation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_simulation_errors(), tuple()}.
 delete_simulation(Client, Input) ->
     delete_simulation(Client, Input, []).
 
 -spec delete_simulation(map(), delete_simulation_input(), proplists:proplist()) ->
     {ok, delete_simulation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, delete_simulation_errors(), tuple()}.
 delete_simulation(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/deletesimulation"],
@@ -599,10 +725,7 @@ delete_simulation(Client, Input0, Options0) ->
 -spec describe_app(map(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_app_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, App, Domain, Simulation)
   when is_map(Client) ->
     describe_app(Client, App, Domain, Simulation, #{}, #{}).
@@ -610,10 +733,7 @@ describe_app(Client, App, Domain, Simulation)
 -spec describe_app(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_app_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, App, Domain, Simulation, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app(Client, App, Domain, Simulation, QueryMap, HeadersMap, []).
@@ -621,10 +741,7 @@ describe_app(Client, App, Domain, Simulation, QueryMap, HeadersMap)
 -spec describe_app(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_app_errors(), tuple()}.
 describe_app(Client, App, Domain, Simulation, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/describeapp"],
@@ -651,10 +768,7 @@ describe_app(Client, App, Domain, Simulation, QueryMap, HeadersMap, Options0)
 -spec describe_simulation(map(), binary() | list()) ->
     {ok, describe_simulation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_simulation_errors(), tuple()}.
 describe_simulation(Client, Simulation)
   when is_map(Client) ->
     describe_simulation(Client, Simulation, #{}, #{}).
@@ -662,10 +776,7 @@ describe_simulation(Client, Simulation)
 -spec describe_simulation(map(), binary() | list(), map(), map()) ->
     {ok, describe_simulation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_simulation_errors(), tuple()}.
 describe_simulation(Client, Simulation, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_simulation(Client, Simulation, QueryMap, HeadersMap, []).
@@ -673,10 +784,7 @@ describe_simulation(Client, Simulation, QueryMap, HeadersMap)
 -spec describe_simulation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_simulation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, describe_simulation_errors(), tuple()}.
 describe_simulation(Client, Simulation, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/describesimulation"],
@@ -702,10 +810,7 @@ describe_simulation(Client, Simulation, QueryMap, HeadersMap, Options0)
 -spec list_apps(map(), binary() | list()) ->
     {ok, list_apps_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client, Simulation)
   when is_map(Client) ->
     list_apps(Client, Simulation, #{}, #{}).
@@ -713,10 +818,7 @@ list_apps(Client, Simulation)
 -spec list_apps(map(), binary() | list(), map(), map()) ->
     {ok, list_apps_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client, Simulation, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_apps(Client, Simulation, QueryMap, HeadersMap, []).
@@ -724,10 +826,7 @@ list_apps(Client, Simulation, QueryMap, HeadersMap)
 -spec list_apps(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_apps_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_apps_errors(), tuple()}.
 list_apps(Client, Simulation, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listapps"],
@@ -756,9 +855,7 @@ list_apps(Client, Simulation, QueryMap, HeadersMap, Options0)
 -spec list_simulations(map()) ->
     {ok, list_simulations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_simulations_errors(), tuple()}.
 list_simulations(Client)
   when is_map(Client) ->
     list_simulations(Client, #{}, #{}).
@@ -766,9 +863,7 @@ list_simulations(Client)
 -spec list_simulations(map(), map(), map()) ->
     {ok, list_simulations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_simulations_errors(), tuple()}.
 list_simulations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_simulations(Client, QueryMap, HeadersMap, []).
@@ -776,9 +871,7 @@ list_simulations(Client, QueryMap, HeadersMap)
 -spec list_simulations(map(), map(), map(), proplists:proplist()) ->
     {ok, list_simulations_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_simulations_errors(), tuple()}.
 list_simulations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listsimulations"],
@@ -804,8 +897,7 @@ list_simulations(Client, QueryMap, HeadersMap, Options0)
 -spec list_tags_for_resource(map(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -813,8 +905,7 @@ list_tags_for_resource(Client, ResourceArn)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
@@ -822,8 +913,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 -spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -845,22 +935,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 -spec start_app(map(), start_app_input()) ->
     {ok, start_app_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_app_errors(), tuple()}.
 start_app(Client, Input) ->
     start_app(Client, Input, []).
 
 -spec start_app(map(), start_app_input(), proplists:proplist()) ->
     {ok, start_app_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_app_errors(), tuple()}.
 start_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startapp"],
@@ -887,22 +969,14 @@ start_app(Client, Input0, Options0) ->
 -spec start_clock(map(), start_clock_input()) ->
     {ok, start_clock_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_clock_errors(), tuple()}.
 start_clock(Client, Input) ->
     start_clock(Client, Input, []).
 
 -spec start_clock(map(), start_clock_input(), proplists:proplist()) ->
     {ok, start_clock_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_clock_errors(), tuple()}.
 start_clock(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startclock"],
@@ -938,22 +1012,14 @@ start_clock(Client, Input0, Options0) ->
 -spec start_simulation(map(), start_simulation_input()) ->
     {ok, start_simulation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_simulation_errors(), tuple()}.
 start_simulation(Client, Input) ->
     start_simulation(Client, Input, []).
 
 -spec start_simulation(map(), start_simulation_input(), proplists:proplist()) ->
     {ok, start_simulation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, service_quota_exceeded_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, start_simulation_errors(), tuple()}.
 start_simulation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startsimulation"],
@@ -981,22 +1047,14 @@ start_simulation(Client, Input0, Options0) ->
 -spec stop_app(map(), stop_app_input()) ->
     {ok, stop_app_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_app_errors(), tuple()}.
 stop_app(Client, Input) ->
     stop_app(Client, Input, []).
 
 -spec stop_app(map(), stop_app_input(), proplists:proplist()) ->
     {ok, stop_app_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_app_errors(), tuple()}.
 stop_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stopapp"],
@@ -1023,22 +1081,14 @@ stop_app(Client, Input0, Options0) ->
 -spec stop_clock(map(), stop_clock_input()) ->
     {ok, stop_clock_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_clock_errors(), tuple()}.
 stop_clock(Client, Input) ->
     stop_clock(Client, Input, []).
 
 -spec stop_clock(map(), stop_clock_input(), proplists:proplist()) ->
     {ok, stop_clock_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_clock_errors(), tuple()}.
 stop_clock(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stopclock"],
@@ -1069,22 +1119,14 @@ stop_clock(Client, Input0, Options0) ->
 -spec stop_simulation(map(), stop_simulation_input()) ->
     {ok, stop_simulation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_simulation_errors(), tuple()}.
 stop_simulation(Client, Input) ->
     stop_simulation(Client, Input, []).
 
 -spec stop_simulation(map(), stop_simulation_input(), proplists:proplist()) ->
     {ok, stop_simulation_output(), tuple()} |
     {error, any()} |
-    {error, access_denied_exception(), tuple()} |
-    {error, conflict_exception(), tuple()} |
-    {error, internal_server_exception(), tuple()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, stop_simulation_errors(), tuple()}.
 stop_simulation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stopsimulation"],
@@ -1116,18 +1158,14 @@ stop_simulation(Client, Input0, Options0) ->
 -spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
 -spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, too_many_tags_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1159,16 +1197,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 -spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
 -spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
-    {error, resource_not_found_exception(), tuple()} |
-    {error, validation_exception(), tuple()}.
+    {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
