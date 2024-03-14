@@ -1,10 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Kinesis Data Analytics is a fully managed service that you can
-%% use to process and analyze streaming data using Java, SQL, or Scala.
+%% @doc
+%% Amazon Managed Service for Apache Flink was previously known as Amazon
+%% Kinesis Data Analytics for Apache Flink.
 %%
-%% The service
+%% Amazon Managed Service for Apache Flink is a fully managed service that
+%% you can use to process and analyze streaming data using Java, Python, SQL,
+%% or Scala. The service
 %% enables you to quickly author and run Java, SQL, or Scala code against
 %% streaming sources to perform time
 %% series analytics, feed real-time dashboards, and create real-time metrics.
@@ -179,12 +182,12 @@ add_application_reference_data_source(Client, Input, Options)
 %% Applications can use VPCs to store
 %% and access resources securely.
 %%
-%% Note the following about VPC configurations for Kinesis Data Analytics
-%% applications:
+%% Note the following about VPC configurations for Managed Service for Apache
+%% Flink applications:
 %%
 %% VPC configurations are not supported for SQL applications.
 %%
-%% When a VPC is added to a Kinesis Data Analytics application, the
+%% When a VPC is added to a Managed Service for Apache Flink application, the
 %% application can no longer be accessed from the
 %% Internet directly. To enable Internet access to the application, add an
 %% Internet gateway to your VPC.
@@ -195,10 +198,10 @@ add_application_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationVpcConfiguration">>, Input, Options).
 
-%% @doc Creates a Kinesis Data Analytics application.
+%% @doc Creates a Managed Service for Apache Flink application.
 %%
 %% For information about creating a
-%% Kinesis Data Analytics application, see Creating an
+%% Managed Service for Apache Flink application, see Creating an
 %% Application:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html.
 create_application(Client, Input)
@@ -246,8 +249,8 @@ create_application_snapshot(Client, Input, Options)
 
 %% @doc Deletes the specified application.
 %%
-%% Kinesis Data Analytics halts application execution and deletes the
-%% application.
+%% Managed Service for Apache Flink halts application execution and deletes
+%% the application.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
@@ -255,8 +258,8 @@ delete_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplication">>, Input, Options).
 
-%% @doc Deletes an Amazon CloudWatch log stream from an Kinesis Data
-%% Analytics application.
+%% @doc Deletes an Amazon CloudWatch log stream from an SQL-based Kinesis
+%% Data Analytics application.
 delete_application_cloud_watch_logging_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_cloud_watch_logging_option(Client, Input, []).
@@ -307,7 +310,7 @@ delete_application_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationSnapshot">>, Input, Options).
 
-%% @doc Removes a VPC configuration from a Kinesis Data Analytics
+%% @doc Removes a VPC configuration from a Managed Service for Apache Flink
 %% application.
 delete_application_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -316,7 +319,7 @@ delete_application_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationVpcConfiguration">>, Input, Options).
 
-%% @doc Returns information about a specific Kinesis Data Analytics
+%% @doc Returns information about a specific Managed Service for Apache Flink
 %% application.
 %%
 %% If you want to retrieve a list of all applications in your account,
@@ -342,8 +345,7 @@ describe_application_snapshot(Client, Input, Options)
 %% To see a list of all the versions of an application, invoke the
 %% `ListApplicationVersions' operation.
 %%
-%% This operation is supported only for Amazon Kinesis Data Analytics for
-%% Apache Flink.
+%% This operation is supported only for Managed Service for Apache Flink.
 describe_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_version(Client, Input, []).
@@ -390,8 +392,7 @@ list_application_snapshots(Client, Input, Options)
 %% To get the complete description of a specific application version, invoke
 %% the `DescribeApplicationVersion' operation.
 %%
-%% This operation is supported only for Amazon Kinesis Data Analytics for
-%% Apache Flink.
+%% This operation is supported only for Managed Service for Apache Flink.
 list_application_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_versions(Client, Input, []).
@@ -399,8 +400,8 @@ list_application_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationVersions">>, Input, Options).
 
-%% @doc Returns a list of Kinesis Data Analytics applications in your
-%% account.
+%% @doc Returns a list of Managed Service for Apache Flink applications in
+%% your account.
 %%
 %% For each
 %% application, the response includes the application name, Amazon Resource
@@ -438,10 +439,10 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% When you rollback an application, it loads state data from the last
 %% successful snapshot.
-%% If the application has no snapshots, Kinesis Data Analytics rejects the
-%% rollback request.
+%% If the application has no snapshots, Managed Service for Apache Flink
+%% rejects the rollback request.
 %%
-%% This action is not supported for Kinesis Data Analytics for SQL
+%% This action is not supported for Managed Service for Apache Flink for SQL
 %% applications.
 rollback_application(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -450,7 +451,7 @@ rollback_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RollbackApplication">>, Input, Options).
 
-%% @doc Starts the specified Kinesis Data Analytics application.
+%% @doc Starts the specified Managed Service for Apache Flink application.
 %%
 %% After creating an application, you must exclusively call this operation to
 %% start your application.
@@ -471,8 +472,8 @@ start_application(Client, Input, Options)
 %% You can use the `DescribeApplication' operation to find the
 %% application status.
 %%
-%% Kinesis Data Analytics takes a snapshot when the application is stopped,
-%% unless `Force' is set
+%% Managed Service for Apache Flink takes a snapshot when the application is
+%% stopped, unless `Force' is set
 %% to `true'.
 stop_application(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -481,7 +482,7 @@ stop_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopApplication">>, Input, Options).
 
-%% @doc Adds one or more key-value tags to a Kinesis Data Analytics
+%% @doc Adds one or more key-value tags to a Managed Service for Apache Flink
 %% application.
 %%
 %% Note that the maximum number of application
@@ -496,7 +497,8 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes one or more tags from a Kinesis Data Analytics application.
+%% @doc Removes one or more tags from a Managed Service for Apache Flink
+%% application.
 %%
 %% For more information, see
 %% Using Tagging:
@@ -508,21 +510,15 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates an existing Kinesis Data Analytics application.
+%% @doc Updates an existing Managed Service for Apache Flink application.
 %%
 %% Using this operation, you
 %% can update application code, input configuration, and output
 %% configuration.
 %%
-%% Kinesis Data Analytics updates the `ApplicationVersionId' each time
-%% you update
+%% Managed Service for Apache Flink updates the `ApplicationVersionId'
+%% each time you update
 %% your application.
-%%
-%% You cannot update the `RuntimeEnvironment' of an existing application.
-%% If you
-%% need to update an application's `RuntimeEnvironment', you must
-%% delete the application
-%% and create it again.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
@@ -530,8 +526,8 @@ update_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplication">>, Input, Options).
 
-%% @doc Updates the maintenance configuration of the Kinesis Data Analytics
-%% application.
+%% @doc Updates the maintenance configuration of the Managed Service for
+%% Apache Flink application.
 %%
 %% You can invoke this operation on an application that is in one of the two
 %% following
@@ -555,12 +551,11 @@ update_application(Client, Input, Options)
 %% the
 %% `DescribeApplication' operation.
 %%
-%% For information about application maintenance, see Kinesis Data Analytics
-%% for Apache Flink Maintenance:
+%% For information about application maintenance, see Managed Service for
+%% Apache Flink for Apache Flink Maintenance:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/java/maintenance.html.
 %%
-%% This operation is supported only for Amazon Kinesis Data Analytics for
-%% Apache Flink.
+%% This operation is supported only for Managed Service for Apache Flink.
 update_application_maintenance_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application_maintenance_configuration(Client, Input, []).
