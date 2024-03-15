@@ -1,11 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Fault Injection Simulator is a managed service that enables you to
+%% @doc Fault Injection Service is a managed service that enables you to
 %% perform fault injection
 %% experiments on your Amazon Web Services workloads.
 %%
-%% For more information, see the Fault Injection Simulator User Guide:
+%% For more information, see the Fault Injection Service User Guide:
 %% https://docs.aws.amazon.com/fis/latest/userguide/.
 -module(aws_fis).
 
@@ -97,7 +97,7 @@
 %%
 %% For more information, see experiment templates:
 %% https://docs.aws.amazon.com/fis/latest/userguide/experiment-templates.html
-%% in the Fault Injection Simulator User Guide.
+%% in the Fault Injection Service User Guide.
 create_experiment_template(Client, Input) ->
     create_experiment_template(Client, Input, []).
 create_experiment_template(Client, Input0, Options0) ->
@@ -129,7 +129,7 @@ create_experiment_template(Client, Input0, Options0) ->
 %% to `multi-account'.
 %% For more information, see experiment options:
 %% https://docs.aws.amazon.com/fis/latest/userguide/experiment-options.html
-%% in the Fault Injection Simulator User Guide.
+%% in the Fault Injection Service User Guide.
 create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
     create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
 create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input0, Options0) ->
@@ -500,6 +500,7 @@ list_experiments(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"experimentTemplateId">>, maps:get(<<"experimentTemplateId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
