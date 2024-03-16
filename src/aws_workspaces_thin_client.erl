@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon WorkSpaces Thin Client is a affordable device built to work
+%% @doc Amazon WorkSpaces Thin Client is an affordable device built to work
 %% with Amazon Web Services End User
 %% Computing (EUC) virtual desktops to provide users with a complete cloud
 %% desktop
